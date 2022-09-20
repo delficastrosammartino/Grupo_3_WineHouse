@@ -1,0 +1,23 @@
+{
+  "name": "grupo_3_nombre",
+  "version": "1.0.0",
+  "description": "Proyecto integrador Digital House - Grupo 3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delficastrosammartino/Grupo_3_nombre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delficastrosammartino/Grupo_3_nombre/issues"
+  },
+  "homepage": "https://github.com/delficastrosammartino/Grupo_3_nombre#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
