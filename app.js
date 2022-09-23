@@ -13,3 +13,8 @@ app.get("/", (req, res) => {
     // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
     res.sendFile(path.join(__dirname, "/views/index.html"))
 });
+
+app.get("/registro", (req, res) => {
+    // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
+    res.sendFile(path.join(__dirname, "/views/registro.html"))
+});
