@@ -67,7 +67,8 @@ body {
     padding: 8px 43px;
     border-radius: 10px;
     font-size: 20px;
-    margin-bottom: 17px;
+    margin-bottom: 5px;
+    border: 0.5px solid #eee;
 }
 .letra-chica{
     display: flex;
@@ -76,13 +77,21 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 197px;
-    padding-top: 10px;
+    padding-top: 15px;
+}
+.recordar{
+    text-align: center;
+    display: flex;
+    margin-bottom: 10px;
+    font-size: small;
+    justify-content: center;
 }
 
 .cuenta{
     margin-right: 5px;
     margin-top: 5px;
 }
+
 .pregunta{
     color:black;
 }
