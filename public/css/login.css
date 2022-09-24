@@ -1,7 +1,6 @@
 
 
 
-
 /*************** Generales ***************/
 
 * {
@@ -53,11 +52,12 @@ body {
     border-bottom: solid 2px black;
     width: 190px;
     padding-left: 12px;
+    padding-top: 10px;
 }
 .caja-links{
     display: flex;
     flex-direction: column;
-    margin-top: -10px;
+    padding-top: 10px;
 }
 .boton{
     display: flex;
@@ -66,7 +66,7 @@ body {
     color: white;
     padding: 8px 43px;
     border-radius: 10px;
-    font-size: 26px;
+    font-size: 20px;
     margin-bottom: 17px;
 }
 .letra-chica{
@@ -74,9 +74,21 @@ body {
     margin: auto;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 197px;
+    padding-top: 10px;
 }
+
+.cuenta{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.pregunta{
+    color:black;
+}
+
 .link{
     color:black;
+    margin-top: 5px;
+    display: flex;
 }
