@@ -15,21 +15,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/registro", (req, res) => {
-    // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
     res.sendFile(path.join(__dirname, "/views/registro.html"))
 });
 
 app.get("/login", (req, res) => {
-    // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
     res.sendFile(path.join(__dirname, "/views/login.html"))
 });
 
 app.get("/password", (req, res) => {
-    // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
     res.sendFile(path.join(__dirname, "/views/password.html"))
 });
 
 app.get("/detalles-del-producto", (req, res) => {
-    // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
     res.sendFile(path.join(__dirname, "/views/detalles.html"))
 });
