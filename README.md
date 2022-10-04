@@ -12,10 +12,9 @@ Estanislao Perez Pesado (La Plata, Argentina, 6 de septiembre de 1992) es un est
 
 Matías Albarracín, nacido el 6 de Febrero de 1999 en La Plata, Argentina. Trabajé en varios negocios familiares desde el 2017 hasta el 2021, entre ellos, en una agencia de lotería y un kiosco. Actualmente estudio desarrollo web fullstack en Digital House.
 
-Santiago Torres, tengo 27 años y soy de Olivos, Bs.As.  Soy Oficial del Ejercito Argentino y estoy destinado en Esquel. Actualmente estoy en una Misión de Paz en la Isla de Chipre. Soy Licenciado en Conducción y Gestión Operativa y soy instructor de andinismo. Me gustan mucho los deportes, y lo que más practico es equitación.
+Santiago Torres, tengo 27 años y soy de Olivos, Bs.As. Soy Oficial del Ejercito Argentino y estoy destinado en Esquel. Actualmente estoy en una Misión de Paz en la Isla de Chipre. Soy Licenciado en Conducción y Gestión Operativa y soy instructor de andinismo. Me gustan mucho los deportes, y lo que más practico es equitación.
 
 Tomás Aguirre tengo 20 años, soy de Mendoza. Me encanta la programación desde siempre y este año que me estoy metiendo de lleno. Me encantan los juegos, el hardware y software de pc.
-
 
 Referentes del mercado:
 https://www.pain-et-vin.com/
