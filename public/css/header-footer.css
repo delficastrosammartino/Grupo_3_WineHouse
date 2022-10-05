@@ -63,8 +63,9 @@ footer{
     margin: 25px 0px;
 }
 
-.titulo-news{
+.titulos-footer{
     margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .news-input{
@@ -84,17 +85,12 @@ footer{
     padding: 0px 35px;
 }
 
-.titulo-contacto{
-    margin-bottom: 15px;
-}
-
 .margen-contacto{
     margin-bottom: 5px;
 }
 
-.titulos-chicos{
-    font-size: 16px;
-}
+    
+
 
 .mapa-sitio{
     display: none;
@@ -113,6 +109,11 @@ footer{
 
     .mapa-sitio{
         display: block;
+    }
+
+    .link-mapa{
+        color: black;
+        text-decoration: none;
     }
 
 }

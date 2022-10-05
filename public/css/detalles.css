@@ -84,6 +84,10 @@ main{
     border: solid 1px lightgray;
 }
 
+.titulos-chicos{
+    font-size: 16px;
+}
+
 .details{
     margin: 15px 0 0 0;
 }
