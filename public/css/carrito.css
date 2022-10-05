@@ -1,0 +1,147 @@
+/*************** Header ***************/
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    width: 70%;
+    margin: -30px;
+}
+
+/*************** Body ***************/
+body{
+    margin:10px;
+}
+.return{
+    padding: 20px;
+}
+.wine{
+    width:100px;
+}
+.imagen{
+    text-align: center;
+}
+.box-product{
+    display: block;
+    padding: 10px;
+    border: 1px solid #9BA0A3;
+    border-radius: 25px;
+    width: 90%;
+    margin: auto;
+
+}
+.box-img-price-description{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    
+}
+.price{
+    align-self: flex-end;
+    position: relative;
+    right: 21px;
+}
+.bottom-product-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 12px 3px;
+}
+.box-compra{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #9BA0A3;
+    border-radius: 25px;
+    margin-top: 35px;
+}
+.title{
+    padding: 5px 37px;
+    border-bottom: 1px solid #9BA0A3;
+    font-weight: 900;
+}
+.sub-title{
+    padding: 12px;
+}
+.box-discount{
+    padding: 5px;
+    margin-left: 14px;
+}
+.list-articles{
+    border: 1px solid #9BA0A3;
+    border-radius: 25px;
+    height: 150px;
+    width: -webkit-fill-available;
+}
+.pay-button{
+    background: purple;
+    color: white;
+    padding: 5px 35px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 15px;
+}
+.continue-button{
+    padding: 5px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 6px;
+    border: 1px solid;
+}
+.columns{
+    display: none;
+    justify-content: space-around;
+}
+.box-list{
+    display: none;
+    justify-content: space-around;
+    border: 1px solid #9BA0A3;
+    border-radius: 25px;
+    padding: 15px;
+    height: fit-content;
+    margin-right: 35px;
+    margin-bottom: 25px;
+}
+.box-desktop{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    justify-content: center;
+
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 10px;
+}
+.column-special{
+    position: relative;
+    top: 93px;
+    height: fit-content;
+}
+.column-middle{
+    margin-top: 74px;
+}
+.box-title{
+    font-weight: 900;
+}
+/*************** Navegacion Tablets *********/
+
+@media (min-width: 769px){  
+    .box-product {
+        display: none;
+    }
+    .columns{
+        display: flex;
+    }
+    .box-list{
+        display: flex;
+    }
+    .box-compra{
+        margin-top: 0;
+        margin-right: 20px;
+    }
+}
