@@ -4,47 +4,12 @@
   box-sizing: border-box;
 }
 
-header {
-  background-color: white;
-}
-
 body {
   font-family: "Assistant", sans-serif;
 }
 
 main {
   text-align: center;
-}
-
-.logo img {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 90%;
-  border: 1px solid purple;
-  border-radius: 10px;
-  padding: 10px;
-  margin: auto;
-  margin-top: 10px;
-}
-
-.registrarse {
-  text-align: center;
-  margin: auto;
-  background: purple;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 10px;
-  font-size: 15px;
-  margin-bottom: 17px;
-  width: 50%;
-  margin-top: 17px;
-}
-
-.barra-funciones {
-  border: 1px solid lightgrey;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
 }
 
 .main-article {
@@ -77,6 +42,4 @@ main article img {
   font-weight: normal;
 }
 
-.link {
-  color: white;
-}
+

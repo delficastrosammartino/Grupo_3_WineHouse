@@ -1,0 +1,116 @@
+header {
+    background-color: white;
+}
+  
+.logo img {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 90%;
+    border: 1px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+}
+  
+.registrarse {
+    text-align: center;
+    margin: auto;
+    background: purple;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 17px;
+    width: 50%;
+    margin-top: 17px;
+}
+  
+.barra-funciones{
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+footer{
+    border-top: solid 1px black;
+}
+
+.footer{
+    padding: 20px;
+    height: 150px;
+}
+
+.display-footer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconos-medios-pago{
+    margin: 15px 0;
+    font-size: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 115px;
+}
+
+.news{
+    margin: 25px 0px;
+}
+
+.titulo-news{
+    margin-bottom: 15px;
+}
+
+.news-input{
+    display: flex;
+    align-items: center;        
+}
+
+.mail-news{
+    padding: 12px;
+    width: 95%;
+    height: 35px;
+    border: solid lightgray 1px;
+    border-radius: 8px;
+}
+
+.contacto{
+    padding: 0px 35px;
+}
+
+.titulo-contacto{
+    margin-bottom: 15px;
+}
+
+.margen-contacto{
+    margin-bottom: 5px;
+}
+
+.titulos-chicos{
+    font-size: 16px;
+}
+
+.mapa-sitio{
+    display: none;
+}
+
+.link {
+    color: white;
+}
+
+@media screen and (min-width: 769px){
+
+    .display-footer{
+        justify-content: space-around;
+    }
+
+    .mapa-sitio{
+        display: block;
+    }
+
+}

@@ -22,6 +22,7 @@
         <!-- Recomiendan estas hojas ultimas -->
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="stylesheet" href="/css/detalles.css">
+        <link rel="stylesheet" href="/css/header-footer.css">
         <title>miVinoteca</title>
 
     </head>
@@ -30,149 +31,377 @@
 
         <header>
 
-            <div class="logo-login">
-
-                <div class="logo">
-                    <p>Aca va el logo</p>
-                </div>
-
-                <div class="login-register">
-
-                    <a class="register" href="/registro">Registrarse</a>
-                    
-                    <div class="icono-barras">
-                        <i class="fa-solid fa-grip-lines-vertical"></i>                    
-                    </div>
-                    
-                    <a class="inicio-sesion" href="/login">Iniciar sesión</a>
-                    
-                </div>
-
+            <div class="logo">
+              <img src="images/logo-winehouse.png" alt="Logo" class="product_img" />
             </div>
 
-
-            <nav>
-
-                <div class="nav-bar">
-                    
-                    <div class="burger-menu">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-
-                    <div class="barra-de-busqueda">
-                        <p>Search Bar</p>
-                    </div>
-
-                    <div>
-                        <a href="/carrito" class="carrito"><i class="fa-solid fa-cart-shopping"></i></a>
-                        <p class="numero-carrito">0</p>
-                    </div>
-
-
-                </div>
-
-            </nav>
+            <div class="registrarse">
+              <span
+                ><a class="link" href="/registro"
+                  >Registrarse - Iniciar sesión</a
+                ></span
+              >
+              <!-- <span><a href="/login"></a>Iniciar sesión</span> -->
+            </div>
+      
+            <div class="barra-funciones">
+              <i class="fa-solid fa-bars"></i>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
 
         </header>
 
         <main>
 
-            <section>
+            <section class="seccion">
 
-                <div class="imagenes-cruz">
-
-                    <div class="ruta-cruz">
-
-                        <div class="ruta-producto">
-                            <a href="/" style="text-decoration: none;">Inicio</a> / ????? / Producto
-                        </div>
-
-                        <div class="cruz-cerrar">
-                            <i class="fa-solid fa-x"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="carrusel">
-                        <p>imagen del producto</p>
-                    </div>
-                    
-                    <div class="contenedor-minis">
-
-                        <div class="miniaturas-img">
-                            
-                            <div class="mini">
-                                <p>img 1</p>
-                            </div>
-
-                            <div class="mini">
-                                <p>img 2</p>
-                            </div>
-
-                            <div class="mini">
-                                <p>img 3</p>
-                            </div>
-                        
-                        </div>
-
-                    </div>
                 
+
+                <div class="ruta-cruz">
+
+                    <div class="ruta-producto">
+                        <a href="/" style="text-decoration: none; color: black;">Inicio</a> / ????? / Producto
+                    </div>
+
+                    <div class="cruz-cerrar">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+
                 </div>
 
-                <div class="detalles-producto">
+                <div class="contenedor-imagenes-detalles">
 
-                    <div class="details nombre-producto">
-                        <h2>Nombre del Producto</h2>
-                    </div>
+                    <div class="imagenes-detalles">
 
-                    <div class="details tamanio">
-                        <p>750 cc</p>
-                    </div>
+                        <div class="carrusel-minis">
 
-                    <div class="details precio">
-                        <h3>$2222</h3>
-                    </div>
+                            <div class="carrusel">
 
-                    <div class="details cantidad-agregar">
+                                <div class="contenedor-imagen-carrusel">
+                                    <img class="imagen-principal imagenes-producto" src="images/vino1.jpg" alt="Vino elementos malbec">
+                                </div>
 
+                            </div>
+                            
+                            <div class="contenedor-minis">
 
-                        <div class="cantidad-sumar">
+                                <div class="miniaturas-img">
+                                    
+                                    <div class="mini">
+                                        <img class="imagenes-producto" src="images/vino1.jpg" alt="Vino elementos malbec">
+                                    </div>
+
+                                    <div class="mini">
+                                        <img class="imagenes-producto" src="images/vino2.jpg" alt="Pack de seis vinos elementos">
+                                    </div>
+
+                                    <div class="mini">
+                                        <img class="imagenes-producto" src="images/vino3.jpg" alt="Pack vino, copa y caja">
+                                    </div>
+                                
+                                </div>
+
+                            </div>
+
+                        </div>
+                    
+                    
+
+                        <div class="contenedor-detalles">
+
+                            <div class="details nombre-producto">
+                                <h2>Vino Elementos Malbec</h2>
+                            </div>
+
+                            <div class="details tamanio">
+                                <p>750 cc</p>
+                            </div>
+
+                            <div class="details precio">
+                                <h3>$2222</h3>
+                            </div>
 
                             <div>
-                                <p>Cantidad</p>
-                            </div>
 
-                            <div class="sumar-restar">
-                                <p>- 1 +</p>
+                                <div class="details cantidad-agregar">
+
+                                    <div class="agregar">
+
+                                        <div class="details agregar-al-carrito">
+                                            <p>Agregar al carrito</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="cantidad-sumar">
+
+                                        <div>
+                                            <p>Cantidad</p>
+                                        </div>
+
+                                        <div class="sumar-restar">
+                                            <p>- 1 +</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="formas">
+
+                                    <div class="details formas-de-pago">
+                                        <p>Ver formas de pago</p>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>                   
+
+                            <div class="contenedor-descripcion">
+
+                                <div class="titulos-chicos">
+                                    <h2>Detalles</h2>
+                                </div>
+
+                                <div class="details descripcion-producto">
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus possimus itaque esse neque laudantium eos beatae iste, molestiae, ipsam facilis nemo vero animi assumenda. Aspernatur ducimus debitis quaerat doloremque aperiam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad sit iure sed eveniet labore amet quae eligendi totam nisi dicta veniam quod, optio perspiciatis cum. Natus officia dolores unde amet?</p>
+                                </div>
+
                             </div>
 
                         </div>
 
-                        <div class="agregar-formas">
-
-                            <div class="details agregar-al-carrito">
-                                <p>Agregar al carrito</p>
-                            </div>
-
-                            <div class="details formas-de-pago">
-                                <p>Ver formas de pago</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="details descripcion-producto">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus possimus itaque esse neque laudantium eos beatae iste, molestiae, ipsam facilis nemo vero animi assumenda. Aspernatur ducimus debitis quaerat doloremque aperiam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad sit iure sed eveniet labore amet quae eligendi totam nisi dicta veniam quod, optio perspiciatis cum. Natus officia dolores unde amet?</p>
                     </div>
 
                 </div>
 
             </section>
 
+            <section>
 
+                <div class="display-relacionados">
+
+                    <div class="productos-relacionados">
+
+                        <div class="contenedor-titulo-prod-rel">
+                            <h2>Productos relacionados</h2>
+                        </div>
+
+                        <div class="contenedor-articulos-rel">
+
+                            <article class="articulo-1">
+
+                                <div class="sombras">
+                                  
+                                    <div>
+
+                                        <div>
+                                            <img src="images/vino2.jpg" alt="Producto relacionado 1" class="imagenes-relacionados relacionado-1">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="descripcion-articulo-1">
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>nombre</p>
+                                        </div>
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>precio</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="articulo-2">
+
+                                <div class="sombras">
+
+                                    <div>
+
+                                        <div>
+                                            <img src="images/vino2.jpg" alt="Producto relacionado 2" class="imagenes-relacionados relacionado-2">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="descripcion-articulo-2">
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>nombre</p>
+                                        </div>
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>precio</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="articulo-3">
+
+                                <div class="sombras">
+
+                                    <div>
+
+                                        <div>
+                                            <img src="images/vino2.jpg" alt="Producto relacionado 3" class="imagenes-relacionados relacionado-3">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="descripcion-articulo-3">
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>nombre</p>
+                                        </div>
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>precio</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="articulo-4">
+
+                                <div class="sombras">
+
+                                    <div>
+
+                                        <div>
+                                            <img src="images/vino2.jpg" alt="Producto relacionado 4" class="imagenes-relacionados relacionado-4">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="descripcion-articulo-4">
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>nombre</p>
+                                        </div>
+
+                                        <div class="detalles-articulo-rel">
+                                            <p>precio</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+                            
+                    </div>
+
+                </div>
+
+            </section>
 
         </main>
+
+        <footer>
+
+            <div class="footer">
+
+                <div class="display-footer">
+
+                    <div class="medios-news">
+
+                        <div class="medios-pago">
+
+                            <div class="titulos-chicos">
+                                <h3>Medios de pago</h3>
+                            </div>
+
+                            <div class="iconos-medios-pago">
+                                <i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="news">
+
+                            <div class="titulos-chicos titulo-news">
+                                <h3>Newsletter</h3>
+                            </div>
+
+                            <div class="news-input">
+                                
+                                <form action="/" method="get">
+
+                                    <div class="contenedor-news-input">
+                                   
+                                        <input class="mail-news" type="email" name="newsletter-mail" placeholder="Email">
+                
+                                    </div>
+                
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="contacto">
+
+                        <div class="titulos-chicos titulo-contacto">
+                            <h3>Contacto y Redes</h3>
+                        </div>
+
+                        <div class="botones-contacto">
+
+                            <div class="margen-contacto">
+                                <i class="fa-solid fa-envelope"></i> winehouse@winehouse.com
+                            </div>
+
+                            <div class="margen-contacto">
+                                <i class="fa-solid fa-phone"></i> +54 9 123 345-6789
+                            </div>
+
+                            <div class="margen-contacto">
+                                <i class="fa-solid fa-location-pin"></i> Wine Street 1887
+                            </div>
+
+                            <div class="margen-contacto">
+                                <i class="fa-brands fa-facebook-f"></i> Wine House
+                            </div>
+
+                            <div class="margen-contacto">
+                                <i class="fa-brands fa-instagram"></i> wine.house
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mapa-sitio">
+
+                        <div class="titulos-chicos titulo-mapa">
+                            <h3>Mapa del sitio</h3>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
 
     </body>
 

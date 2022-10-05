@@ -30,3 +30,5 @@ https://www.bonvino.com.ar/ - Bonvino.
 https://www.espaciovino.com.ar/ - Espacio Vino.
 https://www.dvino.com.ar/ - Divino.
 https://www.chakanawines.com.ar/ Chakana.
+
+Link del Trello: https://trello.com/b/Gv6iIan5/grupo3dh
