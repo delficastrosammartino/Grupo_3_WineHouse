@@ -24,19 +24,28 @@
 </head>
 <body>
     <header>
-        <div class="exit"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div class="exit"><a href="/"><i class="fa-solid fa-circle-xmark"></i></a></div>
     </header>
     <main>
         <section class="cuadro">
             <div class="saludo-logo">Registrarse</div>
-            <div class="caja-datos">
-                <div class="info-usuario">Nombre</div>
-                <div class="info-usuario">Apellido</div>
-                <div class="info-usuario">Email</div>
-                <div class="info-usuario">Contraseña</div>
-            </div>
-            <div class="caja-links">
-                <div class="boton">Registrarse</div>
+            <form method="get" action="/">
+                <div class="register">
+                    <div>
+                        <input class="box-info-user" type="text" name="nombre" placeholder="Nombre" required minlength="3">
+                    </div>
+                    <div>
+                        <input class="box-info-user" type="text" name="apellido" placeholder="Apellido" required minlength="3">
+                    </div>
+                    <div>
+                        <input class="box-info-user" type="text" name="email" placeholder="E-mail">
+                    </div>
+                    <div>
+                        <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                    </div>
+                </div>
+                        <input type="submit" class="boton" value="Registrarse"></input>
+                    </form>
                 <div class="letra-chica">
                     <div class="pregunta">Ya eres miembro?</div>
                     <div><a class="link" href="/login">Inicia sesión</a></div>

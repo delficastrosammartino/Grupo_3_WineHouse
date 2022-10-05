@@ -42,22 +42,23 @@ body {
     padding-bottom: 55px;
     color:#9BA0A3;
 }
-.caja-datos {
+.register{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-.info-usuario{
+.box-info-user{
     font-size: 18px;
     margin: auto;
     margin-bottom: 30px;
-    border-bottom: solid 2px black;
+    border: none;
     width: 190px;
     padding-left: 12px;
+    border-bottom: 2px solid black;
 }
 .caja-links{
     display: flex;
     flex-direction: column;
-    margin-top: -10px;
 }
 .boton{
     display: flex;
@@ -68,14 +69,13 @@ body {
     border-radius: 10px;
     font-size: 26px;
     margin-bottom: 17px;
+    border: none;
 }
 .letra-chica{
     display: flex;
-    margin: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     width: 197px;
+    align-self: center;
 }
 .link{
     color:black;
