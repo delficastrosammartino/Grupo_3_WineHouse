@@ -24,17 +24,23 @@
 </head>
 <body>
     <header>
-        <div class="exit"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div class="exit"><a href="/"><i class="fa-solid fa-circle-xmark"></i></a></div>
     </header>
     <main>
         <section class="cuadro">
             <div class="saludo-logo">Bienvenido!</div>
-            <div class="caja-datos">
-                <div class="info-usuario">Usuario</div>
-                <div class="info-usuario">Contraseña</div>
-            </div>
+            <form method="get" action="/">
+                <div class="login">
+                    <div>
+                        <input class="box-info-user" type="text" name="usuario" placeholder="Usuario" required minlength="3">
+                    </div>
+                    <div>
+                        <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                    </div>
+                </div>
+                        <input type="submit" class="boton" value="Iniciar Sesión"></input>
+            </form>
             <div class="caja-links">
-                <button class="boton">Iniciar Sesión</button>
                 <div class="recordar">
                     <input type="checkbox">
                     <p>Recordame</p></div>
