@@ -1,0 +1,87 @@
+/*************** Generales ***************/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*************** Footer ***************/
+  
+
+footer{
+    background-color: #80083F;
+    color: #ffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-footer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.titulos-footer{
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.margen-contacto{
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+.margen-contacto a {
+    color: #ffff;
+    text-decoration: none;
+}
+/*************** Box medios-news ***************/
+.medios-news{
+    padding: 0px 10px 10px 10px;
+}
+.news{
+    margin: 25px 0px;
+}
+.iconos-medios-pago{
+    margin: 15px 0;
+    font-size: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 115px;
+}
+.news-input{
+    display: flex;
+    align-items: center;        
+}
+.mail-news{
+    padding: 12px;
+    width: 95%;
+    height: 35px;
+    border: solid lightgray 1px;
+    border-radius: 8px;
+    font-weight: 300;
+}
+/*************** Box contacto ***************/
+.contacto{
+    padding: 0px 10px 10px 10px;
+    height: 238.03px;
+}
+/*************** Box mapa-sitio ***************/
+.mapa-sitio{
+    display: none;
+    flex-direction: column;
+    padding: 0px 10px 10px 10px;
+    height: 238.03px;
+}
+
+/*************** Navegacion tablets en adelante ***************/
+
+@media screen and (min-width: 769px){
+
+    .mapa-sitio{
+        display: flex;
+    }
+}

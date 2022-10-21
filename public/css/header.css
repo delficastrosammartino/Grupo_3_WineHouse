@@ -1,0 +1,287 @@
+/*************** Generales ***************/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing:border-box;
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+}
+main{
+    margin-top: 200px;
+}
+/*************** Phone ***************/
+
+.logo img {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+.phone-register-button{
+    position: relative;
+    background-color: #80083F;
+    padding: 10px 15px;
+    border-radius: 12px;
+    top: -10px;
+    font-weight: 300;
+}
+.phone-register-button a {
+    color: white;
+    text-decoration: none;
+}
+.nav-bar-phone{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    border-top: 1px solid #80083F;
+    border-bottom: 1px solid #80083F;
+}
+.icons{
+    padding: 10px;
+    margin: 5px 10px;
+    font-size: 25px;
+    color: #80083F;
+}
+.icons a{
+    color: #80083F;
+}
+.box-buscador{
+    display: flex;
+    align-items: center;
+}
+.buscador{
+    width: 150px;
+    padding: 7px 10px;
+    border: solid 1px #80083F;
+    border-radius: 12px;
+    font-weight: 300;
+}
+.lupa{
+    position: relative;
+    left: -24px;
+    color: #80083F;
+}
+
+/*************** Desktop ***************/
+.menu-desktop{
+    display: none;
+    padding: 10px 0px;
+    margin-top: 27px;  
+}
+.menu-desktop{
+    font-weight: 400;
+    color: #80083F;
+}
+.icons-box{
+    display: none;
+    padding: 10px 0px;
+    margin-top: 27px;
+}
+.functions-header{
+    display: none;
+    list-style: none;
+}
+.functions-header li{
+    padding: 10px;
+    text-decoration: none;
+}
+.functions-header a{
+    text-decoration: none;
+    color: #80083F;
+}
+.icons-desktop a{
+    color: #80083F;
+    text-decoration: none;
+    margin: 10px 5px;
+    display: flex;
+    position: relative;
+
+}
+.box-buscador-desktop{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.buscador-desktop{
+    padding: 7px 10px;
+    border: solid 1px #80083F;
+    border-radius: 12px;
+    font-weight: 300;
+    position: relative;
+}
+.lupa-desktop{
+    position: relative;
+    color: #80083F;
+    bottom: -6px;
+}
+
+article img {
+    width:150px;
+}
+.link-menu {
+    padding: 20px;
+    transition: all 0.5s;
+    
+}
+.link-menu :hover{
+ background-color: #80083F;
+ opacity: 0.5;
+ 
+}
+
+/********* Navegacion Celulares *************/
+
+@media (min-width: 460px){
+    main{
+        margin-top: 280px;
+    }
+    
+}
+
+/*************** Navegacion Tablets *********/
+
+@media (min-width: 769px){ 
+
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+        box-shadow: 0px 3px 6px #00000029;
+    }
+    main{
+        margin-top: 100px;
+    }
+    .phone-register-button{
+        display: none;
+    }
+    .nav-bar-phone{
+        display: none;
+    }
+    .icons-box{
+        display: flex;
+    }
+    .menu-desktop{
+        display: flex;
+    }
+    .functions-header{
+        display: flex;
+        font-size: 14px;
+    }
+    .logo{
+        width: 30%;
+    }
+    .logo img{
+        width: 100%;
+    }
+    .buscador-desktop{
+        width: 125px;
+    }
+    .lupa-desktop{
+        left: -10px;
+    }
+    .desktop-register-button{
+        display: flex;
+        color:#80083F;
+        font-size: 20px;
+    }
+    .icons-desktop a{
+        font-size: 17px;
+        padding: 10px 5px;
+        bottom: 7px;
+    }
+    .box-buscador-desktop{
+        display: flex;
+        align-items: center;
+        position: relative;
+        bottom: 0px;
+    }
+    .buscador-desktop{
+        width: 100px;
+        bottom: -6px;
+        left: 12px;
+    }
+}
+
+/*************** Navegacion Desktop *********/
+
+@media (min-width: 1280px){
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    main{
+        margin-top: 140px;
+    }
+    .phone-register-button{
+        display: none;
+    }
+    .nav-bar-phone{
+        display: none;
+    }
+    .icons-box{
+        display: flex;
+        padding: 0px 10px;
+    }
+    .menu-desktop{
+        display: flex;
+    }
+    .functions-header{
+        display: flex;
+        font-size: 14px;
+        justify-content: space-around;
+        width: 600px;
+    }
+    .logo{
+        width: 30%;
+    }
+    .logo img{
+        width: 100%;
+    }
+    .buscador-desktop{
+        width: 180px;
+    }
+    .lupa-desktop{
+        position: relative;
+        left: -24px;
+        bottom: -6px;
+        color: #80083F;
+    }
+    .desktop-register-button{
+        display: flex;
+        color:#80083F;
+        font-size: 20px;
+    }
+    .icons-desktop a{
+        font-size: 25px;
+        padding: 10px 5px;
+        bottom: 10px;
+    
+    }
+    .box-buscador-desktop{
+        display: flex;
+        align-items: center;
+        position: relative;
+        bottom: 0px;
+    }
+    .buscador-desktop{
+        padding: 7px 10px;
+        border: solid 1px #80083F;
+        border-radius: 12px;
+        font-weight: 300;
+        position: relative;
+        bottom: -6px;
+    }
+}

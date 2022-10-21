@@ -1,58 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--Vuelve el sitio responsive-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grupo 3</title>
 
-    <!-- Vinculo el archivo normalize que sirve para que la pagina se vea siempre bien -->
-    <link rel="stylesheet" href="/css/normalize.css" />
-
-    <!-- Las siguientes 3 lineas las copie de google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Poppins:wght@200&family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Link de icons -->
-    <script
-      src="https://kit.fontawesome.com/742f33a9bc.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-    <!-- Recomiendan esta hoja ultima -->
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/home-productos.css" />
-    <link rel="stylesheet" href="/css/header-footer.css" />
-  </head>
-
+  <%- include("../partials/head.ejs") %> 
   <body>
-    <header>
-      <div class="logo">
-        <img src="images/logo-winehouse.png" alt="Logo" class="product_img" />
-      </div>
-      <div class="registrarse">
-        <span
-          ><a class="link" href="/registro"
-            >Registrarse - Iniciar sesión</a
-          ></span
-        >
-        <!-- <span><a href="/login"></a>Iniciar sesión</span> -->
-      </div>
-
-      <div class="barra-funciones">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
-      </div>
-    </header>
-    <br />
+    <%- include("../partials/header.ejs") %> 
     <main>
       <div class="products">
         <article>
@@ -88,12 +37,6 @@
         </article>
       </div>
     </main>
-
-    <!--
-    <div class="saludo">Bienvenidos</div>
-    <div class="registro"><a href="/registro">Registro</div></a>
-    <div class="login"><a href="/login">Login</div></a>
-    <div class="home-productos"><a href="/home-productos">Home Producto</div></a>
--->
+    <%- include("../partials/footer.ejs") %> 
   </body>
 </html>
