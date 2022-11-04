@@ -5,8 +5,8 @@ const path = require('path');
 
 // indico la ruta de mi archivo .json, la abosulta.
 const usersFilePath = path.join(__dirname, '../data/usersDB.json');
-// primero lee el archivo mencionado en la linea de arriba y la guardo en un array. Guardo en un array los productos del .json.
-const products = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// primero lee el archivo mencionado en la linea de arriba y la guardo en un array. Guardo en un array los users del .json.
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 
 const usersControllers = {
