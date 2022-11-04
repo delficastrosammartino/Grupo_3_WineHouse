@@ -20,6 +20,7 @@
   "homepage": "https://github.com/delficastrosammartino/Grupo_3_nombre#readme",
   "dependencies": {
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "method-override": "^3.0.0"
   }
 }
