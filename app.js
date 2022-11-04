@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 
 const mainRoutes = require('./src/routes/main');
+const methodOverride = require ("method-override");
+
+app.use(methodOverride("_method"))
 
 app.use(express.static("public"));
 
