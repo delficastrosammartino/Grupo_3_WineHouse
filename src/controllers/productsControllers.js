@@ -28,12 +28,16 @@ const productsControllers = {
           // Creo la variable nuevo producto, es importante que id sea unico e irrepetible.
           let newProduct = {
             id: Date.now(),
-            name : req.body.name,
+            size: Number(req.body.size),
+            image: req.body.image,
+            name: req.body.name,
             price: Number(req.body.price),
-            discount: Number(req.body.discount),
             category: req.body.category,
-            description: req.body.description,
-            image: req.body.image
+            discount: Number(req.body.discount),
+            bodega: req.body.bodega,
+            provincia : req.body.provincia,
+            description : req.body.description,
+            stock : req.body.stock
         }
     // Pusheo en el array products
         products.push(newProduct)
