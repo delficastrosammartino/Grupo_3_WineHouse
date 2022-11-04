@@ -1,0 +1,15 @@
+[
+    {
+     "id": 1,
+     "size": 750,
+     "image": "vino1",
+     "name": "Vino",
+     "price": 222,
+     "category": "socio",
+     "discount": 10,
+     "bodega": "Winehouse",
+     "provincia" : "Mendoza",
+     "description" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "stock" : true
+    }
+]

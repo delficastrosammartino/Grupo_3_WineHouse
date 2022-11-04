@@ -10,5 +10,9 @@ router.get('/', productsControllers.products);
 
 router.get('/detalles', productsControllers.detalles);
 
+router.get('/crear', productsControllers.create);
+
+router.post('/', productsControllers.store)
+
 
 module.exports = router;
