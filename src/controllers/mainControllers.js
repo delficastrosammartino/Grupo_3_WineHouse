@@ -1,3 +1,9 @@
+// libreria de node para leer y obtener archivos.
+const fs = require('fs');
+// libreria para concatenar y obtener rutas.
+const path = require('path');
+
+
 const mainControllers = {
     index : (req, res) => {
         res.render('./products/index');
@@ -11,17 +17,7 @@ const mainControllers = {
         res.render('./products/detalles');
     },
 
-    login : (req,res) => {
-        res.render('./users/login');
-    },
 
-    registro : (req,res) => {
-        res.render('./users/registro');
-    },
-
-    password : (req, res) => {
-        res.render('./users/password')
-    },
 }
 
 module.exports = mainControllers;

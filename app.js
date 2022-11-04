@@ -1,46 +1,30 @@
+// ************ Require's ************ // requiere las librerias que vamos a estar usando.
 const express = require("express");
+const methodOverride = require ("method-override"); // Para poder usar los métodos PUT y DELETE
+const path = require ("path");
+
+// ************ express() ************
 const app = express();
 
-const mainRoutes = require('./src/routes/main');
-const methodOverride = require ("method-override");
-
-app.use(methodOverride("_method"))
-
+// ************ Middlewares ************
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false })); // este es para mandar peticiones a traves de POST.
+app.use(express.json()); // para usar json
+app.use(methodOverride("_method")) // Para poder pisar el method="POST" en el formulario por PUT y DELETE
 
-app.listen(3030, () => console.log("Servidor corriendo"));
+// ************ Servidor ************
+app.listen( process.env.PORT || 3030, () => console.log("Servidor corriendo"));
 
-app.set('view engine', 'ejs');
+// ************ Template Engine ************
+app.set('view engine', 'ejs'); // motor de vistas
+app.set('views', './src/views'); // define la ubicacion de la carpeta vistas
 
-app.set('views', './src/views');
 
-app.use('/', mainRoutes);
+// ************ Routes ************
+const mainRoutes = require('./src/routes/main'); // rutas main
+const usersRoutes = require('./src/routes/users'); // rutas users
 
-// app.get("/", (req, res) => {
-//   // El __dirname es la posicion actual, y lo voy a concatenar con la direccion del archivo que vamos desde donde estoy parado.
-//   res.sendFile(path.join(__dirname, "/views/index.html"));
-// });
 
-// app.get("/registro", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/registro.html"));
-// });
+app.use('/', mainRoutes); // el primer parametro es la ruta raiz o principal, el segundo el archivo a usar para resolver esas rutas.
+app.use('/users', usersRoutes); // el primer parametro es la ruta raiz o principal, el segundo el archivo a usar para resolver esas rutas.
 
-// app.get("/login", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/login.html"));
-// });
-
-// app.get("/password", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/password.html"));
-// });
-
-// app.get("/detalles-del-producto", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/detalles.html"));
-// });
-
-// app.get("/home-productos", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/home-productos.html"));
-// });
-
-// app.get("/carrito", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/carrito.html"));
-// });

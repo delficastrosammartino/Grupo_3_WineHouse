@@ -4,15 +4,12 @@ const router = express.Router();
 
 // ************ Controller Require ************
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
-const mainControllers = require('../controllers/mainControllers');
+const usersControllers = require('../controllers/usersControllers');
 
+router.get('/login', usersControllers.login);
 
+router.get('/registro', usersControllers.registro);
 
-router.get('/', mainControllers.index);
+router.get('/password', usersControllers.password);
 
-router.get('/carrito', mainControllers.carrito);
-
-router.get('/detalles', mainControllers.detalles);
-
-
-module.exports = router;
+module.exports=router;
