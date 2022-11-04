@@ -2,55 +2,11 @@
     
 <html lang="es">
         
-    <head>
-
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Las siguientes 3 lineas las copie de google fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Poppins:wght@200&family=Roboto:wght@300&display=swap" rel="stylesheet">
-        <!-- Las siguientes 3 lineas las copie de google fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
-        <!-- Link de icons -->
-        <script src="https://kit.fontawesome.com/742f33a9bc.js" crossorigin="anonymous"></script>
-        <!-- Vinculo el archivo normalize que sirve para que la pagina se vea siempre bien -->
-        <link rel="stylesheet" href="/css/normalize.css">
-        <!-- Recomiendan estas hojas ultimas -->
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/detalles.css">
-        <link rel="stylesheet" href="/css/header-footer.css">
-        <title>miVinoteca</title>
-
-    </head>
+    <%- include("../partials/head.ejs") %>
 
     <body>
 
-        <header>
-
-            <div class="logo">
-              <img src="images/logo-winehouse.png" alt="Logo" class="product_img" />
-            </div>
-
-            <div class="registrarse">
-              <span
-                ><a class="link" href="/registro"
-                  >Registrarse - Iniciar sesión</a
-                ></span
-              >
-              <!-- <span><a href="/login"></a>Iniciar sesión</span> -->
-            </div>
-      
-            <div class="barra-funciones">
-              <i class="fa-solid fa-bars"></i>
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-
-        </header>
+        <%- include("../partials/header.ejs") %>
 
         <main>
 
@@ -308,123 +264,7 @@
 
         </main>
 
-        <footer>
-
-            <div class="footer">
-
-                <div class="display-footer">
-
-                    <div class="medios-news">
-
-                        <div class="medios-pago">
-
-                            <div class="titulos-chicos">
-                                <h3>Medios de pago</h3>
-                            </div>
-
-                            <div class="iconos-medios-pago">
-                                <i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i>
-                            </div>
-
-                        </div>
-
-                        <div class="news">
-
-                            <div class="titulos-chicos titulos-footer">
-                                <h3>Newsletter</h3>
-                            </div>
-
-                            <div class="news-input">
-                                
-                                <form action="/" method="get">
-
-                                    <div class="contenedor-news-input">
-                                   
-                                        <input class="mail-news" type="email" name="newsletter-mail" placeholder="Email">
-                
-                                    </div>
-                
-                                </form>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="contacto">
-
-                        <div class="titulos-chicos titulos-footer">
-                            <h3>Contacto y Redes</h3>
-                        </div>
-
-                        <div class="botones-contacto">
-
-                            <div class="margen-contacto">
-                                <i class="fa-solid fa-envelope"></i> winehouse@winehouse.com
-                            </div>
-
-                            <div class="margen-contacto">
-                                <i class="fa-solid fa-phone"></i> +54 9 123 345-6789
-                            </div>
-
-                            <div class="margen-contacto">
-                                <i class="fa-solid fa-location-pin"></i> Wine Street 1887
-                            </div>
-
-                            <div class="margen-contacto">
-                                <i class="fa-brands fa-facebook-f"></i> Wine House
-                            </div>
-
-                            <div class="margen-contacto">
-                                <i class="fa-brands fa-instagram"></i> wine.house
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="mapa-sitio">
-
-                        <div class="titulos-chicos titulos-footer">
-                            <h3>Mapa del sitio</h3>
-                        </div>
-
-                        <div class="botones-mapa">
-
-                            <div class="margen-contacto">
-                                <a href="/nosotros" class="link-mapa">¿Quiénes somos?</a>
-                            </div>
-
-                            <div class="margen-contacto">
-                                <a href="/suscripciones" class="link-mapa">Suscripciones</a>
-                            </div>
-
-                            <div class="margen-contacto">
-                                <a href="/FAQ" class="link-mapa">FAQ</a>
-                            </div>
-
-                            <div class="margen-contacto">
-                                <a href="/productos" class="link-mapa">Productos</a>
-                            </div>
-
-                            <div class="margen-contacto">
-                                <a href="/terminos-y-condiciones" class="link-mapa">Términos y condiciones</a>
-                            </div>
-
-                            <div class="margen-contacto">
-                                <a href="/politicas-de-privacidad" class="link-mapa">Políticas de privacidad</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </footer>
+        <%- include("../partials/footer.ejs") %>
 
     </body>
 
