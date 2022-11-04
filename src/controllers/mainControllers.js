@@ -13,11 +13,6 @@ const mainControllers = {
         res.render('./products/carrito');
     },
 
-    detalles : (req, res) => {
-        res.render('./products/detalles');
-    },
-
-
 }
 
 module.exports = mainControllers;
