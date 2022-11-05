@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <%- include("../partials/head.ejs") %> 
+
 <body>
+
     <%- include("../partials/header.ejs") %>
 
-    
+    <main>
+
+        <div class="contenedor-productos">
+
+            <div class="contenedor-titulo">
+
+                <div>
+                    <h2 class="titulo">Todos los productos</h2>
+                </div>
+
+            </div>
+
+            <div class="contenedor-todo">
+
+                <%products.forEach(product => {%>
+
+                    <article>
+
+                        <a href="/products/detail/<%= product.id %>" class="etiqueta-link">
+                        
+                            <div class="div-producto">
+
+                                <img width="300px" src="/images/<%= product.image%>" alt="Imagen de <%= product.name%>" class="imagen-producto">
+
+                                <div class="detalles">
+
+                                    <div class="contenedor-precio">
+                                        <p class="precios">$<%= product.price%></p>
+                                        <p class="descuentos"><%= product.discount%>% off</p>
+                                    </div>
+
+                                    <div class="contenedor-nombre">
+                                        <p class="nombre-producto"><b><%= product.name%></b></p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </a>
+
+                    </article>
+
+                <%})%>
+
+            </div>
+
+	    </div>
+
+    </main>
 
     <%- include("../partials/footer.ejs") %>
+
 </body>
+
 </html>

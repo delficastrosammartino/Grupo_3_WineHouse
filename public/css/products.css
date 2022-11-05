@@ -1,0 +1,34 @@
+main {
+    padding: 75px 20px;
+}
+
+.contenedor-todo{
+    width: 100%;
+}
+
+.contenedor-productos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contenedor-titulo{
+    width: 100%;
+    padding: 20px 0;
+}
+
+article{
+    width: 100%;
+}
+
+.etiqueta-link{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.imagen-producto{
+    width: fit-content;
+}
