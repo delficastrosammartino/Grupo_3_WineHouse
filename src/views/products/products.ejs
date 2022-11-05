@@ -9,51 +9,53 @@
 
     <main>
 
-        <div class="contenedor-productos">
+        <section>
 
-            <div class="contenedor-titulo">
+            <div class="contenedor-todo">
 
-                <div>
+                <div class="contenedor-titulo">
                     <h2 class="titulo">Todos los productos</h2>
+                </div>
+
+                <div class="contenedor-productos">
+
+                    <%products.forEach(product => {%>
+
+                        <article>
+
+                            <a href="/products/detail/<%= product.id %>" class="etiqueta-link">
+                            
+                                <div class="div-producto">
+
+                                    <div class="imagen-producto">
+                                        <img src="/images/<%= product.image%>" alt="Imagen de <%= product.name%>" class="imagen-producto">
+                                    </div>
+
+                                    <div class="detalles">
+
+                                        <div class="contenedor-precio">
+                                            <p class="precios">$<%= product.price%></p>
+                                            <p class="descuentos"><%= product.discount%>% off</p>
+                                        </div>
+
+                                        <div class="contenedor-nombre">
+                                            <p class="nombre-producto"><b><%= product.name%></b></p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                </a>
+
+                        </article>
+
+                    <%})%>
+
                 </div>
 
             </div>
 
-            <div class="contenedor-todo">
-
-                <%products.forEach(product => {%>
-
-                    <article>
-
-                        <a href="/products/detail/<%= product.id %>" class="etiqueta-link">
-                        
-                            <div class="div-producto">
-
-                                <img width="300px" src="/images/<%= product.image%>" alt="Imagen de <%= product.name%>" class="imagen-producto">
-
-                                <div class="detalles">
-
-                                    <div class="contenedor-precio">
-                                        <p class="precios">$<%= product.price%></p>
-                                        <p class="descuentos"><%= product.discount%>% off</p>
-                                    </div>
-
-                                    <div class="contenedor-nombre">
-                                        <p class="nombre-producto"><b><%= product.name%></b></p>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            </a>
-
-                    </article>
-
-                <%})%>
-
-            </div>
-
-	    </div>
+        </section>
 
     </main>
 
