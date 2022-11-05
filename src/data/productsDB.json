@@ -1,15 +1,28 @@
 [
-    {
-     "id": 1,
-     "size": 750,
-     "image": "vino1.jpg",
-     "name": "Vino",
-     "price": 222,
-     "category": "socio",
-     "discount": 10,
-     "bodega": "Winehouse",
-     "provincia" : "Mendoza",
-     "description" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-     "stock" : true
-    }
+ {
+  "id": 1,
+  "size": 750,
+  "image": "vino1.jpg",
+  "name": "Vino",
+  "price": 222,
+  "category": "socio",
+  "discount": 10,
+  "bodega": "Winehouse",
+  "provincia": "Mendoza",
+  "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "stock": true
+ },
+ {
+  "id": 1667682857840,
+  "size": 750,
+  "image": "vino2.jpg",
+  "price": 333,
+  "discount": 25,
+  "name" : "Vino creado",
+  "category": "socio",
+  "bodega": "Winehouse",
+  "provincia": "Mendoza",
+  "description": "sadasdasdsa",
+  "stock": true
+ }
 ]
