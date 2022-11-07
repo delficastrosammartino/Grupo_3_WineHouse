@@ -39,7 +39,10 @@ const validations = [
         .isEmail().withMessage("El email no es valido"),
     body("password")
         .notEmpty().withMessage("Tienes que escribir una contraseña").bail()
-        .isLength({ min : 6, max: 20 }).withMessage("Largo minimo, 6 caracteres"),
+        .isLength({ min : 6, max: 20 }).withMessage("min 6, max 20 caracteres").bail()
+        .matches(/^(.*\d.*)$/).withMessage("Debe contener al menos un simbolo").bail()
+        .matches(/^(.*[A-Z].*)$/).withMessage("Debe contener al menos una mayúscula").bail()
+        .matches(/^(.*[a-z].*)$/).withMessage("Debe contener al menos una minúscula")
 ]
 
 
