@@ -6,7 +6,7 @@ const path = require ("path");
 // ************ express() ************
 const app = express();
 
-// ************ Middlewares ************
+// ************ Middlewares **********
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false })); // este es para mandar peticiones a traves de POST.
 app.use(express.json()); // para usar json
