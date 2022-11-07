@@ -18,6 +18,10 @@ const usersControllers = {
         res.render('./users/registro');
     },
 
+    processRegister: (req, res) => {
+        res.send ("ok, viniste por POST")
+    },
+
     password : (req, res) => {
         res.render('./users/password')
     },
