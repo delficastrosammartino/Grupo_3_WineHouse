@@ -2,6 +2,7 @@
 const fs = require('fs');
 // libreria para concatenar y obtener rutas.
 const path = require('path');
+const { validationResult } = require ("express-validator")
 
 // indico la ruta de mi archivo .json, la abosulta.
 const usersFilePath = path.join(__dirname, '../data/usersDB.json');
@@ -19,7 +20,16 @@ const usersControllers = {
     },
 
     processRegister: (req, res) => {
-        res.send ("ok, viniste por POST")
+    // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+       const resultValidation = validationResult(req);
+    // si hay errores entra aca.
+       if(resultValidation.errors.length > 0){
+    // renderizo la vista registro, y le paso los errores.
+            return res.render ('./users/registro', {
+    // uso el .mapped para pasar el array a un objeto literal con propiedades.            
+                errors: resultValidation.mapped()
+            })
+       }
     },
 
     password : (req, res) => {
