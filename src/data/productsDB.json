@@ -18,11 +18,37 @@
   "image": "vino2.jpg",
   "price": 333,
   "discount": 25,
-  "name" : "Vino creado",
+  "name": "Vino creado",
   "category": "socio",
   "bodega": "Winehouse",
   "provincia": "Mendoza",
   "description": "sadasdasdsa",
+  "stock": true
+ },
+ {
+  "id": 1667856978746,
+  "size": 1,
+  "image": "1667856978744_img.jpg",
+  "name": "a",
+  "price": 1,
+  "category": "a",
+  "discount": 1,
+  "bodega": "a",
+  "provincia": "a",
+  "description": "a",
+  "stock": true
+ },
+ {
+  "id": 1667857334555,
+  "size": 2,
+  "image": "1667857334554_img.jpg",
+  "name": "s",
+  "price": 2,
+  "category": "s",
+  "discount": 2,
+  "bodega": "s",
+  "provincia": "s",
+  "description": "s",
   "stock": true
  }
 ]

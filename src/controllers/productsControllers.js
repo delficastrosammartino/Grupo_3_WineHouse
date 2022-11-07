@@ -2,6 +2,7 @@
 const fs = require('fs');
 // libreria para concatenar y obtener rutas.
 const path = require('path');
+const { validationResult } = require ("express-validator")
 
 // indico la ruta de mi archivo .json, la abosulta.
 const productsFilePath = path.join(__dirname, '../data/productsDB.json');
@@ -25,11 +26,22 @@ const productsControllers = {
     },
 
     store : (req, res) => {
+        // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+       const resultValidation = validationResult(req);
+       // si hay errores entra aca.
+          if(resultValidation.errors.length > 0){
+       // renderizo la vista registro, y le paso los errores.
+               return res.render ('./products/crear-producto', {
+       // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.           
+                   errors: resultValidation.mapped(),
+                   oldData: req.body
+               })
+          }
           // Creo la variable nuevo producto, es importante que id sea unico e irrepetible.
           let newProduct = {
             id: Date.now(),
             size: Number(req.body.size),
-            image: req.body.image,
+            image: req.file.filename,
             name: req.body.name,
             price: Number(req.body.price),
             category: req.body.category,
@@ -37,7 +49,7 @@ const productsControllers = {
             bodega: req.body.bodega,
             provincia : req.body.provincia,
             description : req.body.description,
-            stock : req.body.stock
+            stock : true
         }
     // Pusheo en el array products
         products.push(newProduct)
