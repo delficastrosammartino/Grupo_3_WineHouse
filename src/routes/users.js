@@ -27,10 +27,19 @@ const uploadFile = multer ({ storage })
 // validacion de express-validation con la funcion body.
 const validations = [
 // recibe el nombre del campo a validar.
-    body("nombre").notEmpty().withMessage("Tienes que escribir un nombre"),
-    body("apellido").notEmpty().withMessage("Tienes que escribir un apellido"),
-    body("email").notEmpty().withMessage("Tienes que escribir un email valido"),
-    body("password").notEmpty().withMessage("Tienes que escribir una contraseña"),
+    body("nombre")
+        .notEmpty().withMessage("Tienes que escribir un nombre").bail()
+        .isLength({ min: 3, max:30 }).withMessage("El nombre no cumple con el largo permitido"),
+    body("apellido")
+        .notEmpty().withMessage("Tienes que escribir un apellido").bail()
+        .isLength({ min: 3, max:30 }).withMessage("El nombre no cumple con el largo permitido"),
+    body("email")
+// el bail () es para cortar si encuentra el error.
+        .notEmpty().withMessage("Tienes que escribir un email").bail()
+        .isEmail().withMessage("El email no es valido"),
+    body("password")
+        .notEmpty().withMessage("Tienes que escribir una contraseña").bail()
+        .isLength({ min : 6, max: 20 }).withMessage("Largo minimo, 6 caracteres"),
 ]
 
 

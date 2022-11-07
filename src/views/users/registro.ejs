@@ -27,21 +27,20 @@
         <div class="exit"><a href="/"><i class="fa-solid fa-circle-xmark"></i></a></div>
     </header>
     <main>
-        <!-- Si la variable errors existe, entra aca, locals es una variable que existe en todas las vistas, que de base es undefined -->
-                <% if(locals.errors) {%> 
-        <!-- errors es la variable que estoy recibiendo y oneError es cada una de las propiedades del objeto -->
-                    <% for (let oneError in errors){ %>
-        <!-- Entro a la propiedad msg de cada error -->
-                        <p> <% errors[oneError].msg %> </p>
-    
-                    <% } %> 
-                <% } %> 
         <section class="cuadro">
             <div class="saludo-logo">Registrarse</div>
             <form method="POST" action="/users/registro" enctype="multipart/form-data">
                 <div class="register">
                     <div>
-                        <input class="box-info-user" type="text" name="nombre" placeholder="Nombre">
+        <!-- en class le estoy pidiendo que si hay un error use en in-valid que me recuadra en rojo el espacio, igual no esta funcionando...-->
+        <!-- en value le estoy pidiendo que mantenga el dato completado por el usuario si esta bien -->
+                        <input 
+                            type="text" 
+                            name="nombre" 
+                            placeholder="Nombre"
+                            class="box-info-user <%= locals.errors && errors.nombre ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.nombre : null %>"
+                        >
         <!-- Entra si vino errors en la variable local y si existe la propiedad nombre en errors -->
                         <% if(locals.errors && errors.nombre) {%> 
                             <div class="text-danger">
@@ -51,7 +50,13 @@
                         <% } %> 
                     </div>
                     <div>
-                        <input class="box-info-user" type="text" name="apellido" placeholder="Apellido">
+                        <input 
+                            type="text" 
+                            name="apellido" 
+                            placeholder="Apellido"
+                            class="box-info-user <%= locals.errors && errors.apellido ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.apellido : null %>" 
+                        >
                         <% if(locals.errors && errors.apellido) {%> 
                             <div class="text-danger">
                                 <%= errors.apellido.msg %>
@@ -59,7 +64,13 @@
                         <% } %> 
                     </div>
                     <div>
-                        <input class="box-info-user" type="text" name="email" placeholder="E-mail">
+                        <input 
+                            type="text" 
+                            name="email" 
+                            placeholder="E-mail"
+                            class="box-info-user <%= locals.errors && errors.email ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.email : null %>" 
+                        >
                         <% if(locals.errors && errors.email) {%> 
                             <div class="text-danger">
                                 <%= errors.email.msg %>
@@ -67,7 +78,13 @@
                         <% } %> 
                     </div>
                     <div>
-                        <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Contraseña"
+                            class="box-info-user <%= locals.errors && errors.password ? "is-invalid" : null %>" 
+                            value="<%= locals.oldData ? oldData.password : null %>"
+                        >
                         <% if(locals.errors && errors.password) {%> 
                             <div class="text-danger">
                                 <%= errors.password.msg %>
