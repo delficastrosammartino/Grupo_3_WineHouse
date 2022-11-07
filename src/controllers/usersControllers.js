@@ -26,7 +26,7 @@ const usersControllers = {
        if(resultValidation.errors.length > 0){
     // renderizo la vista registro, y le paso los errores.
             return res.render ('./users/registro', {
-    // uso el .mapped para pasar el array a un objeto literal con propiedades.            
+    // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.           
                 errors: resultValidation.mapped()
             })
        }

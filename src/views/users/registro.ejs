@@ -27,21 +27,52 @@
         <div class="exit"><a href="/"><i class="fa-solid fa-circle-xmark"></i></a></div>
     </header>
     <main>
+        <!-- Si la variable errors existe, entra aca, locals es una variable que existe en todas las vistas, que de base es undefined -->
+                <% if(locals.errors) {%> 
+        <!-- errors es la variable que estoy recibiendo y oneError es cada una de las propiedades del objeto -->
+                    <% for (let oneError in errors){ %>
+        <!-- Entro a la propiedad msg de cada error -->
+                        <p> <% errors[oneError].msg %> </p>
+    
+                    <% } %> 
+                <% } %> 
         <section class="cuadro">
             <div class="saludo-logo">Registrarse</div>
             <form method="POST" action="/users/registro" enctype="multipart/form-data">
                 <div class="register">
                     <div>
-                        <input class="box-info-user" type="text" name="nombre" placeholder="Nombre" required minlength="3">
+                        <input class="box-info-user" type="text" name="nombre" placeholder="Nombre">
+        <!-- Entra si vino errors en la variable local y si existe la propiedad nombre en errors -->
+                        <% if(locals.errors && errors.nombre) {%> 
+                            <div class="text-danger">
+        <!-- Le pido que muestre la propiedad msg, del error.nombre-->
+                                <%= errors.nombre.msg %>
+                            </div>
+                        <% } %> 
                     </div>
                     <div>
-                        <input class="box-info-user" type="text" name="apellido" placeholder="Apellido" required minlength="3">
+                        <input class="box-info-user" type="text" name="apellido" placeholder="Apellido">
+                        <% if(locals.errors && errors.apellido) {%> 
+                            <div class="text-danger">
+                                <%= errors.apellido.msg %>
+                            </div>
+                        <% } %> 
                     </div>
                     <div>
                         <input class="box-info-user" type="text" name="email" placeholder="E-mail">
+                        <% if(locals.errors && errors.email) {%> 
+                            <div class="text-danger">
+                                <%= errors.email.msg %>
+                            </div>
+                        <% } %> 
                     </div>
                     <div>
                         <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                        <% if(locals.errors && errors.password) {%> 
+                            <div class="text-danger">
+                                <%= errors.password.msg %>
+                            </div>
+                        <% } %> 
                     </div>
                 </div>
                         <input type="submit" class="boton" value="Registrarse"></input>
