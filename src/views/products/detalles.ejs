@@ -15,7 +15,7 @@
                 <div class="ruta-cruz">
 
                     <div class="ruta-producto">
-                        <a href="/" style="text-decoration: none; color: black;">Inicio</a> / ????? / Producto
+                        <a href="/" style="text-decoration: none; color: black;">Inicio</a> / Productos / Detalles de <%= product.name%>
                     </div>
 
                     <div class="cruz-cerrar">
@@ -33,7 +33,7 @@
                             <div class="carrusel">
 
                                 <div class="contenedor-imagen-carrusel">
-                                    <img class="imagen-principal imagenes-producto" src="/images/productImages/vino1.jpg" alt="Vino elementos malbec">
+                                    <img class="imagen-principal imagenes-producto" src="/images/productImages/<%= product.image%>" alt="Imagen de <%= product.name%>">
                                 </div>
 
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="miniaturas-img">
                                     
                                     <div class="mini">
-                                        <img class="imagenes-producto" src="/images/productImages/vino1.jpg" alt="Vino elementos malbec">
+                                        <img class="imagenes-producto" src="/images/productImages/<%= product.image%>" alt="Vino elementos malbec">
                                     </div>
 
                                     <div class="mini">
@@ -63,15 +63,15 @@
                         <div class="contenedor-detalles">
 
                             <div class="details nombre-producto">
-                                <h2>Vino Elementos Malbec</h2>
+                                <h2><%= product.name%></h2>
                             </div>
 
                             <div class="details tamanio">
-                                <p>750 cc</p>
+                                <p><%= product.size%> cc</p>
                             </div>
 
                             <div class="details precio">
-                                <h3>$2222</h3>
+                                <h3>$<%= product.price%></h3>
                             </div>
 
                             <div>
@@ -117,7 +117,7 @@
                                 </div>
 
                                 <div class="details descripcion-producto">
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus possimus itaque esse neque laudantium eos beatae iste, molestiae, ipsam facilis nemo vero animi assumenda. Aspernatur ducimus debitis quaerat doloremque aperiam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad sit iure sed eveniet labore amet quae eligendi totam nisi dicta veniam quod, optio perspiciatis cum. Natus officia dolores unde amet?</p>
+                                    <p><%= product.description%></p>
                                 </div>
 
                             </div>
@@ -142,19 +142,20 @@
 
                         <div class="contenedor-articulos-rel">
 
-                            <article class="articulo-1">
+                            <% for ( let i = 0; i < 4; i++){ %>
+                            <article class="articulo-<%=[i+1]%>">
 
                                 <div class="sombras">
                                   
                                     <div>
 
                                         <div>
-                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado 1" class="imagenes-relacionados relacionado-1">
+                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado <%=[i+1]%>" class="imagenes-relacionados relacionado-<%=[i+1]%>">
                                         </div>
 
                                     </div>
 
-                                    <div class="descripcion-articulo-1">
+                                    <div class="descripcion-articulo-<%=[i+1]%>">
 
                                         <div class="detalles-articulo-rel">
                                             <p>nombre</p>
@@ -170,89 +171,7 @@
 
                             </article>
 
-                            <article class="articulo-2">
-
-                                <div class="sombras">
-
-                                    <div>
-
-                                        <div>
-                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado 2" class="imagenes-relacionados relacionado-2">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="descripcion-articulo-2">
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>nombre</p>
-                                        </div>
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>precio</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </article>
-
-                            <article class="articulo-3">
-
-                                <div class="sombras">
-
-                                    <div>
-
-                                        <div>
-                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado 3" class="imagenes-relacionados relacionado-3">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="descripcion-articulo-3">
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>nombre</p>
-                                        </div>
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>precio</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </article>
-
-                            <article class="articulo-4">
-
-                                <div class="sombras">
-
-                                    <div>
-
-                                        <div>
-                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado 4" class="imagenes-relacionados relacionado-4">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="descripcion-articulo-4">
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>nombre</p>
-                                        </div>
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>precio</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </article>
+                            <%}%>
 
                         </div>
                             

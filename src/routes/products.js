@@ -51,7 +51,7 @@ const productsControllers = require('../controllers/productsControllers');
 
 router.get('/', productsControllers.products);
 
-router.get('/detalles', productsControllers.detalles);
+router.get('/detalles/:id', productsControllers.detalles);
 
 router.get('/crear', productsControllers.create);
 
