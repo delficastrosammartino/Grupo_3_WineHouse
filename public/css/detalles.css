@@ -92,6 +92,11 @@ main{
     font-size: 25px
 }
 
+.contenedor-precio-descuento{
+    display: flex;
+    justify-content: space-between;
+}
+
 .cantidad-agregar{
     display: flex;
     align-items: center;
