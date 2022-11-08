@@ -72,13 +72,17 @@
 
                             <div class="contenedor-precio-descuento">
 
-                                <div class="details precio">
-                                    <h3>$<%= product.price%></h3>
+                                <div class="contenedor-precios">
+                                    <p class="details precios <% if (product.discount > 0){%>tachar-precio<%}%>">$<%= product.price%></p>
+
+                                    <% if (product.discount > 0){%> 
+                                        <p class=" details precios precio-discount">$<%= (product.price - ((product.price/100) * product.discount))%></p>
+                                    <%}%>
                                 </div>
                                 
-                                <%if(product.discount > 0) {%> 
-                                    <div class="details descuentos">
-                                        <h3><%= product.discount%>% OFF</h3>
+                                <% if (product.discount > 0){%> 
+                                    <div>
+                                        <p class="descuentos"><%= product.discount%>% off</p>
                                     </div>
                                 <%}%>
 

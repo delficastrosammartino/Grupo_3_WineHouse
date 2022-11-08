@@ -94,7 +94,15 @@ main{
 
 .contenedor-precio-descuento{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.contenedor-precios{
+    display: flex;
     justify-content: space-between;
+    width: 15vw;
+    max-width: 130px;
 }
 
 .cantidad-agregar{

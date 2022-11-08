@@ -21,6 +21,8 @@ main section article p{
 
 .div-producto{
     border: solid 1px lightgray;
+    max-width: 650px;
+    margin: 0 auto;
 }
 
 .etiqueta-link{
@@ -34,6 +36,11 @@ main section article p{
     background-color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.no-discount{
+    display: none;
 }
 
 .imagen-producto{
@@ -43,8 +50,9 @@ main section article p{
 }
 
 .contenedor-precio{
+    width: 25%;
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
 }
 
 .contenedor-nombre{
@@ -57,14 +65,14 @@ main section article p{
 
 .precios{
     font-size: 18px;
-    flex-grow: 0.3;
     display: flex;
+}
+
+.tachar-precio{
+    text-decoration: line-through 2px purple;
 }
 
 .descuentos{
     color:purple;
     font-size: 16px;
-    flex-grow: 0.7;
-    display: flex;
-    align-items: center;
 }

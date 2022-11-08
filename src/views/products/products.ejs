@@ -34,9 +34,16 @@
                                     <div class="detalles">
 
                                         <div class="contenedor-precio">
-                                            <p class="precios">$<%= product.price%></p>
-                                            <p class="descuentos"><%= product.discount%>% off</p>
+                                            <p class="precios <% if (product.discount > 0){%>tachar-precio<%}%>">$<%= product.price%></p>
+                                            <% if (product.discount > 0){%> 
+                                               <p class="precios">$<%= product.price - ((product.price/100) * product.discount)%></p>
+                                            <%}%>
                                         </div>
+                                        <% if (product.discount > 0){%> 
+                                            <div>
+                                                <p class="descuentos"><%= product.discount%>% off</p>
+                                            </div>
+                                        <%}%>
 
                                         <div class="contenedor-nombre">
                                             <p class="nombre-producto"><b><%= product.name%></b></p>
