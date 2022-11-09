@@ -2,7 +2,11 @@ main {
   padding: 75px 20px;
 }
 
-.contenedor-todo {
+.contenedor-todo-filtros {
+  display: none;
+}
+
+.contenedor-todo-productos {
   width: 100%;
 }
 
@@ -93,4 +97,21 @@ main section article p {
 .descuentos {
   color: purple;
   font-size: 16px;
+}
+
+@media screen and (min-width: 769px) {
+  .display-pag {
+    display: flex;
+  }
+
+  .contenedor-todo-filtros {
+    display: flex;
+  }
+
+  .contenedor-todo-productos {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }

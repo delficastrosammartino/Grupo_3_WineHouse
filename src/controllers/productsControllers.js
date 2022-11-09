@@ -59,27 +59,59 @@ const productsControllers = {
     res.redirect("/products");
   },
 
-    // Update - Form to edit
-    edit: (req, res) => {
-      let productToEdit = products.find(product => product.id == req.params.id)
-      res.render('./products/editar-producto', {productToEdit})
-      },
-    // Update - Method to update
-    update: (req, res) => {
-      res.render('detail', {product: products.find(product => product.id == req.params.id)});
-      },
+  // Update - Form to edit
+  edit: (req, res) => {
+    let productToEdit = products.find((product) => product.id == req.params.id);
+    res.render("./products/editar-producto", { productToEdit });
+  },
+  // Update - Method to update
+  update: (req, res) => {
+    /* let productEdited = products.map(function (product) {
+      if (product.id == req.params.id) {
+        product.name = req.body.name;
+        product.price = Number(req.body.price);
+        product.discount = Number(req.body.discount);
+        product.description = req.body.description;
+      }
+      fs.writeFileSync(
+        productsFilePath,
+        JSON.stringify(productEdited, null, " ")
+      );
+    });
 
-    // Delete - Delete one product from DB
-      destroy : (req, res) => {
-      let productToDelete = products.find(product => product.id == req.params.id);
-      let productToDeleteIndex = products.indexOf(productToDelete);
+    res.render("products");
+    */
 
-      products.splice(productToDeleteIndex, 1);
+    products.forEach((product) => {
+      if (product.id === req.params.id) {
+        product.name = req.body.name;
+        product.price = req.body.price;
+        product.discount = req.body.discount;
+        product.description = req.body.description;
 
-      fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, " "));
+      }
+    });
+    res.render("./products/products", { products: products });
+  },
 
-      res.redirect('/');
-    }
+  // Delete - Delete one product from DB
+  destroy: (req, res) => {
+    /*let productToDelete = products.find(
+      (product) => product.id == req.params.id
+    );*/
+
+    let productsBorrado = products.filter(
+      (producto) => producto.id == req.params.id
+    );
+
+    fs.writeFileSync(
+      productsFilePath,
+      JSON.stringify(productsBorrado, null, " ")
+    );
+
+    res.render("./products/products", { products: products });
+  },
 };
 
 module.exports = productsControllers;

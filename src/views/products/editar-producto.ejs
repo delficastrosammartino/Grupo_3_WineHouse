@@ -1,90 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('../partials/head.ejs')%>
-        <title>Editar Producto</title>
-    </head>
+  <head>
+    <%- include('../partials/head.ejs')%>
+    <title>Editar Producto</title>
+  </head>
 
-<body>
+  <body>
     <%- include('../partials/header.ejs')%>
     <main>
-        <section align="center" class="formulario">
-            <h2>Editando el Producto "<%= productToEdit.name %>"</h2>
-            <form class="edit-product" action="/productos/<%= productToEdit.id %>/detalle?_method=PUT" method="POST" enctype="multipart/form-data">
+      <section align="center" class="formulario">
+        <h2>Editando el Producto "<%= productToEdit.name %>"</h2>
+        <form
+          class="edit-product"
+          action="/products?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="product-name">
+            <label for="name">Nombre del producto:</label>
+            <input
+              type="text"
+              name="name"
+              class="name"
+              value="<%= productToEdit.name %>"
+              placeholder="Nombre"
+            />
+            <div id="erroresName" class="text-danger"></div>
+          </div>
 
-                <div class="product-name">
-                    <label for="name">Nombre del producto:</label>
-                    <input type="text" name="name" class="name" value="<%= productToEdit.name %>" placeholder="Nombre">
-                    <div id="erroresName" class="text-danger"></div>
-                </div>
+          <div class="product-price">
+            <label for="price">Precio:</label>
+            <input
+              type="number"
+              step=".01"
+              name="price"
+              class="price"
+              value="<%= productToEdit.price %>"
+              placeholder="$00.00"
+            />
+            <div id="erroresPrice" class="text-danger"></div>
+          </div>
 
-                <div class="product-price">
-                    <label for="price">Precio:</label>
-                    <input type="number" step=".01" name="price" class="price" value="<%= productToEdit.price %>" placeholder="$00.00">
-                    <div id="erroresPrice" class="text-danger"></div>
-                </div>
+          <div class="product-discount">
+            <label for="discount">Descuento:</label>
+            <input
+              type="number"
+              step=".01"
+              name="discount"
+              class="discount"
+              value="<%= productToEdit.discount %>"
+              placeholder="00"
+            />
+            <div id="erroresDiscount" class="text-danger"></div>
+          </div>
 
-                <div class="product-discount">
-                    <label for="discount">Descuento:</label>
-                    <input type="number" step=".01" name="discount" class="discount" value="<%= productToEdit.discount %>" placeholder="00">
-                    <div id="erroresDiscount" class="text-danger"></div>
-                </div>
+          <div class="product-size">
+            <label for="discount">Tamaño:</label>
+            <input
+              type="number"
+              step=".01"
+              name="size"
+              class="size"
+              value="<%= productToEdit.size %>"
+              placeholder="000"
+            />
+            <div id="erroresSize" class="text-danger"></div>
+          </div>
 
-                <div class="product-size">
-                    <label for="discount">Tamaño:</label>
-                    <input type="number" step=".01" name="size" class="size" value="<%= productToEdit.size %>" placeholder="000">
-                    <div id="erroresSize" class="text-danger"></div>
-                </div>
+          <div class="product-bodega">
+            <label for="name">Bodega:</label>
+            <input
+              type="text"
+              name="bodega"
+              class="bodega"
+              value="<%= productToEdit.bodega %>"
+              placeholder="Bodega"
+            />
+            <div id="erroresBodega" class="text-danger"></div>
+          </div>
 
-                <div class="product-bodega">
-                    <label for="name">Bodega:</label>
-                    <input type="text" name="bodega" class="bodega" value="<%= productToEdit.bodega %>" placeholder="Bodega">
-                    <div id="erroresBodega" class="text-danger"></div>
-                </div>
+          <div class="product-provincia">
+            <label for="name">Provincia:</label>
+            <input
+              type="text"
+              name="provincia"
+              class="provincia"
+              value="<%= productToEdit.provincia %>"
+              placeholder="Provincia"
+            />
+            <div id="erroresProvincia" class="text-danger"></div>
+          </div>
 
-                <div class="product-provincia">
-                    <label for="name">Provincia:</label>
-                    <input type="text" name="provincia" class="provincia" value="<%= productToEdit.provincia %>" placeholder="Provincia">
-                    <div id="erroresProvincia" class="text-danger"></div>
-                </div>
+          <div class="product-category">
+            <label for="name">Categoria:</label>
+            <input
+              type="text"
+              name="category"
+              class="category"
+              value="<%= productToEdit.category %>"
+              placeholder="Categoria"
+            />
+            <div id="erroresCategory" class="text-danger"></div>
+          </div>
 
-                <div class="product-category">
-                    <label for="name">Categoria:</label>
-                    <input type="text" name="category" class="category" value="<%= productToEdit.category %>" placeholder="Categoria">
-                    <div id="erroresCategory" class="text-danger"></div>
-                </div>
+          <div class="product-detail">
+            <p><label>Detalle de producto</label></p>
+            <textarea
+              name="description"
+              rows="10"
+              class="description"
+              cols="40"
+            >
+<%= productToEdit.description %></textarea
+            >
+            <div id="erroresDescription" class="text-danger"></div>
+          </div>
 
-                <div class="product-detail">
-                    <p><label>Detalle de producto</label></p>
-                    <textarea name="description" rows="10" class="description" cols="40"><%= productToEdit.description %></textarea> 
-                    <div id="erroresDescription" class="text-danger"></div>
-               </div>
+          <div class="product-img">
+            <label for="">Imagen:</label>
+            <input type="file" name="product-img" class="product-img" />
+            <div id="erroresImg" class="lista-errores"></div>
+          </div>
 
-                <div class="product-img">
-                    <label for="">Imagen:</label>
-                    <input type="file" name="product-img" class="product-img">
-                    <div id="erroresImg" class="lista-errores"></div>
-                </div>
+          <div class="product-create">
+            <button type="submit" class="product-create-button">
+              Guardar Cambios
+            </button>
+          </div>
 
-                <div class="product-create">
-                    <button type="submit" class="product-create-button">Guardar Cambios</button>
-                </div>
+          <div class="product-create">
+            <a class="product-cancel-button" href="/productos/listado"
+              >Cancelar</a
+            >
+          </div>
+        </form>
 
-                <div class="product-create">
-                    <a class="product-cancel-button" href="/productos/listado">Cancelar</a>
-                </div>
-                
-            </form>
-
-            <div>
-                <form class="delete-product" action="/productos/<%= productToEdit.id %>/editar?_method=DELETE" method="POST">
-                    <button type="submit" class="product-delete-button">Eliminar producto</button>
-                </form>
-            </div>
-
-        </section>
-    <%- include('../partials/footer.ejs')%>
+        <div>
+          <form
+            class="delete-product"
+            action="/products?_method=DELETE"
+            method="POST"
+          >
+            <button type="submit" class="product-delete-button">
+              Eliminar producto
+            </button>
+          </form>
+        </div>
+      </section>
+      <%- include('../partials/footer.ejs')%>
     </main>
     <script type="text/javascript" src="/js/edit-product.js"></script>
-</body>
+  </body>
 </html>

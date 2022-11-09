@@ -6,59 +6,71 @@
     <%- include("../partials/header.ejs") %>
 
     <main>
-      <section>
-        <div class="contenedor-todo">
-          <div class="contenedor-titulo">
-            <h2 class="titulo">Todos los productos</h2>
+      <div class="display-pag">
+        <section>
+          <div class="contenedor-todo-filtros">
+            <div>
+              <h2>Filtrar</h2>
+            </div>
+
+            <div></div>
           </div>
+        </section>
 
-          <div class="contenedor-productos">
-            <%products.forEach(product => {%>
+        <section>
+          <div class="contenedor-todo-productos">
+            <div class="contenedor-titulo">
+              <h2 class="titulo">Todos los productos</h2>
+            </div>
 
-            <article class="sombra">
-              <a
-                href="/products/detalles/<%= product.id %>"
-                class="etiqueta-link"
-              >
-                <div class="div-producto">
-                  <div class="contenedor-imagen-producto">
-                    <img
-                      src="/images/productImages/<%= product.image%>"
-                      alt="Imagen de <%= product.name%>"
-                      class="imagen-producto"
-                    />
-                  </div>
+            <div class="contenedor-productos">
+              <%products.forEach(product => {%>
 
-                  <div class="detalles">
-                    <div class="contenedor-precio">
-                      <p
-                        class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
-                      >
-                        $<%= product.price%>
-                      </p>
-                      <% if (product.discount > 0){%>
-                      <p class="precios">
-                        $<%= product.price - ((product.price/100) *
-                        product.discount)%>
-                      </p>
-                      <%}%>
+              <article class="sombra">
+                <a
+                  href="/products/detalles/<%= product.id %>"
+                  class="etiqueta-link"
+                >
+                  <div class="div-producto">
+                    <div class="contenedor-imagen-producto">
+                      <img
+                        src="/images/productImages/<%= product.image%>"
+                        alt="Imagen de <%= product.name%>"
+                        class="imagen-producto"
+                      />
                     </div>
-                    <% if (product.discount > 0){%>
 
-                    <p class="descuentos"><%= product.discount%>% off</p>
+                    <div class="detalles">
+                      <div class="contenedor-precio">
+                        <p
+                          class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
+                        >
+                          $<%= product.price%>
+                        </p>
+                        <% if (product.discount > 0){%>
+                        <p class="precios">
+                          $<%= product.price - ((product.price/100) *
+                          product.discount)%>
+                        </p>
+                        <%}%>
+                      </div>
+                      <% if (product.discount > 0){%>
 
-                    <%}%>
+                      <p class="descuentos"><%= product.discount%>% off</p>
 
-                    <p class="nombre-producto"><b><%= product.name%></b></p>
+                      <%}%>
+
+                      <p class="nombre-producto"><b><%= product.name%></b></p>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </article>
+                </a>
+              </article>
 
-            <%})%>
+              <%})%>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <%- include("../partials/footer.ejs") %>
