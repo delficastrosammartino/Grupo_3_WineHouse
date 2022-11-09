@@ -6,13 +6,19 @@ main {
     width: 100%;
 }
 
+.contenedor-productos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .contenedor-titulo{
     margin: 10px 0;
 }
 
 main section article{
-    margin-bottom: 10px;
+    display: flex;
     background-color: white;
+    margin: 10px;
 }
 
 main section article p{
@@ -44,15 +50,18 @@ main section article p{
 }
 
 .imagen-producto{
-    width: auto;
     display: flex;
     justify-content: center;
+    height: 80vw;
+    width: 50vw;
+    max-height: 350px;
+    max-width: 250px;
 }
 
 .contenedor-precio{
-    width: 25%;
+    width: 60%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .contenedor-nombre{
