@@ -31,6 +31,7 @@ main section article p {
   max-width: 650px;
   margin: 0 auto;
   border-radius: 1em;
+  height: 440px;
 }
 
 .etiqueta-link {
