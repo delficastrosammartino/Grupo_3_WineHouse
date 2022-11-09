@@ -63,5 +63,18 @@
   "provincia": "Mendoza",
   "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "stock": true
+ },
+ {
+  "id": 1668017932404,
+  "size": 1000,
+  "image": "1668017932402_img.jpg",
+  "name": "vino vino vino vino malbec vino",
+  "price": 15000,
+  "category": "adasddas",
+  "discount": 50,
+  "bodega": "asdasddsa",
+  "provincia": "adasdasd",
+  "description": "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  "stock": true
  }
 ]
