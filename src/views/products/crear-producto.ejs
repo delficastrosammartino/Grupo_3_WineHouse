@@ -11,7 +11,7 @@
           <h2>Formulario de creación de productos</h2>
         </div>
 
-        <div>
+        <div class="contenedor-form">
           <form action="/products/" method="POST" enctype="multipart/form-data">
             <div class="contenedor-inputs">
               <div class="label-input">
@@ -127,7 +127,7 @@
                   id="description"
                   name="description"
                   placeholder="Descripción del producto"
-                  class="form-input"
+                  class="description-input"
                   value="<%= locals.oldData ? oldData.description : null %>"
                 ></textarea>
               </div>
@@ -139,7 +139,7 @@
                 <label for="image" class="form-label"
                   >Imagen del producto:</label
                 >
-                <input type="file" id="image" name="image" class="form-input boton-foto" />
+                <input type="file" id="image" name="image" class="input-foto" />
               </div>
               <% if(locals.errors && errors.image) {%>
               <div class="text-danger"><%= errors.image.msg %></div>
