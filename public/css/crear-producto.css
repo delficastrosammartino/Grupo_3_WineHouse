@@ -1,0 +1,14 @@
+.label-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.boton-foto {
+  width: 90%;
+}
+
+.contenedor-inputs {
+  padding: 20px;
+  border: solid 1px lightgray;
+}
