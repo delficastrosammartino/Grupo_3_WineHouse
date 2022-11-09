@@ -49,6 +49,12 @@ main section article p {
   align-items: center;
 }
 
+.imagen-producto {
+  width: 100%;
+  border-top-right-radius: 1em;
+  border-top-left-radius: 1em;
+}
+
 .no-discount {
   display: none;
 }
