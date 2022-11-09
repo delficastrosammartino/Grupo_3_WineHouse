@@ -1,87 +1,89 @@
 main {
-    padding: 75px 20px;
+  padding: 75px 20px;
 }
 
-.contenedor-todo{
-    width: 100%;
+.contenedor-todo {
+  width: 100%;
 }
 
-.contenedor-productos{
-    display: flex;
-    flex-wrap: wrap;
+.contenedor-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.contenedor-titulo{
-    margin: 10px 0;
+.contenedor-titulo {
+  margin: 10px 0;
 }
 
-main section article{
-    display: flex;
-    background-color: white;
-    margin: 10px;
+main section article {
+  display: flex;
+  background-color: white;
+  margin: 10px;
 }
 
-main section article p{
-    margin-bottom: 10px;
+main section article p {
+  margin-bottom: 10px;
 }
 
-.div-producto{
-    border: solid 1px lightgray;
-    max-width: 650px;
-    margin: 0 auto;
+.div-producto {
+  border: solid 1px lightgray;
+  max-width: 650px;
+  margin: 0 auto;
+  border-radius: 1em;
 }
 
-.etiqueta-link{
-    color: black;
-    text-decoration: none;
+.etiqueta-link {
+  color: black;
+  text-decoration: none;
 }
 
-.detalles{
-    border-top: solid 1px lightgray;
-    padding: 15px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.detalles {
+  border-top: solid 1px lightgray;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.no-discount{
-    display: none;
+.no-discount {
+  display: none;
 }
 
-.imagen-producto{
-    display: flex;
-    justify-content: center;
-    height: 80vw;
-    width: 50vw;
-    max-height: 350px;
-    max-width: 250px;
+.contenedor-imagen-producto {
+  display: flex;
+  justify-content: center;
+  height: 20em;
+  width: 17em;
 }
 
-.contenedor-precio{
-    width: 60%;
-    display: flex;
-    justify-content: space-evenly;
+.contenedor-precio {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.contenedor-nombre{
-    display: flex;
+.contenedor-nombre {
+  display: flex;
 }
 
-.nombre-producto{
-    font-size: 16px;
+.nombre-producto {
+  font-size: 16px;
 }
 
-.precios{
-    font-size: 18px;
-    display: flex;
+.precios {
+  font-size: 18px;
+  display: flex;
 }
 
-.tachar-precio{
-    text-decoration: line-through 2px purple;
+.tachar-precio {
+  text-decoration: line-through 2px purple;
 }
 
-.descuentos{
-    color:purple;
-    font-size: 16px;
+.descuentos {
+  color: purple;
+  font-size: 16px;
 }

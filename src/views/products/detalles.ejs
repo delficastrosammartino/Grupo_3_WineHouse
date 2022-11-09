@@ -1,204 +1,178 @@
 <!DOCTYPE html>
-    
+
 <html lang="es">
-        
-    <%- include("../partials/head.ejs") %>
+  <%- include("../partials/head.ejs") %>
 
-    <body>
+  <body>
+    <%- include("../partials/header.ejs") %>
 
-        <%- include("../partials/header.ejs") %>
+    <main>
+      <section class="seccion">
+        <div class="ruta-cruz">
+          <div class="ruta-producto">
+            <a href="/" style="text-decoration: none; color: black">Inicio</a> /
+            Productos / Detalles de <%= product.name%>
+          </div>
 
-        <main>
+          <div class="cruz-cerrar">
+            <i class="fa-solid fa-x"></i>
+          </div>
+        </div>
 
-            <section class="seccion">
+        <div class="contenedor-imagenes-detalles">
+          <div class="imagenes-detalles">
+            <div class="carrusel-minis">
+              <div class="carrusel">
+                <div class="contenedor-imagen-carrusel">
+                  <img
+                    class="imagen-principal imagenes-producto"
+                    src="/images/productImages/<%= product.image%>"
+                    alt="Imagen de <%= product.name%>"
+                  />
+                </div>
+              </div>
 
-                <div class="ruta-cruz">
+              <div class="contenedor-minis">
+                <div class="miniaturas-img">
+                  <div class="mini">
+                    <img
+                      class="imagenes-producto"
+                      src="/images/productImages/<%= product.image%>"
+                      alt="Vino elementos malbec"
+                    />
+                  </div>
 
-                    <div class="ruta-producto">
-                        <a href="/" style="text-decoration: none; color: black;">Inicio</a> / Productos / Detalles de <%= product.name%>
-                    </div>
+                  <div class="mini">
+                    <img
+                      class="imagenes-producto"
+                      src="/images/productImages/vino2.jpg"
+                      alt="Pack de seis vinos elementos"
+                    />
+                  </div>
 
-                    <div class="cruz-cerrar">
-                        <i class="fa-solid fa-x"></i>
-                    </div>
+                  <div class="mini">
+                    <img
+                      class="imagenes-producto"
+                      src="/images/productImages/vino3.jpg"
+                      alt="Pack vino, copa y caja"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="contenedor-detalles">
+              <div class="details nombre-producto">
+                <h2><%= product.name%></h2>
+              </div>
+
+              <div class="details tamanio">
+                <p><%= product.size%> cc</p>
+              </div>
+
+              <div class="contenedor-precio-descuento">
+                <div class="contenedor-precios">
+                  <p
+                    class="details precios <% if (product.discount > 0){%>tachar-precio<%}%>"
+                  >
+                    $<%= product.price%>
+                  </p>
+
+                  <% if (product.discount > 0){%>
+                  <p class="details precios precio-discount">
+                    $<%= (product.price - ((product.price/100) *
+                    product.discount))%>
+                  </p>
+                  <%}%>
                 </div>
 
-                <div class="contenedor-imagenes-detalles">
+                <% if (product.discount > 0){%>
+                <div>
+                  <p class="descuentos"><%= product.discount%>% off</p>
+                </div>
+                <%}%>
+              </div>
 
-                    <div class="imagenes-detalles">
+              <div>
+                <div class="details cantidad-agregar">
+                  <div class="agregar">
+                    <div class="details agregar-al-carrito">
+                      <p>Agregar al carrito</p>
+                    </div>
+                  </div>
 
-                        <div class="carrusel-minis">
-
-                            <div class="carrusel">
-
-                                <div class="contenedor-imagen-carrusel">
-                                    <img class="imagen-principal imagenes-producto" src="/images/productImages/<%= product.image%>" alt="Imagen de <%= product.name%>">
-                                </div>
-
-                            </div>
-                            
-                            <div class="contenedor-minis">
-
-                                <div class="miniaturas-img">
-                                    
-                                    <div class="mini">
-                                        <img class="imagenes-producto" src="/images/productImages/<%= product.image%>" alt="Vino elementos malbec">
-                                    </div>
-
-                                    <div class="mini">
-                                        <img class="imagenes-producto" src="/images/productImages/vino2.jpg" alt="Pack de seis vinos elementos">
-                                    </div>
-
-                                    <div class="mini">
-                                        <img class="imagenes-producto" src="/images/productImages/vino3.jpg" alt="Pack vino, copa y caja">
-                                    </div>
-                                
-                                </div>
-
-                            </div>
-
-                        </div>
-            
-                        <div class="contenedor-detalles">
-
-                            <div class="details nombre-producto">
-                                <h2><%= product.name%></h2>
-                            </div>
-
-                            <div class="details tamanio">
-                                <p><%= product.size%> cc</p>
-                            </div>
-
-                            <div class="contenedor-precio-descuento">
-
-                                <div class="contenedor-precios">
-                                    <p class="details precios <% if (product.discount > 0){%>tachar-precio<%}%>">$<%= product.price%></p>
-
-                                    <% if (product.discount > 0){%> 
-                                        <p class=" details precios precio-discount">$<%= (product.price - ((product.price/100) * product.discount))%></p>
-                                    <%}%>
-                                </div>
-                                
-                                <% if (product.discount > 0){%> 
-                                    <div>
-                                        <p class="descuentos"><%= product.discount%>% off</p>
-                                    </div>
-                                <%}%>
-
-                            </div>
-
-                            <div>
-
-                                <div class="details cantidad-agregar">
-
-                                    <div class="agregar">
-
-                                        <div class="details agregar-al-carrito">
-                                            <p>Agregar al carrito</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="cantidad-sumar">
-
-                                        <div>
-                                            <p>Cantidad</p>
-                                        </div>
-
-                                        <div class="sumar-restar">
-                                            <p>- 1 +</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="formas">
-
-                                    <div class="details formas-de-pago">
-                                        <p>Ver formas de pago</p>
-                                    </div>
-                                    
-                                </div>
-
-                            </div>                   
-
-                            <div class="contenedor-descripcion">
-
-                                <div class="titulos-chicos">
-                                    <h2>Detalles</h2>
-                                </div>
-
-                                <div class="details descripcion-producto">
-                                    <p><%= product.description%></p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
+                  <div class="cantidad-sumar">
+                    <div>
+                      <p>Cantidad</p>
                     </div>
 
+                    <div class="sumar-restar">
+                      <p>- 1 +</p>
+                    </div>
+                  </div>
                 </div>
 
-            </section>
+                <div class="formas">
+                  <div class="details formas-de-pago">
+                    <p>Ver formas de pago</p>
+                  </div>
+                </div>
+              </div>
 
-            <section>
+              <div class="contenedor-descripcion">
+                <div class="titulos-chicos">
+                  <h2>Detalles</h2>
+                </div>
 
-                <div class="display-relacionados">
+                <div class="details descripcion-producto">
+                  <p><%= product.description%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    <div class="productos-relacionados">
+      <section>
+        <div class="display-relacionados">
+          <div class="productos-relacionados">
+            <div class="contenedor-titulo-prod-rel">
+              <h2>Productos relacionados</h2>
+            </div>
 
-                        <div class="contenedor-titulo-prod-rel">
-                            <h2>Productos relacionados</h2>
-                        </div>
+            <div class="contenedor-articulos-rel">
+              <% for ( let i = 0; i < 4; i++){ %>
+              <article class="articulo-<%=[i+1]%>">
+                <div class="sombras">
+                  <div>
+                    <div>
+                      <img
+                        src="/images/productImages/vino2.jpg"
+                        alt="Producto relacionado <%=[i+1]%>"
+                        class="imagenes-relacionados relacionado-<%=[i+1]%>"
+                      />
+                    </div>
+                  </div>
 
-                        <div class="contenedor-articulos-rel">
-
-                            <% for ( let i = 0; i < 4; i++){ %>
-                            <article class="articulo-<%=[i+1]%>">
-
-                                <div class="sombras">
-                                  
-                                    <div>
-
-                                        <div>
-                                            <img src="/images/productImages/vino2.jpg" alt="Producto relacionado <%=[i+1]%>" class="imagenes-relacionados relacionado-<%=[i+1]%>">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="descripcion-articulo-<%=[i+1]%>">
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>nombre</p>
-                                        </div>
-
-                                        <div class="detalles-articulo-rel">
-                                            <p>precio</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </article>
-
-                            <%}%>
-
-                        </div>
-                            
+                  <div class="descripcion-articulo-<%=[i+1]%>">
+                    <div class="detalles-articulo-rel">
+                      <p>nombre</p>
                     </div>
 
+                    <div class="detalles-articulo-rel">
+                      <p>precio</p>
+                    </div>
+                  </div>
                 </div>
+              </article>
 
-            </section>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        </main>
-
-        <%- include("../partials/footer.ejs") %>
-
-    </body>
-
- </html>
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

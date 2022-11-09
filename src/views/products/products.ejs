@@ -1,73 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include("../partials/head.ejs") %>
 
-    <%- include("../partials/head.ejs") %> 
-
-<body>
-
+  <body>
     <%- include("../partials/header.ejs") %>
 
     <main>
+      <section>
+        <div class="contenedor-todo">
+          <div class="contenedor-titulo">
+            <h2 class="titulo">Todos los productos</h2>
+          </div>
 
-        <section>
+          <div class="contenedor-productos">
+            <%products.forEach(product => {%>
 
-            <div class="contenedor-todo">
+            <article class="sombra">
+              <a
+                href="/products/detalles/<%= product.id %>"
+                class="etiqueta-link"
+              >
+                <div class="div-producto">
+                  <div class="contenedor-imagen-producto">
+                    <img
+                      src="/images/productImages/<%= product.image%>"
+                      alt="Imagen de <%= product.name%>"
+                      class="imagen-producto"
+                    />
+                  </div>
 
-                <div class="contenedor-titulo">
-                    <h2 class="titulo">Todos los productos</h2>
+                  <div class="detalles">
+                    <div class="contenedor-precio">
+                      <p
+                        class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
+                      >
+                        $<%= product.price%>
+                      </p>
+                      <% if (product.discount > 0){%>
+                      <p class="precios">
+                        $<%= product.price - ((product.price/100) *
+                        product.discount)%>
+                      </p>
+                      <%}%>
+                    </div>
+                    <% if (product.discount > 0){%>
+
+                    <p class="descuentos"><%= product.discount%>% off</p>
+
+                    <%}%>
+
+                    <p class="nombre-producto"><b><%= product.name%></b></p>
+                  </div>
                 </div>
+              </a>
+            </article>
 
-                <div class="contenedor-productos">
-
-                    <%products.forEach(product => {%>
-
-                        <article>
-
-                            <a href="/products/detalles/<%= product.id %>" class="etiqueta-link">
-                            
-                                <div class="div-producto">
-
-                                    <div class="imagen-producto">
-                                        <img src="/images/productImages/<%= product.image%>" alt="Imagen de <%= product.name%>" class="imagen-producto">
-                                    </div>
-
-                                    <div class="detalles">
-
-                                        <div class="contenedor-precio">
-                                            <p class="precios <% if (product.discount > 0){%>tachar-precio<%}%>">$<%= product.price%></p>
-                                            <% if (product.discount > 0){%> 
-                                               <p class="precios">$<%= product.price - ((product.price/100) * product.discount)%></p>
-                                            <%}%>
-                                        </div>
-                                        <% if (product.discount > 0){%> 
-                                            <div>
-                                                <p class="descuentos"><%= product.discount%>% off</p>
-                                            </div>
-                                        <%}%>
-
-                                        <div class="contenedor-nombre">
-                                            <p class="nombre-producto"><b><%= product.name%></b></p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                </a>
-
-                        </article>
-
-                    <%})%>
-
-                </div>
-
-            </div>
-
-        </section>
-
+            <%})%>
+          </div>
+        </div>
+      </section>
     </main>
 
     <%- include("../partials/footer.ejs") %>
-
-</body>
-
+  </body>
 </html>
