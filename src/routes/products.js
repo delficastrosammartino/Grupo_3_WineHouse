@@ -57,4 +57,10 @@ router.get("/crear", productsControllers.create);
 
 router.post("/", uploadFile.single("image"), productsControllers.store);
 
+router.get('/edit/:id', productsControllers.edit); 
+
+router.put('/:id', productsControllers.update); 
+
+router.delete('/:id', productsControllers.destroy); 
+
 module.exports = router;

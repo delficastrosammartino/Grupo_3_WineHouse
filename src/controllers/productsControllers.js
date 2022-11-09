@@ -59,10 +59,27 @@ const productsControllers = {
     res.redirect("/products");
   },
 
-  edit: (req, res) => {
-    let productToEdit = products.find((product) => product.id == req.params.id);
-    res.render("editar-producto", { productToEdit });
-  },
+    // Update - Form to edit
+    edit: (req, res) => {
+      let productToEdit = products.find(product => product.id == req.params.id)
+      res.render('./products/editar-producto', {productToEdit})
+      },
+    // Update - Method to update
+    update: (req, res) => {
+      res.render('detail', {product: products.find(product => product.id == req.params.id)});
+      },
+
+    // Delete - Delete one product from DB
+      destroy : (req, res) => {
+      let productToDelete = products.find(product => product.id == req.params.id);
+      let productToDeleteIndex = products.indexOf(productToDelete);
+
+      products.splice(productToDeleteIndex, 1);
+
+      fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+
+      res.redirect('/');
+    }
 };
 
 module.exports = productsControllers;
