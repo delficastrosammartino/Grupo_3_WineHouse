@@ -51,6 +51,8 @@ const productsControllers = require("../controllers/productsControllers");
 
 router.get("/", productsControllers.products);
 
+router.put("/:id", uploadFile.single("image"), productsControllers.update);
+
 router.get("/detalles/:id", productsControllers.detalles);
 
 router.get("/crear", productsControllers.create);
@@ -59,8 +61,6 @@ router.post("/", uploadFile.single("image"), productsControllers.store);
 
 router.get("/edit/:id", productsControllers.edit);
 
-router.put("/", productsControllers.update);
-
-router.delete("/", productsControllers.destroy);
+router.delete("/:id", productsControllers.destroy);
 
 module.exports = router;

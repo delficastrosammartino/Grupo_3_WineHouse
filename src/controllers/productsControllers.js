@@ -81,17 +81,22 @@ const productsControllers = {
 
     res.render("products");
     */
+    let id = req.params.id;
+
+    console.log(id);
 
     products.forEach((product) => {
-      if (product.id === req.params.id) {
+      console.log("hola");
+      if (product.id == id) {
+        console.log(product.id);
         product.name = req.body.name;
         product.price = req.body.price;
         product.discount = req.body.discount;
         product.description = req.body.description;
-
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, " "));
       }
     });
+    fs.writeFileSync(productsFilePath, JSON.stringify(products));
+
     res.render("./products/products", { products: products });
   },
 
@@ -108,7 +113,7 @@ const productsControllers = {
       JSON.stringify(productsBorrado, null, " ")
     );
 
-    res.render("./products/products", { products: products });
+    res.redirect("/products");
   },
 };
 
