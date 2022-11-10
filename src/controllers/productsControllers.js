@@ -100,10 +100,8 @@ const productsControllers = {
     /*let productToDelete = products.find(
       (product) => product.id == req.params.id
     );*/
-
-    let productsBorrado = products.filter(
-      (producto) => producto.id == req.params.id
-    );
+    let id = req.params.id;
+    let productsBorrado = products.filter((producto) => producto.id != id);
 
     fs.writeFileSync(
       productsFilePath,

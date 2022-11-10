@@ -1,5 +1,5 @@
 main {
-  padding: 75px 20px;
+  padding: 150px 20px;
 }
 
 .contenedor-todo-filtros {
@@ -7,6 +7,8 @@ main {
 }
 
 .contenedor-todo-productos {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -106,6 +108,7 @@ main section article p {
 
   .contenedor-todo-filtros {
     display: flex;
+    width: 300px;
   }
 
   .contenedor-todo-productos {
