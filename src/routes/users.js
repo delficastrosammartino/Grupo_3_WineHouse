@@ -4,10 +4,10 @@ const multer = require('multer');
 const router = express.Router();
 const path = require ("path");
 const { body } = require ("express-validator")
+const usersControllers = require('../controllers/usersControllers');
+const registrationValidate = require('../../public/middlewares/registrationValidate');
+const userMiddleware = require('../../public/middlewares/userMiddleware');
 
-
-// ************ Proceso para manejar archivos ************
-// creo el storage donde se va a guardar la info.
 const storage = multer.diskStorage({
 // Ubicacion
     destination: (req, file, cb) => {
@@ -21,48 +21,32 @@ const storage = multer.diskStorage({
     }
 })
 
-// Constatnte donde genero el metodo a usar para manejar archivos
 const uploadFile = multer ({ storage })
 
-// validacion de express-validation con la funcion body.
-const validations = [
-// recibe el nombre del campo a validar.
-    body("nombre")
-        .notEmpty().withMessage("Tienes que escribir un nombre").bail()
-        .isLength({ min: 3, max:30 }).withMessage("El nombre no cumple con el largo permitido"),
-    body("apellido")
-        .notEmpty().withMessage("Tienes que escribir un apellido").bail()
-        .isLength({ min: 3, max:30 }).withMessage("El nombre no cumple con el largo permitido"),
-    body("email")
-// el bail () es para cortar si encuentra el error.
-        .notEmpty().withMessage("Tienes que escribir un email").bail()
-        .isEmail().withMessage("El email no es valido"),
-    body("password")
-        .notEmpty().withMessage("Tienes que escribir una contraseña").bail()
-        .isLength({ min : 6, max: 20 }).withMessage("min 6, max 20 caracteres").bail()
-        .matches(/^(.*\d.*)$/).withMessage("Debe contener al menos un simbolo").bail()
-        .matches(/^(.*[A-Z].*)$/).withMessage("Debe contener al menos una mayúscula").bail()
-        .matches(/^(.*[a-z].*)$/).withMessage("Debe contener al menos una minúscula")
-]
 
-
-
-// ************ Controller Require ************
-// establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
-const usersControllers = require('../controllers/usersControllers');
-
-
-
-router.get('/login', usersControllers.login);
-
-// ************ Formulario de registro ************
+router.get('/login', usersControllers.login, userMiddleware.registered);
+router.post('/login', usersControllers.processLogin);
 router.get('/registro', usersControllers.registro);
-
-// ************ Procesar el registro ************
-// ES IMPORTANTE PONER EN EL ARCHIVO .ejs, EN EL INPUT DE FORMULARIO PARA SUBIR ARCHIVOS, EL name="avatar".
-router.post('/registro', uploadFile.single ("avatar"), validations,  usersControllers.processRegister);
-
-
+router.post('/registro', uploadFile.single ("avatar"), registrationValidate,  usersControllers.processRegister);
 router.get('/password', usersControllers.password);
 
 module.exports=router;
+
+/*
+// ************ Require's ************
+
+router.get ('/logout', usersController.logout);
+router.get ('/register', userMiddleware.registered, usersController.register);
+router.post('/register', registrationValidate, usersController.processRegister);
+router.get ('/editar', userMiddleware.guest, usersController.editar);
+router.patch ('/editar', usersController.modificacion);
+router.get ('/perfil', userMiddleware.guest, usersController.perfil);
+router.delete('/eliminar',usersController.delete);
+router.get ('/avatar', userMiddleware.guest, usersController.avatar);
+router.get ('/direcciones', userMiddleware.guest, usersController.direcciones);
+router.get ('/direcciones/crear', userMiddleware.guest, usersController.crearDireccion);
+router.get ('/pagos', userMiddleware.guest, usersController.pagos);
+router.get ('/pagos/crear', userMiddleware.guest, usersController.crearPago);
+
+module.exports = router;
+*/

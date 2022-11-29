@@ -91,6 +91,20 @@
                             </div>
                         <% } %> 
                     </div>
+                    <div>
+                        <input 
+                            type="password" 
+                            name="confirmarPassword" 
+                            placeholder="Confirmar contraseña"
+                            class="box-info-user <%= locals.errors && errors.confirmarPassword ? "is-invalid" : null %>" 
+                            value="<%= locals.oldData ? oldData.confirmarPassword : null %>"
+                        >
+                        <% if(locals.errors && errors.confirmarPassword) {%> 
+                            <div class="text-danger">
+                                <%= errors.confirmarPassword.msg %>
+                            </div>
+                        <% } %>
+                    </div>
                 </div>
                         <input type="submit" class="boton" value="Registrarse"></input>
                     </form>

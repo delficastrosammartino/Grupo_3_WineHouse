@@ -11,10 +11,48 @@ const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 
 const usersControllers = {
-    login : (req,res) => {
-        res.render('./users/login');
+    // VISTA LOGIN
+    login: function(req, res) {
+        return res.render('users/login');           
     },
+    // LOGICA LOGIN
+    processLogin: function(req, res) {
+        let errors = validationResult(req);
+        
+        db.User.findOne({
+            where: {
+                email: req.body.email,
+            }
+        })
+        .then(usuarioALoguearse => {
+            if(usuarioALoguearse){
+                let comparacion = bcrypt.compareSync(req.body.password, usuarioALoguearse.password);
 
+                if(comparacion){
+                    req.session.usuarioALoguearse = {...usuarioALoguearse["dataValues"], password: ""};
+
+                    if(req.body.remindme){
+                        res.cookie('recordame', {...usuarioALoguearse["dataValues"], password: ""}, {maxAge: 1000 * 60 * 60 * 24});
+                    }
+
+                    res.redirect('/');
+                } else{
+                    res.render('users/login', {errors: {msg: "Credenciales incorrectas"}})
+                }
+            } else{
+                res.render('users/login', {errors: {msg: "Credenciales incorrectas"}})
+            }
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+    },
+    // LOGICA LOGOUT
+    logout: function(req, res){
+        res.cookie('recordame', '', {maxAge: 0});
+        req.session.destroy();
+        res.redirect('/usuarios/login')
+    },
     registro : (req,res) => {
         res.render('./users/registro');
     },
