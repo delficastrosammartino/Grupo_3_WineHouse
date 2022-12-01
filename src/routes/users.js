@@ -1,36 +1,41 @@
 // ************ Require's ************
-const express = require('express');
-const multer = require('multer');
+const express = require("express");
+const multer = require("multer");
 const router = express.Router();
-const path = require ("path");
-const { body } = require ("express-validator")
-const usersControllers = require('../controllers/usersControllers');
-const registrationValidate = require('../../public/middlewares/registrationValidate');
-const userMiddleware = require('../../public/middlewares/userMiddleware');
+const path = require("path");
+const { body } = require("express-validator");
+const usersControllers = require("../controllers/usersControllers");
+const registrationValidate = require("../../public/middlewares/registrationValidate");
+const userMiddleware = require("../../public/middlewares/userMiddleware");
+const guestMiddleware = require("../../public/middlewares/guestMiddleware");
 
 const storage = multer.diskStorage({
-// Ubicacion
-    destination: (req, file, cb) => {
-        cb(null, "../../public/images/avatars")
-    },
-// Nombre
-    filename: (req, file, cb) => {
-// numero unico con el Date.now, un _img y la extension del archivo original. 
-        let fileName = Date.now() + "_img" + path.extname(file.originalname)
-        cb(null, fileName)
-    }
-})
+  // Ubicacion
+  destination: (req, file, cb) => {
+    cb(null, "../../public/images/avatars");
+  },
+  // Nombre
+  filename: (req, file, cb) => {
+    // numero unico con el Date.now, un _img y la extension del archivo original.
+    let fileName = Date.now() + "_img" + path.extname(file.originalname);
+    cb(null, fileName);
+  },
+});
 
-const uploadFile = multer ({ storage })
+const uploadFile = multer({ storage });
 
+router.get("/login", usersControllers.login, userMiddleware.registered);
+router.post("/login", usersControllers.processLogin);
+router.get("/registro", usersControllers.registro);
+router.post(
+  "/registro",
+  uploadFile.single("avatar"),
+  registrationValidate,
+  usersControllers.processRegister
+);
+router.get("/password", usersControllers.password);
 
-router.get('/login', usersControllers.login, userMiddleware.registered);
-router.post('/login', usersControllers.processLogin);
-router.get('/registro', usersControllers.registro);
-router.post('/registro', uploadFile.single ("avatar"), registrationValidate,  usersControllers.processRegister);
-router.get('/password', usersControllers.password);
-
-module.exports=router;
+module.exports = router;
 
 /*
 // ************ Require's ************
