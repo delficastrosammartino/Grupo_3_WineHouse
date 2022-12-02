@@ -10,15 +10,3 @@ module.exports = function (req, res, next) {
 
   next();
 };
-
-/*
-
-function authMiddleware(req, res, next) {
-  if (req.session.usuarioGuest) {
-    res.redirect("/login");
-  } else {
-    next();
-  }
-}
-
-module.exports = authMiddleware; */
