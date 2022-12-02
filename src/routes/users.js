@@ -3,11 +3,10 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 const path = require("path");
-const { body } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 const usersControllers = require("../controllers/usersControllers");
 const registrationValidate = require("../../public/middlewares/registrationValidate");
 const userMiddleware = require("../../public/middlewares/userMiddleware");
-const guestMiddleware = require("../../public/middlewares/guestMiddleware");
 
 const storage = multer.diskStorage({
   // Ubicacion
