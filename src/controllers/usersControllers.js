@@ -3,6 +3,7 @@ const fs = require('fs');
 // libreria para concatenar y obtener rutas.
 const path = require('path');
 const { validationResult } = require ("express-validator")
+let bcrypt = require ("bcrypt")
 
 // indico la ruta de mi archivo .json, la abosulta.
 const usersFilePath = path.join(__dirname, '../data/usersDB.json');
@@ -75,7 +76,8 @@ const usersControllers = {
         name: req.body.nombre,
         lastName: req.body.apellido,
         mail: req.body.email,
-        password: req.body.password,
+        // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
+        password: bcrypt.hashSync(req.body.password, 10),
         category: " ",
         image: " ",
         adress:" ",
