@@ -19,7 +19,31 @@ const usersControllers = {
   processLogin: function (req, res) {
     let errors = validationResult(req);
 
-    db.User.findOne({
+    let userToLogin = users.find((user) => user.mail == req.body.email);
+
+    if (userToLogin) {
+      let comparacion = bcrypt.compareSync(
+        req.body.password,
+        userToLogin.password
+      );
+      if (comparacion) {
+        req.session.userToLogin = userToLogin;
+
+        //res.render("products/index", { userToLogin })
+
+        res.redirect("/");
+      } else {
+        res.render("users/login", {
+          errors: { msg: "La contraseña es incorrecta" },
+        });
+      }
+    } else {
+      res.render("users/login", {
+        errors: { msg: "El email no se encontró" },
+      });
+    }
+
+    /*db.User.findOne({
       where: {
         email: req.body.email,
       },
@@ -51,21 +75,21 @@ const usersControllers = {
               errors: { msg: "Credenciales incorrectas" },
             });
           }
-        } else {
-          res.render("users/login", {
-            errors: { msg: "Credenciales incorrectas" },
-          });
         }
       })
       .catch(function (error) {
         console.log(error);
-      });
+
+        res.render("users/login", {
+          error: { msg: "Credenciales incorrectas" },
+        });
+      });*/
   },
   // LOGICA LOGOUT
   logout: function (req, res) {
     res.cookie("recordame", "", { maxAge: 0 });
     req.session.destroy();
-    res.redirect("/usuarios/login");
+    res.redirect("/users/login");
   },
   registro: (req, res) => {
     res.render("./users/registro");

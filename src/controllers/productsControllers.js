@@ -97,7 +97,7 @@ const productsControllers = {
     });
     fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
-    res.render("./products/products", { products: products });
+    res.render("./products/products", { products });
   },
 
   // Delete - Delete one product from DB

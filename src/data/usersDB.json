@@ -1,35 +1,46 @@
 [
-  {
-    "id": 1,
-    "name": "Juan",
-    "lastName": "Gomez",
-    "mail": "hola@mail.com",
-    "password": "pass1234",
-    "category": "socio",
-    "image": "img-profil-pic",
-    "adress": "calle falsa 123",
-    "userName": "user1234"
-  },
-  {
-    "id": 1667848395967,
-    "name": "javier",
-    "lastName": "perez",
-    "mail": "javi@gmail.com",
-    "password": "123456",
-    "category": " ",
-    "image": " ",
-    "adress": " ",
-    "userName": " "
-  },
-  {
-    "id": 1667849391060,
-    "name": "lucas",
-    "lastName": "santi",
-    "mail": "l@hotmail.com",
-    "password": "Ab123456",
-    "category": " ",
-    "image": " ",
-    "adress": " ",
-    "userName": " "
-  }
+ {
+  "id": 1,
+  "name": "Juan",
+  "lastName": "Gomez",
+  "mail": "hola@mail.com",
+  "password": "pass1234",
+  "category": "socio",
+  "image": "img-profil-pic",
+  "adress": "calle falsa 123",
+  "userName": "user1234"
+ },
+ {
+  "id": 1667848395967,
+  "name": "javier",
+  "lastName": "perez",
+  "mail": "javi@gmail.com",
+  "password": "123456",
+  "category": " ",
+  "image": " ",
+  "adress": " ",
+  "userName": " "
+ },
+ {
+  "id": 1667849391060,
+  "name": "lucas",
+  "lastName": "santi",
+  "mail": "l@hotmail.com",
+  "password": "Ab123456",
+  "category": " ",
+  "image": " ",
+  "adress": " ",
+  "userName": " "
+ },
+ {
+  "id": 1670284426304,
+  "name": "Matias",
+  "lastName": "Albarracin",
+  "mail": "albarracinmatias9@gmail.com",
+  "password": "$2a$10$Ff8H.nUmR.3xREOVqArfgeCOYD05v6PjWfNTVMwp7Saa6rNjQm502",
+  "category": " ",
+  "image": " ",
+  "adress": " ",
+  "userName": " "
+ }
 ]

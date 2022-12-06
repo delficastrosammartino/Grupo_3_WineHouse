@@ -7,6 +7,7 @@ const { body, validationResult } = require("express-validator");
 const usersControllers = require("../controllers/usersControllers");
 const registrationValidate = require("../../public/middlewares/registrationValidate");
 const userMiddleware = require("../../public/middlewares/userMiddleware");
+const guestMiddleware = require("../../public/middlewares/authMiddleware");
 
 const storage = multer.diskStorage({
   // Ubicacion
@@ -23,9 +24,14 @@ const storage = multer.diskStorage({
 
 const uploadFile = multer({ storage });
 
-router.get("/login", usersControllers.login, userMiddleware.registered);
+router.get(
+  "/login",
+  guestMiddleware,
+  usersControllers.login,
+  userMiddleware.registered
+);
 router.post("/login", usersControllers.processLogin);
-router.get("/registro", usersControllers.registro);
+router.get("/registro", guestMiddleware, usersControllers.registro);
 router.post(
   "/registro",
   uploadFile.single("avatar"),

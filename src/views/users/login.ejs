@@ -29,10 +29,10 @@
     <main>
         <section class="cuadro">
             <div class="saludo-logo">Bienvenido!</div>
-            <form method="get" action="/">
+            <form method="POST" action="/users/login">
                 <div class="login">
                     <div>
-                        <input class="box-info-user" type="text" name="usuario" placeholder="Usuario" required minlength="3">
+                        <input class="box-info-user" type="text" name="email" placeholder="Email" required minlength="3">
                     </div>
                     <div>
                         <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
