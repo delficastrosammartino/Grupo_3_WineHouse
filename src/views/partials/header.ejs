@@ -40,7 +40,7 @@
         </form>
         <% if (locals.isLogged) { %>
         <div class="icons-desktop">
-            <a class="link" href="/users/perfil"><i class="fa-solid fa-user"></i></a>
+            <a class="link" href="/users/perfil"><i class="fa-solid fa-user"></i><%=locals.isLogged.name%></a>
         </div>
         <% } else { %>
             <a class="link" href="/users/login">Iniciar sesión</a>
