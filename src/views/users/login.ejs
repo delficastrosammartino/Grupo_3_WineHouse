@@ -32,13 +32,23 @@
             <form method="POST" action="/users/login">
                 <div class="login">
                     <div>
-                        <input class="box-info-user" type="text" name="email" placeholder="Email" required minlength="3">
+                        <input class="box-info-user" type="text" name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+                        <% if(locals.errors && errors.email) {%> 
+                            <div class="text-danger">
+                                <%= errors.email.msg %>
+                            </div>
+                        <% } %>
                     </div>
                     <div>
                         <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                        <% if(locals.errors && errors.password) {%> 
+                            <div class="text-danger">
+                                <%= errors.password.msg %>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
-                        <input type="submit" class="boton" value="Iniciar Sesión"></input>
+                        <input type="submit" class="boton" value="Iniciar Sesión">
             </form>
             <div class="caja-links">
                 <div class="recordar">

@@ -17,7 +17,19 @@ const usersControllers = {
   },
   // LOGICA LOGIN
   processLogin: function (req, res) {
-    let userToLogin = users.find((user) => user.mail == req.body.email);
+    // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+    const resultValidation = validationResult(req);
+    // si hay errores entra aca.
+    if (resultValidation.errors.length > 0) {
+      // renderizo la vista login, y le paso los errores.
+      return res.render("./users/login", {
+        // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    }
+
+    let userToLogin = users.find((user) => user.email == req.body.email);
 
     if (userToLogin) {
       let passwordOk = bcrypt.compareSync(
@@ -28,9 +40,9 @@ const usersControllers = {
         delete userToLogin.password;
         req.session.userLogged = userToLogin;
 
-        return res.redirect("/users/perfil");
+        return res.redirect("/");
       } else {
-        res.render("users/login", {
+        return res.render("users/login", {
           errors: {
             password: {
               msg: "La contraseña es incorrecta",
@@ -42,7 +54,7 @@ const usersControllers = {
     }
     return res.render("users/login", {
       errors: {
-        mail: {
+        email: {
           msg: "El email no se encontró",
         },
       },
@@ -131,7 +143,7 @@ const usersControllers = {
       id: Date.now(),
       name: req.body.nombre,
       lastName: req.body.apellido,
-      mail: req.body.email,
+      email: req.body.email,
       // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
       password: bcrypt.hashSync(req.body.password, 10),
       category: " ",

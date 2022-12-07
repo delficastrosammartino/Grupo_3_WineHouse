@@ -2,7 +2,7 @@ const { body } = require("express-validator");
 
 const loginValidator = [
   // los name son los del html!!
-  body("mail")
+  body("email")
     .notEmpty()
     .withMessage("Tiene que escribir un email")
     .bail()
