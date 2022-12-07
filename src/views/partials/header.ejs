@@ -32,14 +32,18 @@
         <!-- Creando, formulario buscador -->
         <form method="get" action="/" class="search-desktop">
             <div class="box-buscador-desktop">
-                <input class="buscador-desktop" type="text" name="buscador" placeholder="Buscar..." required minlength="3" >
+                <input class="buscador-desktop" type="text" name="buscador" placeholder="Buscar..." required>
                 <div class="lupa-desktop">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
         </form>
+        <% if (locals.isLogged) { %>
         <div class="icons-desktop">
-            <a class="link" href="/users/registro"><i class="fa-solid fa-user"></i></a>
+            <a class="link" href="/users/perfil"><i class="fa-solid fa-user"></i></a>
         </div>
+        <% } else { %>
+            <a class="link" href="/users/login">Iniciar sesión</a>
+        <%}%>
             <div class="icons-desktop"><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></i></div>
   </header>

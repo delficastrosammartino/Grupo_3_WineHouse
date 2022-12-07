@@ -30,14 +30,13 @@ const usersControllers = {
     }
 
     let userToLogin = users.find((user) => user.email == req.body.email);
-
     if (userToLogin) {
       let passwordOk = bcrypt.compareSync(
         req.body.password,
         userToLogin.password
       );
       if (passwordOk) {
-        delete userToLogin.password;
+        //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
         req.session.userLogged = userToLogin;
 
         return res.redirect("/");
@@ -105,9 +104,9 @@ const usersControllers = {
 
   // LOGICA LOGOUT
   logout: function (req, res) {
-    res.cookie("recordame", "", { maxAge: 0 });
+    //res.cookie("recordame", "", { maxAge: 0 });
     req.session.destroy();
-    res.redirect("/users/login");
+    return res.redirect("/users/login");
   },
   registro: (req, res) => {
     res.render("./users/registro");
