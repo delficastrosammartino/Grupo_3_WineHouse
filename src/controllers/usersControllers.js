@@ -17,8 +17,6 @@ const usersControllers = {
   },
   // LOGICA LOGIN
   processLogin: function (req, res) {
-    let errors = validationResult(req);
-
     let userToLogin = users.find((user) => user.mail == req.body.email);
 
     if (userToLogin) {
@@ -28,33 +26,30 @@ const usersControllers = {
       );
       if (passwordOk) {
         delete userToLogin.password;
-        req.session.userToLogin = userToLogin;
+        req.session.userLogged = userToLogin;
 
-        //res.render("products/index", { userToLogin })
-
-        return res.redirect("users/perfil");
+        return res.redirect("/users/perfil");
       } else {
         res.render("users/login", {
-          errors: { 
-            password:{
-              msg: "La contraseña es incorrecta" 
-              }
+          errors: {
+            password: {
+              msg: "La contraseña es incorrecta",
             },
-            oldData: req.body
+          },
+          oldData: req.body,
         });
-      };
-    }; 
-      return res.render("users/login", {
-        errors: { 
-          mail: {
-            msg: "El email no se encontró"
-          } 
+      }
+    }
+    return res.render("users/login", {
+      errors: {
+        mail: {
+          msg: "El email no se encontró",
         },
-      });
-    }, 
-    
+      },
+    });
+  },
 
-    /*db.User.findOne({
+  /*db.User.findOne({
       where: {
         email: req.body.email,
       },
@@ -95,12 +90,7 @@ const usersControllers = {
           error: { msg: "Credenciales incorrectas" },
         });
       });*/
-  
 
-  
-    
-
-  
   // LOGICA LOGOUT
   logout: function (req, res) {
     res.cookie("recordame", "", { maxAge: 0 });
@@ -122,20 +112,20 @@ const usersControllers = {
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    };
-    let userInDB = users.find(user => user.email === req.body.email)
-      
-      if (userInDB) {
-        // Enviar un mensaje de error
-        return res.render("./users/registro", {
-            errors: {
-                email: {
-                    msg: "El email ya está registrado"
-                }
-            },
-            oldData: req.body
-        });
-        };
+    }
+    let userInDB = users.find((user) => user.email === req.body.email);
+
+    if (userInDB) {
+      // Enviar un mensaje de error
+      return res.render("./users/registro", {
+        errors: {
+          email: {
+            msg: "El email ya está registrado",
+          },
+        },
+        oldData: req.body,
+      });
+    }
     // Creo la variable nuevo newUser, es importante que id sea unico e irrepetible.
     let newUser = {
       id: Date.now(),
@@ -162,8 +152,8 @@ const usersControllers = {
     res.render("./users/password");
   },
   perfil: (req, res) => {
-    res.render ("./users/password")
-  }
+    return res.render("./users/perfil", { user: req.session.userLogged });
+  },
 };
 
 module.exports = usersControllers;

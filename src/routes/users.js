@@ -1,50 +1,32 @@
 // ************ Require's ************
 const express = require("express");
-const multer = require("multer");
 const router = express.Router();
-const path = require("path");
-const { body, validationResult } = require("express-validator");
 
 // ************ Controller Require ************
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
 const usersControllers = require("../controllers/usersControllers");
-const registrationValidate = require("../../public/middlewares/registrationValidate");
-const loginValidate = require("../../public/middlewares/loginValidate");
-const userMiddleware = require("../../public/middlewares/userMiddleware");
-const guestMiddleware = require("../../public/middlewares/authMiddleware");
 
-const storage = multer.diskStorage({
-  // Ubicacion
-  destination: (req, file, cb) => {
-    cb(null, "../../public/images/avatars");
-  },
-  // Nombre
-  filename: (req, file, cb) => {
-    // numero unico con el Date.now, un _img y la extension del archivo original.
-    let fileName = Date.now() + "_img" + path.extname(file.originalname);
-    cb(null, fileName);
-  },
-});
+// ************ Middlewares ***********
+const registrationValidate = require("../middlewares/registrationValidate");
+const loginValidate = require("../middlewares/loginValidate");
+const userPageMiddleware = require("../middlewares/userPageMiddleware");
+const guestPageMiddleware = require("../middlewares/guestPageMiddleware");
+const adminPageMiddleware = require("../middlewares/adminPageMiddleware");
+const uploadUserFile = require("../middlewares/multerUsuarios");
 
-const uploadFile = multer({ storage });
-
-router.get(
-  "/login",
-  guestMiddleware,
-  usersControllers.login,
-  userMiddleware.registered
-);
+router.get("/login", guestPageMiddleware, usersControllers.login);
 router.post("/login", loginValidate, usersControllers.processLogin);
-router.get("/registro", guestMiddleware, usersControllers.registro);
+router.get("/registro", guestPageMiddleware, usersControllers.registro);
 router.post(
   "/registro",
-  uploadFile.single("avatar"),
+  /* AGREGAR CUANDO SE PUEDA SUBIR FOTO  uploadUserFile.single("avatar"),*/
   registrationValidate,
   usersControllers.processRegister
-  );
-  router.get("/password", usersControllers.password);
-  router.get("/perfil", guestMiddleware, usersControllers.perfil);
-  
+);
+router.get("/password", guestPageMiddleware, usersControllers.password);
+router.get("/perfil", userPageMiddleware, usersControllers.perfil);
+router.get("/logout", userPageMiddleware, usersControllers.logout);
+
 module.exports = router;
 
 /*

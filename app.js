@@ -4,6 +4,7 @@ const methodOverride = require("method-override"); // Para poder usar los métod
 const path = require("path");
 const session = require("express-session");
 const cookies = require("cookie-parser");
+const viewsMiddleware = require("./src/middlewares/viewsMiddleware");
 
 // ************ express() ************
 const app = express();
@@ -21,6 +22,8 @@ app.use(
   })
 );
 app.use(cookies());
+// Es importante ponerlo por debajo del session, debe iniciarse sesion primero ya que el middleware usa cosas de la session
+app.use(viewsMiddleware);
 
 // ************ Servidor ************
 app.listen(process.env.PORT || 3030, () => console.log("Servidor corriendo"));

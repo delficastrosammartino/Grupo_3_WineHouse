@@ -83,12 +83,8 @@ const productsControllers = {
     */
     let id = req.params.id;
 
-    console.log(id);
-
     products.forEach((product) => {
-      console.log("hola");
       if (product.id == id) {
-        console.log(product.id);
         product.name = req.body.name;
         product.price = req.body.price;
         product.discount = req.body.discount;

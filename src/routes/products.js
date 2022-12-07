@@ -1,27 +1,9 @@
 // ************ Require's ************
 const express = require("express");
-const multer = require("multer");
 const router = express.Router();
-const path = require("path");
-const { body } = require("express-validator");
 
-// ************ Proceso para manejar archivos ************
-// creo el storage donde se va a guardar la info.
-const storage = multer.diskStorage({
-  // Ubicacion
-  destination: (req, file, cb) => {
-    cb(null, "./public/images/productImages");
-  },
-  // Nombre
-  filename: (req, file, cb) => {
-    // numero unico con el Date.now, un _img y la extension del archivo original.
-    let fileName = Date.now() + "_img" + path.extname(file.originalname);
-    cb(null, fileName);
-  },
-});
-
-// Constatnte donde genero el metodo a usar para manejar archivos
-const uploadFile = multer({ storage });
+// ************ Middlewares ***********
+const uploadProductFile = require("../middlewares/multerProductos");
 
 // validacion de express-validation con la funcion body.
 // const validations = [
@@ -51,13 +33,17 @@ const productsControllers = require("../controllers/productsControllers");
 
 router.get("/", productsControllers.products);
 
-router.put("/:id", uploadFile.single("image"), productsControllers.update);
+router.put(
+  "/:id",
+  uploadProductFile.single("image"),
+  productsControllers.update
+);
 
 router.get("/detalles/:id", productsControllers.detalles);
 
 router.get("/crear", productsControllers.create);
 
-router.post("/", uploadFile.single("image"), productsControllers.store);
+router.post("/", uploadProductFile.single("image"), productsControllers.store);
 
 router.get("/edit/:id", productsControllers.edit);
 
