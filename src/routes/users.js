@@ -4,8 +4,12 @@ const multer = require("multer");
 const router = express.Router();
 const path = require("path");
 const { body, validationResult } = require("express-validator");
+
+// ************ Controller Require ************
+// establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
 const usersControllers = require("../controllers/usersControllers");
 const registrationValidate = require("../../public/middlewares/registrationValidate");
+const loginValidate = require("../../public/middlewares/loginValidate");
 const userMiddleware = require("../../public/middlewares/userMiddleware");
 const guestMiddleware = require("../../public/middlewares/authMiddleware");
 
@@ -30,16 +34,17 @@ router.get(
   usersControllers.login,
   userMiddleware.registered
 );
-router.post("/login", usersControllers.processLogin);
+router.post("/login", loginValidate, usersControllers.processLogin);
 router.get("/registro", guestMiddleware, usersControllers.registro);
 router.post(
   "/registro",
   uploadFile.single("avatar"),
   registrationValidate,
   usersControllers.processRegister
-);
-router.get("/password", usersControllers.password);
-
+  );
+  router.get("/password", usersControllers.password);
+  router.get("/perfil", guestMiddleware, usersControllers.perfil);
+  
 module.exports = router;
 
 /*

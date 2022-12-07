@@ -1,6 +1,7 @@
 const { check, body } = require("express-validator");
 
-module.exports =
+
+const loginValidate =
   /*[
     check('name').isLength({min:2}).withMessage('Debes ingresar tu nombre.'),
     check('apellido').isLength({min:2}).withMessage('Debes ingresar tu apellido.'),
@@ -54,3 +55,5 @@ module.exports =
       .matches(/^(.*[a-z].*)$/)
       .withMessage("Debe contener al menos una minúscula"),
   ];
+
+  module.exports = loginValidate

@@ -22,26 +22,37 @@ const usersControllers = {
     let userToLogin = users.find((user) => user.mail == req.body.email);
 
     if (userToLogin) {
-      let comparacion = bcrypt.compareSync(
+      let passwordOk = bcrypt.compareSync(
         req.body.password,
         userToLogin.password
       );
-      if (comparacion) {
+      if (passwordOk) {
+        delete userToLogin.password;
         req.session.userToLogin = userToLogin;
 
         //res.render("products/index", { userToLogin })
 
-        res.redirect("/");
+        return res.redirect("users/perfil");
       } else {
         res.render("users/login", {
-          errors: { msg: "La contraseña es incorrecta" },
+          errors: { 
+            password:{
+              msg: "La contraseña es incorrecta" 
+              }
+            },
+            oldData: req.body
         });
-      }
-    } else {
-      res.render("users/login", {
-        errors: { msg: "El email no se encontró" },
+      };
+    }; 
+      return res.render("users/login", {
+        errors: { 
+          mail: {
+            msg: "El email no se encontró"
+          } 
+        },
       });
-    }
+    }, 
+    
 
     /*db.User.findOne({
       where: {
@@ -84,7 +95,12 @@ const usersControllers = {
           error: { msg: "Credenciales incorrectas" },
         });
       });*/
-  },
+  
+
+  
+    
+
+  
   // LOGICA LOGOUT
   logout: function (req, res) {
     res.cookie("recordame", "", { maxAge: 0 });
@@ -106,7 +122,20 @@ const usersControllers = {
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    }
+    };
+    let userInDB = users.find(user => user.email === req.body.email)
+      
+      if (userInDB) {
+        // Enviar un mensaje de error
+        return res.render("./users/registro", {
+            errors: {
+                email: {
+                    msg: "El email ya está registrado"
+                }
+            },
+            oldData: req.body
+        });
+        };
     // Creo la variable nuevo newUser, es importante que id sea unico e irrepetible.
     let newUser = {
       id: Date.now(),
@@ -116,7 +145,7 @@ const usersControllers = {
       // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
       password: bcrypt.hashSync(req.body.password, 10),
       category: " ",
-      image: " ",
+      image: " ", //req.file.filename,
       adress: " ",
       userName: " ",
     };
@@ -126,12 +155,15 @@ const usersControllers = {
     // Le mando products, el null y el " " son para orden, salto de linea o algo asi.
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
     // vulevo a /
-    res.redirect("/");
+    res.redirect("/login");
   },
 
   password: (req, res) => {
     res.render("./users/password");
   },
+  perfil: (req, res) => {
+    res.render ("./users/password")
+  }
 };
 
 module.exports = usersControllers;
