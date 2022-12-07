@@ -115,6 +115,7 @@ const usersControllers = {
   processRegister: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     const resultValidation = validationResult(req);
+    console.log(resultValidation);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
@@ -156,7 +157,7 @@ const usersControllers = {
     // Le mando products, el null y el " " son para orden, salto de linea o algo asi.
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
     // vulevo a /
-    res.redirect("/login");
+    res.redirect("/users/login");
   },
 
   password: (req, res) => {

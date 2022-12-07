@@ -1,7 +1,6 @@
 const { check, body } = require("express-validator");
 
-
-const loginValidate =
+const registerValidate =
   /*[
     check('name').isLength({min:2}).withMessage('Debes ingresar tu nombre.'),
     check('apellido').isLength({min:2}).withMessage('Debes ingresar tu apellido.'),
@@ -56,4 +55,4 @@ const loginValidate =
       .withMessage("Debe contener al menos una minúscula"),
   ];
 
-  module.exports = loginValidate
+module.exports = registerValidate;

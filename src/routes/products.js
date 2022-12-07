@@ -4,7 +4,7 @@ const router = express.Router();
 
 // ************ Middlewares ***********
 const uploadProductFile = require("../middlewares/multerProductos");
-
+const adminPageMiddleware = require("../middlewares/adminPageMiddleware");
 // validacion de express-validation con la funcion body.
 // const validations = [
 //     body("name")
@@ -41,11 +41,11 @@ router.put(
 
 router.get("/detalles/:id", productsControllers.detalles);
 
-router.get("/crear", productsControllers.create);
+router.get("/crear", adminPageMiddleware, productsControllers.create);
 
 router.post("/", uploadProductFile.single("image"), productsControllers.store);
 
-router.get("/edit/:id", productsControllers.edit);
+router.get("/edit/:id", adminPageMiddleware, productsControllers.edit);
 
 router.delete("/:id", productsControllers.destroy);
 

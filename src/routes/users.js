@@ -7,11 +7,10 @@ const router = express.Router();
 const usersControllers = require("../controllers/usersControllers");
 
 // ************ Middlewares ***********
-const registrationValidate = require("../middlewares/registrationValidate");
+const registerValidate = require("../middlewares/registrationValidate");
 const loginValidate = require("../middlewares/loginValidate");
 const userPageMiddleware = require("../middlewares/userPageMiddleware");
 const guestPageMiddleware = require("../middlewares/guestPageMiddleware");
-const adminPageMiddleware = require("../middlewares/adminPageMiddleware");
 const uploadUserFile = require("../middlewares/multerUsuarios");
 
 router.get("/login", guestPageMiddleware, usersControllers.login);
@@ -20,7 +19,7 @@ router.get("/registro", guestPageMiddleware, usersControllers.registro);
 router.post(
   "/registro",
   /* AGREGAR CUANDO SE PUEDA SUBIR FOTO  uploadUserFile.single("avatar"),*/
-  registrationValidate,
+  registerValidate,
   usersControllers.processRegister
 );
 router.get("/password", guestPageMiddleware, usersControllers.password);

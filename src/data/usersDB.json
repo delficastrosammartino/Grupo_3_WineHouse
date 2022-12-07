@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Juan",
-    "lastName": "Gomez",
-    "email": "hola@mail.com",
-    "password": "pass1234",
+    "name": "Admin",
+    "lastName": "Admin",
+    "email": "admin@admin.com",
+    "password": "$2a$10$o/cBfR1.o9NaguwM3s/Sru2kLhJlL8rBl3QC0.yx8rmPf1n1R41Y.",
     "category": "socio",
     "image": "img-profil-pic",
     "adress": "calle falsa 123",
