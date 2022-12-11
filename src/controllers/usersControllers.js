@@ -38,6 +38,10 @@ const usersControllers = {
       if (passwordOk) {
         //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
         req.session.userLogged = userToLogin;
+        if(req.body.rememberme){
+          // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
+          res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60) * 2}) // 1000 es un segundo. En este caso dura 2 minutos.
+         }
 
         return res.redirect("/");
       } else {
@@ -105,6 +109,7 @@ const usersControllers = {
   // LOGICA LOGOUT
   logout: function (req, res) {
     //res.cookie("recordame", "", { maxAge: 0 });
+    res.clearCookie("userEmail")
     req.session.destroy();
     return res.redirect("/users/login");
   },
