@@ -161,7 +161,7 @@ const usersControllers = {
     res.render("./users/registro");
   },
 
-  processRegister: (req, res) => {
+  /* processRegister: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     const resultValidation = validationResult(req);
     console.log(resultValidation);
@@ -207,8 +207,54 @@ const usersControllers = {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
     // vulevo a /
     res.redirect("/users/login");
+  },*/
+  processRegister: (req, res) => {
+    // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+    const resultValidation = validationResult(req);
+    console.log(resultValidation);
+    // si hay errores entra aca.
+    if (resultValidation.errors.length > 0) {
+    // renderizo la vista registro, y le paso los errores.
+      return res.render("./users/registro", {
+    // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    }
+    // guardo las busquedas que trabajan de manera asincronica.
+    db.User.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+      .then((user) => {
+      if (user) {
+        // si se encontró un usuario, mostrar un mensaje de error y devolver la vista de registro con los campos completados
+        res.render("./users/registro", {
+          errors: {
+            email: {
+              msg: "Este email ya está registrado"
+            }
+          },
+          oldData: req.body,
+        });
+      } else {
+        // si no se encontró ningún usuario, permitir que el usuario complete el registro
+        db.User.create({
+          name: req.body.nombre,
+        lastName: req.body.apellido,
+        email: req.body.email,
+        // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
+        password: bcrypt.hashSync(req.body.password, 10),
+        category_id: 2,
+        //image: " ", //req.file.filename,
+        //adress: " ",
+        //userName: " ",
+        })
+        res.redirect("/users/login")
+      }
+    });
   },
-
   password: (req, res) => {
     res.render("./users/password");
   },
