@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { validationResult } = require("express-validator");
 let bcrypt = require("bcryptjs");
+const db = require("../database/models");
 
 // indico la ruta de mi archivo .json, la abosulta.
 const usersFilePath = path.join(__dirname, "../data/usersDB.json");
@@ -29,7 +30,50 @@ const usersControllers = {
       });
     }
 
-    let userToLogin = users.find((user) => user.email == req.body.email);
+    db.User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    })
+      .then((userToLogin) => {
+        if (userToLogin) {
+          let passwordOk = bcrypt.compareSync(
+            req.body.password,
+            userToLogin.password
+          );
+
+          if (passwordOk) {
+            //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
+            req.session.userLogged = userToLogin;
+            if (req.body.rememberme) {
+              // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
+              res.cookie("userEmail", req.body.email, {
+                maxAge: 1000 * 60 * 2,
+              }); // 1000 es un segundo. En este caso dura 2 minutos.
+            }
+
+            return res.redirect("/");
+          } else {
+            return res.render("users/login", {
+              errors: {
+                password: {
+                  msg: "La contraseña es incorrecta",
+                },
+              },
+              oldData: req.body,
+            });
+          }
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+
+        res.render("users/login", {
+          error: { msg: "Credenciales incorrectas" },
+        });
+      });
+  },
+  /*let userToLogin = users.find((user) => user.email == req.body.email);
     if (userToLogin) {
       let passwordOk = bcrypt.compareSync(
         req.body.password,
@@ -38,10 +82,10 @@ const usersControllers = {
       if (passwordOk) {
         //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
         req.session.userLogged = userToLogin;
-        if(req.body.rememberme){
+        if (req.body.rememberme) {
           // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
-          res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60) * 2}) // 1000 es un segundo. En este caso dura 2 minutos.
-         }
+          res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 2 }); // 1000 es un segundo. En este caso dura 2 minutos.
+        }
 
         return res.redirect("/");
       } else {
@@ -64,28 +108,28 @@ const usersControllers = {
     });
   },
 
-  /*db.User.findOne({
+  db.User.findOne({
       where: {
         email: req.body.email,
       },
     })
-      .then((usuarioALoguearse) => {
-        if (usuarioALoguearse) {
+      .then((userToLogin) => {
+        if (userToLogin) {
           let comparacion = bcrypt.compareSync(
             req.body.password,
-            usuarioALoguearse.password
+            userToLogin.password
           );
 
           if (comparacion) {
-            req.session.usuarioALoguearse = {
-              ...usuarioALoguearse["dataValues"],
+            req.session.userToLogin = {
+              ...userToLogin["dataValues"],
               password: "",
             };
 
             if (req.body.remindme) {
               res.cookie(
                 "recordame",
-                { ...usuarioALoguearse["dataValues"], password: "" },
+                { ...userToLogin["dataValues"], password: "" },
                 { maxAge: 1000 * 60 * 60 * 24 }
               );
             }
@@ -109,7 +153,7 @@ const usersControllers = {
   // LOGICA LOGOUT
   logout: function (req, res) {
     //res.cookie("recordame", "", { maxAge: 0 });
-    res.clearCookie("userEmail")
+    res.clearCookie("userEmail");
     req.session.destroy();
     return res.redirect("/users/login");
   },
