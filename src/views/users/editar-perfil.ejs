@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Perfil</title>
+    <link rel="stylesheet" href="/css/editar-perfil.css">
   </head>
-<body>
+<body class="edit-profile">
   <h1>Editar perfil</h1>
   <form action="/users/update?_method=PUT" method="POST">
-    <label for="name">Nombre:</label><br>
-    <input type="text" id="name" name="name" value="<%= user ? user.name : oldData.name %>" ><br>
+    <div>
+      <label for="name">Nombre:</label><br>
+      <input type="text" id="name" name="name" value="<%= user ? user.name : oldData.name %>" ><br>
+    </div>
     <label for="lastName">Apellido:</label><br>
     <input type="text" id="lastName" name="lastName" value="<%= user ? user.lastName : oldData.lastName %>" ><br>
     <label for="email">Correo electrónico:</label><br>
@@ -27,7 +30,7 @@
     <label for="confirmPassword">Confirmar contraseña:</label><br>
     <input type="password" id="confirmPassword" name="confirmPassword"><br>
     <br>
-    <input type="submit" value="Actualizar">
+    <input class="edit-button" type="submit" value="Actualizar">
   </form> 
 </body>
 </html>

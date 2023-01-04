@@ -1,2 +1,182 @@
-.asd {
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing:border-box;
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    color: #80083F;
+}
+
+
+.edit-profile {
+    text-align: center;
+}
+
+input{
+    width: 75%;
+    padding: 5px 5px;
+    border: solid 1px #b9b7b8;
+    border-radius: 12px;
+}
+.edit-button{
+    background-color: #80083F;
+    color: white;
+}
+label {
+    position: absolute;
+    width: 75%;
+    left: 10px;
+    float: left
+}
+
+
+
+/********* Navegacion Celulares *************/
+
+@media (min-width: 460px){
+    input{
+        width: 70%;
+    }
+    
+}
+
+/*************** Navegacion Tablets *********/
+
+@media (min-width: 769px){ 
+    input{
+        width: 50%;
+    }
+
+   /* header{
+        flex-direction: row;
+        justify-content: space-between;
+        box-shadow: 0px 3px 6px #00000029;
+    }
+    main{
+        margin-top: 100px;
+    }
+    .phone-register-button{
+        display: none;
+    }
+    .nav-bar-phone{
+        display: none;
+    }
+    .icons-box{
+        display: flex;
+    }
+    .menu-desktop{
+        display: flex;
+    }
+    .functions-header{
+        display: flex;
+        font-size: 14px;
+    }
+    .logo{
+        width: 30%;
+    }
+    .logo img{
+        width: 100%;
+    }
+    .buscador-desktop{
+        width: 125px;
+    }
+    .lupa-desktop{
+        left: -10px;
+    }
+    .desktop-register-button{
+        display: flex;
+        color:#80083F;
+        font-size: 20px;
+    }
+    .icons-desktop a{
+        font-size: 17px;
+        padding: 10px 5px;
+        bottom: 7px;
+    }
+    .box-buscador-desktop{
+        display: flex;
+        align-items: center;
+        position: relative;
+        bottom: 0px;
+    }
+    .buscador-desktop{
+        width: 100px;
+        bottom: -6px;
+        left: 12px;
+    }*/
+}
+
+/*************** Navegacion Desktop *********/
+
+@media (min-width: 1280px){
+    input{
+        width: 35%;
+    }
+    /*header{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    main{
+        margin-top: 140px;
+    }
+    .phone-register-button{
+        display: none;
+    }
+    .nav-bar-phone{
+        display: none;
+    }
+    .icons-box{
+        display: flex;
+        padding: 0px 10px;
+    }
+    .menu-desktop{
+        display: flex;
+    }
+    .functions-header{
+        display: flex;
+        font-size: 14px;
+        justify-content: space-around;
+        width: 600px;
+    }
+    .logo{
+        width: 30%;
+    }
+    .logo img{
+        width: 100%;
+    }
+    .buscador-desktop{
+        width: 180px;
+    }
+    .lupa-desktop{
+        position: relative;
+        left: -24px;
+        bottom: -6px;
+        color: #80083F;
+    }
+    .desktop-register-button{
+        display: flex;
+        color:#80083F;
+        font-size: 20px;
+    }
+    .icons-desktop a{
+        font-size: 25px;
+        padding: 10px 5px;
+        bottom: 10px;
+    
+    }
+    .box-buscador-desktop{
+        display: flex;
+        align-items: center;
+        position: relative;
+        bottom: 0px;
+    }
+    .buscador-desktop{
+        padding: 7px 10px;
+        border: solid 1px #80083F;
+        border-radius: 12px;
+        font-weight: 300;
+        position: relative;
+        bottom: -6px;
+    }*/
 }
