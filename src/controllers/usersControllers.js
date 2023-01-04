@@ -327,6 +327,7 @@ const usersControllers = {
     .then((user) => {
       console.log("2")
       // Si no se encuentra el usuario, muestra un error.
+      // esta parte del codigo no es necesaria por las validaciones y permisos que ya tenemos.
       if (!user) {
         console.log("3")
         return res.render("users/editar-perfil", {
@@ -348,6 +349,7 @@ const usersControllers = {
     return res.render("users/editar-perfil", {
       error: { msg: "La contraseña no coincide con la almacenada en la base de datos" },
       oldData: req.body,
+      user: user,
     });
     }
     // Actualiza el usuario en la base de datos.
@@ -359,7 +361,7 @@ const usersControllers = {
       // password: bcrypt.hashSync(req.body.password, 10),
       // category_id: 1,
       // image: " ", //req.body.image,
-      // adress: req.body.adress,
+      adress: req.body.adress,
       userName: req.body.userName,
     },{
       where: {
