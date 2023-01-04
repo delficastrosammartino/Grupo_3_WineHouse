@@ -43,7 +43,11 @@ router.get("/detalles/:id", productsControllers.detalles);
 
 router.get("/crear", adminPageMiddleware, productsControllers.create);
 
-router.post("/", uploadProductFile.single("image"), productsControllers.store);
+router.post(
+  "/",
+  //uploadProductFile.single("image"),
+  productsControllers.store
+);
 
 router.get("/edit/:id", adminPageMiddleware, productsControllers.edit);
 

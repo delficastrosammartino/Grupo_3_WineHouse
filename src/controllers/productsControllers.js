@@ -3,6 +3,7 @@ const fs = require("fs");
 // libreria para concatenar y obtener rutas.
 const path = require("path");
 const { validationResult } = require("express-validator");
+const db = require("../database/models");
 
 // indico la ruta de mi archivo .json, la abosulta.
 const productsFilePath = path.join(__dirname, "../data/productsDB.json");
@@ -26,7 +27,7 @@ const productsControllers = {
 
   store: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    const resultValidation = validationResult(req);
+    /* const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
@@ -35,9 +36,9 @@ const productsControllers = {
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    }
+    } */
     // Creo la variable nuevo producto, es importante que id sea unico e irrepetible.
-    let newProduct = {
+    /*let newProduct = {
       id: Date.now(),
       size: Number(req.body.size),
       image: req.file.filename,
@@ -49,12 +50,25 @@ const productsControllers = {
       provincia: req.body.provincia,
       description: req.body.description,
       stock: true,
-    };
+    }; */
+
+    db.Product.create({
+      name: req.body.name,
+      price: Number(req.body.price),
+      discount: Number(req.body.discount),
+      //stock (definir si queremos que sea la cantidad exacta de stock, 0 o 1 (true o false), etc)
+      bodega_id: req.body.bodega,
+      size_id: req.body.size,
+      category_id: req.body.category,
+      //image_id: req.file.filename,
+      description_id: req.body.description,
+      //province_id (agregar en la base de datos en la tabla products)
+    });
     // Pusheo en el array products
-    products.push(newProduct);
+    /*products.push(newProduct);
     // Lo guardo en productsFilePath es la ruta que puse mas arriba, lo convierto en string para poder guardar en el json, eso hace el stringify
     // Le mando products, el null y el " " son para orden, salto de linea o algo asi.
-    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, " "));
+    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, " ")); */
     // vulevo a /products
     res.redirect("/products");
   },
