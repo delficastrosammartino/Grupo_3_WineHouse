@@ -5,37 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="/css/editar-perfil.css">
+    <link rel="stylesheet" href="/css/editar-perfil.css" />
   </head>
-<body class="edit-profile">
-  <h1>Editar perfil</h1>
-  <form action="/users/update?_method=PUT" method="POST">
-    <div>
-      <label for="name">Nombre:</label><br>
-      <input type="text" id="name" name="name" value="<%= user ? user.name : oldData.name %>" ><br>
-    </div>
-    <label for="lastName">Apellido:</label><br>
-    <input type="text" id="lastName" name="lastName" value="<%= user ? user.lastName : oldData.lastName %>" ><br>
-    <label for="email">Correo electrónico:</label><br>
-    <input type="email" id="email" name="email" value="<%= user ? user.email : oldData.email %>"  disabled><br>
-    <label for="userName">Nombre de usuario:</label><br>
-    <input type="text" id="userName" name="userName" value="<%= user ? user.userName : oldData.userName %>" ><br>
-    <label for="adress">Dirección:</label><br>
-    <input type="text" id="adress" name="adress" value="<%= user? user.adress : oldData.adress %>" ><br>
-    <label for="image">Imagen de perfil:</label><br>
-    <input type="file" id="image" name="image"><br>
-    <br>
-    <label for="password">Contraseña actual:</label><br>
-    <input type="password" id="password" name="password"><br>
-    <label for="confirmPassword">Confirmar contraseña:</label><br>
-    <input type="password" id="confirmPassword" name="confirmPassword"><br>
-    <br>
-    <input class="edit-button" type="submit" value="Actualizar">
-  </form> 
-</body>
+  <body class="edit-profile">
+    <h1>Editar perfil</h1>
+    <form action="/users/update?_method=PUT" method="POST">
+      <div>
+        <label for="name" class="edit-label">Nombre:</label><br />
+        <input
+          class="edit-input"
+          type="text"
+          id="name"
+          name="name"
+          value="<%= user ? user.name : oldData.name %>"
+        /><br />
+      </div>
+      <label for="lastName" class="edit-label">Apellido:</label><br />
+      <input
+        class="edit-input"
+        type="text"
+        id="lastName"
+        name="lastName"
+        value="<%= user ? user.lastName : oldData.lastName %>"
+      /><br />
+      <label for="email" class="edit-label">Correo electrónico:</label><br />
+      <input
+        class="edit-input"
+        type="email"
+        id="email"
+        name="email"
+        value="<%= user ? user.email : oldData.email %>"
+        disabled
+      /><br />
+      <label for="userName" class="edit-label">Nombre de usuario:</label><br />
+      <input
+        class="edit-input"
+        type="text"
+        id="userName"
+        name="userName"
+        value="<%= user ? user.userName : oldData.userName %>"
+      /><br />
+      <label for="adress" class="edit-label">Dirección:</label><br />
+      <input
+        class="edit-input"
+        type="text"
+        id="adress"
+        name="adress"
+        value="<%= user? user.adress : oldData.adress %>"
+      /><br />
+      <label for="image" class="edit-label">Imagen de perfil:</label><br />
+      <input class="edit-input" type="file" id="image" name="image" /><br />
+      <br />
+      <label for="password" class="edit-label">Contraseña actual:</label><br />
+      <input
+        class="edit-input"
+        type="password"
+        id="password"
+        name="password"
+      /><br />
+      <label for="confirmPassword" class="edit-label"
+        >Confirmar contraseña:</label
+      ><br />
+      <input
+        class="edit-input"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+      /><br />
+      <br />
+      <input class="edit-button" type="submit" value="Actualizar" />
+    </form>
+  </body>
 </html>
-
-
-
-
-

@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfil</title>
-  </head>
+  <%- include("../partials/head.ejs") %>
+
   <body>
-    <h1>Perfil de usuario</h1>
-    <p>Nombre: <%= user.name %></p>
-    <p>Apellido: <%= user.lastName %></p>
-    <p>Correo electrónico: <%= user.email %></p>
-    <p>Nombre de usuario: <%= user.userName %></p>
-    <p>Dirección: <%= user.adress %></p>
-    <p>Imagen de perfil: <img src="<%= user.image %>" alt="Imagen de perfil"></p>
-    <a href="/users/editar-perfil"><button>Editar perfil</button></a>
+    <%- include("../partials/header.ejs") %>
+
+    <main>
+      <section>
+        <div class="contenedor-ambos">
+          <div class="contenedor-perfil">
+            <div>
+              <div class="circulo-img"></div>
+              <!-- <img src="<%= user.image %>" alt="Imagen de perfil" /> -->
+            </div>
+            <div>
+              <p>Hola <%= user.userName %>!</p>
+            </div>
+            <div>
+              <a href="/users/editar-perfil"><button>Editar perfil</button></a>
+            </div>
+
+            <div>
+              <a href="/users/logout"><button>Cerrar Sesión</button></a>
+            </div>
+          </div>
+
+          <div class="contenedor-info-personal">
+            <p>Nombre: <%= user.name %></p>
+            <p>Apellido: <%= user.lastName %></p>
+            <p>Correo electrónico: <%= user.email %></p>
+            <p>Dirección: <%= user.adress %></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
   </body>
-  </html>
+</html>
