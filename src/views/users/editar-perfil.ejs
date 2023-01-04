@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Perfil</title>
+  </head>
+<body>
+  <h1>Editar perfil</h1>
+  <form action="/actualizarPerfil" method="POST">
+    <label for="name">Nombre:</label><br>
+    <input type="text" id="name" name="name" value="<%= user.name %>"><br>
+    <label for="fullName">Apellido:</label><br>
+    <input type="text" id="fullName" name="fullName" value="<%= user.fullName %>"><br>
+    <label for="email">Correo electrónico:</label><br>
+    <input type="email" id="email" name="email" value="<%= user.email %>" disabled><br>
+    <label for="userName">Nombre de usuario:</label><br>
+    <input type="text" id="userName" name="userName" value="<%= user.userName %>"><br>
+    <label for="adress">Dirección:</label><br>
+    <input type="text" id="adress" name="adress" value="<%= user.adress %>"><br>
+    <label for="image">Imagen de perfil:</label><br>
+    <input type="file" id="image" name="image"><br>
+    <br>
+    <label for="password">Contraseña actual:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <label for="confirmPassword">Confirmar contraseña:</label><br>
+    <input type="password" id="confirmPassword" name="confirmPassword"><br>
+    <br>
+    <input type="submit" value="Actualizar">
+  </form> 
+</body>
+</html>
+
+
+
+
+

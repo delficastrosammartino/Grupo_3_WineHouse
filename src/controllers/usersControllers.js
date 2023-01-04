@@ -246,7 +246,7 @@ const usersControllers = {
         email: req.body.email,
         // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
         password: bcrypt.hashSync(req.body.password, 10),
-        category_id: 2,
+        category_id: 1,
         //image: " ", //req.file.filename,
         //adress: " ",
         //userName: " ",
@@ -261,6 +261,47 @@ const usersControllers = {
   perfil: (req, res) => {
     return res.render("./users/perfil", { user: req.session.userLogged });
   },
+  perfilDB: (req, res) => {
+    console.log(req.session.userLogged)
+    db.User.findOne({
+      where: {
+        email: req.session.userLogged.email
+      }
+    })
+    .then((user) => {
+      res.render('users/perfil', {user: user});
+    })
+    .catch(function (error) {
+      
+      console.log(error);
+
+      res.render("users/perfil", {
+        error: { msg: "Algo salio mal" },
+      });
+    });
+
+    
+  },
+  editUser: (req, res) => {
+    db.User.findOne({
+      where: {
+        email: req.session.userLogged.email
+      }
+    })
+    .then((user) => {
+      res.render('users/editar-perfil', {user: user});
+    })
+    .catch(function (error) {
+      
+      console.log(error);
+
+      res.render("users/perfil", {
+        error: { msg: "Algo salio mal" },
+      });
+    });
+
+    
+  }
 };
 
 module.exports = usersControllers;

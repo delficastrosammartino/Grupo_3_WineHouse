@@ -23,8 +23,9 @@ router.post(
   usersControllers.processRegister
 );
 router.get("/password", guestPageMiddleware, usersControllers.password);
-router.get("/perfil", userPageMiddleware, usersControllers.perfil);
+router.get("/perfil", userPageMiddleware, usersControllers.perfilDB);
 router.get("/logout", userPageMiddleware, usersControllers.logout);
+router.get("/editar-perfil", userPageMiddleware, usersControllers.editUser);
 
 module.exports = router;
 

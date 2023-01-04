@@ -7,8 +7,13 @@
     <title>Perfil</title>
   </head>
   <body>
-    <h1>Perfil</h1>
-
-    <div>Bienvenido my friend, <%= user.name %></div>
+    <h1>Perfil de usuario</h1>
+    <p>Nombre: <%= user.name %></p>
+    <p>Apellido: <%= user.fullName %></p>
+    <p>Correo electrónico: <%= user.email %></p>
+    <p>Nombre de usuario: <%= user.userName %></p>
+    <p>Dirección: <%= user.adress %></p>
+    <p>Imagen de perfil: <img src="<%= user.image %>" alt="Imagen de perfil"></p>
+    <a href="/editar-perfil"><button>Editar perfil</button></a>
   </body>
-</html>
+  </html>
