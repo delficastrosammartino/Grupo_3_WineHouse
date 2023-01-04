@@ -8,17 +8,17 @@
   </head>
 <body>
   <h1>Editar perfil</h1>
-  <form action="/actualizarPerfil" method="POST">
+  <form action="/users/update?_method=PUT" method="POST">
     <label for="name">Nombre:</label><br>
-    <input type="text" id="name" name="name" value="<%= user.name %>"><br>
-    <label for="fullName">Apellido:</label><br>
-    <input type="text" id="fullName" name="fullName" value="<%= user.fullName %>"><br>
+    <input type="text" id="name" name="name" value="<%= user ? user.name : oldData.name %>" ><br>
+    <label for="lastName">Apellido:</label><br>
+    <input type="text" id="lastName" name="lastName" value="<%= user ? user.lastName : oldData.lastName %>" ><br>
     <label for="email">Correo electrónico:</label><br>
-    <input type="email" id="email" name="email" value="<%= user.email %>" disabled><br>
+    <input type="email" id="email" name="email" value="<%= user ? user.email : oldData.email %>"  disabled><br>
     <label for="userName">Nombre de usuario:</label><br>
-    <input type="text" id="userName" name="userName" value="<%= user.userName %>"><br>
+    <input type="text" id="userName" name="userName" value="<%= user ? user.userName : oldData.userName %>" ><br>
     <label for="adress">Dirección:</label><br>
-    <input type="text" id="adress" name="adress" value="<%= user.adress %>"><br>
+    <input type="text" id="adress" name="adress" value="<%= user? user.adress : oldData.adress %>" ><br>
     <label for="image">Imagen de perfil:</label><br>
     <input type="file" id="image" name="image"><br>
     <br>

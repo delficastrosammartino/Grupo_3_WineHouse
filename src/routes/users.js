@@ -22,6 +22,7 @@ router.post(
   registerValidate,
   usersControllers.processRegister
 );
+router.put('/update', registerValidate, usersControllers.updateUser);
 router.get("/password", guestPageMiddleware, usersControllers.password);
 router.get("/perfil", userPageMiddleware, usersControllers.perfilDB);
 router.get("/logout", userPageMiddleware, usersControllers.logout);

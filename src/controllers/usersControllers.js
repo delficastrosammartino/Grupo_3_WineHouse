@@ -289,7 +289,7 @@ const usersControllers = {
       }
     })
     .then((user) => {
-      res.render('users/editar-perfil', {user: user});
+      res.render('./users/editar-perfil', {user: user});
     })
     .catch(function (error) {
       
@@ -299,9 +299,98 @@ const usersControllers = {
         error: { msg: "Algo salio mal" },
       });
     });
-
+  },
+  updateUser: (req, res) => {
+    /* console.log("11")
+    // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+    const resultValidation = validationResult(req);
+    // si hay errores entra aca.
+    if (resultValidation.errors.length > 0) {
+      console.log("12")
+      // renderizo la vista login, y le paso los errores.
+      return res.render("./users/editar-perfil", {
+        // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    } */
     
-  }
-};
+    console.log("1")
+    console.log(req.body)
+    console.log(req.body.email)
+    // Busca el usuario en la base de datos
+    db.User.findOne({
+      where: {
+        email: req.session.userLogged.email,
+      },
+    })
+    .then((user) => {
+      console.log("2")
+      // Si no se encuentra el usuario, muestra un error.
+      if (!user) {
+        console.log("3")
+        return res.render("users/editar-perfil", {
+          error: { msg: "El usuario no existe" },
+        });
+      }
+      // Compara la contraseña y la confirmación de contraseña.
+      if (req.body.password !== req.body.confirmPassword) {
+        console.log("4")
+        return res.render("users/editar-perfil", {
+          error: { msg: "La contraseña y la confirmación de contraseña no coinciden" },
+          oldData: req.body,
+        });
+    }
+    // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
+    const passwordOk = bcrypt.compareSync(req.body.password, user.password);
+    if (!passwordOk) {
+      console.log("5")
+    return res.render("users/editar-perfil", {
+      error: { msg: "La contraseña no coincide con la almacenada en la base de datos" },
+      oldData: req.body,
+    });
+    }
+    // Actualiza el usuario en la base de datos.
+    db.User.update({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      // email: req.body.email,
+      // Encripta la contraseña.
+      // password: bcrypt.hashSync(req.body.password, 10),
+      // category_id: 1,
+      // image: " ", //req.body.image,
+      // adress: req.body.adress,
+      userName: req.body.userName,
+    },{
+      where: {
+        email: req.session.userLogged.email,
+      },
+    })
+    .then((user) => {
+      console.log("6")
+      // Redirige al usuario al perfil después de actualizar.
+      res.render("users/perfil", {user:user});
+    })
+    .catch((error) => {
+      console.log("8")
+      // Si ocurre un error durante la actualización, muestra un error.
+      res.render("users/editar-perfil", {
+        error: { msg: "Error al actualizar el usuario: " + error.message },
+        oldData: req.body,
+      });
+    });
+  })
+  .catch((error) => {
+    console.log("9")
+    // Si ocurre un error durante la búsqueda del usuario, muestra un error.
+    res.render("users/editar-perfil", {
+      error: { msg: "Error al buscar el usuario: " + error.message },
+    });
+  });
+
+}
+
+
+}
 
 module.exports = usersControllers;
