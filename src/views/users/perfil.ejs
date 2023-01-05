@@ -9,12 +9,18 @@
       <section>
         <div class="contenedor-ambos">
           <div class="contenedor-perfil">
-            <div>
-              <div class="circulo-img"></div>
+            <div class="img-saludo">
+              <div class="circulo-img">
+                <img
+                  src="/images/imagen-de-perfil.png"
+                  alt="Imagen de perfil"
+                  class="img-perfil"
+                />
+              </div>
               <!-- <img src="<%= user.image %>" alt="Imagen de perfil" /> -->
-            </div>
-            <div>
-              <p>Hola <%= user.userName %>!</p>
+              <div class="saludo-perfil">
+                <p>Hola <%= user.userName %>!</p>
+              </div>
             </div>
             <div>
               <a href="/users/editar-perfil"><button>Editar perfil</button></a>

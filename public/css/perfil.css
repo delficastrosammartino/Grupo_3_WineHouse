@@ -1,28 +1,27 @@
 main {
-  padding: 250px 20px;
+  padding: 7px 0;
 }
 
 .contenedor-ambos {
   display: flex;
-  justify-content: space-between;
-  margin: 45px;
+  flex-direction: column;
 }
 
 .contenedor-perfil {
   display: flex;
   background-color: #80083f;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 40px 80px;
-  flex-direction: column;
+  padding: 0 50px;
+  height: 300px;
 }
 
 .contenedor-info-personal {
   display: flex;
   flex-direction: column;
-  border: solid 1px lightgray;
   height: 500px;
-  width: 500px;
+  justify-content: space-evenly;
+  padding: 0 50px;
 }
 
 .contenedor-circulo {
@@ -35,4 +34,20 @@ main {
   width: 150px;
   border-radius: 50%;
   background-color: white;
+  margin-bottom: 20px;
+}
+
+.img-perfil {
+  width: 100%;
+}
+
+.img-saludo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saludo-perfil {
+  font-size: 25px;
+  color: white;
 }
