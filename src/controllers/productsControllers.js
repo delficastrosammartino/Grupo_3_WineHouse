@@ -11,6 +11,33 @@ const productsFilePath = path.join(__dirname, "../data/productsDB.json");
 const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
 const productsControllers = {
+  // /products sacando la info de db.
+  productsDB: (req, res) => {
+    db.Product.findAll()
+      .then((products) => {
+        res.render ("/products", {products})
+      })
+
+  },
+
+  detallesDB: (req, res) => {
+    db.Product.findByPK(req.params.id, {
+      include: [
+        {association: "bodega"},
+        {association: "products_category"},
+        {association: "province"},
+        {association: "sizes"},
+        {association: "images"}
+      ]
+    })
+      .then((product) => {
+        res.render("./products/detalles", { product })
+      })
+  },
+
+
+
+
   products: (req, res) => {
     res.render("./products/products", { products });
   },
@@ -38,7 +65,7 @@ const productsControllers = {
       });
     } */
     // Verificar si el producto ya está almacenado
-    console.log(req.body)
+   /* console.log(req.body)
     console.log("1")
     db.Product.findOne({
       where: {
@@ -50,7 +77,7 @@ const productsControllers = {
         { name: req.body.name },
         { bodega_id: req.body.bodega_id },
         { size_id: req.body.size_id },
-      ],*/
+      ],
     })
     .then((product) => {
       console.log("2")
@@ -65,9 +92,9 @@ const productsControllers = {
           oldData: req.body,
         })
       }
-   
+      
     });
-    console.log("3")
+    console.log("3")*/
     db.Product.create(req.body)
       .then((product) => {
       console.log("4")
