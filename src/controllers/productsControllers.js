@@ -15,22 +15,22 @@ const productsControllers = {
   productsDB: (req, res) => {
     db.Product.findAll()
       .then((products) => {
-        res.render ("/products", {products})
+        res.render ("./products/products", {products})
       })
 
   },
 
   detallesDB: (req, res) => {
-    db.Product.findByPK(req.params.id, {
+    db.Product.findByPk(req.params.id, {
       include: [
-        {association: "bodega"},
-        {association: "products_category"},
+        {association: "products_categories"},
         {association: "province"},
         {association: "sizes"},
         {association: "images"}
       ]
     })
       .then((product) => {
+        console.log(product)
         res.render("./products/detalles", { product })
       })
   },

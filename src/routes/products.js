@@ -31,7 +31,7 @@ const adminPageMiddleware = require("../middlewares/adminPageMiddleware");
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
 const productsControllers = require("../controllers/productsControllers");
 
-router.get("/", productsControllers.products);
+router.get("/", productsControllers.productsDB);
 
 router.put(
   "/:id",
@@ -39,7 +39,7 @@ router.put(
   productsControllers.update
 );
 
-router.get("/detalles/:id", productsControllers.detalles);
+router.get("/detalles/:id", productsControllers.detallesDB);
 
 router.get("/crear", 
 //adminPageMiddleware, 
