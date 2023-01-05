@@ -15,6 +15,7 @@ h1 {
 input .edit-input {
   width: 75%;
   padding: 5px 5px;
+  border-radius: 6px;
   border: solid 1px #b9b7b8;
   border-radius: 12px;
 }
@@ -27,6 +28,16 @@ label .edit-label {
   width: 75%;
   left: 10px;
   float: left;
+}
+.back {
+    margin: 15px;
+}
+.back-button {
+    background-color: #80083f;
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px;
+    border-radius: 6px;
 }
 
 /********* Navegacion Celulares *************/

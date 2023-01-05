@@ -317,7 +317,7 @@ const usersControllers = {
     
     console.log("1")
     console.log(req.body)
-    console.log(req.body.email)
+    
     // Busca el usuario en la base de datos
     db.User.findOne({
       where: {
@@ -338,8 +338,13 @@ const usersControllers = {
       if (req.body.password !== req.body.confirmPassword) {
         console.log("4")
         return res.render("users/editar-perfil", {
-          error: { msg: "La contraseña y la confirmación de contraseña no coinciden" },
+          errors: { 
+            password: {
+              msg: "La contraseña y la confirmación de contraseña no coinciden" 
+            },
+          },
           oldData: req.body,
+          user: user,
         });
     }
     // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
@@ -347,11 +352,16 @@ const usersControllers = {
     if (!passwordOk) {
       console.log("5")
     return res.render("users/editar-perfil", {
-      error: { msg: "La contraseña no coincide con la almacenada en la base de datos" },
+      errors: { 
+        password:{
+          msg: "La contraseña no coincide con la almacenada en la base de datos" 
+        },
+        },
       oldData: req.body,
       user: user,
     });
     }
+    console.log(req.session.userLogged.email)
     // Actualiza el usuario en la base de datos.
     db.User.update({
       name: req.body.name,
@@ -371,25 +381,9 @@ const usersControllers = {
     .then((user) => {
       console.log("6")
       // Redirige al usuario al perfil después de actualizar.
-      res.render("users/perfil", {user:user});
+      res.render("users/perfil", { user: req.body});
     })
-    .catch((error) => {
-      console.log("8")
-      // Si ocurre un error durante la actualización, muestra un error.
-      res.render("users/editar-perfil", {
-        error: { msg: "Error al actualizar el usuario: " + error.message },
-        oldData: req.body,
-      });
-    });
   })
-  .catch((error) => {
-    console.log("9")
-    // Si ocurre un error durante la búsqueda del usuario, muestra un error.
-    res.render("users/editar-perfil", {
-      error: { msg: "Error al buscar el usuario: " + error.message },
-    });
-  });
-
 }
 
 

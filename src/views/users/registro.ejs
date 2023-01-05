@@ -36,7 +36,7 @@
         <!-- en value le estoy pidiendo que mantenga el dato completado por el usuario si esta bien -->
                         <input 
                             type="text" 
-                            name="nombre" 
+                            name="name" 
                             placeholder="Nombre"
                             class="box-info-user <%= locals.errors && errors.nombre ? "is-invalid" : null %>"
                             value="<%= locals.oldData ? oldData.nombre : null %>"
@@ -52,7 +52,7 @@
                     <div>
                         <input 
                             type="text" 
-                            name="apellido" 
+                            name="lastName" 
                             placeholder="Apellido"
                             class="box-info-user <%= locals.errors && errors.apellido ? "is-invalid" : null %>"
                             value="<%= locals.oldData ? oldData.apellido : null %>" 
@@ -94,7 +94,7 @@
                     <div>
                         <input 
                             type="password" 
-                            name="confirmarPassword" 
+                            name="confirmPassword" 
                             placeholder="Confirmar contraseña"
                             class="box-info-user <%= locals.errors && errors.confirmarPassword ? "is-invalid" : null %>" 
                             value="<%= locals.oldData ? oldData.confirmarPassword : null %>"

@@ -19,13 +19,13 @@ const registerValidate =
   // validacion de express-validation con la funcion body.
   [
     // recibe el nombre del campo a validar.
-    body("nombre")
+    body("name")
       .notEmpty()
       .withMessage("Tienes que escribir un nombre")
       .bail()
       .isLength({ min: 3, max: 30 })
       .withMessage("El nombre no cumple con el largo permitido"),
-    body("apellido")
+    body("fullName")
       .notEmpty()
       .withMessage("Tienes que escribir un apellido")
       .bail()
