@@ -48,7 +48,7 @@ productsControllers.create);
 router.post(
   "/",
   //uploadProductFile.single("image"),
-  productsControllers.store
+  productsControllers.storeDB
 );
 
 router.get("/edit/:id", adminPageMiddleware, productsControllers.edit);

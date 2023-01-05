@@ -14,6 +14,7 @@ module.exports = (sequelize, dataTypes) => {
     },
     discount: {
       type: dataTypes.INTEGER,
+      allowNull: true,
     },
     stock: {
       type: dataTypes.INTEGER,
@@ -34,10 +35,10 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.INTEGER,
     },
     image_id: {
-      type: dataTypes.STRING,
+      type: dataTypes.INTEGER,
     },
     description_id: {
-      type: dataTypes.STRING,
+      type: dataTypes.INTEGER,
     },
     province_id:{
       type: dataTypes.INTEGER
