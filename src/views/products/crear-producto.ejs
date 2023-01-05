@@ -65,7 +65,7 @@
                 <input
                   type="text"
                   id="size"
-                  name="size"
+                  name="size_id"
                   placeholder="Ej: 750"
                   class="form-input"
                   value="<%= locals.oldData ? oldData.size : null %>"
@@ -79,8 +79,8 @@
                 <label for="bodega" class="form-label">Bodega:</label>
                 <input
                   type="text"
-                  id="bodega"
-                  name="bodega"
+                  id="bodega_id"
+                  name="bodega_id"
                   placeholder="Ej: Luigi Bosca"
                   class="form-input"
                   value="<%= locals.oldData ? oldData.bodega : null %>"
@@ -95,7 +95,7 @@
                 <input
                   type="text"
                   id="provincia"
-                  name="provincia"
+                  name="province_id"
                   placeholder="Ej: Mendoza"
                   class="form-input"
                   value="<%= locals.oldData ? oldData.provincia : null %>"
@@ -109,8 +109,8 @@
                 <label for="category" class="form-label">Categoría:</label>
                 <input
                   type="category"
-                  id="category"
-                  name="category"
+                  id="category_id"
+                  name="category_id"
                   placeholder="Categoría"
                   class="form-input"
                   value="<%= locals.oldData ? oldData.category : null %>"
@@ -124,7 +124,7 @@
                 <label for="description" class="form-label">Descripción:</label>
                 <textarea
                   id="description"
-                  name="description"
+                  name="description_id"
                   placeholder="Descripción del producto"
                   class="description-input"
                   value="<%= locals.oldData ? oldData.description : null %>"
@@ -138,7 +138,7 @@
                 <label for="image" class="form-label"
                   >Imagen del producto:</label
                 >
-                <input type="file" id="image" name="image" class="input-foto" />
+                <input type="file" id="image" name="image_id" class="input-foto" />
               </div>
               <% if(locals.errors && errors.image) {%>
               <div class="text-danger"><%= errors.image.msg %></div>

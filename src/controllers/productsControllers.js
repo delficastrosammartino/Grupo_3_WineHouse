@@ -24,7 +24,7 @@ const productsControllers = {
   create: (req, res) => {
     res.render("./products/crear-producto");
   },
-
+  
   store: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     /* const resultValidation = validationResult(req);
@@ -37,40 +37,49 @@ const productsControllers = {
         oldData: req.body,
       });
     } */
-    // Creo la variable nuevo producto, es importante que id sea unico e irrepetible.
-    /*let newProduct = {
-      id: Date.now(),
-      size: Number(req.body.size),
-      image: req.file.filename,
-      name: req.body.name,
-      price: Number(req.body.price),
-      category: req.body.category,
-      discount: Number(req.body.discount),
-      bodega: req.body.bodega,
-      provincia: req.body.provincia,
-      description: req.body.description,
-      stock: true,
-    }; */
-
-    db.Product.create({
-      name: req.body.name,
-      price: Number(req.body.price),
-      discount: Number(req.body.discount),
-      //stock (definir si queremos que sea la cantidad exacta de stock, 0 o 1 (true o false), etc)
-      bodega_id: req.body.bodega,
-      size_id: req.body.size,
-      category_id: req.body.category,
-      //image_id: req.file.filename,
-      description_id: req.body.description,
-      //province_id (agregar en la base de datos en la tabla products)
+    // Verificar si el producto ya está almacenado
+    console.log(req.body)
+    console.log("1")
+    db.Product.findOne({
+      where: {
+        name: req.body.name,
+        //bodega_id: req.body.bodega_id,
+        //size_id: req.body.size_id,
+      },
+      /*and: [
+        { name: req.body.name },
+        { bodega_id: req.body.bodega_id },
+        { size_id: req.body.size_id },
+      ],*/
+    })
+    .then((product) => {
+      console.log("2")
+      console.log(product)
+      if(product){
+        return res.render("./products/crear-producto", {          
+          errors: {
+            name: {
+              msg: "Debe completar los campos, nombre, bodega y tamaño o verificar que ese producto no exista en la db",
+            },
+          },
+          oldData: req.body,
+        })
+      }
+   
     });
-    // Pusheo en el array products
-    /*products.push(newProduct);
-    // Lo guardo en productsFilePath es la ruta que puse mas arriba, lo convierto en string para poder guardar en el json, eso hace el stringify
-    // Le mando products, el null y el " " son para orden, salto de linea o algo asi.
-    fs.writeFileSync(productsFilePath, JSON.stringify(products, null, " ")); */
-    // vulevo a /products
-    res.redirect("/products");
+    console.log("3")
+    db.Product.create(req.body)
+      .then((product) => {
+      console.log("4")
+      console.log(db.Product.find())
+        return db.Product.find()
+      })
+      .then((products) => {
+        res.render("products",{products : products})
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 
   // Update - Form to edit

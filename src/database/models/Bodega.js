@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
   Bodega.associate = function (models) {
     // el models.Movie es por el alias usado en el modelo Movie.
     Bodega.hasMany(models.Product, {
-      as: "products",
+      as: "bodega",
       foreignKey: "bodega_id",
     });
   };

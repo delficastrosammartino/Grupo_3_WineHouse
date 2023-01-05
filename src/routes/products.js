@@ -41,7 +41,9 @@ router.put(
 
 router.get("/detalles/:id", productsControllers.detalles);
 
-router.get("/crear", adminPageMiddleware, productsControllers.create);
+router.get("/crear", 
+//adminPageMiddleware, 
+productsControllers.create);
 
 router.post(
   "/",

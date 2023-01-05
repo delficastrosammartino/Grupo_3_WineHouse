@@ -9,13 +9,25 @@ module.exports = (sequelize, dataTypes) => {
     name: {
       type: dataTypes.STRING,
     },
-    size_id: {
-      type: dataTypes.INTEGER,
-    },
     price: {
       type: dataTypes.INTEGER,
     },
     discount: {
+      type: dataTypes.INTEGER,
+    },
+    stock: {
+      type: dataTypes.INTEGER,
+    },
+    created_at: {
+      type: dataTypes.DATE,
+    },
+    updated_at: {
+      type: dataTypes.DATE,
+    },
+    bodega_id:{
+      type: dataTypes.INTEGER
+    },
+    size_id: {
       type: dataTypes.INTEGER,
     },
     category_id: {
@@ -27,15 +39,9 @@ module.exports = (sequelize, dataTypes) => {
     description_id: {
       type: dataTypes.STRING,
     },
-    stock: {
-      type: dataTypes.INTEGER,
-    },
-    created_at: {
-      type: dataTypes.DATE,
-    },
-    updated_at: {
-      type: dataTypes.DATE,
-    },
+    province_id:{
+      type: dataTypes.INTEGER
+    }
   };
   let config = {
     tableName: "products",
