@@ -34,7 +34,10 @@ const productsControllers = {
       })
   },
   create: (req, res) => {
-    res.render("./products/crear-producto");
+    db.Bodega.findAll()
+      .then((bodegas) => {
+        return res.render("./products/crear-producto", {bodegas});
+      })
   },
   storeDB: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
@@ -57,15 +60,15 @@ const productsControllers = {
     // a medida que hagamos validaciones hay que ir sacandolos y chequeando que no se rompa
     req.body.price = parseInt(req.body.price, 10) || null;
     req.body.discount = parseInt(req.body.discount, 10) || null;
-    req.body.size_id = parseInt(req.body.size_id, 10) || null;
+    //req.body.size_id = parseInt(req.body.size_id, 10) || null;
     //req.body.bodega_id = parseInt(req.body.bodega_id, 10) || null;
     //req.body.province_id = parseInt(req.body.province_id, 10) || null;
-    req.body.stock = parseInt(req.body.stock, 10) || null;
-    req.body.created_at = null;
-    req.body.updated_at = null;
-    req.body.category_id = parseInt(req.body.category_id, 10) || null;
-    req.body.description_id = parseInt(req.body.description_id, 10) || null;
-    req.body.image_id = parseInt(req.body.image_id, 10) || null;
+    //req.body.stock = parseInt(req.body.stock, 10) || null;
+    //req.body.created_at = null;
+    //req.body.updated_at = null;
+    //req.body.category_id = parseInt(req.body.category_id, 10) || null;
+    //req.body.description_id = parseInt(req.body.description_id, 10) || null;
+    //req.body.image_id = parseInt(req.body.image_id, 10) || null;
     /********************************************************/
     console.log(req.body)
     db.Product.create(req.body)

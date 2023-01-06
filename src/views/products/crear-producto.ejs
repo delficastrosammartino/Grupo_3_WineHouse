@@ -77,14 +77,14 @@
 
               <div class="label-input">
                 <label for="bodega" class="form-label">Bodega:</label>
-                <input
-                  type="text"
-                  id="bodega_id"
-                  name="bodega"
-                  placeholder="Ej: Luigi Bosca"
-                  class="form-input"
-                  value="<%= locals.oldData ? oldData.bodega : null %>"
-                />
+                <p>
+                  <select name="bodega" id="" required>
+                      <option value="" disabled selected> - selecciona la bodega - </option>
+                      <% bodegas.forEach(bodega => { %> 
+                          <option value="<%= bodega.id %> "> <%=bodega.name %> </option>
+                      <%  }) %> 
+                  </select>
+                  <br>
               </div>
               <% if(locals.errors && errors.bodega) {%>
               <div class="text-danger"><%= errors.bodega.msg %></div>

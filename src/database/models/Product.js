@@ -26,7 +26,7 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATE,
     },
     bodega_id:{
-      type: dataTypes.INTEGER
+      type: dataTypes.STRING
     },
     size_id: {
       type: dataTypes.INTEGER,
