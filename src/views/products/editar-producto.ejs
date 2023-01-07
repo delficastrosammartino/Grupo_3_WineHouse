@@ -8,19 +8,19 @@
     <main>
       <div>
         <div>
-          <h2>Formulario de creación de productos</h2>
+          <h2>Editar producto</h2>
         </div>
 
 
 
           <form
             class="contenedor-inputs"
-            action="/products/<%=productToEdit.id%>?_method=PUT"
+            action="/products/<%=product.id%>?_method=PUT"
             method="POST"
             enctype="multipart/form-data">
 
               <div class="subtitulo">
-                <h3>Editando el Producto "<%= productToEdit.name %>"</h3>
+                <h3>Editando el Producto "<%= product.name %>"</h3>
               </div>
 
               <div class="label-input">
@@ -29,7 +29,7 @@
                 type="text"
                 name="name"
                 class="form-input"
-                value="<%= productToEdit.name %>"
+                value="<%= product.name %>"
                 placeholder="Nombre"/>
               <div id="erroresName" class="text-danger"></div>
             </div>
@@ -41,7 +41,7 @@
                 step=".01"
                 name="price"
                 class="form-input"
-                value="<%= productToEdit.price %>"
+                value="<%= product.price %>"
                 placeholder="$00.00"/>
               <div id="erroresPrice" class="text-danger"></div>
             </div>
@@ -53,7 +53,7 @@
                 step=".01"
                 name="discount"
                 class="form-input"
-                value="<%= productToEdit.discount %>"
+                value="<%= product.discount %>"
                 placeholder="00"/>
               <div id="erroresDiscount" class="text-danger"></div>
             </div>
@@ -65,7 +65,7 @@
                 step=".01"
                 name="size"
                 class="form-input"
-                value="<%= productToEdit.size %>"
+                value="<%= product.size %>"
                 placeholder="000"/>
               <div id="erroresSize" class="text-danger"></div>
             </div>
@@ -76,7 +76,7 @@
                 type="text"
                 name="bodega"
                 class="form-input"
-                value="<%= productToEdit.bodega %>"
+                value="<%= product.bodega %>"
                 placeholder="Bodega"/>
               <div id="erroresBodega" class="text-danger"></div>
             </div>
@@ -85,9 +85,9 @@
               <label for="name">Provincia:</label>
               <input
                 type="text"
-                name="provincia"
+                name="province"
                 class="form-input"
-                value="<%= productToEdit.provincia %>"
+                value="<%= product.province %>"
                 placeholder="Provincia"/>
               <div id="erroresProvincia" class="text-danger"></div>
             </div>
@@ -98,7 +98,7 @@
                 type="text"
                 name="category"
                 class="form-input"
-                value="<%= productToEdit.category %>"
+                value="<%= product.category %>"
                 placeholder="Categoria"/>
               <div id="erroresCategory" class="text-danger"></div>
             </div>
@@ -106,17 +106,17 @@
             <div class="label-input">
               <p><label>Detalle de producto</label></p>
               <textarea
-                name="description"
+                name="descripcion"
                 rows="10"
                 class="description-input"
-                cols="40"><%= productToEdit.description %>
+                cols="40"><%= product.descripcion %>
               </textarea>
               <div id="erroresDescription" class="text-danger"></div>
             </div>
 
             <div class="label-input">
               <label for="">Imagen:</label>
-              <input type="file" name="product-img" class="input-foto" />
+              <input type="file" name="image" class="input-foto" />
               <div id="erroresImg" class="lista-errores"></div>
             </div>
 
@@ -125,12 +125,12 @@
             </div>
 
             <div class="label-input">
-              <a class="boton-cancel" href="/productos/listado">Cancelar</a>
+              <a class="boton-cancel" href="/products">Cancelar</a>
             </div>
             <div>
               <form
                 class="delete-product"
-                action="/products/<%=productToEdit.id%>?_method=DELETE"
+                action="/products/<%=product.id%>?_method=DELETE"
                 method="POST">
                 <button type="submit" class="boton-crear">Eliminar</button>
               </form>

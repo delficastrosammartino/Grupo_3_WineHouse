@@ -32,7 +32,10 @@ router.post(
   productsControllers.storeDB
 );
 
-router.get("/edit/:id", adminPageMiddleware, productsControllers.edit);
+router.get("/edit/:id", 
+// lo comente para codear y probar mas comodo
+//adminPageMiddleware, 
+productsControllers.edit);
 
 router.delete("/:id", productsControllers.destroy);
 

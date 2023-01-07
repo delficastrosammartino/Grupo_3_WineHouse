@@ -78,6 +78,20 @@ const productsControllers = {
       });
 
   },
+  edit: (req, res) => {
+    db.Product.findByPk(req.params.id, {
+      include: [
+        {association: "products_categories"},
+        {association: "bodega"},
+        {association: "province"},
+        {association: "sizes"},
+        {association: "images"}
+      ]
+    })
+      .then((product) => {
+        res.render("./products/editar-producto", { product })
+      })
+  },
 
 
   products: (req, res) => {
@@ -147,11 +161,6 @@ const productsControllers = {
       });
   },
 
-  // Update - Form to edit
-  edit: (req, res) => {
-    let productToEdit = products.find((product) => product.id == req.params.id);
-    res.render("./products/editar-producto", { productToEdit });
-  },
   // Update - Method to update
   update: (req, res) => {
     /* let productEdited = products.map(function (product) {
