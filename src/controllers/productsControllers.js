@@ -50,33 +50,19 @@ const productsControllers = {
   },
   storeDB: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    /* const resultValidation = validationResult(req);
+    const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
-        // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+        // uso el .mapped para que cada elemento sea un elemento del objeto y tenga sus propiedades dentro.
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    } */
+    }
 
     // PRIMERO HABRIA QUE VERIFICAR SI EL PRODUCTO EXISTE!!!!!!
     
-
-    // ESTO LO HAGO PARA TESTEAR EL FORMULARIO; SI LLEGAN STRING VACIOS DESDE EL BODY SE ROMPE.
-    // la idea es no permitir cargar elementos vacios en el products/crear.
-    // a medida que hagamos validaciones hay que ir sacandolos y chequeando que no se rompa
-    //req.body.price = parseInt(req.body.price, 10) || null;
-    //req.body.discount = parseInt(req.body.discount, 10) || null;
-    //req.body.size_id = parseInt(req.body.size_id, 10) || null;
-    //req.body.bodega_id = parseInt(req.body.bodega_id, 10) || null;
-    //req.body.province_id = parseInt(req.body.province_id, 10) || null;
-    //req.body.stock = parseInt(req.body.stock, 10) || null;
-    //req.body.created_at = null;
-    //req.body.updated_at = null;
-    //req.body.category_id = parseInt(req.body.category_id, 10) || null;
-    //req.body.description_id = parseInt(req.body.description_id, 10) || null;
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
     /********************************************************/
     console.log(req.body)
@@ -92,8 +78,6 @@ const productsControllers = {
       });
 
   },
-
-
 
 
   products: (req, res) => {

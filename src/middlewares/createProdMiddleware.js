@@ -19,7 +19,7 @@ const createProductvalidations = [
         .notEmpty().withMessage("Tienes que indicar la provincia del producto"),
     body("")
         .notEmpty().withMessage(),
-    body("description")
+    body("descripcion")
         .notEmpty().withMessage("Tienes que darle una descripción al producto"),
     body("")
         .notEmpty().withMessage()

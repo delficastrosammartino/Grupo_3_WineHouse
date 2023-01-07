@@ -28,7 +28,7 @@ productsControllers.create);
 router.post(
   "/",
   //uploadProductFile.single("image"),
-  //createProductMiddleware,
+  // createProductMiddleware, mo funciona, todavia no se por que
   productsControllers.storeDB
 );
 
