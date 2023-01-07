@@ -11,31 +11,18 @@ const createProductMiddleware = require("../middlewares/createProdMiddleware");
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
 const productsControllers = require("../controllers/productsControllers");
 
+//Rutas para la creación del CRUD
 router.get("/", productsControllers.productsDB);
-
-router.put(
-  "/:id",
-  uploadProductFile.single("image"),
-  productsControllers.update
-);
-
 router.get("/detalles/:id", productsControllers.detallesDB);
-
-router.get("/crear", 
-//adminPageMiddleware, 
-productsControllers.create);
-
-router.post(
-  "/",
-  //uploadProductFile.single("image"),
-  // createProductMiddleware, mo funciona, todavia no se por que
-  productsControllers.storeDB
-);
-
-router.get("/edit/:id", 
+router.get("/crear", productsControllers.create);
+//uploadProductFile.single("image"),
+// createProductMiddleware, mo funciona, todavia no se por que
+router.post("/", productsControllers.storeDB);
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware, 
-productsControllers.edit);
+router.get("/edit/:id", productsControllers.edit);
+// uploadProductFile.single("image")
+router.put("/update/:id", productsControllers.updateDB);
 
 router.delete("/:id", productsControllers.destroy);
 

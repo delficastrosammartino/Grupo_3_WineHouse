@@ -10,14 +10,7 @@
         <div>
           <h2>Editar producto</h2>
         </div>
-
-
-
-          <form
-            class="contenedor-inputs"
-            action="/products/<%=product.id%>?_method=PUT"
-            method="POST"
-            enctype="multipart/form-data">
+          <form class="contenedor-inputs" action="/products/update/<%=product.id%>?_method=PUT" method="POST">
 
               <div class="subtitulo">
                 <h3>Editando el Producto "<%= product.name %>"</h3>
@@ -29,8 +22,7 @@
                 type="text"
                 name="name"
                 class="form-input"
-                value="<%= product.name %>"
-                placeholder="Nombre"/>
+                value="<%= product.name %>"/>
               <div id="erroresName" class="text-danger"></div>
             </div>
 
@@ -41,8 +33,7 @@
                 step=".01"
                 name="price"
                 class="form-input"
-                value="<%= product.price %>"
-                placeholder="$00.00"/>
+                value="<%= product.price %>"/>
               <div id="erroresPrice" class="text-danger"></div>
             </div>
 
@@ -53,53 +44,79 @@
                 step=".01"
                 name="discount"
                 class="form-input"
-                value="<%= product.discount %>"
-                placeholder="00"/>
+                value="<%= product.discount %>"/>
               <div id="erroresDiscount" class="text-danger"></div>
             </div>
 
             <div class="label-input">
               <label for="discount">Tamaño:</label>
-              <input
-                type="number"
-                step=".01"
-                name="size"
-                class="form-input"
-                value="<%= product.size %>"
-                placeholder="000"/>
+              <select name="size" id="">
+                <% for (let i = 0; i < sizes.length; i++) { %> 
+                    <% if (sizes[i].id == product.size_id) { %> 
+                        <option value="<%= sizes[i].id %>" selected> 
+                            <%=sizes[i].name %> 
+                        </option>
+                    <%  } else { %> 
+                        <option value="<%= sizes[i].id %>"> 
+                            <%=sizes[i].name %> 
+                        </option>
+                <%  } %> 
+                <%  } %> 
+            </select>
               <div id="erroresSize" class="text-danger"></div>
             </div>
 
             <div class="label-input">
               <label for="name">Bodega:</label>
-              <input
-                type="text"
-                name="bodega"
-                class="form-input"
-                value="<%= product.bodega %>"
-                placeholder="Bodega"/>
+              <select name="bodega" id="">
+                <% for (let i = 0; i < bodegas.length; i++) { %> 
+                    <% if (bodegas[i].id == product.bodega_id) { %> 
+                        <option value="<%= bodegas[i].id %>" selected> 
+                            <%=bodegas[i].name %> 
+                        </option>
+                    <%  } else { %> 
+                        <option value="<%= bodegas[i].id %>"> 
+                            <%=bodegas[i].name %> 
+                        </option>
+                <%  } %> 
+                <%  } %> 
+            </select>
               <div id="erroresBodega" class="text-danger"></div>
             </div>
 
             <div class="label-input">
               <label for="name">Provincia:</label>
-              <input
-                type="text"
-                name="province"
-                class="form-input"
-                value="<%= product.province %>"
-                placeholder="Provincia"/>
+              <select name="province" id="">
+                <% for (let i = 0; i < provinces.length; i++) { %> 
+                    <% if (provinces[i].id == product.province_id) { %> 
+                        <option value="<%= provinces[i].id %>" selected> 
+                            <%=provinces[i].name %> 
+                        </option>
+                    <%  } else { %> 
+                        <option value="<%= provinces[i].id %>"> 
+                            <%=provinces[i].name %> 
+                        </option>
+                <%  } %> 
+                <%  } %> 
+            </select>
               <div id="erroresProvincia" class="text-danger"></div>
             </div>
 
             <div class="label-input">
               <label for="name">Categoria:</label>
-              <input
-                type="text"
-                name="category"
-                class="form-input"
-                value="<%= product.category %>"
-                placeholder="Categoria"/>
+              <select name="category" id="">
+                <% for (let i = 0; i < categories.length; i++) { %> 
+                    <% if (categories[i].id == product.category_id) { %> 
+                        <option value="<%= categories[i].id %>" selected> 
+                            <%=categories[i].name %> 
+                        </option>
+                    <%  } else { %> 
+                        <option value="<%= categories[i].id %>"> 
+                            <%=categories[i].name %> 
+                        </option>
+                <%  } %> 
+                <%  } %> 
+            </select>
               <div id="erroresCategory" class="text-danger"></div>
             </div>
 
@@ -125,7 +142,7 @@
             </div>
 
             <div class="label-input">
-              <a class="boton-cancel" href="/products">Cancelar</a>
+              <a class="boton-cancel" href="/products">Volver a productos</a>
             </div>
             <div>
               <form

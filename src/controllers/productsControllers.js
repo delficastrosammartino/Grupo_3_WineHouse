@@ -66,7 +66,17 @@ const productsControllers = {
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
     /********************************************************/
     console.log(req.body)
-    db.Product.create(req.body)
+    
+    db.Product.create({
+      name: req.body.name,
+      price: req.body.price,
+      discount: req.body.discount,
+      size_id: req.body.size,
+      bodega_id: req.body.bodega,
+      province_id: req.body.province,
+      category_id: req.body.category,
+      descripcion: req.body.descripcion
+    })
       .then((product) => {
         return db.Product.findAll()
       })
@@ -79,18 +89,46 @@ const productsControllers = {
 
   },
   edit: (req, res) => {
-    db.Product.findByPk(req.params.id, {
-      include: [
-        {association: "products_categories"},
-        {association: "bodega"},
-        {association: "province"},
-        {association: "sizes"},
-        {association: "images"}
-      ]
-    })
-      .then((product) => {
-        res.render("./products/editar-producto", { product })
+
+     // guardo las busquedas que trabajan de manera asincronica.
+     let product = db.Product.findByPk(req.params.id)
+     let bodegas = db.Bodega.findAll()
+     let provinces = db.Province.findAll()
+     let sizes = db.Size.findAll()
+     let categories = db.ProductCategory.findAll()
+ 
+     // el Promise sirve para que entre aca una vez que termina los findAll anteriores
+     Promise.all([product, bodegas, provinces, sizes, categories])
+      .then(([product, bodegas, provinces, sizes, categories]) => {
+        return res.render("./products/editar-producto", { product, bodegas, provinces, sizes, categories })
       })
+  },
+  updateDB: function (req, res) {
+    db.Product.update({
+      name: req.body.name,
+      price: req.body.price,
+      discount: req.body.discount,
+      size_id: req.body.size,
+      bodega_id: req.body.bodega,
+      province_id: req.body.province,
+      category_id: req.body.category,
+      descripcion: req.body.descripcion
+    }, {
+      where:{
+          id: req.params.id
+      }
+  })
+  .then((product) => {
+    return db.Product.findAll()
+  })
+  .then((products) => {
+    res.render("./products/products",{products : products})
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+
   },
 
 
