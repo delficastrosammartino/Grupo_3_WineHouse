@@ -39,9 +39,13 @@ module.exports = (sequelize, dataTypes) => {
     },
     description_id: {
       type: dataTypes.INTEGER,
+      default:null
     },
     province_id:{
       type: dataTypes.INTEGER
+    },
+    descripcion:{
+      type: dataTypes.STRING
     }
   };
   let config = {
@@ -77,13 +81,6 @@ module.exports = (sequelize, dataTypes) => {
       otherKey: "image_id",
       timestamps: false,
     });
-    /*Movie.belongsToMany (models.Actor, { 
-            as:"actors", // este nombre uso para el controlador, associate
-            through: "actor_movie",
-            foreignKey: "movie_id",
-            otherKey: "actor_id",
-            timestamps: false
-        })*/
   };
 
   return Product;

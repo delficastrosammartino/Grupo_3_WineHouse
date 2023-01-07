@@ -62,14 +62,14 @@
 
               <div class="label-input">
                 <label for="size" class="form-label">Tamaño:</label>
-                <input
-                  type="text"
-                  id="size_id"
-                  name="size_id"
-                  placeholder="Ej: 750"
-                  class="form-input"
-                  value="<%= locals.oldData ? oldData.size : null %>"
-                />
+                <p>
+                  <select name="size" id="" >
+                      <option value="" disabled selected> - selecciona el tamaño - </option>
+                      <% sizes.forEach(size => { %> 
+                          <option value="<%= size.id %> "> <%=size.name %> </option>
+                      <%  }) %> 
+                  </select>
+                  <br>
               </div>
               <% if(locals.errors && errors.size) {%>
               <div class="text-danger"><%= errors.size.msg %></div>
@@ -78,7 +78,7 @@
               <div class="label-input">
                 <label for="bodega" class="form-label">Bodega:</label>
                 <p>
-                  <select name="bodega" id="" required>
+                  <select name="bodega" id="" >
                       <option value="" disabled selected> - selecciona la bodega - </option>
                       <% bodegas.forEach(bodega => { %> 
                           <option value="<%= bodega.id %> "> <%=bodega.name %> </option>
@@ -91,47 +91,47 @@
               <% } %>
 
               <div class="label-input">
-                <label for="provincia" class="form-label">Provincia:</label>
-                <input
-                  type="text"
-                  id="province_id"
-                  name="province"
-                  placeholder="Ej: Mendoza"
-                  class="form-input"
-                  value="<%= locals.oldData ? oldData.provincia : null %>"
-                />
+                <label for="province" class="form-label">Provincia:</label>
+                <p>
+                  <select name="province" id="" >
+                      <option value="" disabled selected> - selecciona la provincia - </option>
+                      <% provinces.forEach(province => { %> 
+                          <option value="<%= province.id %> "> <%=province.name %> </option>
+                      <%  }) %> 
+                  </select>
+                  <br>
               </div>
-              <% if(locals.errors && errors.provincia) {%>
-              <div class="text-danger"><%= errors.provincia.msg %></div>
+              <% if(locals.errors && errors.province) {%>
+              <div class="text-danger"><%= errors.province.msg %></div>
               <% } %>
 
               <div class="label-input">
                 <label for="category" class="form-label">Categoría:</label>
-                <input
-                  type="category_id"
-                  id="category_id"
-                  name="category_id"
-                  placeholder="Categoría"
-                  class="form-input"
-                  value="<%= locals.oldData ? oldData.category : null %>"
-                />
+                <p>
+                  <select name="category" id="" >
+                      <option value="" disabled selected> - selecciona la categoria - </option>
+                      <% categories.forEach(category => { %> 
+                          <option value="<%= category.id %> "> <%=category.name %> </option>
+                      <%  }) %> 
+                  </select>
+                  <br>
               </div>
               <% if(locals.errors && errors.category) {%>
               <div class="text-danger"><%= errors.category.msg %></div>
               <% } %>
 
               <div class="label-input">
-                <label for="description" class="form-label">Descripción:</label>
+                <label for="descripcion" class="form-label">Descripción:</label>
                 <textarea
-                  id="description_id"
-                  name="description_id"
+                  id="descripcion"
+                  name="descripcion"
                   placeholder="Descripción del producto"
                   class="description-input"
-                  value="<%= locals.oldData ? oldData.description : null %>"
+                  value="<%= locals.oldData ? oldData.descripcion : null %>"
                 ></textarea>
               </div>
-              <% if(locals.errors && errors.description) {%>
-              <div class="text-danger"><%= errors.description.msg %></div>
+              <% if(locals.errors && errors.descripcion) {%>
+              <div class="text-danger"><%= errors.descripcion.msg %></div>
               <% } %>
 
               <div class="label-input">

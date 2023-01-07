@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        province: {
+        name: {
             type: dataTypes.STRING
         },
     };
@@ -17,7 +17,7 @@ module.exports = (sequelize, dataTypes) => {
     const Province = sequelize.define(alias, cols, config)
 
     Province.associate = function (models){
-        // el models.Movie es por el alias usado en el modelo Movie.
+        // el models.Product es por el alias usado en el modelo Product.
         Province.hasMany(models.Product,{ 
             as: "products",
             foreignKey: "province_id"

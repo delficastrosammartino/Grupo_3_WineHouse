@@ -17,7 +17,7 @@ module.exports = (sequelize, dataTypes) => {
   const Bodega = sequelize.define(alias, cols, config);
 
   Bodega.associate = function (models) {
-    // el models.Movie es por el alias usado en el modelo Movie.
+    // el models.Product es por el alias usado en el modelo Product.
     Bodega.hasMany(models.Product, {
       as: "products",
       foreignKey: "bodega_id",

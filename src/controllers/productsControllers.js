@@ -24,6 +24,7 @@ const productsControllers = {
     db.Product.findByPk(req.params.id, {
       include: [
         {association: "products_categories"},
+        {association: "bodega"},
         {association: "province"},
         {association: "sizes"},
         {association: "images"}
@@ -34,9 +35,17 @@ const productsControllers = {
       })
   },
   create: (req, res) => {
-    db.Bodega.findAll()
-      .then((bodegas) => {
-        return res.render("./products/crear-producto", {bodegas});
+     // guardo las busquedas que trabajan de manera asincronica.
+    let bodegas = db.Bodega.findAll()
+    let provinces = db.Province.findAll()
+    let sizes = db.Size.findAll()
+    let categories = db.ProductCategory.findAll()
+
+    // el Promise sirve para que entre aca una vez que termina los findAll anteriores
+    Promise.all([bodegas, provinces, sizes, categories])
+
+      .then(([bodegas, provinces, sizes, categories]) => {
+        return res.render("./products/crear-producto", {bodegas, provinces, sizes, categories});
       })
   },
   storeDB: (req, res) => {
@@ -58,8 +67,8 @@ const productsControllers = {
     // ESTO LO HAGO PARA TESTEAR EL FORMULARIO; SI LLEGAN STRING VACIOS DESDE EL BODY SE ROMPE.
     // la idea es no permitir cargar elementos vacios en el products/crear.
     // a medida que hagamos validaciones hay que ir sacandolos y chequeando que no se rompa
-    req.body.price = parseInt(req.body.price, 10) || null;
-    req.body.discount = parseInt(req.body.discount, 10) || null;
+    //req.body.price = parseInt(req.body.price, 10) || null;
+    //req.body.discount = parseInt(req.body.discount, 10) || null;
     //req.body.size_id = parseInt(req.body.size_id, 10) || null;
     //req.body.bodega_id = parseInt(req.body.bodega_id, 10) || null;
     //req.body.province_id = parseInt(req.body.province_id, 10) || null;
@@ -68,18 +77,14 @@ const productsControllers = {
     //req.body.updated_at = null;
     //req.body.category_id = parseInt(req.body.category_id, 10) || null;
     //req.body.description_id = parseInt(req.body.description_id, 10) || null;
-    //req.body.image_id = parseInt(req.body.image_id, 10) || null;
+    req.body.image_id = parseInt(req.body.image_id, 10) || null;
     /********************************************************/
     console.log(req.body)
     db.Product.create(req.body)
       .then((product) => {
-        console.log("1")
-        console.log(product)
         return db.Product.findAll()
       })
       .then((products) => {
-        console.log(products)
-        console.log("2")
         res.render("./products/products",{products : products})
       })
       .catch((error) => {
