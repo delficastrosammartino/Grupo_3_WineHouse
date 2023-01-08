@@ -145,16 +145,13 @@
               <a class="boton-cancel" href="/products">Volver a productos</a>
             </div>
             <div>
-              <form
-                class="delete-product"
-                action="/products/<%=product.id%>?_method=DELETE"
-                method="POST">
-                <button type="submit" class="boton-crear">Eliminar</button>
-              </form>
+               <!-- Botón de eliminación -->
+              <button type="button" class="btn btn-danger" id="delete-button">Eliminar Producto</button>
+            </div>
           </form>
-        </div>
       </div>
     </main>
     <%- include('../partials/footer.ejs')%>
+    <script src="/js/editar-producto.js"></script>  
   </body>
 </html>

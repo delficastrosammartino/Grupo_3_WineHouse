@@ -130,6 +130,24 @@ const productsControllers = {
 
 
   },
+  delete: function (req, res) {
+    db.Product.destroy({
+      where: { id: req.params.id }
+    })
+      .then(numDeleted => {
+        if (numDeleted > 0) {
+          db.Product.findAll()
+          .then((products) => {
+            res.render("./products/products",{products : products})
+          })
+        } else {
+          res.send({ message: 'No se encontró el producto especificado' });
+        }
+      })
+      .catch(error => {
+        res.send({ message: 'Error al eliminar el producto' });
+      });
+  },
 
 
   products: (req, res) => {
