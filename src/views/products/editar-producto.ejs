@@ -144,14 +144,12 @@
             <div class="label-input">
               <a class="boton-cancel" href="/products">Volver a productos</a>
             </div>
-            <div>
-               <!-- Botón de eliminación -->
-              <button type="button" class="btn btn-danger" id="delete-button">Eliminar Producto</button>
+            <div class="label-input">
+              <a class="boton-delete" href="/products/delete/<%=product.id%>">Eliminar</a>
             </div>
           </form>
       </div>
     </main>
     <%- include('../partials/footer.ejs')%>
-    <script src="/js/editar-producto.js"></script>  
   </body>
 </html>

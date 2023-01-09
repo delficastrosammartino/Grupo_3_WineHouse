@@ -16,14 +16,19 @@ router.get("/", productsControllers.productsDB);
 router.get("/detalles/:id", productsControllers.detallesDB);
 router.get("/crear", productsControllers.create);
 //uploadProductFile.single("image"),
-// createProductMiddleware, mo funciona, todavia no se por que
+// createProductMiddleware, no funciona, todavia no se por que
 router.post("/", productsControllers.storeDB);
+// aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware, 
 router.get("/edit/:id", productsControllers.edit);
 // uploadProductFile.single("image")
 router.put("/update/:id", productsControllers.updateDB);
 
-router.delete('/products/delete/:id', productsControllers.delete);
+
+// aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
+//adminPageMiddleware, 
+router.get('/delete/:id', productsControllers.delete);
+router.delete('/delete/:id', productsControllers.destroy)
 
 module.exports = router;
