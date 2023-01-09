@@ -50,22 +50,33 @@ const productsControllers = {
   },
   storeDB: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    const resultValidation = validationResult(req);
+    /* const resultValidation = validationResult(req);
+    console.log(resultValidation);
+    console.log("1")
+    console.log(resultValidation.errors)
+   
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      // renderizo la vista registro, y le paso los errores.
+      console.log("2")
+    // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
-        // uso el .mapped para que cada elemento sea un elemento del objeto y tenga sus propiedades dentro.
+    // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    }
-
+    }*/
+    console.log("3")
+console.log(req.body)
+console.log("4")
+//console.log(oldData)  
+console.log("5")
+//console.log(locals.oldData)
+console.log("6")
+//console.log(oldData.size)
     // PRIMERO HABRIA QUE VERIFICAR SI EL PRODUCTO EXISTE!!!!!!
     
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
     /********************************************************/
-    console.log(req.body)
     
     db.Product.create({
       name: req.body.name,

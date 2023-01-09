@@ -11,6 +11,10 @@
           <h2>Formulario de creación de productos</h2>
         </div>
 
+        <div class="errores">
+          <ul></ul>
+      </div>
+
         <div class="contenedor-form">
           <form action="/products" method="POST">
             <div class="contenedor-inputs">
@@ -63,12 +67,12 @@
               <div class="label-input">
                 <label for="size" class="form-label">Tamaño:</label>
                 <p>
-                  <select name="size" id="" >
-                      <option value="" disabled selected> - selecciona el tamaño - </option>
-                      <% sizes.forEach(size => { %> 
-                          <option value="<%= size.id %> "> <%=size.name %> </option>
-                      <%  }) %> 
-                  </select>
+                  <select name="bodega" id="" >
+                    <option value=" <%= locals.oldData ? oldData.size : null %>" disabled selected> - selecciona el tamaño - </option>
+                    <% sizes.forEach(size => { %> 
+                        <option value="<%= size.id %> "> <%=size.name %> </option>
+                    <%  }) %> 
+                </select>
                   <br>
               </div>
               <% if(locals.errors && errors.size) {%>
@@ -111,7 +115,7 @@
                   <select name="category" id="" >
                       <option value="" disabled selected> - selecciona la categoria - </option>
                       <% categories.forEach(category => { %> 
-                          <option value="<%= category.id %> "> <%=category.name %> </option>
+                          <option value="<%= category.id.msg %> "> <%=category.name %> </option>
                       <%  }) %> 
                   </select>
                   <br>
@@ -152,7 +156,9 @@
         </div>
       </div>
     </main>
+    <script src="/js/crear-producto.js"></script>
 
     <%- include("../partials/footer.ejs") %>
+    <script src="../../../public/js/crear-producto.js"></script>></script>
   </body>
 </html>

@@ -23,7 +23,9 @@
                 name="name"
                 class="form-input"
                 value="<%= product.name %>"/>
-              <div id="erroresName" class="text-danger"></div>
+                <% if(locals.errors && errors.name) {%>
+                  <div class="text-danger"><%= errors.name %></div>
+                <% } %>
             </div>
 
             <div class="label-input">
