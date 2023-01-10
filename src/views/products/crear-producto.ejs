@@ -60,6 +60,7 @@
                   class="form-input"
                   value="<%= locals.oldData ? oldData.discount : null %>"
                 />
+
               </div>
               <% if(locals.errors && errors.discount) {%>
               <div class="text-danger"><%= errors.discount.msg %></div>
@@ -72,8 +73,7 @@
                     <option
                       value="<%= locals.oldData ? oldData.size : null %>"
                       disabled
-                      selected
-                    >
+                      selected >
                       - selecciona el tamaño -
                     </option>
                     <% sizes.forEach(size => { %>
@@ -85,6 +85,10 @@
               </div>
 
               <% if(locals.errors && errors.size) {%>
+                <% console.log("locals.oldData:")%>
+                <% console.log(locals.oldData)%>
+                <% console.log("oldData.size:")%>
+                <% console.log(oldData.size)%>
               <div class="text-danger"><%= errors.size.msg %></div>
               <% } %>
 
