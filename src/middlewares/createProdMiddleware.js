@@ -6,18 +6,27 @@ const createProductMiddleware =
   [
     // recibe el nombre del campo a validar.
     body("name")
-      .notEmpty()
-      .withMessage("Tienes que escribir un producto")
-      .bail()
-      .isLength({ min: 3, max: 30 })
-      .withMessage("El nombre no cumple con el largo permitido"),
+        .notEmpty()
+        .withMessage("Tienes que escribir un producto")
+        .bail()
+        .isLength({ min: 3, max: 30 })
+        .withMessage("El nombre no cumple con el largo permitido"),
     body("price")
-      .notEmpty()
-      .withMessage("el precio debe ser mayo a 0"),
+        .notEmpty()
+        .withMessage("el precio debe ser mayor a 0")
+        .bail()
+        .isDecimal({ gt: 0, lt: 10000000 })
+        .withMessage("El precio debe ser un número positivo y tener menos de 7 dígitos"),
     body("discount")
       // el bail () es para cortar si encuentra el error.
       .notEmpty()
-      .withMessage("Tiene que ser un numero entre 0 y 100"),
+      .withMessage("Tiene que ser un numero entre 0 y 100")
+      .bail()
+      .isNumeric()
+      .withMessage("El descuento debe ser un número")
+      .bail()
+      .isDecimal({ min: 0, max: 100 })
+      .withMessage("El descuento debe ser un entero entre 0 y 100"),
     body("size")
       .notEmpty()
       .withMessage("Debe seleccionar el tamaño"),

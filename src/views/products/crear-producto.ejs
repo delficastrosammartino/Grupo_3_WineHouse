@@ -68,7 +68,9 @@
                 <label for="size" class="form-label">Tamaño:</label>
                 <p>
                   <select name="size" id="" >
-                    <option value="<%= locals.oldData ? oldData.bodega : null %>" disabled selected> - selecciona el tamaño - </option>
+                    <% console.log("1") %> 
+                    <% console.log(locals.oldData) %> 
+                    <option value="<%= locals.oldData ? oldData.size : null %>" disabled selected> - selecciona el tamaño - </option>
                     <% sizes.forEach(size => { %> 
                         <option value="<%= size.id %>"> <%=size.name %> </option>
                     <%  }) %> 
@@ -97,11 +99,11 @@
               <div class="label-input">
                 <label for="province" class="form-label">Provincia:</label>
                 <p>
-                  <select name="province" id="" required>
-                    <option value="" disabled selected>- Seleccione la provincia - </option>
-                    <% provinces.forEach(province => { %>
-                    <option value="<%= province.id %>"><%= province.name %></option>
-                    <% }); %>
+                  <select name="province" id="" >
+                    <option value="<%= locals.oldData ? oldData.province : null %>" disabled selected> - selecciona la provincia - </option>
+                    <% provinces.forEach(province => { %> 
+                        <option value="<%= province.id.msg %>"> <%=province.name %> </option>
+                    <%  }) %> 
                 </select>
                   <br>
               </div>
