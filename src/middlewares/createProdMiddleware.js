@@ -15,7 +15,7 @@ const createProductMiddleware =
         .notEmpty()
         .withMessage("El precio debe ser mayor a 0")
         .bail()
-        .isDecimal({ gt: 0, lt: 10000000 })
+        .isFloat({ min: 0, max: 10000000 })
         .withMessage("El precio debe ser un número positivo y tener menos de 7 dígitos"),
     body("discount")
       // el bail () es para cortar si encuentra el error.
@@ -25,7 +25,7 @@ const createProductMiddleware =
       .isNumeric()
       .withMessage("El descuento debe ser un número")
       .bail()
-      .isDecimal({ min: 0, max: 100 })
+      .isFloat({ min: 0, max: 100 })
       .withMessage("El descuento debe ser un entero entre 0 y 100"),
     body("size")
       .notEmpty()
