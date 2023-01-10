@@ -44,6 +44,10 @@ module.exports = (sequelize, dataTypes) => {
       as: "users_categories", // este nombre uso para el controlador, associate
       foreignKey: "category_id",
     });
+    User.hasMany(models.Order, {
+      as: "orders",
+      foreignKey: "user_id",
+    });
   };
 
   return User;
