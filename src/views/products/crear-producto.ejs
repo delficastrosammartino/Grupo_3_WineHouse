@@ -76,19 +76,24 @@
                       selected >
                       - selecciona el tamaño -
                     </option>
-                    <% sizes.forEach(size => { %>
-                    <option value="<%= size.id %>"><%=size.name %></option>
+
+                    <% if (locals.oldData) { %>
+                      <% sizes.forEach(size => { %>
+                        <option value="<%= size.id %>" 
+                          <%= (size.id==oldData.size)?'selected':'' %>
+                          ><%=size.name %></option>
                     <% }) %>
+                    <% } else { %>
+                      <% sizes.forEach(size => { %>
+                      <option value="<%= size.id %>"><%=size.name %></option>
+                      <% }) %>
+                    <% } %>
                   </select>
                   <br />
                 </p>
               </div>
 
               <% if(locals.errors && errors.size) {%>
-                <% console.log("locals.oldData:")%>
-                <% console.log(locals.oldData)%>
-                <% console.log("oldData.size:")%>
-                <% console.log(oldData.size)%>
               <div class="text-danger"><%= errors.size.msg %></div>
               <% } %>
 
@@ -103,9 +108,17 @@
                     >
                       - selecciona la bodega -
                     </option>
-                    <% bodegas.forEach(bodega => { %>
-                    <option value="<%= bodega.id %>"><%=bodega.name %></option>
+                    <% if (locals.oldData) { %>
+                      <% bodegas.forEach(bodega => { %>
+                        <option value="<%= bodega.id %>" 
+                          <%= (bodega.id==oldData.bodega)?'selected':'' %>
+                          ><%=bodega.name %></option>
                     <% }) %>
+                    <% } else { %>
+                      <% bodegas.forEach(bodega => { %>
+                      <option value="<%= bodega.id %>"><%=bodega.name %></option>
+                      <% }) %>
+                    <% } %>
                   </select>
                   <br />
                 </p>
@@ -126,11 +139,17 @@
                     >
                       - selecciona la provincia -
                     </option>
-                    <% provinces.forEach(province => { %>
-                    <option value="<%= province.id %>">
-                      <%=province.name %>
-                    </option>
+                    <% if (locals.oldData) { %>
+                      <% provinces.forEach(province => { %>
+                        <option value="<%= province.id %>" 
+                          <%= (province.id==oldData.province)?'selected':'' %>
+                          ><%=province.name %></option>
                     <% }) %>
+                    <% } else { %>
+                      <% provinces.forEach(province => { %>
+                      <option value="<%= province.id %>"><%=province.name %></option>
+                      <% }) %>
+                    <% } %>
                   </select>
                   <br />
                 </p>
@@ -151,17 +170,27 @@
                     >
                       - selecciona la categoria -
                     </option>
-                    <% categories.forEach(category => { %>
-                    <option value="<%= category.id %>">
-                      <%=category.name %>
-                    </option>
+                    <% if (locals.oldData) { %>
+                      <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>" 
+                          <%= (category.id==oldData.category)?'selected':'' %>
+                          ><%=category.name %></option>
                     <% }) %>
+                    <% } else { %>
+                      <% categories.forEach(category => { %>
+                      <option value="<%= category.id %>"><%=category.name %></option>
+                      <% }) %>
+                    <% } %>
                   </select>
                   <br />
                 </p>
               </div>
 
               <% if(locals.errors && errors.category) {%>
+                <% console.log("locals.oldData:")%>
+                <% console.log(locals.oldData)%>
+                <% console.log("oldData.descripcion:")%>
+                <% console.log(oldData.descripcion)%>
               <div class="text-danger"><%= errors.category.msg %></div>
               <% } %>
 
