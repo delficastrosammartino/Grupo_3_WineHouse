@@ -10,7 +10,7 @@ main {
 .contenedor-perfil {
   display: flex;
   background-color: #80083f;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 50px;
   height: 300px;
@@ -50,4 +50,20 @@ main {
 .saludo-perfil {
   font-size: 25px;
   color: white;
+}
+
+.contenedor-botones-perfil {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.botones-edit-logout {
+  background-color: white;
+  height: 50px;
+  border: none;
+  width: 150px;
+  border-radius: 0.5em;
 }

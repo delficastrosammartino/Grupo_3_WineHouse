@@ -12,25 +12,33 @@ const createProductMiddleware = require("../middlewares/createProdMiddleware");
 const productsControllers = require("../controllers/productsControllers");
 const productsFindAllMiddleware = require("../middlewares/productsFindAllMiddleware");
 
-
 //Rutas para la creación del CRUD
 router.get("/", productsControllers.productsDB);
 router.get("/detalles/:id", productsControllers.detallesDB);
 router.get("/crear", productsControllers.create);
 //uploadProductFile.single("image"),
 // createProductMiddleware, no funciona, todavia no se por que
-router.post("/",productsFindAllMiddleware , createProductMiddleware, productsControllers.storeDB);
+router.post(
+  "/",
+  productsFindAllMiddleware,
+  createProductMiddleware,
+  productsControllers.storeDB
+);
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
-//adminPageMiddleware, 
+//adminPageMiddleware,
 router.get("/edit/:id", productsControllers.edit);
 // uploadProductFile.single("image")
-router.put("/update/:id", productsFindAllMiddleware, createProductMiddleware, productsControllers.updateDB);
-
+router.put(
+  "/update/:id",
+  productsFindAllMiddleware,
+  createProductMiddleware,
+  productsControllers.updateDB
+);
 
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
-//adminPageMiddleware, 
-router.get('/delete/:id', productsControllers.delete);
-router.delete('/delete/:id', productsControllers.destroy)
+//adminPageMiddleware,
+router.get("/delete/:id", productsControllers.delete);
+router.delete("/delete/:id", productsControllers.destroy);
 
 module.exports = router;

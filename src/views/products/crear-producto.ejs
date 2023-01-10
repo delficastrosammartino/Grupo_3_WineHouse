@@ -13,14 +13,15 @@
 
         <div class="errores">
           <ul></ul>
-      </div>
+        </div>
 
         <div class="contenedor-form">
           <form action="/products" method="POST">
             <div class="contenedor-inputs">
               <div class="label-input">
                 <label for="name" class="form-label"
-                  >Nombre del producto:</label>
+                  >Nombre del producto:</label
+                >
                 <input
                   type="text"
                   id="name"
@@ -29,7 +30,7 @@
                   class="form-input"
                   value="<%= locals.oldData ? oldData.name : null %>"
                 />
-              </div class="label-input">
+              </div>
               <% if(locals.errors && errors.name) {%>
               <div class="text-danger"><%= errors.name.msg %></div>
               <% } %>
@@ -67,16 +68,22 @@
               <div class="label-input">
                 <label for="size" class="form-label">Tamaño:</label>
                 <p>
-                  <select name="size" id="" >
-                    <% console.log("1") %> 
-                    <% console.log(locals.oldData) %> 
-                    <option value="<%= locals.oldData ? oldData.size : null %>" disabled selected> - selecciona el tamaño - </option>
-                    <% sizes.forEach(size => { %> 
-                        <option value="<%= size.id %>"> <%=size.name %> </option>
-                    <%  }) %> 
-                </select>
-                  <br>
+                  <select name="size" id="size">
+                    <option
+                      value="<%= locals.oldData ? oldData.size : null %>"
+                      disabled
+                      selected
+                    >
+                      - selecciona el tamaño -
+                    </option>
+                    <% sizes.forEach(size => { %>
+                    <option value="<%= size.id %>"><%=size.name %></option>
+                    <% }) %>
+                  </select>
+                  <br />
+                </p>
               </div>
+
               <% if(locals.errors && errors.size) {%>
               <div class="text-danger"><%= errors.size.msg %></div>
               <% } %>
@@ -84,14 +91,22 @@
               <div class="label-input">
                 <label for="bodega" class="form-label">Bodega:</label>
                 <p>
-                  <select name="bodega" id="" >
-                      <option value="<%= locals.oldData ? oldData.bodega : null %>" disabled selected> - selecciona la bodega - </option>
-                      <% bodegas.forEach(bodega => { %> 
-                          <option value="<%= bodega.id %>"> <%=bodega.name %> </option>
-                      <%  }) %> 
+                  <select name="bodega" id="bodega">
+                    <option
+                      value="<%= locals.oldData ? oldData.bodega : null %>"
+                      disabled
+                      selected
+                    >
+                      - selecciona la bodega -
+                    </option>
+                    <% bodegas.forEach(bodega => { %>
+                    <option value="<%= bodega.id %>"><%=bodega.name %></option>
+                    <% }) %>
                   </select>
-                  <br>
+                  <br />
+                </p>
               </div>
+
               <% if(locals.errors && errors.bodega) {%>
               <div class="text-danger"><%= errors.bodega.msg %></div>
               <% } %>
@@ -99,14 +114,24 @@
               <div class="label-input">
                 <label for="province" class="form-label">Provincia:</label>
                 <p>
-                  <select name="province" id="" >
-                    <option value="<%= locals.oldData ? oldData.province : null %>" disabled selected> - selecciona la provincia - </option>
-                    <% provinces.forEach(province => { %> 
-                        <option value="<%= province.id.msg %>"> <%=province.name %> </option>
-                    <%  }) %> 
-                </select>
-                  <br>
+                  <select name="province" id="province">
+                    <option
+                      value="<%= locals.oldData ? oldData.province : null %>"
+                      disabled
+                      selected
+                    >
+                      - selecciona la provincia -
+                    </option>
+                    <% provinces.forEach(province => { %>
+                    <option value="<%= province.id %>">
+                      <%=province.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <br />
+                </p>
               </div>
+
               <% if(locals.errors && errors.province) {%>
               <div class="text-danger"><%= errors.province.msg %></div>
               <% } %>
@@ -114,14 +139,24 @@
               <div class="label-input">
                 <label for="category" class="form-label">Categoría:</label>
                 <p>
-                  <select name="category" id="" >
-                      <option value="<%= locals.oldData ? oldData.category : null %>" disabled selected> - selecciona la categoria - </option>
-                      <% categories.forEach(category => { %> 
-                          <option value="<%= category.id.msg %>"> <%=category.name %> </option>
-                      <%  }) %> 
+                  <select name="category" id="category">
+                    <option
+                      value="<%= locals.oldData ? oldData.category : null %>"
+                      disabled
+                      selected
+                    >
+                      - selecciona la categoria -
+                    </option>
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category.id %>">
+                      <%=category.name %>
+                    </option>
+                    <% }) %>
                   </select>
-                  <br>
+                  <br />
+                </p>
               </div>
+
               <% if(locals.errors && errors.category) {%>
               <div class="text-danger"><%= errors.category.msg %></div>
               <% } %>
@@ -144,7 +179,12 @@
                 <label for="image" class="form-label"
                   >Imagen del producto:</label
                 >
-                <input type="file" id="image_id" name="image_id" class="input-foto" />
+                <input
+                  type="file"
+                  id="image_id"
+                  name="image_id"
+                  class="input-foto"
+                />
               </div>
               <% if(locals.errors && errors.image) {%>
               <div class="text-danger"><%= errors.image.msg %></div>
@@ -161,6 +201,5 @@
     <script src="/js/crear-producto.js"></script>
 
     <%- include("../partials/footer.ejs") %>
-   
   </body>
 </html>
