@@ -13,7 +13,7 @@ const createProductMiddleware =
         .withMessage("El nombre no cumple con el largo permitido"),
     body("price")
         .notEmpty()
-        .withMessage("el precio debe ser mayor a 0")
+        .withMessage("El precio debe ser mayor a 0")
         .bail()
         .isDecimal({ gt: 0, lt: 10000000 })
         .withMessage("El precio debe ser un número positivo y tener menos de 7 dígitos"),
@@ -39,12 +39,13 @@ const createProductMiddleware =
     body("category")
       .notEmpty()
       .withMessage("Debe seleccionar la categoria"),
-      body("name")
+    body("descripcion")
       .notEmpty()
       .withMessage("Tienes que escribir una descripcion")
       .bail()
       .isLength({ min: 3, max: 200 })
       .withMessage("La descripcion no cumple con el largo permitido"),
+    
   ];
 
 module.exports = createProductMiddleware;

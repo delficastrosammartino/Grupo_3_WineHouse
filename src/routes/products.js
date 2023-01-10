@@ -19,13 +19,13 @@ router.get("/detalles/:id", productsControllers.detallesDB);
 router.get("/crear", productsControllers.create);
 //uploadProductFile.single("image"),
 // createProductMiddleware, no funciona, todavia no se por que
-router.post("/", productsFindAllMiddleware, createProductMiddleware, productsControllers.storeDB);
+router.post("/",productsFindAllMiddleware , createProductMiddleware, productsControllers.storeDB);
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware, 
 router.get("/edit/:id", productsControllers.edit);
 // uploadProductFile.single("image")
-router.put("/update/:id", createProductMiddleware, productsControllers.updateDB);
+router.put("/update/:id", productsFindAllMiddleware, createProductMiddleware, productsControllers.updateDB);
 
 
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos

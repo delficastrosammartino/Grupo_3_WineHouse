@@ -117,6 +117,22 @@ console.log("6")
       })
   },
   updateDB: function (req, res) {
+    const resultValidation = validationResult(req);
+          console.log(resultValidation);
+          console.log("1")
+          console.log(resultValidation.errors)
+         
+          // si hay errores entra aca.
+          if (resultValidation.errors.length > 0) {
+            console.log("2")
+            console.log(req.body)
+          // renderizo la vista registro, y le paso los errores.
+            return res.render("./products/editar-producto", {
+          // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+              errors: resultValidation.mapped(),
+              oldData: req.body
+            });
+          }
 
     db.Product.update({
       name: req.body.name,

@@ -27,6 +27,9 @@
                   <div class="text-danger"><%= errors.name %></div>
                 <% } %>
             </div>
+            <% if(locals.errors && errors.name) {%>
+              <div class="text-danger"><%= errors.name.msg %></div>
+              <% } %>
 
             <div class="label-input">
               <label for="price">Precio:</label>
