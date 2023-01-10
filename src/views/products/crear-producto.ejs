@@ -67,10 +67,10 @@
               <div class="label-input">
                 <label for="size" class="form-label">Tamaño:</label>
                 <p>
-                  <select name="bodega" id="" >
-                    <option value=" <%= locals.oldData ? oldData.size : null %>" disabled selected> - selecciona el tamaño - </option>
+                  <select name="size" id="" >
+                    <option value="<%= locals.oldData ? oldData.bodega : null %>" disabled selected> - selecciona el tamaño - </option>
                     <% sizes.forEach(size => { %> 
-                        <option value="<%= size.id %> "> <%=size.name %> </option>
+                        <option value="<%= size.id %>"> <%=size.name %> </option>
                     <%  }) %> 
                 </select>
                   <br>
@@ -83,9 +83,9 @@
                 <label for="bodega" class="form-label">Bodega:</label>
                 <p>
                   <select name="bodega" id="" >
-                      <option value="" disabled selected> - selecciona la bodega - </option>
+                      <option value="<%= locals.oldData ? oldData.bodega : null %>" disabled selected> - selecciona la bodega - </option>
                       <% bodegas.forEach(bodega => { %> 
-                          <option value="<%= bodega.id %> "> <%=bodega.name %> </option>
+                          <option value="<%= bodega.id %>"> <%=bodega.name %> </option>
                       <%  }) %> 
                   </select>
                   <br>
@@ -97,12 +97,12 @@
               <div class="label-input">
                 <label for="province" class="form-label">Provincia:</label>
                 <p>
-                  <select name="province" id="" >
-                      <option value="" disabled selected> - selecciona la provincia - </option>
-                      <% provinces.forEach(province => { %> 
-                          <option value="<%= province.id %> "> <%=province.name %> </option>
-                      <%  }) %> 
-                  </select>
+                  <select name="province" id="" required>
+                    <option value="" disabled selected>- Seleccione la provincia - </option>
+                    <% provinces.forEach(province => { %>
+                    <option value="<%= province.id %>"><%= province.name %></option>
+                    <% }); %>
+                </select>
                   <br>
               </div>
               <% if(locals.errors && errors.province) {%>
@@ -113,9 +113,9 @@
                 <label for="category" class="form-label">Categoría:</label>
                 <p>
                   <select name="category" id="" >
-                      <option value="" disabled selected> - selecciona la categoria - </option>
+                      <option value="<%= locals.oldData ? oldData.category : null %>" disabled selected> - selecciona la categoria - </option>
                       <% categories.forEach(category => { %> 
-                          <option value="<%= category.id.msg %> "> <%=category.name %> </option>
+                          <option value="<%= category.id.msg %>"> <%=category.name %> </option>
                       <%  }) %> 
                   </select>
                   <br>
@@ -159,6 +159,6 @@
     <script src="/js/crear-producto.js"></script>
 
     <%- include("../partials/footer.ejs") %>
-    <script src="../../../public/js/crear-producto.js"></script>></script>
+   
   </body>
 </html>

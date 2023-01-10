@@ -50,7 +50,7 @@ const productsControllers = {
   },
   storeDB: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    /* const resultValidation = validationResult(req);
+    const resultValidation = validationResult(req);
     console.log(resultValidation);
     console.log("1")
     console.log(resultValidation.errors)
@@ -58,13 +58,14 @@ const productsControllers = {
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       console.log("2")
+      console.log(req.body)
     // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
     // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
-    }*/
+    }
     console.log("3")
 console.log(req.body)
 console.log("4")
