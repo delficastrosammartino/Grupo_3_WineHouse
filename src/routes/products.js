@@ -42,4 +42,5 @@ router.put(
 router.get("/delete/:id", productsControllers.delete);
 router.delete("/delete/:id", productsControllers.destroy);
 
+router.get("/carrito", productsControllers.carrito);
 module.exports = router;

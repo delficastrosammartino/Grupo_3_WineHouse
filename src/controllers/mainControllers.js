@@ -7,11 +7,7 @@ const path = require('path');
 const mainControllers = {
     index : (req, res) => {
         res.render('./products/index');
-    },
-
-    carrito : (req, res) => {
-        res.render('./products/carrito');
-    },
+    }
 
 }
 

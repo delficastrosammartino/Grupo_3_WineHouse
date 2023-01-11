@@ -114,7 +114,6 @@ const productsControllers = {
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
-      console.log("+1 ------------------------")
       return res.render("./products/editar-producto", {
         
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -168,6 +167,9 @@ const productsControllers = {
     });
     res.redirect("/products");
   },
+  carrito : (req, res) => {
+    res.render('./products/carrito');
+},
 };
 
 module.exports = productsControllers;

@@ -9,6 +9,5 @@ const mainControllers = require('../controllers/mainControllers');
 
 router.get('/', mainControllers.index);
 
-router.get('/carrito', mainControllers.carrito);
 
 module.exports = router;
