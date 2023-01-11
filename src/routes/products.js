@@ -15,7 +15,7 @@ const productsControllers = require("../controllers/productsControllers");
 
 //Rutas para la creación del CRUD
 router.get("/", productsControllers.productsDB);
-router.get("/detalles/:id", productsControllers.detallesDB);
+router.get("/detalles/:id", productsIdVisible, productsControllers.detallesDB);
 router.get("/crear", productsControllers.create);
 //uploadProductFile.single("image"),
 // createProductMiddleware, no funciona, todavia no se por que
@@ -28,7 +28,7 @@ router.post(
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware,
-router.get("/edit/:id", productsIdVisible,productsControllers.edit);
+router.get("/edit/:id", productsIdVisible, productsControllers.edit);
 // uploadProductFile.single("image")
 router.put(
   "/edit/:id",
