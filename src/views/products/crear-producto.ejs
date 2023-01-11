@@ -187,10 +187,6 @@
               </div>
 
               <% if(locals.errors && errors.category) {%>
-                <% console.log("locals.oldData:")%>
-                <% console.log(locals.oldData)%>
-                <% console.log("oldData.descripcion:")%>
-                <% console.log(oldData.descripcion)%>
               <div class="text-danger"><%= errors.category.msg %></div>
               <% } %>
 
@@ -201,7 +197,8 @@
                   name="descripcion"
                   placeholder="Descripción del producto"
                   class="description-input"
-                ><%= locals.oldData ? oldData.descripcion : null %></textarea>
+                  value="<%= locals.oldData ? oldData.descripcion : null %>"
+                ></textarea>
               </div>
               <% if(locals.errors && errors.descripcion) {%>
               <div class="text-danger"><%= errors.descripcion.msg %></div>

@@ -10,7 +10,7 @@
         <div>
           <h2>Editar producto</h2>
         </div>
-          <form class="contenedor-inputs" action="/products/update/<%=product.id%>?_method=PUT" method="POST">
+          <form class="contenedor-inputs" action="/products/edit/<%=product.id%>?_method=PUT" method="POST">
 
               <div class="subtitulo">
                 <h3>Editando el Producto "<%= product.name %>"</h3>
@@ -24,12 +24,9 @@
                 class="form-input"
                 value="<%= product.name %>"/>
                 <% if(locals.errors && errors.name) {%>
-                  <div class="text-danger"><%= errors.name %></div>
+                  <div class="text-danger"><%= errors.name.msg %></div>
                 <% } %>
             </div>
-            <% if(locals.errors && errors.name) {%>
-              <div class="text-danger"><%= errors.name.msg %></div>
-              <% } %>
 
             <div class="label-input">
               <label for="price">Precio:</label>
@@ -39,7 +36,9 @@
                 name="price"
                 class="form-input"
                 value="<%= product.price %>"/>
-              <div id="erroresPrice" class="text-danger"></div>
+                <% if(locals.errors && errors.price) {%>
+                  <div class="text-danger"><%= errors.price.msg %></div>
+                <% } %>
             </div>
 
             <div class="label-input">
@@ -50,7 +49,9 @@
                 name="discount"
                 class="form-input"
                 value="<%= product.discount %>"/>
-              <div id="erroresDiscount" class="text-danger"></div>
+                <% if(locals.errors && errors.dicount) {%>
+                  <div class="text-danger"><%= errors.discount.msg %></div>
+                <% } %>
             </div>
 
             <div class="label-input">
@@ -68,7 +69,9 @@
                 <%  } %> 
                 <%  } %> 
             </select>
-              <div id="erroresSize" class="text-danger"></div>
+            <% if(locals.errors && errors.size) {%>
+              <div class="text-danger"><%= errors.size.msg %></div>
+            <% } %>
             </div>
 
             <div class="label-input">
@@ -86,7 +89,9 @@
                 <%  } %> 
                 <%  } %> 
             </select>
-              <div id="erroresBodega" class="text-danger"></div>
+            <% if(locals.errors && errors.bodega) {%>
+              <div class="text-danger"><%= errors.bodega.msg %></div>
+            <% } %>
             </div>
 
             <div class="label-input">
@@ -104,7 +109,9 @@
                 <%  } %> 
                 <%  } %> 
             </select>
-              <div id="erroresProvincia" class="text-danger"></div>
+            <% if(locals.errors && errors.province) {%>
+              <div class="text-danger"><%= errors.province.msg %></div>
+            <% } %>
             </div>
 
             <div class="label-input">
@@ -122,28 +129,35 @@
                 <%  } %> 
                 <%  } %> 
             </select>
-              <div id="erroresCategory" class="text-danger"></div>
+            <% if(locals.errors && errors.category) {%>
+              <div class="text-danger"><%= errors.category.msg %></div>
+            <% } %>
             </div>
 
             <div class="label-input">
               <p><label>Detalle de producto</label></p>
               <textarea
+                id="descripcion"
                 name="descripcion"
                 rows="10"
                 class="description-input"
                 cols="40"><%= product.descripcion %>
               </textarea>
-              <div id="erroresDescription" class="text-danger"></div>
+              <% if(locals.errors && errors.descripcion) {%>
+                <div class="text-danger"><%= errors.descripcion.msg %></div>
+              <% } %>
             </div>
 
             <div class="label-input">
               <label for="">Imagen:</label>
               <input type="file" name="image" class="input-foto" />
-              <div id="erroresImg" class="lista-errores"></div>
+              <% if(locals.errors && errors.image) {%>
+                <div class="text-danger"><%= errors.image.msg %></div>
+              <% } %>
             </div>
 
             <div class="form-label">
-              <button type="submit" class="boton-crear">Guardar Cambios</button>
+              <input type="submit" class="boton-crear" value="Guadar cambios">
             </div>
 
             <div class="label-input">
