@@ -25,7 +25,7 @@ const registerValidate =
       .bail()
       .isLength({ min: 3, max: 30 })
       .withMessage("El nombre no cumple con el largo permitido"),
-    body("fullName")
+    body("lastName")
       .notEmpty()
       .withMessage("Tienes que escribir un apellido")
       .bail()

@@ -209,26 +209,30 @@ const usersControllers = {
     res.redirect("/users/login");
   },*/
   processRegister: (req, res) => {
+   
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     const resultValidation = validationResult(req);
-    console.log(resultValidation);
+  
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-    // renderizo la vista registro, y le paso los errores.
+      
+      // renderizo la vista registro, y le paso los errores.
       return res.render("./users/registro", {
-    // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
+        // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
     }
     // guardo las busquedas que trabajan de manera asincronica.
+   
     db.User.findOne({
       where: {
         email: req.body.email
       }
     })
-      .then((user) => {
+    .then((user) => {
       if (user) {
+        
         // si se encontró un usuario, mostrar un mensaje de error y devolver la vista de registro con los campos completados
         res.render("./users/registro", {
           errors: {
@@ -239,19 +243,22 @@ const usersControllers = {
           oldData: req.body,
         });
       } else {
+       
         // si no se encontró ningún usuario, permitir que el usuario complete el registro
         db.User.create({
-          name: req.body.nombre,
-        lastName: req.body.apellido,
-        email: req.body.email,
-        // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
-        password: bcrypt.hashSync(req.body.password, 10),
-        category_id: 1,
-        //image: " ", //req.file.filename,
-        //adress: " ",
-        //userName: " ",
-        })
-        res.redirect("/users/login")
+          name: req.body.name,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
+          password: bcrypt.hashSync(req.body.password, 10),
+          category_id: 1,
+          //image: " ", //req.file.filename,
+          //adress: " ",
+          //userName: " ",
+        }).then(
+          res.redirect("/users/login")
+          )
+        
       }
     });
   },
@@ -361,6 +368,7 @@ const usersControllers = {
       user: user,
     });
     }
+    console.log("6")
     console.log(req.session.userLogged.email)
     // Actualiza el usuario en la base de datos.
     db.User.update({
@@ -379,9 +387,12 @@ const usersControllers = {
       },
     })
     .then((user) => {
-      console.log("6")
+      console.log("-------------- user ------------------")
+      console.log(user)
+      console.log("7")
+     
       // Redirige al usuario al perfil después de actualizar.
-      res.render("users/perfil", { user: req.body});
+      res.render("users/perfil", { user: user});
     })
   })
 }
