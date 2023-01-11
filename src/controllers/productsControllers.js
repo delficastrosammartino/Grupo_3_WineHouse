@@ -115,13 +115,11 @@ const productsControllers = {
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
       return res.render("./products/editar-producto", {
-        
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
         errors: resultValidation.mapped(),
         oldData: req.body,
       });
     }
-    
 
     db.Product.update(
       {
@@ -167,9 +165,9 @@ const productsControllers = {
     });
     res.redirect("/products");
   },
-  carrito : (req, res) => {
-    res.render('./products/carrito');
-},
+  carrito: (req, res) => {
+    res.render("./products/carrito");
+  },
 };
 
 module.exports = productsControllers;

@@ -38,14 +38,14 @@
                             type="text" 
                             name="name" 
                             placeholder="Nombre"
-                            class="box-info-user <%= locals.errors && errors.nombre ? "is-invalid" : null %>"
-                            value="<%= locals.oldData ? oldData.nombre : null %>"
+                            class="box-info-user <%= locals.errors && errors.name ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.name : null %>"
                         >
         <!-- Entra si vino errors en la variable local y si existe la propiedad nombre en errors -->
-                        <% if(locals.errors && errors.nombre) {%> 
+                        <% if(locals.errors && errors.name) {%> 
                             <div class="text-danger">
         <!-- Le pido que muestre la propiedad msg, del error.nombre-->
-                                <%= errors.nombre.msg %>
+                                <%= errors.name.msg %>
                             </div>
                         <% } %> 
                     </div>
@@ -54,12 +54,12 @@
                             type="text" 
                             name="lastName" 
                             placeholder="Apellido"
-                            class="box-info-user <%= locals.errors && errors.apellido ? "is-invalid" : null %>"
-                            value="<%= locals.oldData ? oldData.apellido : null %>" 
+                            class="box-info-user <%= locals.errors && errors.lastName ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.lastName : null %>" 
                         >
-                        <% if(locals.errors && errors.apellido) {%> 
+                        <% if(locals.errors && errors.lastName) {%> 
                             <div class="text-danger">
-                                <%= errors.apellido.msg %>
+                                <%= errors.lastName.msg %>
                             </div>
                         <% } %> 
                     </div>

@@ -209,13 +209,11 @@ const usersControllers = {
     res.redirect("/users/login");
   },*/
   processRegister: (req, res) => {
-   
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     const resultValidation = validationResult(req);
-  
+    console.log(resultValidation);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      
       // renderizo la vista registro, y le paso los errores.
       return res.render("./users/registro", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -224,26 +222,23 @@ const usersControllers = {
       });
     }
     // guardo las busquedas que trabajan de manera asincronica.
-   
+
     db.User.findOne({
       where: {
-        email: req.body.email
-      }
-    })
-    .then((user) => {
+        email: req.body.email,
+      },
+    }).then((user) => {
       if (user) {
-        
         // si se encontró un usuario, mostrar un mensaje de error y devolver la vista de registro con los campos completados
         res.render("./users/registro", {
           errors: {
             email: {
-              msg: "Este email ya está registrado"
-            }
+              msg: "Este email ya está registrado",
+            },
           },
           oldData: req.body,
         });
       } else {
-       
         // si no se encontró ningún usuario, permitir que el usuario complete el registro
         db.User.create({
           name: req.body.name,
@@ -255,10 +250,7 @@ const usersControllers = {
           //image: " ", //req.file.filename,
           //adress: " ",
           //userName: " ",
-        }).then(
-          res.redirect("/users/login")
-          )
-        
+        }).then(res.redirect("/users/login"));
       }
     });
   },
@@ -269,43 +261,39 @@ const usersControllers = {
     return res.render("./users/perfil", { user: req.session.userLogged });
   },
   perfilDB: (req, res) => {
-    console.log(req.session.userLogged)
+    console.log(req.session.userLogged);
     db.User.findOne({
       where: {
-        email: req.session.userLogged.email
-      }
+        email: req.session.userLogged.email,
+      },
     })
-    .then((user) => {
-      res.render('users/perfil', {user: user});
-    })
-    .catch(function (error) {
-      
-      console.log(error);
+      .then((user) => {
+        res.render("users/perfil", { user: user });
+      })
+      .catch(function (error) {
+        console.log(error);
 
-      res.render("users/perfil", {
-        error: { msg: "Algo salio mal" },
+        res.render("users/perfil", {
+          error: { msg: "Algo salio mal" },
+        });
       });
-    });
-
-    
   },
   editUser: (req, res) => {
     db.User.findOne({
       where: {
-        email: req.session.userLogged.email
-      }
+        email: req.session.userLogged.email,
+      },
     })
-    .then((user) => {
-      res.render('./users/editar-perfil', {user: user});
-    })
-    .catch(function (error) {
-      
-      console.log(error);
+      .then((user) => {
+        res.render("./users/editar-perfil", { user: user });
+      })
+      .catch(function (error) {
+        console.log(error);
 
-      res.render("users/perfil", {
-        error: { msg: "Algo salio mal" },
+        res.render("users/perfil", {
+          error: { msg: "Algo salio mal" },
+        });
       });
-    });
   },
   updateUser: (req, res) => {
     /* console.log("11")
@@ -321,83 +309,82 @@ const usersControllers = {
         oldData: req.body,
       });
     } */
-    
-    console.log("1")
-    console.log(req.body)
-    
+
+    console.log("1");
+    console.log(req.body);
+
     // Busca el usuario en la base de datos
     db.User.findOne({
       where: {
         email: req.session.userLogged.email,
       },
-    })
-    .then((user) => {
-      console.log("2")
+    }).then((user) => {
+      console.log("2");
       // Si no se encuentra el usuario, muestra un error.
       // esta parte del codigo no es necesaria por las validaciones y permisos que ya tenemos.
       if (!user) {
-        console.log("3")
+        console.log("3");
         return res.render("users/editar-perfil", {
           error: { msg: "El usuario no existe" },
         });
       }
       // Compara la contraseña y la confirmación de contraseña.
       if (req.body.password !== req.body.confirmPassword) {
-        console.log("4")
+        console.log("4");
         return res.render("users/editar-perfil", {
-          errors: { 
+          errors: {
             password: {
-              msg: "La contraseña y la confirmación de contraseña no coinciden" 
+              msg: "La contraseña y la confirmación de contraseña no coinciden",
             },
           },
           oldData: req.body,
           user: user,
         });
-    }
-    // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
-    const passwordOk = bcrypt.compareSync(req.body.password, user.password);
-    if (!passwordOk) {
-      console.log("5")
-    return res.render("users/editar-perfil", {
-      errors: { 
-        password:{
-          msg: "La contraseña no coincide con la almacenada en la base de datos" 
+      }
+      // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
+      const passwordOk = bcrypt.compareSync(req.body.password, user.password);
+      if (!passwordOk) {
+        console.log("5");
+        return res.render("users/editar-perfil", {
+          errors: {
+            password: {
+              msg: "La contraseña no coincide con la almacenada en la base de datos",
+            },
+          },
+          oldData: req.body,
+          user: user,
+        });
+      }
+      console.log("6");
+      console.log(req.session.userLogged.email);
+      // Actualiza el usuario en la base de datos.
+      db.User.update(
+        {
+          name: req.body.name,
+          lastName: req.body.lastName,
+          // email: req.body.email,
+          // Encripta la contraseña.
+          // password: bcrypt.hashSync(req.body.password, 10),
+          // category_id: 1,
+          // image: " ", //req.body.image,
+          adress: req.body.adress,
+          userName: req.body.userName,
         },
-        },
-      oldData: req.body,
-      user: user,
+        {
+          where: {
+            email: req.session.userLogged.email,
+          },
+        }
+      ).then((user) => {
+        console.log("-------------- user ------------------");
+        console.log(user);
+        console.log("7");
+
+        // Redirige al usuario al perfil después de actualizar.
+        res.render("users/perfil", { user: user });
+      });
     });
-    }
-    console.log("6")
-    console.log(req.session.userLogged.email)
-    // Actualiza el usuario en la base de datos.
-    db.User.update({
-      name: req.body.name,
-      lastName: req.body.lastName,
-      // email: req.body.email,
-      // Encripta la contraseña.
-      // password: bcrypt.hashSync(req.body.password, 10),
-      // category_id: 1,
-      // image: " ", //req.body.image,
-      adress: req.body.adress,
-      userName: req.body.userName,
-    },{
-      where: {
-        email: req.session.userLogged.email,
-      },
-    })
-    .then((user) => {
-      console.log("-------------- user ------------------")
-      console.log(user)
-      console.log("7")
-     
-      // Redirige al usuario al perfil después de actualizar.
-      res.render("users/perfil", { user: user});
-    })
-  })
-}
-
-
-}
+  },
+};
 
 module.exports = usersControllers;
