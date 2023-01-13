@@ -13,33 +13,27 @@ const userPageMiddleware = require("../middlewares/userPageMiddleware");
 const guestPageMiddleware = require("../middlewares/guestPageMiddleware");
 const uploadUserFile = require("../middlewares/multerUsuarios");
 
+
+// ************ Rutas ************
 router.get("/login", guestPageMiddleware, usersControllers.login);
 router.post("/login", loginValidate, usersControllers.processLogin);
+router.get("/logout", userPageMiddleware, usersControllers.logout);
 router.get("/registro", guestPageMiddleware, usersControllers.registro);
-router.post(
-  "/registro",
-  /* AGREGAR CUANDO SE PUEDA SUBIR FOTO  uploadUserFile.single("avatar"),*/
-  registerValidate,
-  usersControllers.processRegister
-);
+router.post("/registro",/* uploadUserFile.single("avatar"),*/registerValidate,usersControllers.processRegister);
+router.get("/perfil", userPageMiddleware, usersControllers.perfil);
 router.put('/perfil', registerValidate, usersControllers.updateUser);
 router.get("/password", guestPageMiddleware, usersControllers.password);
-router.get("/perfil", userPageMiddleware, usersControllers.perfilDB);
-router.get("/logout", userPageMiddleware, usersControllers.logout);
 router.get("/editar-perfil", userPageMiddleware, usersControllers.editUser);
+//router.delete('/eliminar',usersController.delete);
 
 module.exports = router;
 
 /*
 // ************ Require's ************
 
-router.get ('/logout', usersController.logout);
-router.get ('/register', userMiddleware.registered, usersController.register);
-router.post('/register', registrationValidate, usersController.processRegister);
-router.get ('/editar', userMiddleware.guest, usersController.editar);
-router.patch ('/editar', usersController.modificacion);
-router.get ('/perfil', userMiddleware.guest, usersController.perfil);
-router.delete('/eliminar',usersController.delete);
+
+
+
 router.get ('/avatar', userMiddleware.guest, usersController.avatar);
 router.get ('/direcciones', userMiddleware.guest, usersController.direcciones);
 router.get ('/direcciones/crear', userMiddleware.guest, usersController.crearDireccion);
