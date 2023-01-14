@@ -23,7 +23,7 @@ router.post(
   "/",
   productsFindAllMiddleware,
   createProductMiddleware,
-  uploadProductFile,
+  //uploadProductFile,
   productsControllers.storeDB
 );
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos

@@ -20,6 +20,6 @@ var storage = multer.diskStorage({
 
 
 const preUploadProductFile = multer({ storage });
-const uploadProductFile = preUploadProductFile.single("image")
+const uploadProductFile = preUploadProductFile.array("image")
 
 module.exports = uploadProductFile;
