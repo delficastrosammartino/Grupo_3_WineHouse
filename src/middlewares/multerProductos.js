@@ -1,22 +1,25 @@
-const multer = require("multer");
-const path = require("path");
+let multer = require("multer");
+let path = require("path");
 
-// ************ Proceso para manejar archivos ************
-// creo el storage donde se va a guardar la info.
-const storage = multer.diskStorage({
+var storage = multer.diskStorage({
+  
   // Ubicacion
   destination: (req, file, cb) => {
-    cb(null, "../../public/images/productImages");
+    console.log("2")
+    cb(null, path.join(__dirname, "../../public/images/productImages"));
   },
   // Nombre
   filename: (req, file, cb) => {
+    console.log("3")
     // numero unico con el Date.now, un _img y la extension del archivo original.
     let fileName = Date.now() + "_img" + path.extname(file.originalname);
+    console.log(fileName)
     cb(null, fileName);
   },
 });
 
-// Constante donde genero el metodo a usar para manejar archivos
-const uploadProductFile = multer({ storage });
+
+const preUploadProductFile = multer({ storage });
+const uploadProductFile = preUploadProductFile.single("image")
 
 module.exports = uploadProductFile;

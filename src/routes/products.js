@@ -23,6 +23,7 @@ router.post(
   "/",
   productsFindAllMiddleware,
   createProductMiddleware,
+  uploadProductFile,
   productsControllers.storeDB
 );
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
@@ -34,6 +35,7 @@ router.put(
   "/edit/:id",
   productsFindAllMiddleware,
   createProductMiddleware,
+  // uploadProductFile,
   productsControllers.updateDB
 );
 
