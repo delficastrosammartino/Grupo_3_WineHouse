@@ -1,6 +1,7 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
+const multer = require ("multer")
 
 // ************ Controller Require ************
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
@@ -21,7 +22,7 @@ router.get("/logout", userPageMiddleware, usersControllers.logout);
 router.get("/registro", guestPageMiddleware, usersControllers.registro);
 router.post("/registro",/* uploadUserFile.single("avatar"),*/registerValidate,usersControllers.processRegister);
 router.get("/perfil", userPageMiddleware, usersControllers.perfil);
-router.put('/perfil', registerValidate, usersControllers.updateUser);
+router.put('/perfil', registerValidate, uploadUserFile, usersControllers.updateUser);
 router.get("/password", guestPageMiddleware, usersControllers.password);
 router.get("/editar-perfil", userPageMiddleware, usersControllers.editUser);
 //router.delete('/eliminar',usersController.delete);

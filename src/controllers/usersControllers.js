@@ -50,8 +50,8 @@ const usersControllers = {
             if (req.body.rememberme) {
               // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
               res.cookie("userEmail", req.body.email, {
-                maxAge: 1000 * 60 * 2,
-              }); // 1000 es un segundo. En este caso dura 2 minutos.
+                maxAge: 1000 * 60 * 30,
+              }); // 1000 es un segundo. En este caso dura 30 minutos.
             }
 
             return res.redirect("/");
@@ -241,7 +241,7 @@ const usersControllers = {
           // Encripta la contraseña.
           // password: bcrypt.hashSync(req.body.password, 10),
           // category_id: 1,
-          // image: " ", //req.body.image,
+          image: req.file.filename,
           adress: req.body.adress,
           userName: req.body.userName,
         },
