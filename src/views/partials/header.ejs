@@ -43,7 +43,10 @@
             <a class="link" href="/users/perfil"><i class="fa-solid fa-user"></i><%=locals.isLogged.name%></a>
         </div>
         <% } else { %>
-            <a class="link" href="/users/login">Iniciar sesión</a>
+            <div class="iniciar-sesion-link">
+                <a class="link" href="/users/login">Iniciar sesión</a>
+            </div>
+            
         <%}%>
             <div class="icons-desktop"><a href="/carrito"><i class="fa-solid fa-cart-shopping"></i></a></i></div>
   </header>

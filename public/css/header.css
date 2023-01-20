@@ -79,8 +79,7 @@ main{
 /*************** Desktop ***************/
 .menu-desktop{
     display: none;
-    padding: 10px 0px;
-    margin-top: 27px;  
+ 
 }
 .menu-desktop{
     font-weight: 400;
@@ -89,7 +88,6 @@ main{
 .icons-box{
     display: none;
     padding: 10px 0px;
-    margin-top: 27px;
 }
 .functions-header{
     display: none;
@@ -172,6 +170,7 @@ article img {
     }
     .icons-box{
         display: flex;
+        align-items: center;
     }
     .menu-desktop{
         display: flex;
@@ -204,14 +203,22 @@ article img {
     }
     .box-buscador-desktop{
         display: flex;
-        align-items: center;
         position: relative;
-        bottom: 0px;
+        bottom: 8px;
+        padding-right: 10px;
+        flex-direction: row;
     }
     .buscador-desktop{
         width: 100px;
         bottom: -6px;
         left: 12px;
+    }
+    .iniciar-sesion-link{
+        display: flex;
+        position: relative;
+        bottom: 0px;
+        padding-right: 10px;
+        
     }
 }
 
@@ -220,7 +227,10 @@ article img {
 @media (min-width: 1280px){
     header{
         flex-direction: row;
-        justify-content: space-between;
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;
     }
     main{
         margin-top: 140px;
@@ -240,9 +250,11 @@ article img {
     }
     .functions-header{
         display: flex;
-        font-size: 14px;
-        justify-content: space-around;
-        width: 600px;
+        font-size: 18px;
+        justify-content: center;
+        width: 500px;
+        flex-direction: row;
+        align-content: center;
     }
     .logo{
         width: 30%;
@@ -266,15 +278,14 @@ article img {
     }
     .icons-desktop a{
         font-size: 25px;
-        padding: 10px 5px;
-        bottom: 10px;
+        bottom: 0px;
+
     
     }
     .box-buscador-desktop{
         display: flex;
         align-items: center;
         position: relative;
-        bottom: 0px;
     }
     .buscador-desktop{
         padding: 7px 10px;

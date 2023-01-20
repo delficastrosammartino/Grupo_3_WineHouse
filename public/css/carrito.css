@@ -28,11 +28,7 @@
     align-items: center;
     
 }
-.price{
-    align-self: flex-end;
-    position: relative;
-    right: 21px;
-}
+
 .bottom-product-box{
     display: flex;
     justify-content: space-between;
