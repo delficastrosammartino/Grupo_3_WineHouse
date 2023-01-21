@@ -66,6 +66,8 @@ const productsControllers = {
     // PRIMERO HABRIA QUE VERIFICAR SI EL PRODUCTO EXISTE!!!!!!
 
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
+    
+
 
     db.Product.create({
       name: req.body.name,
@@ -76,6 +78,7 @@ const productsControllers = {
       province_id: req.body.province,
       category_id: req.body.category,
       descripcion: req.body.descripcion,
+      foto: ""
     })
       .then((product) => {
         return db.Product.findAll();

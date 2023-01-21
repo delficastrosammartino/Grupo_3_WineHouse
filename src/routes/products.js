@@ -1,6 +1,8 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
+const multer = require ("multer")
+
 
 // ************ Middlewares ***********
 const uploadProductFile = require("../middlewares/multerProductos");
@@ -23,7 +25,7 @@ router.post(
   "/",
   productsFindAllMiddleware,
   createProductMiddleware,
-  //uploadProductFile,
+  uploadProductFile,
   productsControllers.storeDB
 );
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
@@ -35,7 +37,7 @@ router.put(
   "/edit/:id",
   productsFindAllMiddleware,
   createProductMiddleware,
-  // uploadProductFile,
+  //uploadProductFile,
   productsControllers.updateDB
 );
 
