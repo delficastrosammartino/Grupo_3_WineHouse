@@ -21,9 +21,11 @@ const usersControllers = {
   // LOGICA LOGIN
   processLogin: function (req, res) {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
+    console.log("1")
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
+      console.log("2")
       // renderizo la vista login, y le paso los errores.
       return res.render("./users/login", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -31,18 +33,32 @@ const usersControllers = {
         oldData: req.body,
       });
     }
-
+    
+    console.log("3")
     db.User.findOne({
       where: {
         email: req.body.email,
       },
     })
       .then((userToLogin) => {
-        if (userToLogin) {
+        console.log("userToLogin")
+        console.log(userToLogin)
+        if(userToLogin == null){
+          return res.render("users/login", {
+            errors: {
+              email: {
+                msg: "El email no esta registrado",
+              },
+            },
+            oldData: req.body,
+          });
+        }else{
           let passwordOk = bcrypt.compareSync(
             req.body.password,
             userToLogin.password
           );
+     
+      
 
           if (passwordOk) {
             //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
