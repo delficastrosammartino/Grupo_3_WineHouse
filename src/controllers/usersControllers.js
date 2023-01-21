@@ -130,7 +130,7 @@ const usersControllers = {
           // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
           password: bcrypt.hashSync(req.body.password, 10),
           category_id: 1,
-          //image: 'avatar.png',
+          image: '',
           //adress: " ",
           //userName: " ",
         }).then(res.redirect("/users/login"));
@@ -231,7 +231,7 @@ const usersControllers = {
       console.log("6");
       console.log(req.session.userLogged.email);
 
-
+      let image = req.file ? req.file.filename : user.image
       // LOGICA ACTUALIZAR USUARIO
       db.User.update(
         {
@@ -241,7 +241,7 @@ const usersControllers = {
           // Encripta la contraseña.
           // password: bcrypt.hashSync(req.body.password, 10),
           // category_id: 1,
-          image: req.file.filename,
+          image: image,
           adress: req.body.adress,
           userName: req.body.userName,
         },
@@ -251,10 +251,6 @@ const usersControllers = {
           },
         }
       ).then((user) => {
-        console.log("-------------- user ------------------");
-        console.log(user);
-        console.log("7");
-
         // Redirige al usuario al perfil después de actualizar.
         res.render("users/perfil", { user: user });
       });

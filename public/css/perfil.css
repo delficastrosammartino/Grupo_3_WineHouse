@@ -29,17 +29,29 @@ main {
   justify-content: center;
 }
 
-.circulo-img {
+/*.circulo-img {
   height: 150px;
   width: 150px;
   border-radius: 50%;
   background-color: white;
   margin-bottom: 20px;
+}*/
+.circulo-img {
+  position: relative;
+}
+.circulo-img img {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.img-perfil {
+/*.img-perfil {
   width: 100%;
-}
+}*/
 
 .img-saludo {
   display: flex;
@@ -50,6 +62,8 @@ main {
 .saludo-perfil {
   font-size: 25px;
   color: white;
+  position: relative;
+  top: 80px;
 }
 
 .contenedor-botones-perfil {
