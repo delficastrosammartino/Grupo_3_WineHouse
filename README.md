@@ -32,3 +32,13 @@ https://www.dvino.com.ar/ - Divino.
 https://www.chakanawines.com.ar/ Chakana.
 
 Link del Trello: https://trello.com/b/Gv6iIan5/grupo3dh
+
+Para hacer funcionar la app,
+1- npm install
+2- Para hacer funcionar la base de datos se debe descargar el archivo de la carpeta raiz, wine_house.sql y ponerlo a correr en el servidor local.
+3- npm start en la terminal pone a correr la app.
+4- Los datos para iniciar como admin son: email: admin@digitalhouse.com password: Hola#123
+
+
+
+
