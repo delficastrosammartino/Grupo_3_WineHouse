@@ -67,7 +67,11 @@ const productsControllers = {
 
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
     
-
+    console.log("1")
+    console.log("req.body")
+    console.log(req.body)
+    console.log("req.file")
+    console.log(req.file)
 
     db.Product.create({
       name: req.body.name,

@@ -20,7 +20,7 @@ router.get("/login", guestPageMiddleware, usersControllers.login);
 router.post("/login", loginValidate, usersControllers.processLogin);
 router.get("/logout", userPageMiddleware, usersControllers.logout);
 router.get("/registro", guestPageMiddleware, usersControllers.registro);
-router.post("/registro",/* uploadUserFile.single("avatar"),*/registerValidate,usersControllers.processRegister);
+router.post("/registro", registerValidate, usersControllers.processRegister);
 router.get("/perfil", userPageMiddleware, usersControllers.perfil);
 router.put('/perfil', registerValidate, uploadUserFile, usersControllers.updateUser);
 router.get("/password", guestPageMiddleware, usersControllers.password);
