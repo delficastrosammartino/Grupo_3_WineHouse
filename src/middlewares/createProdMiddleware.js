@@ -9,7 +9,7 @@ const createProductMiddleware =
         .notEmpty()
         .withMessage("Tienes que escribir un producto")
         .bail()
-        .isLength({ min: 3, max: 30 })
+        .isLength({ min: 5, max: 30 })
         .withMessage("El nombre no cumple con el largo permitido"),
     body("price")
         .notEmpty()
@@ -43,7 +43,7 @@ const createProductMiddleware =
       .notEmpty()
       .withMessage("Tienes que escribir una descripcion")
       .bail()
-      .isLength({ min: 3, max: 200 })
+      .isLength({ min: 20, max: 200 })
       .withMessage("La descripcion no cumple con el largo permitido"),
     
   ];
