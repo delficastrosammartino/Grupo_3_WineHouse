@@ -26,7 +26,7 @@
                 <div class="contenedor-imagen-carrusel">
                   <img
                     class="imagen-principal imagenes-producto"
-                    src="/images/productImages/<%= product.image%>"
+                    src="/images/productImages/<%= product.foto%>"
                     alt="Imagen de <%= product.name%>"
                   />
                 </div>
@@ -37,7 +37,7 @@
                   <div class="mini">
                     <img
                       class="imagenes-producto"
-                      src="/images/productImages/<%= product.image%>"
+                      src="/images/productImages/<%= product.foto%>"
                       alt="Vino elementos malbec"
                     />
                   </div>
@@ -45,7 +45,7 @@
                   <div class="mini">
                     <img
                       class="imagenes-producto"
-                      src="/images/productImages/vino2.jpg"
+                      src="/images/productImages/<%= product.foto%>"
                       alt="Pack de seis vinos elementos"
                     />
                   </div>
@@ -53,7 +53,7 @@
                   <div class="mini">
                     <img
                       class="imagenes-producto"
-                      src="/images/productImages/vino3.jpg"
+                      src="/images/productImages/<%= product.foto%>"
                       alt="Pack vino, copa y caja"
                     />
                   </div>
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="details descripcion-producto">
-                  <p><%= product.description_id%></p>
+                  <p><%= product.descripcion%></p>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@
                   <div>
                     <div>
                       <img
-                        src="/images/productImages/vino2.jpg"
+                        src=""
                         alt="Producto relacionado <%=[i+1]%>"
                         class="imagenes-relacionados relacionado-<%=[i+1]%>"
                       />
