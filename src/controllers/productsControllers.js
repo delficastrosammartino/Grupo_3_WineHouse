@@ -51,9 +51,12 @@ const productsControllers = {
     );
   },
   storeDB: (req, res) => {
+    console.log("Entre a storeDB")
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
+      console.log("Hay errores!!!")
+      console.log(resultValidation.errors)
       // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.

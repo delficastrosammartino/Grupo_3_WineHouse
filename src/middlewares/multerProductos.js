@@ -13,6 +13,8 @@ var storage = multer.diskStorage({
   filename: (req, file, cb) => {
     // numero unico con el Date.now, un _img y la extension del archivo original.
     let fileName = Date.now() + "_img" + path.extname(file.originalname);
+    console.log("file")
+    console.log(file)
     cb(null, fileName);
   },
 });

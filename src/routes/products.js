@@ -20,8 +20,8 @@ router.get("/", productsControllers.productsDB);
 router.get("/detalles/:id", productsIdVisible, productsControllers.detallesDB);
 router.get("/crear", productsControllers.create);
 //uploadProductFile.single("image"),
-
-router.post("/", productsFindAllMiddleware, createProductMiddleware, uploadProductFile, productsControllers.storeDB);
+// Invirtiendo primero va el multer y despues el createProductMiddleware, al reves no funciona!!!!!
+router.post("/", productsFindAllMiddleware, uploadProductFile, createProductMiddleware, productsControllers.storeDB);
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware,
