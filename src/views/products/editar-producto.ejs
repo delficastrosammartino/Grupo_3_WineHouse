@@ -12,8 +12,9 @@
         </div>
         <form
           class="contenedor-inputs"
-          action="/products/edit/<%=product.id%>?_method=PUT"
+          action="/products/detalles/<%=product.id%>?_method=PUT"
           method="POST"
+          enctype="multipart/form-data"
         >
           <div class="subtitulo">
             <h3>Editando el Producto "<%= product.name %>"</h3>
@@ -143,9 +144,8 @@
               class="description-input"
               cols="40"
             >
-<%= product.descripcion %>
-              </textarea
-            >
+            <%= product.descripcion %>
+              </textarea>
             <% if(locals.errors && errors.descripcion) {%>
             <div class="text-danger"><%= errors.descripcion.msg %></div>
             <% } %>
@@ -153,7 +153,7 @@
 
           <div class="label-input">
             <label for="">Imagen:</label>
-            <input type="file" name="image" class="input-foto" />
+            <input type="file" name="foto" class="input-foto" />
             <% if(locals.errors && errors.image) {%>
             <div class="text-danger"><%= errors.image.msg %></div>
             <% } %>
@@ -167,9 +167,8 @@
             <a class="boton-cancel" href="/products">Volver a productos</a>
           </div>
           <div class="label-input">
-            <a class="boton-delete" href="/products/delete/<%=product.id%>"
-              >Eliminar</a
-            >
+            <a class="boton-delete" href="/products/delete/<%=product.id%>">
+              Eliminar</a>
           </div>
         </form>
       </div>

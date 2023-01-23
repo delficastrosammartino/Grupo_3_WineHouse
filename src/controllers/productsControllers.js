@@ -187,7 +187,24 @@ const productsControllers = {
         oldData: req.body,
       });
     }
+    console.log("Entre a edit!!!!!!")
+    console.log("req.params")
+    console.log(req.params)
+    console.log("req.params.id")
+    console.log(req.params.id)
+    db.Product.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then((product) => {
+      console.log("product")
+      console.log(product)
+      console.log("req.file")
+      console.log(req.file)
+      console.log("product.foto")
+      console.log(product.foto)
 
+    let foto = req.file ? req.file.filename : product.foto
     db.Product.update(
       {
         name: req.body.name,
@@ -198,18 +215,21 @@ const productsControllers = {
         province_id: req.body.province,
         category_id: req.body.category,
         descripcion: req.body.descripcion,
+        foto: foto
       },
       {
         where: {
-          id: req.params.id,
+          id: product.id,
         },
       }
     )
+
+    })
       .then((product) => {
         return db.Product.findAll();
       })
       .then((products) => {
-        res.render("./products/products", { products: products });
+        res.render("./products/detalles", { products: products });
       })
       .catch((error) => {
         console.error(error);
