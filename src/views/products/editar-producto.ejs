@@ -142,10 +142,7 @@
               name="descripcion"
               rows="10"
               class="description-input"
-              cols="40"
-            >
-            <%= product.descripcion %>
-              </textarea>
+              cols="40"><%= product.descripcion %></textarea>
             <% if(locals.errors && errors.descripcion) {%>
             <div class="text-danger"><%= errors.descripcion.msg %></div>
             <% } %>

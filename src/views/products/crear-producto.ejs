@@ -196,8 +196,7 @@
                   id="descripcion"
                   name="descripcion"
                   placeholder="Descripción del producto"
-                  class="description-input"
-                  ><%= locals.oldData ? oldData.descripcion : null %></textarea>
+                  class="description-input"><%= locals.oldData ? oldData.descripcion : null %></textarea>
               </div>
               <% if(locals.errors && errors.descripcion) {%>
               <div class="text-danger"><%= errors.descripcion.msg %></div>
