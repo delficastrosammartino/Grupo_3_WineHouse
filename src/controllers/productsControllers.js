@@ -72,6 +72,8 @@ const productsControllers = {
     console.log(req.body)
     console.log("req.file")
     console.log(req.file)
+    console.log("req.file.filename")
+    console.log(req.file.filename)
 
     db.Product.create({
       name: req.body.name,
@@ -82,7 +84,7 @@ const productsControllers = {
       province_id: req.body.province,
       category_id: req.body.category,
       descripcion: req.body.descripcion,
-      foto: ""
+      foto: req.file.filename
     })
       .then((product) => {
         return db.Product.findAll();

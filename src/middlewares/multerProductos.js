@@ -2,7 +2,7 @@ let multer = require("multer");
 let path = require("path");
 
 
-
+console.log("Entre a multer de productos!!")
 var storage = multer.diskStorage({
   
   // Ubicacion
@@ -13,7 +13,6 @@ var storage = multer.diskStorage({
   filename: (req, file, cb) => {
     // numero unico con el Date.now, un _img y la extension del archivo original.
     let fileName = Date.now() + "_img" + path.extname(file.originalname);
-    console.log("Entre a multer de productos!!")
     cb(null, fileName);
   },
 });
