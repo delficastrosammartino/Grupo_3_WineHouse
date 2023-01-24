@@ -40,7 +40,7 @@ window.addEventListener("load", function(){
         }else{
             form.classList.add('is-invalid');
             form.classList.add("alert-warning")
-        }
+       
         if(name.value.length <= 2){
             if(name.classList.contains("is-valid")){
                 name.classList.remove("is-valid")
@@ -104,6 +104,7 @@ window.addEventListener("load", function(){
             erroresArray.push("Las contraseñas deben coincidir")
         }
         
+    }
         if(erroresArray.length > 0){
             e.preventDefault()
             let ulErrores = document.querySelector("div.errores ul")
