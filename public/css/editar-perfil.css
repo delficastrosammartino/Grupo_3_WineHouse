@@ -4,9 +4,14 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
 h1 {
   color: #80083f;
 }
+
+li {
+    list-style-type: none;
+  }
 .products{
     display: flex;
     flex-wrap: wrap;
@@ -16,7 +21,13 @@ h1 {
     flex-direction: row;
 }
 .edit-profile {
-  text-align: center;
+    text-align: center;
+    margin-top: 110px;
+    padding: 20px;
+}
+
+form {
+    padding: 20px;
 }
 
 input .edit-input {
@@ -46,6 +57,24 @@ label .edit-label {
     padding: 5px 5px;
     border-radius: 6px;
 }
+
+.is-valid {
+    color: #198754;
+  }
+  
+  .is-invalid {
+    color: red;
+    list-style-type: none;
+  }
+  
+  .alert-warning{
+    border-color: red;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 10px;
+    border-style: solid;
+  }
 
 /********* Navegacion Celulares *************/
 
