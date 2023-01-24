@@ -43,7 +43,7 @@ const createProductMiddleware =
       .notEmpty()
       .withMessage("Tienes que escribir una descripcion")
       .bail()
-      .isLength({ min: 20, max: 200 })
+      .isLength({ min: 20, max: 2000 })
       .withMessage("La descripcion no cumple con el largo permitido"),
     
   ];
