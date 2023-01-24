@@ -30,6 +30,9 @@
         <section class="cuadro">
             <div class="saludo-logo">Registrarse</div>
             <form method="POST" action="/users/registro"> <!-- volver a agregar el enctype cuando necesitemos subir foto si es necesario -->
+                <div class="errores">
+                    <ul></ul>
+                </div>
                 <div class="register">
                     <div>
         <!-- en class le estoy pidiendo que si hay un error use en in-valid que me recuadra en rojo el espacio, igual no esta funcionando...-->
@@ -37,6 +40,7 @@
                         <input 
                             type="text" 
                             name="name" 
+                            id="name" 
                             placeholder="Nombre"
                             class="box-info-user <%= locals.errors && errors.name ? "is-invalid" : null %>"
                             value="<%= locals.oldData ? oldData.name : null %>"
@@ -53,6 +57,7 @@
                         <input 
                             type="text" 
                             name="lastName" 
+                            id="lastName" 
                             placeholder="Apellido"
                             class="box-info-user <%= locals.errors && errors.lastName ? "is-invalid" : null %>"
                             value="<%= locals.oldData ? oldData.lastName : null %>" 
@@ -67,6 +72,7 @@
                         <input 
                             type="text" 
                             name="email" 
+                            id="email" 
                             placeholder="E-mail"
                             class="box-info-user <%= locals.errors && errors.email ? "is-invalid" : null %>"
                             value="<%= locals.oldData ? oldData.email : null %>" 
@@ -81,6 +87,7 @@
                         <input 
                             type="password" 
                             name="password" 
+                            id="password" 
                             placeholder="Contraseña"
                             class="box-info-user <%= locals.errors && errors.password ? "is-invalid" : null %>" 
                             value="<%= locals.oldData ? oldData.password : null %>"
@@ -95,6 +102,7 @@
                         <input 
                             type="password" 
                             name="confirmPassword" 
+                            id="confirmPassword" 
                             placeholder="Confirmar contraseña"
                             class="box-info-user <%= locals.errors && errors.confirmarPassword ? "is-invalid" : null %>" 
                             value="<%= locals.oldData ? oldData.confirmarPassword : null %>"
@@ -115,5 +123,6 @@
             </div>
         </section>
     </main>
+    <script src="/js/registroValidation.js"></script>
 </body>
 </html>

@@ -12,6 +12,9 @@
 body {
    font-family:'Assistant', sans-serif;;
 }
+li {
+    list-style-type: none;
+  }
 /*************** Principal ***************/
 .cuadro {
     display:flex;
@@ -86,3 +89,21 @@ body {
 .link{
     color:black;
 }
+
+.is-valid {
+    color: #198754;
+  }
+  
+  .is-invalid {
+    color: red;
+    list-style-type: none;
+  }
+  
+  .alert-warning{
+    border-color: red;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 10px;
+    border-style: solid;
+  }
