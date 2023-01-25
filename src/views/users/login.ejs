@@ -30,25 +30,43 @@
         <section class="cuadro">
             <div class="saludo-logo">Bienvenido!</div>
             <form method="POST" action="/users/login">
+                <div class="errores">
+                    <ul></ul>
+                </div>
                 <div class="login">
                     <div>
-                        <input class="box-info-user" type="text" name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+                        <input 
+                            type="text" 
+                            name="email" 
+                            id="email" 
+                            placeholder="E-mail"
+                            class="box-info-user <%= locals.errors && errors.email ? "is-invalid" : null %>"
+                            value="<%= locals.oldData ? oldData.email : null %>" 
+                        >
                         <% if(locals.errors && errors.email) {%> 
                             <div class="text-danger">
                                 <%= errors.email.msg %>
                             </div>
-                        <% } %>
+                        <% } %> 
                     </div>
                     <div>
-                        <input class="box-info-user" type="password" name="password" placeholder="Contraseña">
+                        <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            placeholder="Contraseña"
+                            class="box-info-user <%= locals.errors && errors.password ? "is-invalid" : null %>" 
+                            value="<%= locals.oldData ? oldData.password : null %>"
+                        >
                         <% if(locals.errors && errors.password) {%> 
                             <div class="text-danger">
                                 <%= errors.password.msg %>
                             </div>
-                        <% } %>
+                        <% } %> 
                     </div>
                 </div>
-                        <input type="submit" class="boton" value="Iniciar Sesión">
+                
+                    <input type="submit" class="boton" value="Iniciar Sesión">
             </form>
             <div class="caja-links">
                 <div class="recordar">
@@ -62,5 +80,6 @@
             </div>
         </section>
     </main>
+    <script src="/js/loginValidation.js"></script>
 </body>
 </html>

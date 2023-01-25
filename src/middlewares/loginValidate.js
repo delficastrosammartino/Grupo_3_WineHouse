@@ -8,7 +8,9 @@ const loginValidator = [
     .bail()
     .isEmail()
     .withMessage("Debes escribir un email valido"),
-  body("password").notEmpty().withMessage("Debes escribir una contraseña"),
+  body("password")
+    .notEmpty()
+    .withMessage("Debes escribir una contraseña"),
 ];
 
 module.exports = loginValidator;
