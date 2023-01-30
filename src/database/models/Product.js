@@ -25,8 +25,8 @@ module.exports = (sequelize, dataTypes) => {
     updated_at: {
       type: dataTypes.DATE,
     },
-    bodega_id:{
-      type: dataTypes.STRING
+    bodega_id: {
+      type: dataTypes.STRING,
     },
     size_id: {
       type: dataTypes.INTEGER,
@@ -39,17 +39,17 @@ module.exports = (sequelize, dataTypes) => {
     },
     description_id: {
       type: dataTypes.INTEGER,
-      default:null
+      default: null,
     },
-    province_id:{
-      type: dataTypes.INTEGER
+    province_id: {
+      type: dataTypes.INTEGER,
     },
-    descripcion:{
+    descripcion: {
+      type: dataTypes.STRING,
+    },
+    /*foto:{
       type: dataTypes.STRING
-    },
-    foto:{
-      type: dataTypes.STRING
-    }
+    }*/
   };
   let config = {
     tableName: "products",

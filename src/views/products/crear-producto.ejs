@@ -11,15 +11,15 @@
           <h2>Formulario de creación de productos</h2>
         </div>
 
-        <div class="errores">
-          <ul></ul>
-        </div>
-
+        
         <div class="contenedor-form">
-          <form action="/products" method="POST" enctype="multipart/form-data">
+          <form id="form" action="/products" method="POST" enctype="multipart/form-data">
+            <div class="errores">
+              <ul></ul>
+            </div>
             <div class="contenedor-inputs">
               <div class="label-input">
-                <label for="name" class="form-label"
+                <label class="form-label"
                   >Nombre del producto:</label
                 >
                 <input
@@ -32,7 +32,7 @@
                 />
               </div>
               <% if(locals.errors && errors.name) {%>
-              <div class="text-danger"><%= errors.name.msg %></div>
+              <div class="text-danger errores"><%= errors.name.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -47,7 +47,7 @@
                 />
               </div>
               <% if(locals.errors && errors.price) {%>
-              <div class="text-danger"><%= errors.price.msg %></div>
+              <div class="text-danger errores"><%= errors.price.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -63,7 +63,7 @@
 
               </div>
               <% if(locals.errors && errors.discount) {%>
-              <div class="text-danger"><%= errors.discount.msg %></div>
+              <div class="text-danger errores"><%= errors.discount.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -94,7 +94,7 @@
               </div>
 
               <% if(locals.errors && errors.size) {%>
-              <div class="text-danger"><%= errors.size.msg %></div>
+              <div class="text-danger errores"><%= errors.size.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -125,7 +125,7 @@
               </div>
 
               <% if(locals.errors && errors.bodega) {%>
-              <div class="text-danger"><%= errors.bodega.msg %></div>
+              <div class="text-danger errores"><%= errors.bodega.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -156,7 +156,7 @@
               </div>
 
               <% if(locals.errors && errors.province) {%>
-              <div class="text-danger"><%= errors.province.msg %></div>
+              <div class="text-danger errores"><%= errors.province.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -187,7 +187,7 @@
               </div>
 
               <% if(locals.errors && errors.category) {%>
-              <div class="text-danger"><%= errors.category.msg %></div>
+              <div class="text-danger errores"><%= errors.category.msg %></div>
               <% } %>
 
               <div class="label-input">
@@ -199,11 +199,11 @@
                   class="description-input"><%= locals.oldData ? oldData.descripcion : null %></textarea>
               </div>
               <% if(locals.errors && errors.descripcion) {%>
-              <div class="text-danger"><%= errors.descripcion.msg %></div>
+              <div class="text-danger errores"><%= errors.descripcion.msg %></div>
               <% } %>
 
               <div class="label-input">
-                <label for="image" class="form-label"
+                <label for="foto" class="form-label"
                   >Imagen del producto:</label
                 >
                 <input
@@ -214,7 +214,7 @@
                 />
               </div>
               <% if(locals.errors && errors.image) {%>
-              <div class="text-danger"><%= errors.image.msg %></div>
+              <div class="text-danger errores"><%= errors.image.msg %></div>
               <% } %>
 
               <div>
@@ -228,5 +228,6 @@
 
 
     <%- include("../partials/footer.ejs") %>
+    <script src="/js/crear-productoValidation.js"></script>
   </body>
 </html>
