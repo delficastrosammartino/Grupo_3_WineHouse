@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-01-2023 a las 21:14:19
+-- Tiempo de generación: 31-01-2023 a las 00:12:36
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -120,32 +120,18 @@ CREATE TABLE `products` (
   `image_id` int(11) DEFAULT NULL,
   `description_id` int(11) DEFAULT NULL,
   `province_id` int(11) DEFAULT NULL,
-  `descripcion` varchar(50) DEFAULT NULL
+  `descripcion` varchar(500) DEFAULT NULL,
+  `foto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `price`, `discount`, `stock`, `created_at`, `updated_at`, `bodega_id`, `size_id`, `category_id`, `image_id`, `description_id`, `province_id`, `descripcion`) VALUES
-(3, 'La linda', '1500', 10, 1, '2023-01-05 02:31:12', '0000-00-00 00:00:00', 11, 1, 6, NULL, NULL, 6, '              '),
-(4, 'prueba 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'prueba dcdsfbsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'AAAAAAaaaaAAAAA', '123', 23, NULL, NULL, NULL, 1, 1, 1, NULL, NULL, 2, 'dnqwbfjhbqwfqe'),
-(10, 'Prueba final?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'va bien?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 'dnjabfja', '50', 50, NULL, '2023-01-07 00:34:41', '0000-00-00 00:00:00', 1, 2, 1, NULL, NULL, 2, '\r\n              \r\n         \r\n              '),
-(14, 'Prueba de edicion', '100', 2, NULL, '2023-01-07 17:46:57', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, 'Vamos mejorando'),
-(15, 'hola', '100', 13, NULL, '2023-01-07 17:56:21', '0000-00-00 00:00:00', 11, 2, 2, NULL, NULL, 3, 'ahora funciona mejhor?'),
-(16, 'la Linda 2', '100', 900, NULL, '2023-01-07 17:56:57', '0000-00-00 00:00:00', 6, 2, 7, NULL, NULL, 3, 'mejorando\r\n              \r\n              '),
-(17, 'prueba 2', '10', 20, NULL, '2023-01-09 18:50:17', '0000-00-00 00:00:00', 1, 1, 1, NULL, NULL, 2, '\r\n              '),
-(18, 'prueba 2', '10', -100, NULL, '2023-01-09 18:50:22', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(19, 'prueba d', '-1', 23, NULL, '2023-01-09 18:55:33', '0000-00-00 00:00:00', 5, 3, 1, NULL, NULL, 3, ''),
-(20, 'prueba d', '-1', 23, NULL, '2023-01-09 18:56:52', '0000-00-00 00:00:00', 1, 2, 4, NULL, NULL, 2, 'dhjbjhdbacivdhcvhgdavcsd'),
-(21, 'Estanislao Perez Pesado', '', 23, NULL, '2023-01-09 20:09:57', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(22, 'dbwjhbdcjhasd', '200', 25, NULL, '2023-01-10 22:10:46', '0000-00-00 00:00:00', 1, 3, 1, NULL, NULL, 5, 'ndjkqwbdjfbejhrbfew'),
-(23, 'prueba d', '12', 12, NULL, '2023-01-11 03:43:15', '0000-00-00 00:00:00', 4, 3, 1, NULL, NULL, 2, 'lntfyrdyugjoygytytffuy'),
-(24, 'cdagfa', '11', 11, NULL, '2023-01-14 15:19:46', '0000-00-00 00:00:00', 1, 1, 3, NULL, NULL, 2, 'dfbwjhbfqew');
+INSERT INTO `products` (`id`, `name`, `price`, `discount`, `stock`, `created_at`, `updated_at`, `bodega_id`, `size_id`, `category_id`, `image_id`, `description_id`, `province_id`, `descripcion`, `foto`) VALUES
+(34, 'eeeeeea', '55', 5, NULL, '2023-01-23 19:54:39', '0000-00-00 00:00:00', 1, 3, 4, NULL, NULL, 4, 'efnkwejrnfkjewrnvjkbnefjbvefhwbvjhwbv', '1674507687608_img.jpeg'),
+(35, 'Pulenta', '5400', 15, NULL, '2023-01-23 21:41:47', '0000-00-00 00:00:00', 5, 1, 3, NULL, NULL, 6, 'El Pinot Noir es una cepa originaria de Borgoña, Francia, que se caracteriza por su estructura taninosa baja, de cuerpo medio que despierta sensaciones refinadas y sutiles en boca. ', '1674510107929_img.png'),
+(36, 'Vistalba', '12050', 8, NULL, '2023-01-23 21:44:17', '0000-00-00 00:00:00', 1, 1, 5, NULL, NULL, 4, 'Un vino con una entrada dulce, notas a frutos rojos maduros, con un gran volumen en boca. De buena estructura y complejidad, con taninos firmes pero aterciopelados. Gran potencial de guarda gracias a sus 18 meses en barrica de roble francés.\r\n\r\n', '1674510257266_img.png');
 
 -- --------------------------------------------------------
 
@@ -256,10 +242,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `lastName`, `userName`, `email`, `adress`, `image`, `created_at`, `updated_at`, `password`, `category_id`) VALUES
-(1, 'Estanislao', 'Perez Pesado', 'Estanis', 'estanislaoperezpesado@gmail.com', '483', '1674329121906_img.jpeg', '2023-01-03 19:19:25', '0000-00-00 00:00:00', '$2a$10$t3tZBEs3E9TwalP4AVVdTOwoE6dd7U2YpKBZcXCto7MtaCFZdtOxu', 3),
-(8, 'Mariano', 'Perez', 'tesion', 'teisonbroder@hotmail.com', '23', '1674330111891_img.jpeg', '2023-01-21 19:41:01', '0000-00-00 00:00:00', '$2a$10$vpb9ur3yvbCqGGXtOjcMqu1N6Y7xuz6MNFBQjzxsWME8iXr1S3Qci', 1),
-(9, 'Diego', 'Paz', NULL, 'diegopaz92@gmail.com', NULL, '', '2023-01-21 19:45:02', '0000-00-00 00:00:00', '$2a$10$wNjdUkOSateGkSnh.mYQbet76mua0ELOoI6nf0GWXrrrEBuEyx9.y', 1),
-(10, 'Administrador', 'Wine House', '', 'admin@winehouse.com', '', '1674331825929_img.jpeg', '2023-01-21 20:09:52', '0000-00-00 00:00:00', '$2a$10$99gGBHLOkH13kZKYlftl5uEJkZQcNfno7wTjio5B6vJV3omwHxFmW', 1);
+(10, 'Dwigth', 'Schrute', '', 'admin@winehouse.com', '', '1674580278315_img.jpeg', '2023-01-21 20:09:52', '0000-00-00 00:00:00', '$2a$10$99gGBHLOkH13kZKYlftl5uEJkZQcNfno7wTjio5B6vJV3omwHxFmW', 1);
 
 -- --------------------------------------------------------
 
@@ -407,7 +390,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `products_categories`
@@ -437,7 +420,7 @@ ALTER TABLE `size_product`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `users_categories`
