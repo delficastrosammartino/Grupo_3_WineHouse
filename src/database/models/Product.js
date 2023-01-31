@@ -47,9 +47,9 @@ module.exports = (sequelize, dataTypes) => {
     descripcion: {
       type: dataTypes.STRING,
     },
-    /*foto:{
-      type: dataTypes.STRING
-    }*/
+    foto: {
+      type: dataTypes.STRING,
+    },
   };
   let config = {
     tableName: "products",
