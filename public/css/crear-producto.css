@@ -2,6 +2,17 @@ body {
   margin-top: 200px;
 }
 
+main {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contenedor-main {
+  width: 90%;
+}
+
 .contenedor-form {
   padding: 50px 0;
 }

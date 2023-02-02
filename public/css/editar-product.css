@@ -1,3 +1,45 @@
 body {
-    margin-top: 200px;
-  }
+  margin-top: 200px;
+}
+
+main {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contenedor-main {
+  width: 90%;
+}
+
+.contenedor-form {
+  padding: 50px 0;
+}
+
+.contenedor-inputs {
+  padding: 20px;
+  border: solid 1px lightgray;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-foto {
+  width: 90%;
+}
+
+.description-input {
+  height: 100px;
+  width: 90%;
+  border: solid 1px lightgray;
+}
+
+.form-input {
+  height: 35px;
+  width: 90%;
+  border: solid 1px lightgray;
+}
