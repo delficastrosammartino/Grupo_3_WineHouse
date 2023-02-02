@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head.ejs')%>
+  <head>
+    <%- include('../partials/head.ejs')%>
+    <link rel="stylesheet" href="/css/editar-perfil.css" />
+  </head>
 
   <body>
     <%- include('../partials/header.ejs')%>
@@ -142,7 +145,10 @@
               name="descripcion"
               rows="10"
               class="description-input"
-              cols="40"><%= product.descripcion %></textarea>
+              cols="40"
+            >
+<%= product.descripcion %></textarea
+            >
             <% if(locals.errors && errors.descripcion) {%>
             <div class="text-danger"><%= errors.descripcion.msg %></div>
             <% } %>
@@ -165,7 +171,8 @@
           </div>
           <div class="label-input">
             <a class="boton-delete" href="/products/delete/<%=product.id%>">
-              Eliminar</a>
+              Eliminar</a
+            >
           </div>
         </form>
       </div>

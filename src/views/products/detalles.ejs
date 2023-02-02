@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="es">
-  <%- include("../partials/head.ejs") %>
+  <head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/detalles.css" />
+  </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
@@ -15,7 +18,9 @@
           </div>
 
           <div class="cruz-cerrar">
-            <i class="fa-solid fa-x"></i>
+            <a href="/products">
+              <i class="fa-solid fa-x"></i>
+            </a>
           </div>
         </div>
 
@@ -97,8 +102,8 @@
                 <div class="details cantidad-agregar">
                   <div class="agregar">
                     <div class="details agregar-al-carrito">
-                      <a href="/products/carrito">
-                        <p>Agregar al carrito</p>
+                      <a href="/products/carrito" class="boton-agregar">
+                        <p class="texto-agregar">Agregar al carrito</p>
                       </a>
                     </div>
                   </div>
@@ -116,7 +121,9 @@
 
                 <div class="formas">
                   <div class="details formas-de-pago">
-                    <p>Ver formas de pago</p>
+                    <a href="#medios-pago" class="medios-pago"
+                      >Ver formas de pago</a
+                    >
                   </div>
                 </div>
               </div>
@@ -144,12 +151,12 @@
 
             <div class="contenedor-articulos-rel">
               <% for ( let i = 0; i < 4; i++){ %>
-              <article class="articulo-<%=[i+1]%>">
+              <article class="articulo-rel">
                 <div class="sombras">
                   <div>
                     <div>
                       <img
-                        src=""
+                        src="/images/productImages/<%= product.foto%>"
                         alt="Producto relacionado <%=[i+1]%>"
                         class="imagenes-relacionados relacionado-<%=[i+1]%>"
                       />
@@ -158,11 +165,11 @@
 
                   <div class="descripcion-articulo-<%=[i+1]%>">
                     <div class="detalles-articulo-rel">
-                      <p>nombre</p>
+                      <p><%= product.name%></p>
                     </div>
 
                     <div class="detalles-articulo-rel">
-                      <p>precio</p>
+                      <p><%= product.price%></p>
                     </div>
                   </div>
                 </div>

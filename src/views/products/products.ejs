@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("../partials/head.ejs") %>
+  <head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/products.css" />
+  </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
 
     <main>
       <div class="display-pag">
-        <section>
-          <div class="contenedor-todo-filtros">
-            <div class="contenedor-titulo">
-              <h2>Filtrar</h2>
-            </div>
-
-            <div>
-              <h3>Categoría</h3>
-            </div>
-          </div>
-        </section>
-
         <section>
           <div class="contenedor-todo-productos">
             <div class="contenedor-titulo">
@@ -28,7 +19,7 @@
             <div class="contenedor-productos">
               <%products.forEach(product => {%>
 
-              <article class="sombra">
+              <article class="sombras">
                 <a
                   href="/products/detalles/<%= product.id %>"
                   class="etiqueta-link"

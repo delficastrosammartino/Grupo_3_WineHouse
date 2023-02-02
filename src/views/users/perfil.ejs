@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("../partials/head.ejs") %>
+  <head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/perfil.css" />
+  </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
@@ -12,15 +15,19 @@
             <div class="img-saludo">
               <div class="circulo-img">
                 <% if (user.image == ""){ %>
-                  <img
+                <img
                   src="/images/imagen-de-perfil.png"
                   alt="Imagen de perfil"
                   class="img-perfil"
-                  />
+                />
                 <% }else{ %>
-                  <img src="/images/avatars/<%= user.image %>" alt="Imagen de perfil" class="img-perfil"/>
-                <% } %> 
-                </div>
+                <img
+                  src="/images/avatars/<%= user.image %>"
+                  alt="Imagen de perfil"
+                  class="img-perfil"
+                />
+                <% } %>
+              </div>
               <div class="saludo-perfil">
                 <p>Hola <%= user.name %>!</p>
               </div>
