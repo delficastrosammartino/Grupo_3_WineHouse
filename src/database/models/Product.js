@@ -70,12 +70,9 @@ module.exports = (sequelize, dataTypes) => {
       as: "province", // este nombre uso para el controlador, associate
       foreignKey: "province_id",
     });
-    Product.belongsToMany(models.Size, {
-      as: "sizes", // este nombre uso para el controlador, associate
-      through: "size_product",
-      foreignKey: "product_id",
-      otherKey: "size_id",
-      timestamps: false,
+    Product.belongsTo(models.Size, {
+      as: "size", // este nombre uso para el controlador, associate
+      foreignKey: "size_id",
     });
     Product.belongsToMany(models.Image, {
       as: "images", // este nombre uso para el controlador, associate

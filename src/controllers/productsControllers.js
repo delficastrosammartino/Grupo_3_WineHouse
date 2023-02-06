@@ -13,7 +13,15 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 const productsControllers = {
   // /products sacando la info de db.
   productsDB: (req, res) => {
-    db.Product.findAll().then((products) => {
+    db.Product.findAll({
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    }).then((products) => {
       res.render("./products/products", { products });
     });
   },
@@ -24,7 +32,7 @@ const productsControllers = {
         { association: "products_categories" },
         { association: "bodega" },
         { association: "province" },
-        { association: "sizes" },
+        { association: "size" },
         { association: "images" },
       ],
     }).then((product) => {

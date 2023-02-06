@@ -1,42 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <%- include("../partials/head.ejs") %> 
+  <head>
+    <%- include("../partials/head.ejs") %> 
+    <link rel="stylesheet" href="/css/products.css" />
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+
   <body>
     <%- include("../partials/header.ejs") %> 
     <main>
-      <div class="products">
-        <article>
-          <img src="images/productImages/2Km-Pinot Noir.jpeg" alt="2km" class="product_img" />
-          <div class="main-article">
-            <h4 class="description">2KM Pinot Noir</h4>
-            <p class="price">$3.000</p>
-          </div>
-        </article>
+      <div class="contenedor-slider">
+        <ul class="slider">
+          <li id="slide1">
+            <img src="/Images/slides/thumb_66951_slider_big.jpeg">
+          </li>
+          <li id="slide2">
+            <img src="/Images/slides/thumb_67910_slider_big.jpeg">
+          </li>
+          <li id="slide3">
+            <img src="/Images/slides/thumb_67911_slider_big.jpeg">
+        </ul>
+        <div class="controles">
+          <ul>
+            <li><a href="#slide1">1</a></li>
+            <li><a href="#slide2">2</a></li>
+            <li><a href="#slide3">3</a></li>
+          </ul>
+        </div>
 
-        <article>
-          <img
-            src="images/productImages/Luigi Bosca-Pinot Noir.jpeg"
-            alt="Luigi Bosca"
-            class="product_img"
-          />
-          <div class="main-article">
-            <h4 class="description">Luigi Bosca Pinot Noir</h4>
-            <p class="price">$3.500</p>
-          </div>
-        </article>
+        <div class="display-pag">
+          <section>
+            <div class="contenedor-todo-productos">
+              <div class="contenedor-titulo">
+                <h2 class="titulo">DESTACADOS</h2>
+              </div>
+  
+              <div class="contenedor-productos">
+                <%products.forEach(product => {%>
+  
+                <article class="sombras">
+                  <a
+                    href="/products/detalles/<%= product.id %>"
+                    class="etiqueta-link"
+                  >
+                    <div class="div-producto">
+                      <div class="contenedor-imagen-producto">
+                        <img
+                          src="/images/productImages/<%= product.foto%>"
+                          alt="Imagen de <%= product.name%>"
+                          class="imagen-producto"
+                        />
+                      </div>
+  
+                      <div class="detalles">
 
-        <article>
-          <img
-            src="images/productImages/Serbal-Pinot Noir.jpeg"
-            alt="Serbal"
-            class="product_img"
-          />
-          <div class="main-article">
-            <h4 class="description">Serbal</h4>
-            <p class="price">$2.500</p>
-          </div>
-        </article>
-      </div>
+                        <div class="size">
+                          <p><%=product.size.name%></p>
+                        </div>
+
+                        <div class="contenedor-precio">
+                          <p class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
+                          >
+                            $<%= product.price%>
+                          </p>
+                          <% if (product.discount > 0){%>
+                          <p class="precios">
+                            $<%= product.price - ((product.price/100) *
+                            product.discount)%>
+                          </p>
+                          <%}%>
+                        </div>
+                        <% if (product.discount > 0){%>
+  
+                        <p class="descuentos"><%= product.discount%>% off</p>
+  
+                        <%}%>
+  
+                        <p class="nombre-producto"><b><%= product.name%></b></p>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+  
+                <%})%>
+              </div>
+            </div>
+          </section>
+        </div>
+        </div>
+
+    
     </main>
     <%- include("../partials/footer.ejs") %> 
   </body>
+
 </html>
