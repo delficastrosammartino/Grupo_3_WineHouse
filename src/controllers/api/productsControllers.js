@@ -4,16 +4,40 @@ const db = require("../../database/models");
 module.exports = {
     list: (req, res) => {
         db.Product
-            .findAll()
-            .then(products => {
-                return res.status(200).json({
+            .findAll({
+                include: [
+                  { association: "products_categories" },
+                  { association: "bodega" },
+                  { association: "province" },
+                  { association: "size" },
+                ],
+              })
+            .then(products => { 
+                let categoryCounts = {};
+                
+
+                products.forEach(product => {
+
+                    
+                    product.detail = "http://localhost:3030/products/detalles/" + product.id 
+                    console.log(product.detail)
+                    if(categoryCounts[product.products_categories.name]){
+                        categoryCounts[product.products_categories.name] = categoryCounts[product.products_categories.name] + 1;
+                    }else{
+                        categoryCounts[product.products_categories.name] = 1
+                    }
+                
+                });
+                
+                return res.status(200).json({ 
                     count: products.length,
-                    data: products,
+                    countByCategory: categoryCounts,
+                    products: products,
                     status: 200
                 })
             })
-            .catch(error => {
-                return res.status(404)
+            .catch(error => { // si hay un error al hacer la consulta a la base de datos
+                return res.status(404) // devolvemos un código 404
             })
     },
     detail: (req, res) => {
