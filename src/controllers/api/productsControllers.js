@@ -14,13 +14,10 @@ module.exports = {
               })
             .then(products => { 
                 let categoryCounts = {};
-                
+                let productDetails = []
 
                 products.forEach(product => {
-
-                    
-                    product.detail = "http://localhost:3030/products/detalles/" + product.id 
-                    console.log(product.detail)
+                     productDetails.push("http://localhost:3030/products/detalles/" + product.id )
                     if(categoryCounts[product.products_categories.name]){
                         categoryCounts[product.products_categories.name] = categoryCounts[product.products_categories.name] + 1;
                     }else{
@@ -33,6 +30,7 @@ module.exports = {
                     count: products.length,
                     countByCategory: categoryCounts,
                     products: products,
+                    productDetails: productDetails,
                     status: 200
                 })
             })
