@@ -1,7 +1,7 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
-const multer = require ("multer")
+const multer = require("multer");
 
 // ************ Controller Require ************
 // establece los metodos para operar cada una de las rutas, la logica para resolver rutas.
@@ -14,7 +14,6 @@ const userPageMiddleware = require("../middlewares/userPageMiddleware");
 const guestPageMiddleware = require("../middlewares/guestPageMiddleware");
 const uploadUserFile = require("../middlewares/multerUsuarios");
 
-
 // ************ Rutas ************
 router.get("/login", guestPageMiddleware, usersControllers.login);
 router.post("/login", loginValidate, usersControllers.processLogin);
@@ -22,10 +21,16 @@ router.get("/logout", userPageMiddleware, usersControllers.logout);
 router.get("/registro", guestPageMiddleware, usersControllers.registro);
 router.post("/registro", registerValidate, usersControllers.processRegister);
 router.get("/perfil", userPageMiddleware, usersControllers.perfil);
-router.put('/perfil', registerValidate, uploadUserFile, usersControllers.updateUser);
+router.put(
+  "/perfil",
+  registerValidate,
+  uploadUserFile,
+  usersControllers.updateUser
+);
 router.get("/password", guestPageMiddleware, usersControllers.password);
 router.get("/editar-perfil", userPageMiddleware, usersControllers.editUser);
 //router.delete('/eliminar',usersController.delete);
+router.get("/:id/avatar", usersControllers.avatar);
 
 module.exports = router;
 

@@ -12,7 +12,6 @@ const usersFilePath = path.join(__dirname, "../data/usersDB.json");
 const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 
 const usersControllers = {
-
   // VISTA LOGIN
   login: function (req, res) {
     return res.render("users/login");
@@ -21,11 +20,11 @@ const usersControllers = {
   // LOGICA LOGIN
   processLogin: function (req, res) {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    console.log("1")
+    console.log("1");
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      console.log("2")
+      console.log("2");
       // renderizo la vista login, y le paso los errores.
       return res.render("./users/login", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -33,17 +32,17 @@ const usersControllers = {
         oldData: req.body,
       });
     }
-    
-    console.log("3")
+
+    console.log("3");
     db.User.findOne({
       where: {
         email: req.body.email,
       },
     })
       .then((userToLogin) => {
-        console.log("userToLogin")
-        console.log(userToLogin)
-        if(userToLogin == null){
+        console.log("userToLogin");
+        console.log(userToLogin);
+        if (userToLogin == null) {
           return res.render("users/login", {
             errors: {
               email: {
@@ -52,13 +51,11 @@ const usersControllers = {
             },
             oldData: req.body,
           });
-        }else{
+        } else {
           let passwordOk = bcrypt.compareSync(
             req.body.password,
             userToLogin.password
           );
-     
-      
 
           if (passwordOk) {
             //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
@@ -91,7 +88,6 @@ const usersControllers = {
         });
       });
   },
-  
 
   // LOGICA LOGOUT
   logout: function (req, res) {
@@ -105,7 +101,6 @@ const usersControllers = {
   registro: (req, res) => {
     res.render("./users/registro");
   },
-
 
   // LOGICA DE REGISTRO
   processRegister: (req, res) => {
@@ -146,7 +141,7 @@ const usersControllers = {
           // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
           password: bcrypt.hashSync(req.body.password, 10),
           category_id: 1,
-          image: '',
+          image: "",
           //adress: " ",
           //userName: " ",
         }).then(res.redirect("/users/login"));
@@ -229,7 +224,6 @@ const usersControllers = {
         });
       }
 
-
       // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
       const passwordOk = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordOk) {
@@ -247,7 +241,7 @@ const usersControllers = {
       console.log("6");
       console.log(req.session.userLogged.email);
 
-      let image = req.file ? req.file.filename : user.image
+      let image = req.file ? req.file.filename : user.image;
       // LOGICA ACTUALIZAR USUARIO
       db.User.update(
         {
@@ -273,38 +267,41 @@ const usersControllers = {
     });
   },
 
-
   // VISTA AVATAR
-  avatar: function(req, res) {
-      res.render('users/avatar');
+  avatar: (req, res) => {
+    db.User.findByPk(req.params.id, {
+      attributes: ["id", "image"],
+    }).then((user) => {
+      res.render("./users/imagen", { user: user });
+    });
   },
 
   // VISTA DIRECCIONES
-  direcciones: function(req, res) {
-      res.render('users/direcciones');
+  direcciones: function (req, res) {
+    res.render("users/direcciones");
   },
 
   // VISTA PARA AGREGAR UNA DIRECCION
-  crearDireccion: function(req, res) {
-      res.render('users/crear-direccion');
+  crearDireccion: function (req, res) {
+    res.render("users/crear-direccion");
   },
 
   // LOGICA BORRADO
   delete: (req, res) => {
-      db.User.destroy({
-          where: {
-              email: req.session.userLogged.email
-          }
+    db.User.destroy({
+      where: {
+        email: req.session.userLogged.email,
+      },
+    })
+      .then((resultado) => {
+        res.cookie("recordame", "", { maxAge: 0 });
+        req.session.destroy();
+        res.redirect("/");
       })
-      .then( resultado => {
-          res.cookie('recordame', '', {maxAge: 0});
-          req.session.destroy();
-          res.redirect('/')
-      })
-      .catch(error => {
-          res.send(error)
-      })
-      }
+      .catch((error) => {
+        res.send(error);
+      });
+  },
 };
 
 module.exports = usersControllers;
