@@ -17,7 +17,7 @@ module.exports = {
                 let productDetails = []
 
                 products.forEach(product => {
-                     productDetails.push("http://localhost:3030/products/detalles/" + product.id )
+                     productDetails.push("http://localhost:3030/api/products/detalles/" + product.id )
                     if(categoryCounts[product.products_categories.name]){
                         categoryCounts[product.products_categories.name] = categoryCounts[product.products_categories.name] + 1;
                     }else{
@@ -40,10 +40,20 @@ module.exports = {
     },
     detail: (req, res) => {
         db.Product
-         .findByPk(req.params.id)
+         .findByPk(req.params.id, {
+            include: [
+              { association: "products_categories" },
+              { association: "bodega" },
+              { association: "province" },
+              { association: "size" },
+            ],
+          })
          .then(product => {
+            let image = "../../../public/images/productImages/" + product.foto
+
             return res.status(200).json({
-                data: product,
+                product: product,
+                image: image,
                 status: 200
             })
          })

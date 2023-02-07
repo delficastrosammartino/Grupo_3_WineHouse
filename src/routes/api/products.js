@@ -4,5 +4,6 @@ const productsControllers = require('../../controllers/api/productsControllers')
 
 
 router.get ("/", productsControllers.list)
+router.get ("/detalles/:id", productsControllers.detail)
 //router.get ("/:id", genresController.detail)
 module.exports = router
