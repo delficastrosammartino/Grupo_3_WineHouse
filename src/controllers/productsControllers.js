@@ -59,12 +59,12 @@ const productsControllers = {
     );
   },
   storeDB: (req, res) => {
-    console.log("Entre a storeDB")
+    console.log("Entre a storeDB");
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      console.log("Hay errores!!!")
-      console.log(resultValidation.errors)
+      console.log("Hay errores!!!");
+      console.log(resultValidation.errors);
       // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -77,14 +77,14 @@ const productsControllers = {
     // PRIMERO HABRIA QUE VERIFICAR SI EL PRODUCTO EXISTE!!!!!!
 
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
-    
-    console.log("1")
-    console.log("req.body")
-    console.log(req.body)
-    console.log("req.file")
-    console.log(req.file)
-    console.log("req.file.filename")
-    console.log(req.file.filename)
+
+    console.log("1");
+    console.log("req.body");
+    console.log(req.body);
+    console.log("req.file");
+    console.log(req.file);
+    console.log("req.file.filename");
+    console.log(req.file.filename);
 
     db.Product.create({
       name: req.body.name,
@@ -95,7 +95,7 @@ const productsControllers = {
       province_id: req.body.province,
       category_id: req.body.category,
       descripcion: req.body.descripcion,
-      foto: req.file.filename
+      foto: req.file.filename,
     })
       .then((product) => {
         return db.Product.findAll();
@@ -195,44 +195,44 @@ const productsControllers = {
         oldData: req.body,
       });
     }
-    console.log("Entre a edit!!!!!!")
-    console.log("req.params")
-    console.log(req.params)
-    console.log("req.params.id")
-    console.log(req.params.id)
+    console.log("Entre a edit!!!!!!");
+    console.log("req.params");
+    console.log(req.params);
+    console.log("req.params.id");
+    console.log(req.params.id);
     db.Product.findOne({
       where: {
         id: req.params.id,
       },
-    }).then((product) => {
-      console.log("product")
-      console.log(product)
-      console.log("req.file")
-      console.log(req.file)
-      console.log("product.foto")
-      console.log(product.foto)
-
-    let foto = req.file ? req.file.filename : product.foto
-    db.Product.update(
-      {
-        name: req.body.name,
-        price: req.body.price,
-        discount: req.body.discount,
-        size_id: req.body.size,
-        bodega_id: req.body.bodega,
-        province_id: req.body.province,
-        category_id: req.body.category,
-        descripcion: req.body.descripcion,
-        foto: foto
-      },
-      {
-        where: {
-          id: product.id,
-        },
-      }
-    )
-
     })
+      .then((product) => {
+        console.log("product");
+        console.log(product);
+        console.log("req.file");
+        console.log(req.file);
+        console.log("product.foto");
+        console.log(product.foto);
+
+        let foto = req.file ? req.file.filename : product.foto;
+        db.Product.update(
+          {
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            size_id: req.body.size,
+            bodega_id: req.body.bodega,
+            province_id: req.body.province,
+            category_id: req.body.category,
+            descripcion: req.body.descripcion,
+            foto: foto,
+          },
+          {
+            where: {
+              id: product.id,
+            },
+          }
+        );
+      })
       .then((product) => {
         return db.Product.findAll();
       })
@@ -262,6 +262,14 @@ const productsControllers = {
   },
   carrito: (req, res) => {
     res.render("./products/carrito");
+  },
+
+  imagenProducts: (req, res) => {
+    db.Product.findByPk(req.params.id, {
+      attributes: ["id", "foto"],
+    }).then((product) => {
+      res.render("./products/imagen", { product: product });
+    });
   },
 };
 

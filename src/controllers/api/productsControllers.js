@@ -91,6 +91,7 @@ module.exports = {
           count: products.length,
           countByCategory: categoryCounts,
           products: productDetails,
+          detail: productDetails,
           status: 200,
         });
       })
@@ -109,11 +110,21 @@ module.exports = {
       ],
     })
       .then((product) => {
-        let image = "../../../public/images/productImages/" + product.foto;
+        let productDetail = {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          discount: product.discount,
+          bodega: product.bodega.name,
+          province: product.province.name,
+          size: product.size.name,
+          category: product.products_categories.name,
+          description: product.descripcion,
+          image: "http://localhost:3030/products/" + product.id + "/image",
+        };
 
         return res.status(200).json({
-          product: product,
-          image: image,
+          product: productDetail,
           status: 200,
         });
       })
