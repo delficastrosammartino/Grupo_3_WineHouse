@@ -36,7 +36,9 @@ app.set("views", "./src/views"); // define la ubicacion de la carpeta vistas
 const mainRoutes = require("./src/routes/main"); // rutas main
 const usersRoutes = require("./src/routes/users"); // rutas users
 const productsRoutes = require("./src/routes/products"); // rutas users
+const apiProductsRoutes = require("./src/routes/api/products"); // rutas users
 
 app.use("/", mainRoutes); // el primer parametro es la ruta raiz o principal, el segundo el archivo a usar para resolver esas rutas.
 app.use("/users", usersRoutes); // el primer parametro es la ruta raiz o principal, el segundo el archivo a usar para resolver esas rutas.
 app.use("/products", productsRoutes); // el primer parametro es la ruta raiz o principal, el segundo el archivo a usar para resolver esas rutas.
+app.use("/api/products", apiProductsRoutes);
