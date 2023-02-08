@@ -213,13 +213,20 @@ article img {
         bottom: -6px;
         left: 12px;
     }
-    .iniciar-sesion-link{
-        display: flex;
-        position: relative;
-        bottom: 0px;
-        padding-right: 10px;
-        
-    }
+    .iniciar-sesion-link {
+        background-color: #80083F;
+        color: white;
+        padding: 8px 11px;
+        text-decoration: none;
+        border-radius: 9px;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      
+      .iniciar-sesion-link:hover {
+        background-color: rgb(191, 71, 191);
+        color: white;
+      }
 }
 
 /*************** Navegacion Desktop *********/
