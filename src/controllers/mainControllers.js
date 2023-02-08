@@ -6,6 +6,10 @@ const db = require('../database/models');
 
 
 const mainControllers = {
+    nosotros: function(req, res) {
+        res.render('./users/nosotros');
+        },
+
     index : (req, res) => {
     db.Product.findAll({
         include: [

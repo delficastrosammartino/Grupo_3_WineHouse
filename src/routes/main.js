@@ -8,6 +8,7 @@ const mainControllers = require('../controllers/mainControllers');
 
 
 router.get('/', mainControllers.index);
+router.get('/nosotros', mainControllers.nosotros);
 
 
 module.exports = router;
