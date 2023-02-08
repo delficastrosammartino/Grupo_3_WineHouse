@@ -1,5 +1,6 @@
 window.addEventListener("load", function () {
   let form = document.querySelector("#form");
+  let errores = document.querySelector("div.errores");
   let inputBorder = document.querySelector(".contenedor-inputs");
   let name = document.querySelector("#name");
   let price = document.querySelector("#price");
@@ -12,7 +13,6 @@ window.addEventListener("load", function () {
   let descripcion = document.querySelector("#descripcion");
   let inputFields = form.querySelectorAll("input");
 
-  console.log("2222222222");
 
   document.getElementById("name").focus();
   let ulErrores = document.querySelector("div.errores ul");
@@ -20,7 +20,6 @@ window.addEventListener("load", function () {
   let formIsComplete = false;
 
   form.addEventListener("submit", function (e) {
-    console.log("asdasdasdsa");
     let erroresArray = [];
     formIsValid = true;
     for (let i = 0; i < inputFields.length; i++) {
@@ -28,7 +27,6 @@ window.addEventListener("load", function () {
       if (!inputFields[i].value) {
         // Si el valor es nulo, establecer formIsValid en false
         formIsValid = false;
-        console.log(inputFields[i]);
         // Detener el ciclo
         break;
       }
@@ -37,23 +35,19 @@ window.addEventListener("load", function () {
       }
     }
 
-    console.log(erroresArray);
-
     if (!formIsValid) {
       erroresArray.push("Debe completar todos los campos");
-      console.log(erroresArray);
       // Detener el envío del formulario
-      inputBorder.classList.add("is-invalid");
-      inputBorder.classList.add("alert-warning");
+      errores.classList.add("is-invalid");
+      form.classList.add("alert-warning");
     } else {
-      inputBorder.classList.add("is-invalid");
-      inputBorder.classList.add("alert-warning");
+      errores.classList.add("is-invalid");
+      form.classList.add("alert-warning");
 
-      if (name.value == "" || name.value.length < 3) {
+      if (name.value == "" || name.value.length < 5) {
         if (name.classList.contains("is-valid")) {
           name.classList.remove("is-valid");
         }
-        console.log("nombre");
         name.classList.add("is-invalid");
         erroresArray.push(
           "El nombre debe tener un largo minimo de 2 caracteres"

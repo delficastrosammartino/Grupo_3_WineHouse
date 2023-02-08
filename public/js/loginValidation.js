@@ -62,7 +62,7 @@ window.addEventListener("load", function(){
                 password.classList.remove("is-valid")
             }
             password.classList.add('is-invalid');
-            erroresArray.push("La contraseña debe tener un formato valido, largo 8, caracter especial y mayusucula")
+            erroresArray.push("La contraseña debe tener un formato valido, largo 8, caracter especial y mayuscula")
         }else{
             if(password.classList.contains("is-invalid")){
                 password.classList.remove("is-invalid")

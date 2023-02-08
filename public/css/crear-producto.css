@@ -43,3 +43,24 @@ main {
   width: 90%;
   border: solid 1px lightgray;
 }
+.is-valid {
+  color: #198754;
+}
+
+.is-invalid {
+  color: red;
+  list-style-type: none;
+}
+
+.alert-warning{
+  border-color: red;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 10px;
+  border-style: solid;
+}
+li {
+  list-style-type: none;
+  text-align: center;
+
+}
