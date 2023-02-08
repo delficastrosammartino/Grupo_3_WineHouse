@@ -98,7 +98,15 @@ const productsControllers = {
       foto: req.file.filename,
     })
       .then((product) => {
-        return db.Product.findAll();
+        return db.Product.findAll({
+          include: [
+            { association: "products_categories" },
+            { association: "bodega" },
+            { association: "province" },
+            { association: "size" },
+            { association: "images" },
+          ],
+        });
       })
       .then((products) => {
         res.render("./products/products", { products: products });
@@ -184,6 +192,7 @@ const productsControllers = {
     );
   },
   updateDB: function (req, res) {
+    console.log("entre a updateDB");
     const resultValidation = validationResult(req);
 
     // si hay errores entra aca.
@@ -204,6 +213,13 @@ const productsControllers = {
       where: {
         id: req.params.id,
       },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
     })
       .then((product) => {
         console.log("product");
@@ -234,7 +250,15 @@ const productsControllers = {
         );
       })
       .then((product) => {
-        return db.Product.findAll();
+        return db.Product.findAll({
+          include: [
+            { association: "products_categories" },
+            { association: "bodega" },
+            { association: "province" },
+            { association: "size" },
+            { association: "images" },
+          ],
+        });
       })
       .then((products) => {
         res.render("./products/detalles", { products: products });

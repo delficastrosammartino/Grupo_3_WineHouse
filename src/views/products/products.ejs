@@ -33,15 +33,17 @@
                       />
                     </div>
 
-
                     <div class="detalles">
-
                       <div class="size">
                         <p><%=product.size.name%></p>
                       </div>
 
                       <div class="contenedor-precio">
-                        <p class="precios <% if (product.discount > 0){%>tachar-precio<%}%>">$<%= product.price%></p>
+                        <p
+                          class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
+                        >
+                          $<%= product.price%>
+                        </p>
                         <% if (product.discount > 0){%>
                         <p class="precios">
                           $<%= product.price - ((product.price/100) *

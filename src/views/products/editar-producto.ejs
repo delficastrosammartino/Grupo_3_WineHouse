@@ -69,14 +69,14 @@
             <div class="label-input">
               <label for="discount">Tamaño:</label>
               <select name="size" id="">
-                <% for (let i = 0; i < sizes.length; i++) { %> <% if
-                (sizes[i].id == product.size_id) { %>
+                <% for (let i = 0; i < sizes.length; i++) { if (sizes[i].id ==
+                product.size_id) { %>
                 <option value="<%= sizes[i].id %>" selected>
                   <%=sizes[i].name %>
                 </option>
                 <% } else { %>
                 <option value="<%= sizes[i].id %>"><%=sizes[i].name %></option>
-                <% } %> <% } %>
+                <% }} %>
               </select>
               <% if(locals.errors && errors.size) {%>
               <div class="text-danger"><%= errors.size.msg %></div>
@@ -172,8 +172,8 @@
               <a class="boton-cancel" href="/products">Volver a productos</a>
             </div>
             <div class="label-input">
-              <a class="boton-delete" href="/products/delete/<%=product.id%>">
-                Eliminar</a
+              <a class="boton-delete" href="/products/delete/<%=product.id%>"
+                >Eliminar</a
               >
             </div>
           </form>
