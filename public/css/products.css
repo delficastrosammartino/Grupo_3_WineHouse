@@ -37,7 +37,7 @@ main section article p {
   max-width: 650px;
   margin: 0 auto;
   border-radius: 1em;
-  height: 440px;
+  height: 475px;
 }
 
 .etiqueta-link {
@@ -112,8 +112,9 @@ main section article p {
 }
 
 @media screen and (min-width: 769px) {
-  .display-pag {
+  .contenedor-todo-filtros {
     display: flex;
+    width: 300px;
   }
 
   .contenedor-todo-filtros {
