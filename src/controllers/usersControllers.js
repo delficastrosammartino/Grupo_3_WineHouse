@@ -60,11 +60,12 @@ const usersControllers = {
           if (passwordOk) {
             //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
             req.session.userLogged = userToLogin;
+            console.log(userToLogin);
             if (req.body.rememberme) {
               // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
               res.cookie("userEmail", req.body.email, {
-                maxAge: 1000 * 60 * 30,
-              }); // 1000 es un segundo. En este caso dura 30 minutos.
+                maxAge: 1000 * 60 * 1,
+              }); // 1000 es un segundo. En este caso dura 1 minuto.
             }
 
             return res.redirect("/");
@@ -140,7 +141,7 @@ const usersControllers = {
           email: req.body.email,
           // encripto contraseña, el 10 se pone, es para que tenga un minimo de dificultad
           password: bcrypt.hashSync(req.body.password, 10),
-          category_id: 1,
+          category_id: 2,
           image: "",
           //adress: " ",
           //userName: " ",

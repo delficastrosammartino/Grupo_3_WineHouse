@@ -6,6 +6,14 @@ const db = require('../database/models');
 
 
 const mainControllers = {
+    bodegas: function(req, res) {
+        res.render('./products/bodegas');
+        },
+
+    nosotros: function(req, res) {
+        res.render('./users/nosotros');
+        },
+
     index : (req, res) => {
     db.Product.findAll({
         include: [

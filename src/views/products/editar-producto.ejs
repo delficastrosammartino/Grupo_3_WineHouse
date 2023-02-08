@@ -21,6 +21,9 @@
             method="POST"
             enctype="multipart/form-data"
           >
+            <div class="errores">
+              <ul></ul>
+            </div>
             <div class="subtitulo">
               <h3>Editando el Producto "<%= product.name %>"</h3>
             </div>
@@ -29,6 +32,7 @@
               <label for="name">Nombre del producto:</label>
               <input
                 type="text"
+                id="name"
                 name="name"
                 class="form-input"
                 value="<%= product.name %>"
@@ -42,6 +46,7 @@
               <label for="price">Precio:</label>
               <input
                 type="number"
+                id="price"
                 step=".01"
                 name="price"
                 class="form-input"
@@ -56,6 +61,7 @@
               <label for="discount">Descuento:</label>
               <input
                 type="number"
+                id="discount"
                 step=".01"
                 name="discount"
                 class="form-input"
@@ -85,7 +91,7 @@
 
             <div class="label-input">
               <label for="name">Bodega:</label>
-              <select name="bodega" id="">
+              <select name="bodega" id="bodega">
                 <% for (let i = 0; i < bodegas.length; i++) { %> <% if
                 (bodegas[i].id == product.bodega_id) { %>
                 <option value="<%= bodegas[i].id %>" selected>
@@ -104,7 +110,7 @@
 
             <div class="label-input">
               <label for="name">Provincia:</label>
-              <select name="province" id="">
+              <select name="province" id="province">
                 <% for (let i = 0; i < provinces.length; i++) { %> <% if
                 (provinces[i].id == product.province_id) { %>
                 <option value="<%= provinces[i].id %>" selected>
@@ -123,7 +129,7 @@
 
             <div class="label-input">
               <label for="name">Categoria:</label>
-              <select name="category" id="">
+              <select name="category" id="category">
                 <% for (let i = 0; i < categories.length; i++) { %> <% if
                 (categories[i].id == product.category_id) { %>
                 <option value="<%= categories[i].id %>" selected>

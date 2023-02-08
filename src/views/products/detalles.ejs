@@ -136,6 +136,10 @@
                 <div class="details descripcion-producto">
                   <p><%= product.descripcion%></p>
                 </div>
+                <% if (locals.isLogged.category_id == 1){%>
+                <a href="/products/edit/<%= product.id%>">Editar</a>
+                <a href="/products/delete/<%= product.id%>">Eliminar</a>
+                <%}%>
               </div>
             </div>
           </div>

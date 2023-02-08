@@ -1,0 +1,36 @@
+main{
+    background-color: white;
+    padding: 0px;
+}
+body{
+    background:white;
+    font-family: sans-serif;
+}
+.contenedor-nosotros{
+    background-color: white;
+    width: 100%;
+}
+.contenedor-nosotros h1{
+    text-decoration: underline;
+    text-align: center;
+    font-size: 40px;
+    margin: 20px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor-nosotros p{
+    text-align: justify;
+    font-size: 20px;
+    margin: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor-nosotros img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.quienes-somos{
+    background-color: rgba(0,0,0,0.8);
+    bottom: 300px;
+    position: absolute;
+    color:white;
+}

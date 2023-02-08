@@ -17,7 +17,7 @@ const productsControllers = require("../controllers/productsControllers");
 //Rutas para la creación del CRUD
 router.get("/", productsControllers.productsDB);
 router.get("/detalles/:id", productsIdVisible, productsControllers.detallesDB);
-router.get("/crear", productsControllers.create);
+router.get("/crear", adminPageMiddleware, productsControllers.create);
 //uploadProductFile.single("image"),
 // Primero va el multer y despues el createProductMiddleware, al reves no funciona!!!!!
 router.post(
@@ -30,7 +30,7 @@ router.post(
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware,
-router.get("/edit/:id", productsIdVisible, productsControllers.edit);
+router.get("/edit/:id", productsIdVisible, adminPageMiddleware, productsControllers.edit);
 // uploadProductFile.single("image")
 router.put(
   "/detalles/:id",
@@ -42,7 +42,7 @@ router.put(
 
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 //adminPageMiddleware,
-router.get("/delete/:id", productsControllers.delete);
+router.get("/delete/:id", adminPageMiddleware, productsControllers.delete);
 router.delete("/delete/:id", productsControllers.destroy);
 
 router.get("/carrito", productsControllers.carrito);

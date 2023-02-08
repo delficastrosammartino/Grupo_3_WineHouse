@@ -8,6 +8,8 @@ const mainControllers = require('../controllers/mainControllers');
 
 
 router.get('/', mainControllers.index);
+router.get('/nosotros', mainControllers.nosotros);
+router.get('/bodegas', mainControllers.bodegas);
 
 
 module.exports = router;

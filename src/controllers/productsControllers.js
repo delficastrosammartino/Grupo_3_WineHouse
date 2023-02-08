@@ -204,11 +204,6 @@ const productsControllers = {
         oldData: req.body,
       });
     }
-    console.log("Entre a edit!!!!!!");
-    console.log("req.params");
-    console.log(req.params);
-    console.log("req.params.id");
-    console.log(req.params.id);
     db.Product.findOne({
       where: {
         id: req.params.id,
@@ -222,13 +217,6 @@ const productsControllers = {
       ],
     })
       .then((product) => {
-        console.log("product");
-        console.log(product);
-        console.log("req.file");
-        console.log(req.file);
-        console.log("product.foto");
-        console.log(product.foto);
-
         let foto = req.file ? req.file.filename : product.foto;
         db.Product.update(
           {

@@ -24,8 +24,10 @@
             <a href="/products"><li>Productos</li></a>
             <a href="/bodegas"><li>Bodegas</li></a>
             <a href="/provincias"><li>Provincias</li></a>
-            <a href="/products/crear"><li>Crear</li></a>
             <a href="/products/carrito"><li>Carrito</li></a>
+            <% if(locals.isLogged.category_id == 1) { %>
+            <a href="/products/crear"><li>Crear</li></a>
+            <% } %>
         </ul>
     </nav>
     <div class="icons-box">
