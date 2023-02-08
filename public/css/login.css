@@ -35,6 +35,13 @@ li {
     color: #9BA0A3;
     font-size: 30px;
 }
+.fa-solid, .fas {
+    font-weight: 900;
+    color: #80083F;
+}
+.fa-solid:hover {
+    color:  rgb(129, 22, 129);
+  }
 .saludo-logo {
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -81,14 +88,21 @@ li {
 .boton{
     display: flex;
     margin: auto;
-    background: purple;
     color: white;
     padding: 8px 43px;
     border-radius: 10px;
     font-size: 20px;
     margin-bottom: 5px;
     border: 0.5px solid #eee;
+    background-color: #80083F;
+    color: white;
+    text-decoration: none;
 }
+.boton:hover {
+    background-color: rgb(129, 22, 129);
+    color: white;
+  }
+
 .letra-chica{
     display: flex;
     margin: auto;
