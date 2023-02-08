@@ -15,7 +15,6 @@
           <h2>Formulario de creación de productos</h2>
         </div>
 
-        
         <div class="contenedor-form">
           <form id="form" action="/products" method="POST" enctype="multipart/form-data">
             <div class="errores">
@@ -32,8 +31,7 @@
                   name="name"
                   placeholder="Ej: Luigi Bosca Pinot Noir"
                   class="form-input"
-                  value="<%= locals.oldData ? oldData.name : null %>"
-                />
+                  value="<%= locals.oldData ? oldData.name : null %>"/>
               </div>
               <% if(locals.errors && errors.name) {%>
               <div class="text-danger errores"><%= errors.name.msg %></div>
