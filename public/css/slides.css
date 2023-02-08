@@ -55,9 +55,9 @@ ul.slider li:target {
 }
 .controles li a{
     display: inline-block;
-    color: grey;
+    color: #56070C;
     text-decoration: none;
-    background-color: grey;
+    background-color: #56070C;
     width: 20px;
     height: 20px;
     font-size: 20px;

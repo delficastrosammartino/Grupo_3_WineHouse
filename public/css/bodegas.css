@@ -1,0 +1,41 @@
+main{
+    background-color: white;
+    padding: 0px;
+}
+body{
+    background:white;
+    font-family: 'Roboto', sans-serif;
+}
+.contenedor-bodegas h1{
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+    padding-left: 145px;
+    padding-top: 60px;
+}
+.contenedor-bodegas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.bodegas{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: center;
+}
+.bodega{
+    border: solid 2px lightgray;
+    margin: 10px;
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+.bodega img{
+    width: 250px;
+    height: 200px;
+}

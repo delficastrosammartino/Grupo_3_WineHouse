@@ -6,6 +6,10 @@ const db = require('../database/models');
 
 
 const mainControllers = {
+    bodegas: function(req, res) {
+        res.render('./products/bodegas');
+        },
+
     nosotros: function(req, res) {
         res.render('./users/nosotros');
         },
