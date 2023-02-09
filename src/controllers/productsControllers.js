@@ -303,12 +303,128 @@ const productsControllers = {
   },
   provincias: (req, res) => {
   
+    db.Product.findAll({
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+      order: [
+        ['province_id', 'ASC'],
+      ],
+    })
+    .then((products) => {
+      let catamarca = db.Product.findAll({
+        where: {
+          province_id: 2,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let sanJuan = db.Product.findAll({
+        where: {
+          province_id: 3,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let neuquen = db.Product.findAll({
+        where: {
+          province_id: 4,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let rioNegro = db.Product.findAll({
+        where: {
+          province_id: 5,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let mendoza = db.Product.findAll({
+        where: {
+          province_id: 6,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let cordoba = db.Product.findAll({
+        where: {
+          province_id: 7,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let salta = db.Product.findAll({
+        where: {
+          province_id: 8,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      let laRioja = db.Product.findAll({
+        where: {
+          province_id: 8,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+      })
+      Promise.all([catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja])
+      .then(([catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja]) => {
+        
+        
+        res.render("./products/provincias", {catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja});
+      })
 
-    res.render("./products/provincias");
-  
-     
- 
+      }
+
+    )
+
   }
+
   
 };
 

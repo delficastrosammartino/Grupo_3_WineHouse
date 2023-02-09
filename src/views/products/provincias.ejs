@@ -2,14 +2,296 @@
 <html lang="en">
   <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/products.css" />
+    <link rel="stylesheet" href="/css/provincias.css" />
   </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
 
     <main>
-
+        <% if(catamarca.length > 0) { %>
+            <h3 class="recomendaciones">Catamarca:</h3>
+                <div class="recomendations-row">
+                    <% catamarca.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(sanJuan.length > 0) { %>
+            <h3 class="recomendaciones">San Juan:</h3>
+                <div class="recomendations-row">
+                    <% sanJuan.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(neuquen.length > 0) { %>
+            <h3 class="recomendaciones">Neuquén:</h3>
+                <div class="recomendations-row">
+                    <% neuquen.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% console.log("rioNegro") %> 
+        <% console.log(rioNegro.length) %> 
+        <% if(rioNegro.length > 0) { %>
+            <h3 class="recomendaciones">Rio Negro:</h3>
+                <div class="recomendations-row">
+                    <% rioNegro.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(mendoza.length > 0) { %>
+            <h3 class="recomendaciones">Mendoza:</h3>
+                <div class="recomendations-row">
+                    <% mendoza.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(cordoba.length > 0) { %>
+            <h3 class="recomendaciones">Córdoba:</h3>
+                <div class="recomendations-row">
+                    <% cordoba.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(salta.length > 0) { %>
+            <h3 class="recomendaciones">Salta:</h3>
+                <div class="recomendations-row">
+                    <% salta.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        <% if(laRioja.length > 0) { %>
+            <h3 class="recomendaciones">La Rioja:</h3>
+                <div class="recomendations-row">
+                    <% laRioja.forEach(function(item, index) { %>
+                    <div class="box-product">
+                        <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                            <div class="div-producto">
+                                <div class="contenedor-imagen-producto">
+                                    <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                                </div>
+                                <div class="box-details">
+                                    <div class="box-size-wine">
+                                        <p><%= item.size.dataValues.name %></p>
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                            $<%= item.dataValues.price %>
+                                        </p>
+                                        <% if (item.dataValues.discount > 0){%>
+                                            <p class="box-price">
+                                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                            </p>
+                                        <%}%>
+                                    </div>
+                                    <% if (item.dataValues.discount > 0){%>
+                                        <p class="box-discount"><%= item.dataValues.discount %>% off</p>
+                                    <%}%>
+                                    <p class="box-product-name"><b><%= item.dataValues.name %></b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+        <%}%>
+        
     </main>
 
     <%- include("../partials/footer.ejs") %>
