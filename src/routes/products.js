@@ -46,6 +46,7 @@ router.get("/delete/:id", adminPageMiddleware, productsControllers.delete);
 router.delete("/delete/:id", productsControllers.destroy);
 
 router.get("/carrito", productsControllers.carrito);
+router.get("/provincias", productsControllers.provincias);
 
 router.get("/:id/image", productsControllers.imagenProducts);
 module.exports = router;

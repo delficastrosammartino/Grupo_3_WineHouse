@@ -301,6 +301,16 @@ const productsControllers = {
       res.render("./products/imagen", { product: product });
     });
   },
+  provincias: (req, res) => {
+  
+
+    res.render("./products/provincias");
+  
+     
+ 
+  }
+  
 };
+
 
 module.exports = productsControllers;
