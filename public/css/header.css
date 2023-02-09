@@ -156,7 +156,7 @@ article img {
 
     header{
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         box-shadow: 0px 3px 6px #00000029;
     }
     main{
@@ -198,7 +198,7 @@ article img {
     }
     .icons-desktop a{
         font-size: 17px;
-        padding: 10px 5px;
+        padding: 10px 5px 10px 5px;
         bottom: 7px;
     }
     .box-buscador-desktop{
@@ -285,7 +285,7 @@ article img {
     }
     .icons-desktop a{
         font-size: 25px;
-        bottom: 0px;
+        bottom: 2px;
 
     
     }
