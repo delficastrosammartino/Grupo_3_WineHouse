@@ -4,6 +4,7 @@
   <head>
     <%- include("../partials/head.ejs") %>
     <link rel="stylesheet" href="/css/detalles.css" />
+    <script src="/js/detalles-validations.js"></script>
   </head>
 
   <body>
@@ -57,14 +58,10 @@
                     </div>
                   </div>
 
-                  <div class="cantidad-sumar">
-                    <div>
-                      <p>Cantidad</p>
-                    </div>
-
-                    <div class="sumar-restar">
-                      <p>- 1 +</p>
-                    </div>
+                  <div class="sumar-restar">
+                    <button type="button" class="decrement">-</button>
+                    <input type="text" value="1" readonly>
+                    <button type="button" class="increment">+</button>
                   </div>
           </div>
           <div class="formas">
@@ -91,7 +88,7 @@
           </div>
         </div>
       </div>
-      <% if(productosAlternativos != []) { %>
+      <% if(productosAlternativos.length > 0) { %>
         <h3 class="recomendaciones">Recomendaciones:</h3>
       <div class="recomendations-row">
         <% productosAlternativos.forEach(function(productoAlternativo) { %>

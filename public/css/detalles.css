@@ -451,7 +451,7 @@ header {
   .contenedor-detalles {
     display: flex;
     flex-direction: column;
-    max-width: 780px;
+    width: 560px;
     padding: 10px 10px;
   }
  
