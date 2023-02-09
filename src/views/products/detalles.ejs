@@ -85,8 +85,8 @@
                   <p><%= productPrincipal.descripcion%></p>
                 </div>
                 <% if (locals.isLogged.category_id == 1){%>
-                <a href="/products/edit/<%= productPrincipal.id%>">Editar</a>
-                <a href="/products/delete/<%= productPrincipal.id%>">Eliminar</a>
+                <a href="/products/edit/<%= productPrincipal.id%>" class="admin-button">Editar</a>
+                <a href="/products/delete/<%= productPrincipal.id%>" class="admin-button">Eliminar</a>
                 <%}%>
           </div>
         </div>
