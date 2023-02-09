@@ -28,17 +28,35 @@ const productsControllers = {
 
   detallesDB: (req, res) => {
     db.Product.findByPk(req.params.id, {
-      include: [
-        { association: "products_categories" },
-        { association: "bodega" },
-        { association: "province" },
-        { association: "size" },
-        { association: "images" },
-      ],
+    include: [
+    { association: "products_categories" },
+    { association: "bodega" },
+    { association: "province" },
+    { association: "size" },
+    { association: "images" },
+    ],
     }).then((product) => {
-      res.render("./products/detalles", { product });
+    let productPrincipal = product
+    let categoryId = productPrincipal.products_categories.id
+    db.Product.findAll({
+      where:{
+        id: { [db.Sequelize.Op.not]: productPrincipal.id },
+        category_id: categoryId,
+       
+    },
+    include: [
+      { association: "products_categories" },
+      { association: "bodega" },
+      { association: "province" },
+      { association: "size" },
+      { association: "images" },
+      ],
+    limit: 3
+    }).then((productosAlternativos) => {
+    res.render("./products/detalles", { productPrincipal, productosAlternativos });
+    })
     });
-  },
+    },
   create: (req, res) => {
     // guardo las busquedas que trabajan de manera asincronica.
     let bodegas = db.Bodega.findAll();

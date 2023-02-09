@@ -10,67 +10,45 @@
     <%- include("../partials/header.ejs") %>
 
     <main>
-      <section class="seccion">
-        <div class="ruta-cruz">
-          <div class="cruz-cerrar">
-            <a href="/products">
-              <i class="fa-solid fa-x"></i>
-            </a>
-          </div>
+      <div class="ruta-cruz">
+        <div class="cruz-cerrar">
+          <a href="/products">
+            <i class="fa-solid fa-x"></i>
+          </a>
         </div>
-
-        <div class="contenedor-imagenes-detalles">
-          <div class="imagenes-detalles">
-            <div class="carrusel-minis">
-              <div class="carrusel">
-                <div class="contenedor-imagen-carrusel">
-                  <img
-                    class="imagen-principal imagenes-producto"
-                    src="/images/productImages/<%= product.foto%>"
-                    alt="Imagen de <%= product.name%>"
-                  />
-                </div>
-              </div>
-
-              <div class="contenedor-minis">
-                
-              </div>
-            </div>
-
-            <div class="contenedor-detalles">
-              <div class="details nombre-producto">
-                <h2><%= product.name%></h2>
-              </div>
-
-              <div class="details tamanio">
-                <p><%=product.size.name%></p>
-              </div>
-
-              <div class="contenedor-precio-descuento">
+      </div>
+      <div class="box-detail-row">
+        <div class="image-product-detail">
+          <img class="imagen-principal" src="/images/productImages/<%= productPrincipal.foto%>"                  />
+        </div>
+        <div class="contenedor-detalles">
+          <div class="details nombre-producto">
+                <h2><%= productPrincipal.name%></h2>
+          </div>
+          <div class="size-detail">
+                <%=productPrincipal.size.name%>
+          </div>
+          <div class="contenedor-precio-descuento">
                 <div class="contenedor-precios">
-                  <p
-                    class="details precios <% if (product.discount > 0){%>tachar-precio<%}%>"
-                  >
-                    $<%= product.price%>
+                  <p class="discount-detail <% if (productPrincipal.discount > 0){%>tachar-precio<%}%>">
+                    $<%= productPrincipal.price%>
                   </p>
 
-                  <% if (product.discount > 0){%>
+                  <% if (productPrincipal.discount > 0){%>
                   <p class="details precios precio-discount">
-                    $<%= (product.price - ((product.price/100) *
-                    product.discount))%>
+                    $<%= (productPrincipal.price - ((productPrincipal.price/100) *
+                    productPrincipal.discount))%>
                   </p>
                   <%}%>
                 </div>
 
-                <% if (product.discount > 0){%>
+                <% if (productPrincipal.discount > 0){%>
                 <div>
-                  <p class="descuentos"><%= product.discount%>% off</p>
+                  <p class="descuentos"><%= productPrincipal.discount%>% off</p>
                 </div>
                 <%}%>
-              </div>
-
-              <div>
-                <div class="details cantidad-agregar">
+          </div>
+          <div class="details cantidad-agregar">
                   <div class="agregar">
                     <div class="details agregar-al-carrito">
                       <a href="/products/carrito" class="boton-agregar">
@@ -88,75 +66,69 @@
                       <p>- 1 +</p>
                     </div>
                   </div>
-                </div>
-
-                <div class="formas">
+          </div>
+          <div class="formas">
                   <div class="details formas-de-pago">
                     <a href="#medios-pago" class="medios-pago"
                       >Ver formas de pago</a
                     >
                   </div>
-                </div>
-              </div>
-
-              <div class="contenedor-descripcion">
+          </div>
+          <div class="contenedor-descripcion">
                 <div class="titulos-chicos">
                   <h2>Detalles</h2>
                 </div>
+                <div class="category-detail"><%=productPrincipal.products_categories.name%></div>
+                <div class="bodega-detail"><%=productPrincipal.bodega.name%></div>
 
                 <div class="details descripcion-producto">
-                  <p><%= product.descripcion%></p>
+                  <p><%= productPrincipal.descripcion%></p>
                 </div>
                 <% if (locals.isLogged.category_id == 1){%>
-                <a href="/products/edit/<%= product.id%>">Editar</a>
-                <a href="/products/delete/<%= product.id%>">Eliminar</a>
+                <a href="/products/edit/<%= productPrincipal.id%>">Editar</a>
+                <a href="/products/delete/<%= productPrincipal.id%>">Eliminar</a>
                 <%}%>
-              </div>
-            </div>
           </div>
         </div>
-      </section>
-
-      <section>
-        <div class="display-relacionados">
-          <div class="productos-relacionados">
-            <div class="contenedor-titulo-prod-rel">
-              <h2>Productos relacionados</h2>
-            </div>
-
-            <div class="contenedor-articulos-rel">
-              <% for ( let i = 0; i < 4; i++){ %>
-              <article class="articulo-rel">
-                <div class="sombras">
-                  <div>
-                    <div>
-                      <img
-                        src="/images/productImages/<%= product.foto%>"
-                        alt="Producto relacionado <%=[i+1]%>"
-                        class="imagenes-relacionados relacionado-<%=[i+1]%>"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="descripcion-articulo-<%=[i+1]%>">
-                    <div class="detalles-articulo-rel">
-                      <p><%= product.name%></p>
-                    </div>
-
-                    <div class="detalles-articulo-rel">
-                      <p><%= product.price%></p>
-                    </div>
-                  </div>
+      </div>
+      <% if(productosAlternativos != []) { %>
+        <h3 class="recomendaciones">Recomendaciones:</h3>
+      <div class="recomendations-row">
+        <% productosAlternativos.forEach(function(productoAlternativo) { %>
+          <div class="box-product">
+            <a href="/products/detalles/<%= productoAlternativo.id %>" class="etiqueta-link">
+              <div class="div-producto">
+                <div class="contenedor-imagen-producto">
+                  <img src="/images/productImages/<%= productoAlternativo.foto %>" class="image-product"/>
                 </div>
-              </article>
-
+                <div class="box-details">
+                  <div class="box-size-wine">
+                    <p><%= productoAlternativo.size.name %></p>
+                  </div>
+                  <div class="box-price">
+                    <p class="price-discount <% if (productoAlternativo.discount > 0){%>tachar-precio<%}%>">
+                      $<%= productoAlternativo.price %>
+                    </p>
+                    <% if (productoAlternativo.discount > 0){%>
+                      <p class="box-price">
+                        $<%= productoAlternativo.price - ((productoAlternativo.price / 100) * productoAlternativo.discount) %>
+                      </p>
+                      <%}%>
+                    </div>
+                    <% if (productoAlternativo.discount > 0){%>
+                      <p class="box-discount"><%= productoAlternativo.discount %>% off</p>
+                      <%}%>
+                      <p class="box-product-name"><b><%= productoAlternativo.name %></b></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              
+              <% }); %>
               <%}%>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      </div>
 
+    </main>
     <%- include("../partials/footer.ejs") %>
   </body>
 </html>
