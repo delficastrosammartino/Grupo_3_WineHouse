@@ -133,6 +133,12 @@ li {
     margin-top: 5px;
     display: flex;
 }
+.text-danger{
+    color: red;
+    position: relative;
+    bottom: 27px;
+    font-size: 13px;
+}
 
 .is-valid {
     color: #198754;
