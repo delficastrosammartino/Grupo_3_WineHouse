@@ -1,26 +1,76 @@
-body {
-  margin-top: 200px;
+
+main{
+  padding: 20px 20px;
 }
 
-main {
-  margin: 0 auto;
-  width: 90%;
+.contenedor-titulo {
+margin: 10px 40px;
+}
+.title{
+  font-family: 'Roboto', sans-serif;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  font-size: 22px;
+  font-weight: 300;
+  padding: 3px 9px;
+  color: #666;
+  flex-direction: row;
+  border-bottom: 1px solid #80083F;
 }
-
-.contenedor-main {
-  width: 90%;
-}
-
 .contenedor-form {
-  padding: 50px 0;
+  padding: 20px 0;
+  font-weight: 300;
+  margin: 0px 40px;
+}
+#form{
+  font-weight: 300;
+  
+}
+.form-label{
+ color:#80083F;
+
+}
+input{
+  border-radius: 6px;
+  
+}
+.input-foto{
+  background-color: white;
+  color: #80083F
+}
+select{
+  color: #80083F;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 4px;
+
+}
+#descripcion{
+  border-radius: 6px;
 }
 
 .label-input {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+}
+.boton-crear {
+  color: white;
+  background-color: #80083F;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  width: 40vw;
+  max-width: 175px;
+  min-width: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border:0px
+}
+.agregar-al-carrito:hover {
+  background-color: rgb(129, 22, 129);
+  color: white;
 }
 
 .input-foto {
@@ -29,7 +79,9 @@ main {
 
 .contenedor-inputs {
   padding: 20px;
-  border: solid 1px lightgray;
+  border: solid 1px #80083F;
+  border-radius: 8px;
+
 }
 
 .description-input {

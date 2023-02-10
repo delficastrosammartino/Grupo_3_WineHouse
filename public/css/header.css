@@ -21,6 +21,9 @@ header {
 main{
     margin-top: 200px;
 }
+.functions-header a li{
+    font-weight: 400
+}
 /*************** Phone ***************/
 
 .logo img {

@@ -116,6 +116,7 @@ main section article p {
 
 .nombre-producto {
   font-size: 16px;
+  font-weight: 400;
 }
 
 .precios {
@@ -192,6 +193,8 @@ border-radius: 20px;
 }
 .product-name{
 margin-bottom: 3px;
+font-weight: 400;
+
 }
 .box-price {
 width: 90%;
