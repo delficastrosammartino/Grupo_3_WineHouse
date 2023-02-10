@@ -1,17 +1,16 @@
 window.addEventListener("load", function () {
-  console.log("entre al load")
-  let form = document.querySelector("form");
+  console.log("entre al editar!!!!!!!!")
+  let form = document.querySelector("#form");
   let errores = document.querySelector("div.errores");
-  let inputBorder = document.querySelector(".contenedor-inputs");
-  let name = document.querySelector(".name");
-  let price = document.querySelector(".price");
-  let discount = document.querySelector(".discount");
-  let size = document.querySelector(".size");
-  let bodega = document.querySelector(".bodega");
-  let province = document.querySelector(".province");
-  let category = document.querySelector(".category");
-  let image = document.querySelector(".image_id");
-  let descripcion = document.querySelector(".descripcion");
+  let name = document.querySelector("#name");
+  let price = document.querySelector("#price");
+  let discount = document.querySelector("#discount");
+  let size = document.querySelector("#size");
+  let bodega = document.querySelector("#bodega");
+  let province = document.querySelector("#province");
+  let category = document.querySelector("#category");
+  let image = document.querySelector("#image_id");
+  let descripcion = document.querySelector("#descripcion");
   let inputFields = form.querySelectorAll("input");
 
 
@@ -22,7 +21,7 @@ window.addEventListener("load", function () {
 
   form.addEventListener("submit", function (e) {
     let erroresArray = [];
-    console.log("entre al submit")
+    console.log("entre al submit!!!!!!!!!!")
     formIsValid = true;
     for (let i = 0; i < inputFields.length; i++) {
       // Verificar si el valor del campo es nulo o no

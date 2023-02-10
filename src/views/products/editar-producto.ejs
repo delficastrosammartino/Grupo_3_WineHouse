@@ -17,6 +17,7 @@
         <div class="contenedor-form">
           <form
             class="contenedor-inputs"
+            id="form"
             action="/products/detalles/<%=product.id%>?_method=PUT"
             method="POST"
             enctype="multipart/form-data">
@@ -43,9 +44,7 @@
             <div class="label-input">
               <label for="price">Precio:</label>
               <input
-                type="number"
                 id="price"
-                step=".01"
                 name="price"
                 class="form-input"
                 value="<%= product.price %>"/>
@@ -57,9 +56,7 @@
             <div class="label-input">
               <label for="discount">Descuento:</label>
               <input
-                type="number"
                 id="discount"
-                step=".01"
                 name="discount"
                 class="form-input"
                 value="<%= product.discount %>"/>
@@ -70,7 +67,7 @@
 
             <div class="label-input">
               <label for="discount">Tamaño:</label>
-              <select name="size" id="">
+              <select name="size" id="size">
                 <% for (let i = 0; i < sizes.length; i++) { if (sizes[i].id == product.size_id) { %>
                 <option value="<%= sizes[i].id %>" selected>
                   <%=sizes[i].name %>
@@ -156,7 +153,7 @@
 
             <div class="label-input">
               <label for="">Imagen:</label>
-              <input type="file" name="foto" class="input-foto" />
+              <input type="file" id="image_id" name="foto" class="input-foto" />
               <% if(locals.errors && errors.image) {%>
               <div class="text-danger"><%= errors.image.msg %></div>
               <% } %>
@@ -177,6 +174,6 @@
       </div>
     </main>
     <%- include('../partials/footer.ejs')%>
-    <script src="/public/js/editar-productoValidation.js"></script>
+    <script src="/js/editar-productoValidation.js"></script>
   </body>
 </html>

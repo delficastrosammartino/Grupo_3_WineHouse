@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
     let inputFields = form.querySelectorAll("input");
     // Creo una variable booleana para registrar si al menos un campo está vacío
 
-    console.log("entre al archivo validacion")
+    console.log("-----------------------------------   entre al archivo validacion ------------------------------------------")
     document.getElementById("email").focus();
 
     form.addEventListener("submit", function(e) {
