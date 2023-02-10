@@ -28,35 +28,37 @@ const productsControllers = {
 
   detallesDB: (req, res) => {
     db.Product.findByPk(req.params.id, {
-    include: [
-    { association: "products_categories" },
-    { association: "bodega" },
-    { association: "province" },
-    { association: "size" },
-    { association: "images" },
-    ],
-    }).then((product) => {
-    let productPrincipal = product
-    let categoryId = productPrincipal.products_categories.id
-    db.Product.findAll({
-      where:{
-        id: { [db.Sequelize.Op.not]: productPrincipal.id },
-        category_id: categoryId,
-       
-    },
-    include: [
-      { association: "products_categories" },
-      { association: "bodega" },
-      { association: "province" },
-      { association: "size" },
-      { association: "images" },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
       ],
-    limit: 3
-    }).then((productosAlternativos) => {
-    res.render("./products/detalles", { productPrincipal, productosAlternativos });
-    })
+    }).then((product) => {
+      let productPrincipal = product;
+      let categoryId = productPrincipal.products_categories.id;
+      db.Product.findAll({
+        where: {
+          id: { [db.Sequelize.Op.not]: productPrincipal.id },
+          category_id: categoryId,
+        },
+        include: [
+          { association: "products_categories" },
+          { association: "bodega" },
+          { association: "province" },
+          { association: "size" },
+          { association: "images" },
+        ],
+        limit: 3,
+      }).then((productosAlternativos) => {
+        res.render("./products/detalles", {
+          productPrincipal,
+          productosAlternativos,
+        });
+      });
     });
-    },
+  },
   create: (req, res) => {
     // guardo las busquedas que trabajan de manera asincronica.
     let bodegas = db.Bodega.findAll();
@@ -294,15 +296,7 @@ const productsControllers = {
     res.render("./products/carrito");
   },
 
-  imagenProducts: (req, res) => {
-    db.Product.findByPk(req.params.id, {
-      attributes: ["id", "foto"],
-    }).then((product) => {
-      res.render("./products/imagen", { product: product });
-    });
-  },
   provincias: (req, res) => {
-  
     db.Product.findAll({
       include: [
         { association: "products_categories" },
@@ -311,11 +305,8 @@ const productsControllers = {
         { association: "size" },
         { association: "images" },
       ],
-      order: [
-        ['province_id', 'ASC'],
-      ],
-    })
-    .then((products) => {
+      order: [["province_id", "ASC"]],
+    }).then((products) => {
       let catamarca = db.Product.findAll({
         where: {
           province_id: 2,
@@ -327,7 +318,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let sanJuan = db.Product.findAll({
         where: {
           province_id: 3,
@@ -339,7 +330,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let neuquen = db.Product.findAll({
         where: {
           province_id: 4,
@@ -351,7 +342,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let rioNegro = db.Product.findAll({
         where: {
           province_id: 5,
@@ -363,7 +354,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let mendoza = db.Product.findAll({
         where: {
           province_id: 6,
@@ -375,7 +366,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let cordoba = db.Product.findAll({
         where: {
           province_id: 7,
@@ -387,7 +378,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let salta = db.Product.findAll({
         where: {
           province_id: 8,
@@ -399,7 +390,7 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
+      });
       let laRioja = db.Product.findAll({
         where: {
           province_id: 8,
@@ -411,22 +402,41 @@ const productsControllers = {
           { association: "size" },
           { association: "images" },
         ],
-      })
-      Promise.all([catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja])
-      .then(([catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja]) => {
-        
-        
-        res.render("./products/provincias", {catamarca, sanJuan, neuquen, rioNegro, mendoza, cordoba, salta, laRioja});
-      })
-
-      }
-
-    )
-
-  }
-
-  
+      });
+      Promise.all([
+        catamarca,
+        sanJuan,
+        neuquen,
+        rioNegro,
+        mendoza,
+        cordoba,
+        salta,
+        laRioja,
+      ]).then(
+        ([
+          catamarca,
+          sanJuan,
+          neuquen,
+          rioNegro,
+          mendoza,
+          cordoba,
+          salta,
+          laRioja,
+        ]) => {
+          res.render("./products/provincias", {
+            catamarca,
+            sanJuan,
+            neuquen,
+            rioNegro,
+            mendoza,
+            cordoba,
+            salta,
+            laRioja,
+          });
+        }
+      );
+    });
+  },
 };
-
 
 module.exports = productsControllers;

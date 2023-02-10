@@ -120,7 +120,7 @@ module.exports = {
           size: product.size.name,
           category: product.products_categories.name,
           description: product.descripcion,
-          image: "http://localhost:3030/products/" + product.id + "/image",
+          image: "http://localhost:3030/api/products/" + product.id + "/image",
         };
 
         return res.status(200).json({
@@ -131,5 +131,12 @@ module.exports = {
       .catch((error) => {
         return res.status(404);
       });
+  },
+  imagenProducts: (req, res) => {
+    db.Product.findByPk(req.params.id, {
+      attributes: ["id", "foto"],
+    }).then((product) => {
+      res.render("./products/imagen", { product: product });
+    });
   },
 };

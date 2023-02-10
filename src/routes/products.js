@@ -30,7 +30,12 @@ router.post(
 // aca falta aplicar los middlewares de admin, para que solo tengan permiso ellos
 // lo comente para codear y probar mas comodo
 //adminPageMiddleware,
-router.get("/edit/:id", productsIdVisible, adminPageMiddleware, productsControllers.edit);
+router.get(
+  "/edit/:id",
+  productsIdVisible,
+  adminPageMiddleware,
+  productsControllers.edit
+);
 // uploadProductFile.single("image")
 router.put(
   "/detalles/:id",
@@ -48,5 +53,4 @@ router.delete("/delete/:id", productsControllers.destroy);
 router.get("/carrito", productsControllers.carrito);
 router.get("/provincias", productsControllers.provincias);
 
-router.get("/:id/image", productsControllers.imagenProducts);
 module.exports = router;
