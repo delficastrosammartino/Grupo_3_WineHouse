@@ -5,6 +5,17 @@ body{
   background:white;
   font-family: 'Roboto';
 }
+.titulo{
+  font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 22px;
+    font-weight: 300;
+    padding: 3px 9px;
+    color: #666;
+    flex-direction: row;
+    border-bottom: 1px solid #80083F;
+}
 
 .contenedor-filtro{
   display: flex;
@@ -36,6 +47,10 @@ body{
 }
 .contenedor-productos {
   display: flex;
+  justify-content: center;
+}
+.contenedor-productos-products {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -54,13 +69,7 @@ main section article p {
   margin-bottom: 10px;
 }
 
-.div-producto {
-  border: solid 1px lightgray;
-  max-width: 650px;
-  margin: 0 auto;
-  border-radius: 1em;
-  height: 475px;
-}
+
 
 .etiqueta-link {
   color: black;
@@ -132,6 +141,87 @@ main section article p {
   box-shadow: 0px 0px 10px rgb(100, 100, 100);
   transition: all 300ms ease-in-out;
 }
+
+.recomendations-row{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 50px;
+}
+/****************** Estilos de las cajas de productos *******************/
+.box-product {
+box-shadow: none;
+border-radius: 1em;
+display: flex;
+background-color: white;
+margin: 10px
+}
+.box-product .div-producto:hover {
+box-shadow: 0px 0px 10px rgb(100, 100, 100);
+transition: all 300ms ease-in-out;
+}
+.box-details{
+border-top: solid 1px lightgray;
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+padding: 5px 15px;
+background-color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.etiqueta-link {
+text-decoration: none;
+text-align: center;
+color: black;
+background-color: transparent;
+}
+.div-producto{
+border: solid 1px lightgray;
+max-width: 650px;
+margin: 0 auto;
+border-radius: 1em;
+}
+.contenedor-imagen-producto img{
+display: flex;
+justify-content: center;
+height: 15em;
+width: 13em;
+border-radius: 20px;
+}
+.product-name{
+margin-bottom: 3px;
+}
+.box-price {
+width: 90%;
+display: flex;
+justify-content: space-around;
+}
+.tachar-precio {
+text-decoration: line-through 1px purple;
+font-weight: 300;
+color: #666;
+}
+.price{
+color: black;
+font-weight: 300;
+}
+.box-size-wine{
+color: #666;
+font-size: 15px;
+padding-top: 4px;
+
+}
+.box-discount{
+color: #80083F;
+font-weight: 300;
+}
+.box-product-name{
+color: black;
+}
+
+/******************** Fin caja producto *****************************/
 
 @media screen and (min-width: 769px) {
   .contenedor-todo-filtros {

@@ -7,7 +7,7 @@ const db = require('../database/models');
 
 const mainControllers = {
     bodegas: function(req, res) {
-        res.render('./products/bodegas');
+        res.render('./products/bodegas-info');
         },
 
     nosotros: function(req, res) {

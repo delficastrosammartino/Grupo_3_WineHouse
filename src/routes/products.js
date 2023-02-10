@@ -52,5 +52,6 @@ router.delete("/delete/:id", productsControllers.destroy);
 
 router.get("/carrito", productsControllers.carrito);
 router.get("/provincias", productsControllers.provincias);
+router.get("/categorias", productsControllers.categorias);
 
 module.exports = router;

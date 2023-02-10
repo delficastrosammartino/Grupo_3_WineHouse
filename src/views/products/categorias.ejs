@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/categorias.css" />
+  </head>
+
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <main>
+      <% if(cabernetFranc.length > 0) { %>
+        <h3 class="recomendaciones">Cabernet Franc:</h3>
+            <div class="recomendations-row">
+                <% cabernetFranc.forEach(function(item, index) { %>
+                <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(cabernetSauvignon.length > 0) { %>
+        <h3 class="recomendaciones">Cabernet Sauvignon:</h3>
+            <div class="recomendations-row">
+                <% cabernetSauvignon.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(pinotNoir.length > 0) { %>
+        <h3 class="recomendaciones">Pinot Noir:</h3>
+            <div class="recomendations-row">
+                <% pinotNoir.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(chardonnay.length > 0) { %>
+        <h3 class="recomendaciones">Chardonnay:</h3>
+            <div class="recomendations-row">
+                <% chardonnay.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(malbec.length > 0) { %>
+        <h3 class="recomendaciones">Malbec:</h3>
+            <div class="recomendations-row">
+                <% malbec.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(sauvignonBlanc.length > 0) { %>
+        <h3 class="recomendaciones">Sauvignon Blanc:</h3>
+            <div class="recomendations-row">
+                <% sauvignonBlanc.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(merlot.length > 0) { %>
+        <h3 class="recomendaciones">Merlot:</h3>
+            <div class="recomendations-row">
+                <% merlot.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(syrah.length > 0) { %>
+        <h3 class="recomendaciones">Syrah:</h3>
+            <div class="recomendations-row">
+                <% syrah.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    <% if(blend.length > 0) { %>
+        <h3 class="recomendaciones">Blend:</h3>
+            <div class="recomendations-row">
+                <% blend.forEach(function(item, index) { %>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                        <div class="div-producto">
+                            <div class="contenedor-imagen-producto">
+                                <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                            </div>
+                            <div class="box-details">
+                              <div class="product-name"><%= item.dataValues.name %></div>
+                              <div class="box-price">
+                                <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                                  $<%= item.dataValues.price %>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="price">
+                                    $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                                  </div>
+                                  <%}%>
+                                </div>
+                                <% if (item.dataValues.discount > 0){%>
+                                  <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                                  <%}%>
+                                  <div class="box-size-wine">
+                                      <div><%= item.size.dataValues.name %></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+    <%}%>
+    </main>
+
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

@@ -9,113 +9,42 @@
     <%- include("../partials/header.ejs") %>
 
     <main>
-      <div class="display-pag">
-        <section>
-          <div class="contenedor-todo-productos">
             <div class="contenedor-titulo">
-              <h2 class="titulo">Todos los productos</h2>
+              <h2 class="titulo">Todos los productos:</h2>
             </div>
-
-            <div class="contenedor-filtro">
-              <p>
-                En esta sección vas a encontrar una amplia variedad de bodegas
-                de todo el mundo. Podés filtrar por país, provincia o región
-                para encontrar la bodega que más te guste.
-              </p>
-              <ul class="list-inline" id="producer-filter">
-                <li>
-                  <b>Seleccioná una ubicación</b><br />
-                  <select id="map_filter_location">
-                    <option value="">Provincias</option>
-                    <option value="Catamarca">Catamarca</option>
-                    <option value="Cordoba">Cordoba</option>
-                    <option value="La Rioja">La Rioja</option>
-                    <option value="Mendoza">Mendoza</option>
-                    <option value="Neuquen">Neuquen</option>
-                    <option value="Rio Negro">Rio Negro</option>
-                    <option value="Salta">Salta</option>
-                    <option value="San Juan">San Juan</option>
-                  </select>
-                </li>
-                <li>
-                  <b>Seleccioná una bodega</b><br />
-                  <select id="map_filter_bodega">
-                    <option value="">Bodegas</option>
-                    <option value="Bianchi">Bianchi</option>
-                    <option value="Bodega del Fin del Mundo">
-                      Bodega del Fin del Mundo
-                    </option>
-                    <option value="Bodega Catena Zapata">
-                      Bodega Catena Zapata
-                    </option>
-                    <option value="El Esteco">El Esteco</option>
-                    <option value="Finca Las Moras">Finca Las Moras</option>
-                    <option value="Luigi Bosca">Luigi Bosca</option>
-                    <option value="Navarro Correas">Navarro Correas</option>
-                    <option value="Nieto Senetiner">Nieto Senetiner</option>
-                    <option value="Norton">Norton</option>
-                    <option value="Rutini">Rutini</option>
-                    <option value="Salentein">Salentein</option>
-                    <option value="Trapiche">Trapiche</option>
-                    <option value="Zapata">Zapata</option>
-                    <option value="Zuccardi">Zuccardi</option>
-                  </select>
-                </li>
-              </ul>
-            </div>
-
-            <div class="contenedor-productos">
-              <%products.forEach(product => {%>
-
-              <article class="sombras">
-                <a
-                  href="/products/detalles/<%= product.id %>"
-                  class="etiqueta-link"
-                >
-                  <div class="div-producto">
-                    <div class="contenedor-imagen-producto">
-                      <img
-                        src="/images/productImages/<%= product.foto%>"
-                        alt="Imagen de <%= product.name%>"
-                        class="imagen-producto"
-                      />
-                    </div>
-
-                    <div class="detalles">
-                      <div class="size">
-                        <p><%=product.size.name%></p>
+            <div class="recomendations-row">
+              <% products.forEach(product => { %>
+                <div class="box-product">
+                  <a href="/products/detalles/<%= product.id %>" class="etiqueta-link">
+                      <div class="div-producto">
+                          <div class="contenedor-imagen-producto">
+                              <img src="/images/productImages/<%= product.foto %>" class="image-product"/>
+                          </div>
+                          <div class="box-details">
+                            <div class="product-name"><%= product.name %></div>
+                            <div class="box-price">
+                              <div class="price-discount <% if (product.discount > 0){%>tachar-precio<%}%>">
+                                $<%= product.price %>
+                              </div>
+                              <% if (product.discount > 0){%>
+                                <div class="price">
+                                  $<%= product.price - ((product.price / 100) * product.discount) %>
+                                </div>
+                                <%}%>
+                              </div>
+                              <% if (product.discount > 0){%>
+                                <div class="box-discount"><%= product.discount %>% OFF</div>
+                                <%}%>
+                                <div class="box-size-wine">
+                                    <div><%= product.size.name %></div>
+                                </div>
+                          </div>
                       </div>
-
-                      <div class="contenedor-precio">
-                        <p
-                          class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
-                        >
-                          $<%= product.price%>
-                        </p>
-                        <% if (product.discount > 0){%>
-                        <p class="precios">
-                          $<%= Math.floor(product.price - ((product.price *
-                          product.discount) /100))%>
-                        </p>
-                        <%}%>
-                      </div>
-                      <% if (product.discount > 0){%>
-
-                      <p class="descuentos"><%= product.discount%>% off</p>
-
-                      <%}%>
-
-                      <p class="nombre-producto"><b><%= product.name%></b></p>
-                    </div>
-                  </div>
-                </a>
-              </article>
+                  </a>
+              </div>
 
               <%})%>
             </div>
-          </div>
-        </section>
-      </div>
     </main>
 
     <%- include("../partials/footer.ejs") %>

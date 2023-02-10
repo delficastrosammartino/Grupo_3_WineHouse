@@ -1,6 +1,6 @@
 main{
     background-color: white;
-    padding: 0px;
+    padding: 20px 20px;
 }
 body{
     background:white;
@@ -12,6 +12,31 @@ body{
     font-weight: 600;
     padding-left: 145px;
     padding-top: 60px;
+}
+.contenedor-titulo {
+    margin: 10px 40px;
+  }
+.titulo{
+    font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 22px;
+      font-weight: 300;
+      padding: 3px 9px;
+      color: #666;
+      flex-direction: row;
+      border-bottom: 1px solid #80083F;
+  }
+.title{
+    font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 3px 9px;
+      color: #666;
+      flex-direction: row;
+      border-bottom: 1px solid #80083F;
 }
 .contenedor-bodegas{
     display: flex;

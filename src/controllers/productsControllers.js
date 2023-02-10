@@ -135,61 +135,6 @@ const productsControllers = {
         console.error(error);
       });
   },
-
-  // POSIBLE storeDB CON CARGA DE VARIAS IMAGENES: ************************
-  /*
-
-  storeDB: (req, res) => {
-    // Validar los datos del formulario
-    const resultValidation = validationResult(req);
-    if (resultValidation.errors.length > 0) {
-      return res.render("./products/crear-producto", {
-        errors: resultValidation.mapped(),
-        oldData: req.body,
-      });
-    }
-
-    // Crear el producto en la base de datos
-    db.Product.create({
-      name: req.body.name,
-      price: req.body.price,
-      discount: req.body.discount,
-      size_id: req.body.size,
-      bodega_id: req.body.bodega,
-      province_id: req.body.province,
-      category_id: req.body.category,
-      descripcion: req.body.descripcion,
-    })
-      .then((product) => {
-        // Guardar las imágenes en la base de datos
-        const imagePromises = req.files.map((file) => {
-          return db.Image.create({
-            name: file.filename,
-          });
-        });
-        return Promise.all(imagePromises);
-      })
-      .then((images) => {
-         // Guardar las relaciones en la tabla intermediaria
-        const relationPromises = images.map((image) => {
-          return product.addImage(image)
-        });
-        return Promise.all(relationPromises);
-      })
-      .then(() => {
-        // Redirigir al usuario a la lista de productos
-        return db.Product.findAll();
-      })
-      .then((products) => {
-        res.render("./products/products", { products: products });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  },
-
-  
-  */
   edit: (req, res) => {
     // guardo las busquedas que trabajan de manera asincronica.
     let product = db.Product.findByPk(req.params.id);
@@ -295,8 +240,8 @@ const productsControllers = {
   carrito: (req, res) => {
     res.render("./products/carrito");
   },
-
   provincias: (req, res) => {
+    // este findAll esta demas!
     db.Product.findAll({
       include: [
         { association: "products_categories" },
@@ -437,6 +382,153 @@ const productsControllers = {
       );
     });
   },
-};
+  categorias: (req, res) => {
+    let cabernetFranc = db.Product.findAll({
+      where: {
+        category_id: 1,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let cabernetSauvignon = db.Product.findAll({
+      where: {
+        category_id: 2,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let pinotNoir = db.Product.findAll({
+      where: {
+        category_id: 3,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let chardonnay = db.Product.findAll({
+      where: {
+        category_id: 4,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let malbec = db.Product.findAll({
+      where: {
+        category_id: 5,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let sauvignonBlanc = db.Product.findAll({
+      where: {
+        category_id: 6,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let merlot = db.Product.findAll({
+      where: {
+        category_id: 7,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let syrah = db.Product.findAll({
+      where: {
+        category_id: 8,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    let blend = db.Product.findAll({
+      where: {
+        category_id: 9,
+      },
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    });
+    Promise.all([
+      cabernetFranc,
+      cabernetSauvignon,
+      pinotNoir,
+      chardonnay,
+      malbec,
+      sauvignonBlanc,
+      merlot,
+      syrah,
+      blend,
+    ]).then(
+      ([
+        cabernetFranc,
+        cabernetSauvignon,
+        pinotNoir,
+        chardonnay,
+        malbec,
+        sauvignonBlanc,
+        merlot,
+        syrah,
+        blend,
+      ]) => {
+        res.render("./products/categorias", {
+          cabernetFranc,
+          cabernetSauvignon,
+          pinotNoir,
+          chardonnay,
+          malbec,
+          sauvignonBlanc,
+          merlot,
+          syrah,
+          blend,
+        });
+      }
+    );
+  }
+}
+
+
 
 module.exports = productsControllers;

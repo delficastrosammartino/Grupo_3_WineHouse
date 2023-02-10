@@ -34,55 +34,39 @@
           <section>
             <div class="contenedor-todo-productos">
               <div class="contenedor-titulo">
-                <h1 class="titulo" style="text-align: center;">DESTACADOS</h1>
+                <h1 class="titulo" style="text-align: center;">Destacados:</h1>
               </div>
   
-              <div class="contenedor-productos">
+              <div class="recomendations-row">
                 <%products.forEach(product => {%>
-  
-                <article class="sombras">
-                  <a
-                    href="/products/detalles/<%= product.id %>"
-                    class="etiqueta-link"
-                  >
-                    <div class="div-producto">
-                      <div class="contenedor-imagen-producto">
-                        <img
-                          src="/images/productImages/<%= product.foto%>"
-                          alt="Imagen de <%= product.name%>"
-                          class="imagen-producto"
-                        />
-                      </div>
-  
-                      <div class="detalles">
-
-                        <div class="size">
-                          <p><%=product.size.name%></p>
+                  <div class="box-product">
+                    <a href="/products/detalles/<%= product.id %>" class="etiqueta-link">
+                      <div class="div-producto">
+                        <div class="contenedor-imagen-producto">
+                          <img src="/images/productImages/<%= product.foto%>" class="image-product"/>
                         </div>
-
-                        <div class="contenedor-precio">
-                          <p class="precios <% if (product.discount > 0){%>tachar-precio<%}%>"
-                          >
-                            $<%= product.price%>
-                          </p>
-                          <% if (product.discount > 0){%>
-                          <p class="precios">
-                            $<%= product.price - ((product.price/100) *
-                            product.discount)%>
-                          </p>
-                          <%}%>
+                        <div class="box-details">
+                          <div class="product-name"><%= product.name %></div>
+                          <div class="box-price">
+                            <div class="price-discount <% if (product.discount > 0){%>tachar-precio<%}%>">
+                              $<%= product.price %>
+                            </div>
+                            <% if (product.discount > 0){%>
+                              <div class="price">
+                                $<%= product.price - ((product.price / 100) * product.discount) %>
+                              </div>
+                              <%}%>
+                            </div>
+                            <% if (product.discount > 0){%>
+                              <div class="box-discount"><%= product.discount %>% OFF</div>
+                              <%}%>
+                              <div class="box-size-wine">
+                                  <div><%= product.size.name %></div>
+                              </div>
                         </div>
-                        <% if (product.discount > 0){%>
-  
-                        <p class="descuentos"><%= product.discount%>% off</p>
-  
-                        <%}%>
-  
-                        <p class="nombre-producto"><b><%= product.name%></b></p>
-                      </div>
                     </div>
-                  </a>
-                </article>
+                </a>
+            </div>
   
                 <%})%>
               </div>
