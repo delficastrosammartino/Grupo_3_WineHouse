@@ -79,7 +79,7 @@ header {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px solid #80083F;
   padding-bottom: 45px;
   margin: 0px 30px;

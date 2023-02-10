@@ -42,23 +42,18 @@
         </form>
         <% if (locals.isLogged) { %>
             <div class="icons-desktop">
-                <button class="icons" type="button" data-toggle="collapse" 
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fas fa-bars icono.menu">
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="fa-solid fa-user"></i><%=locals.isLogged.name%></a>
-                            <a class="dropdown-item" href="/users/perfil">Perfil</a>
-                            <a class="dropdown-item" href="/users/logout">Cerrar sesión</a>
-                        </div>
-                    </span>
-                </button>
+                <a href="/users/perfil"><i class="fa-solid fa-user"></i><%=locals.isLogged.name%></a>
             </div>
         <% } else { %>
-            
-                <a class="iniciar-sesion-link" href="/users/login">Iniciar sesión</a>
+            <a class="iniciar-sesion-link" href="/users/login">Iniciar sesión</a>
+            <%}%>
+            <% if (locals.isLogged) { %>
+            <div class="icons-desktop"><a href="/products/carrito"><i class="fa-solid fa-cart-shopping"></i></a></div>
+
+            <% } else { %>
+                <div class="icons-desktop"><a href="/users/login"><i class="fa-solid fa-cart-shopping"></i></a></div>
+
                 <%}%>
-                <div class="icons-desktop"><a href="/products/carrito"><i class="fa-solid fa-cart-shopping"></i></a></i></div>
     </div>
             
 

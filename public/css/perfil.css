@@ -1,7 +1,5 @@
-main {
-  padding: 7px 0;
-}
 
+/************************ Top *****************************/ 
 .contenedor-ambos {
   display: flex;
   flex-direction: column;
@@ -10,62 +8,35 @@ main {
 .contenedor-perfil {
   display: flex;
   background-color: #80083f;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
   height: 300px;
+  padding: 0px 90px;
 }
-
 .contenedor-info-personal {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  justify-content: space-evenly;
+  height: 350px;
+  justify-content: flex-start;
   padding: 0 50px;
 }
-
-.contenedor-circulo {
-  display: flex;
-  justify-content: center;
-}
-
-/*.circulo-img {
-  height: 150px;
-  width: 150px;
+.img-perfil{
   border-radius: 50%;
-  background-color: white;
-  margin-bottom: 20px;
-}*/
-.circulo-img {
-  position: relative;
-}
-.circulo-img img {
-  max-width: 150px;
-  max-height: 150px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
-
-/*.img-perfil {
-  width: 100%;
-}*/
-
 .img-saludo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .saludo-perfil {
   font-size: 25px;
   color: white;
   position: relative;
-  top: 80px;
+  font-weight: 300;
 }
-
 .contenedor-botones-perfil {
   display: flex;
   flex-direction: column;
@@ -73,11 +44,30 @@ main {
   height: 100%;
   justify-content: space-evenly;
 }
-
 .botones-edit-logout {
   background-color: white;
   height: 50px;
   border: none;
   width: 150px;
   border-radius: 0.5em;
+  color:#80083f
 }
+
+/*********************** Low ****************************/ 
+.info-box {
+  margin: 20px;
+  display: flex;
+}
+.perfil-info{
+  margin-left: 15px;
+  color: #80083f;
+  font-size: 20px;
+  font-weight: 300;
+  
+}
+.perfil-category{
+  font-size: 20px;
+  color: #666;
+    font-weight: 300;
+}
+

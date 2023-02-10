@@ -101,14 +101,17 @@ main{
     text-decoration: none;
     color: #80083F;
 }
+
 .icons-desktop a{
     color: #80083F;
     text-decoration: none;
     margin: 10px 5px;
     display: flex;
     position: relative;
+    font-size: 18px;
 
 }
+
 .box-buscador-desktop{
     display: flex;
     align-items: center;
@@ -196,11 +199,7 @@ article img {
         color:#80083F;
         font-size: 20px;
     }
-    .icons-desktop a{
-        font-size: 17px;
-        padding: 10px 5px 10px 5px;
-        bottom: 7px;
-    }
+ 
     .box-buscador-desktop{
         display: flex;
         position: relative;

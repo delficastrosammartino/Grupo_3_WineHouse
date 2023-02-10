@@ -33,25 +33,45 @@
               </div>
             </div>
             <div class="contenedor-botones-perfil">
-              <div>
-                <a href="/users/editar-perfil"
-                  ><button class="botones-edit-logout">Editar perfil</button></a
-                >
+              <div class="boton-perfil">
+                <a href="/users/editar-perfil">
+                  <button class="botones-edit-logout">Editar perfil</button>
+                </a>
               </div>
-
-              <div>
-                <a href="/users/logout"
-                  ><button class="botones-edit-logout">Cerrar Sesión</button></a
-                >
+              <div class="boton-perfil">
+                <a href="/users/logout">
+                  <button class="botones-edit-logout">Cerrar Sesión</button>
+                  </a>
               </div>
             </div>
           </div>
 
           <div class="contenedor-info-personal">
-            <p>Nombre: <%= user.name %></p>
-            <p>Apellido: <%= user.lastName %></p>
-            <p>Correo electrónico: <%= user.email %></p>
-            <p>Dirección: <%= user.adress %></p>
+            <div class="info-box">
+              <div class="perfil-category">Nombre:</div>
+              <div class="perfil-info"><%= user.name %></div>
+            </div>
+            <div class="info-box">
+              <div class="perfil-category">Apellido:</div>
+              <div class="perfil-info"><%= user.lastName %></div>
+            </div>
+            <div class="info-box">
+              <div class="perfil-category">Correo electrónico:</div>
+              <div class="perfil-info"><%= user.email %></div>
+            </div>
+            <% if(user.adress) {%> 
+              <div class="info-box">
+                <div class="perfil-category">Dirección:</div>
+                <div class="perfil-info"><%= user.adress %></div>
+              </div>
+              <% } %>
+              <% if(user.userName) {%> 
+                <div class="info-box">
+                  <div class="perfil-category">Usuario:</div>
+                  <div class="perfil-info"><%= user.userName %></div>
+                </div>
+              <% } %>
+            
           </div>
         </div>
       </section>
