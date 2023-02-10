@@ -6,7 +6,6 @@ window.addEventListener("load", function(){
     let inputFields = form.querySelectorAll("input");
     // Creo una variable booleana para registrar si al menos un campo está vacío
 
-    console.log("-----------------------------------   entre al archivo validacion ------------------------------------------")
     document.getElementById("email").focus();
 
     form.addEventListener("submit", function(e) {
@@ -14,8 +13,6 @@ window.addEventListener("load", function(){
         
         let erroresArray = []
         let formIsValid = true;
-        console.log("erroresArray")
-        console.log(erroresArray)
         
         // Recorrer cada campo de input
         for (let i = 0; i < inputFields.length; i++) {
@@ -29,7 +26,6 @@ window.addEventListener("load", function(){
         }
         // Verifico si formIsValid es false
         if (!formIsValid) {
-            console.log("entre al if del formisvalid")
             erroresArray.push("Debe completar todos los campos")
             // Detener el envío del formulario
             e.preventDefault();
@@ -84,5 +80,8 @@ window.addEventListener("load", function(){
             }
             erroresArray.length = 0
         }
+        form.classList.remove("alert-warning")
+        password.classList.remove("is-valid")
     })
+
 })
