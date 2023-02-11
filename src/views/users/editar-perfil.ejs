@@ -4,85 +4,112 @@
     <%- include("../partials/head.ejs") %>
     <link rel="stylesheet" href="/css/editar-perfil.css" />
   </head>
-  <body class="edit-profile">
-    <h1>Editar perfil</h1>
-    <form
-      action="/users/perfil?_method=PUT"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <div class="errores">
-        <ul></ul>
+  <body>
+    <%- include("../partials/header.ejs") %>
+  <main>
+
+      <div class="contenedor-titulo">
+        <h3 class="title">Editar Perfil</h3>
       </div>
-      <div>
-        <label for="" class="edit-label">Nombre:</label><br />
-        <input
-          class="edit-input"
-          type="text"
-          id="name"
-          name="name"
-          value="<%= user ? user.name : oldData.name %>"
-        /><br />
-      </div>
-      <label for="" class="edit-label">Apellido:</label><br />
-      <input
-        class="edit-input"
-        type="text"
-        id="lastName"
-        name="lastName"
-        value="<%= user ? user.lastName : oldData.lastName %>"
-      /><br />
-      <label for="" class="edit-label">Correo electrónico:</label><br />
-      <input
-        class="edit-input"
-        type="email"
-        id="email"
-        name="email"
-        value="<%= user ? user.email : oldData.email %>"
-        disabled
-      /><br />
-      <label for="" class="edit-label">Nombre de usuario:</label><br />
-      <input
-        class="edit-input"
-        type="text"
-        id="userName"
-        name="userName"
-        value="<%= user ? user.userName : oldData.userName %>"
-      /><br />
-      <label for="" class="edit-label">Dirección:</label><br />
-      <input
-        class="edit-input"
-        type="text"
-        id="adress"
-        name="adress"
-        value="<%= user? user.adress : oldData.adress %>"
-      /><br />
-      <label for="" class="edit-label">Imagen de perfil:</label><br />
-      <input class="edit-input" type="file" id="image" name="image" /><br />
-      <br />
-      <label for="" class="edit-label">Contraseña actual:</label><br />
-      <input
-        class="edit-input"
-        type="password"
-        id="password"
-        name="password"
-      /><br />
-      <label for="" class="edit-label">Confirmar contraseña:</label><br />
-      <input
-        class="edit-input"
-        type="password"
-        id="confirmPassword"
-        name="confirmPassword"
-      /><br />
-      <br />
-      <% if(locals.errors && errors.password) {%>
-      <div class="text-danger"><%= errors.password.msg %></div>
-      <% } %>
-      <input class="edit-button" type="submit" value="Actualizar" />
-    </form>
-    <div class="back">
-      <a class="back-button" href="/users/perfil">Volver</a>
-    </div>
-    <script src="/js/editar-perfil.js"></script>
-  </body>
-</html>
+      <div class="contenedor-form">
+      <form action="/users/perfil?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="errores">
+          <ul></ul>
+        </div>
+        <div class="contenedor-inputs">
+          <div class="label-inputs">
+            <label for="" class="edit-label">Nombre:</label><br />
+            <input
+              class="edit-input"
+              type="text"
+              id="name"
+              name="name"
+              value="<%= user ? user.name : oldData.name %>"
+            /><br />
+          </div>
+          <div class="label-inputs">
+            <label for="" class="edit-label">Apellido:</label><br />
+            <input
+            class="edit-input"
+            type="text"
+            id="lastName"
+            name="lastName"
+            value="<%= user ? user.lastName : oldData.lastName %>"
+            /><br />
+          </div> 
+          <div class="label-inputs">
+
+            <label for="" class="edit-label">Correo electrónico:</label><br />
+            <input
+            class="edit-input"
+            type="email"
+            id="email"
+            name="email"
+            value="<%= user ? user.email : oldData.email %>"
+            disabled
+            /><br />
+          </div>
+          <div class="label-inputs">
+
+            <label for="" class="edit-label">Nombre de usuario:</label><br />
+            <input
+            class="edit-input"
+            type="text"
+            id="userName"
+            name="userName"
+            value="<%= user ? user.userName : oldData.userName %>"
+            /><br />
+          </div>
+          <div class="label-inputs">
+
+            <label for="" class="edit-label">Dirección:</label><br />
+            <input
+            class="edit-input"
+            type="text"
+            id="adress"
+            name="adress"
+            value="<%= user? user.adress : oldData.adress %>"
+            /><br />
+          </div>
+          <div class="label-inputs">
+            
+            <label for="" class="edit-label">Imagen de perfil:</label><br />
+            <input class="input-foto" type="file" id="image" name="image" /><br />
+            <br />
+          </div>
+          <div class="label-inputs">
+
+            <label for="" class="edit-label">Contraseña actual:</label><br />
+            <input
+            class="edit-input"
+            type="password"
+            id="password"
+            name="password"
+            /><br />
+          </div>
+          <div class="label-inputs">
+
+            <label for="" class="edit-label">Confirmar contraseña:</label><br />
+            <input
+            class="edit-input"
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            /><br />
+            <br />
+          </div>
+            <% if(locals.errors && errors.password) {%>
+            <div class="text-danger"><%= errors.password.msg %></div>
+            <% } %>
+            <input class="edit-button" type="submit" value="Actualizar" />
+            <div class="back">
+              <a class="back-button" href="/users/perfil">Volver</a>
+            </div>
+          </div>
+          </form>
+        </div>
+        <script src="/js/editar-perfil.js"></script>
+      </main>
+    </body>
+    </html>
+    

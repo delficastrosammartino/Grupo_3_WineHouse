@@ -81,6 +81,8 @@ select{
   padding: 20px;
   border: solid 1px #80083F;
   border-radius: 8px;
+  width: 80%;
+    margin: auto;
 
 }
 

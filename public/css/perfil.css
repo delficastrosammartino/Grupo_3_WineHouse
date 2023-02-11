@@ -52,6 +52,10 @@
   border-radius: 0.5em;
   color:#80083f
 }
+.botones-edit-logout:hover {
+  background-color: rgb(129, 22, 129);
+  color: white;
+}
 
 /*********************** Low ****************************/ 
 .info-box {
