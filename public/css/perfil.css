@@ -1,5 +1,8 @@
 
 /************************ Top *****************************/ 
+main{
+  margin-top: 120px;
+}
 .contenedor-ambos {
   display: flex;
   flex-direction: column;

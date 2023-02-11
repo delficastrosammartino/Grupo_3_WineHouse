@@ -18,18 +18,18 @@ header {
     z-index: 999;
     background: #fff;
 }
-main{
-    margin-top: 200px;
-}
+
 .functions-header a li{
     font-weight: 400
 }
 /*************** Phone ***************/
+.logo{
+    margin: 20px
+}
 
 .logo img {
     display: flex;
-    width: 80%;
-    margin: auto;
+    width: 200px;
 }
 .phone-register-button{
     position: relative;
@@ -150,9 +150,7 @@ article img {
 /********* Navegacion Celulares *************/
 
 @media (min-width: 460px){
-    main{
-        margin-top: 280px;
-    }
+  
     
 }
 
@@ -165,9 +163,7 @@ article img {
         justify-content: space-around;
         box-shadow: 0px 3px 6px #00000029;
     }
-    main{
-        margin-top: 100px;
-    }
+  
     .phone-register-button{
         display: none;
     }
@@ -180,16 +176,19 @@ article img {
     }
     .menu-desktop{
         display: flex;
+        position: relative;
+        left: 20px;
     }
     .functions-header{
         display: flex;
         font-size: 14px;
     }
     .logo{
-        width: 30%;
+        width: 300px;
+        margin: 20px 0px;
     }
-    .logo img{
-        width: 100%;
+    .logo a img{
+        width: 300px;
     }
     .buscador-desktop{
         width: 125px;
@@ -256,6 +255,7 @@ article img {
     }
     .menu-desktop{
         display: flex;
+        left: 160px;
     }
     .functions-header{
         display: flex;
@@ -266,10 +266,10 @@ article img {
         align-content: center;
     }
     .logo{
-        width: 30%;
+        width: 80px;
     }
     .logo img{
-        width: 100%;
+        width: 80px;
     }
     .buscador-desktop{
         width: 180px;
