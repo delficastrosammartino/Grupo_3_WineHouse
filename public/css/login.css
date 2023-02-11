@@ -35,6 +35,12 @@ li {
     color: #9BA0A3;
     font-size: 30px;
 }
+
+.errores ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .fa-solid, .fas {
     font-weight: 900;
     color: #80083F;

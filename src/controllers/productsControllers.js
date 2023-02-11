@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { validationResult } = require("express-validator");
 const db = require("../database/models");
+const sequelize = require("sequelize");
 
 // indico la ruta de mi archivo .json, la abosulta.
 const productsFilePath = path.join(__dirname, "../data/productsDB.json");
@@ -83,8 +84,6 @@ const productsControllers = {
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      console.log("Hay errores!!!");
-      console.log(resultValidation.errors);
       // renderizo la vista registro, y le paso los errores.
       return res.render("./products/crear-producto", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -93,19 +92,8 @@ const productsControllers = {
       });
     }
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-
     // PRIMERO HABRIA QUE VERIFICAR SI EL PRODUCTO EXISTE!!!!!!
-
     req.body.image_id = parseInt(req.body.image_id, 10) || null;
-
-    console.log("1");
-    console.log("req.body");
-    console.log(req.body);
-    console.log("req.file");
-    console.log(req.file);
-    console.log("req.file.filename");
-    console.log(req.file.filename);
-
     db.Product.create({
       name: req.body.name,
       price: req.body.price,
@@ -214,7 +202,7 @@ const productsControllers = {
         });
       })
       .then((products) => {
-        res.render("./products/detalles", { products: products });
+        res.render("./products/products", { products: products });
       })
       .catch((error) => {
         console.error(error);
@@ -526,6 +514,33 @@ const productsControllers = {
         });
       }
     );
+  },
+  search: (req, res) => {
+    const query = req.query.buscador;
+    db.Product.findAll({
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+      where: {
+        [sequelize.Op.or]: [
+          { name: { [sequelize.Op.like]: `%${query}%` } },
+          { discount: { [sequelize.Op.like]: `%${query}%` } },
+          { '$bodega.name$': { [sequelize.Op.like]: `%${query}%` } },
+          { '$province.name$': { [sequelize.Op.like]: `%${query}%` } },
+          { '$size.name$': { [sequelize.Op.like]: `%${query}%` } },
+          { '$products_categories.name$': { [sequelize.Op.like]: `%${query}%` } },
+          // ... Agrega más propiedades aquí si es necesario
+        ],
+      },
+    })
+    .then((products) => {
+      res.render("./products/search", { products, query });
+
+    })
   }
 }
 
