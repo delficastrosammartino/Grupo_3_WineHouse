@@ -75,7 +75,8 @@ form {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border:0px
+  border:0px;
+  margin: 10px;
 }
 .edit-button:hover {
     background-color: rgb(129, 22, 129);
@@ -91,9 +92,18 @@ input{
     background-color: white;
     color: #80083F
   }
-.back {
-    margin: 15px;
+textarea{
+    border-radius: 6px;
+    padding:4px;
 }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+
 .back-button {
     color: white;
     background-color: #80083F;
@@ -106,7 +116,9 @@ input{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border:0px
+    border:0px;
+    margin: 10px;
+    text-decoration: none;
 }
 .back-button:hover {
     background-color: rgb(129, 22, 129);

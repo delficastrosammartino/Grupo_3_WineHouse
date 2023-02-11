@@ -3,27 +3,24 @@
 <html lang="es">
   <head>
     <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/delete-product.css" />
   </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
     <main>
-      <div>
-        <h2>Eliminar producto</h2>
+      <div class="contenedor-titulo">
+        <h3 class="title">Eliminar producto</h3>
       </div>
-      <div>
-        <h1>Estas seguro de querer borrar el producto: <%= product.name %>?</h1>
-        <p></p>
+      <div class="content">
+        <h1 class="pregunta">Estas seguro de querer borrar el producto: </h1>
+        <h1 class="product"><%= product.name %>?</h1>
       </div>
-
-      <form
-        action="/products/delete/<%=product.id%>?_method=DELETE"
-        method="POST"
-      >
-        <button type="submit" class="boton-delete">Borrar</button>
-        <a class="botonVolver" href="/products/edit/<%= product.id %>"
-          >Volver</a
-        >
+      <form action="/products/delete/<%=product.id%>?_method=DELETE" method="POST">
+        <div class="buttons">
+          <button type="submit" class="boton">Eliminar</button>
+          <a class="boton" href="/products/edit/<%= product.id %>">Volver</a>
+        </div>
       </form>
     </main>
     <%- include('../partials/footer.ejs')%>

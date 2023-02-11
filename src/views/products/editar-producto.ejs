@@ -9,64 +9,56 @@
     <%- include('../partials/header.ejs')%>
 
     <main>
-      <div class="contenedor-main">
-        <div>
-          <h2>Editar producto</h2>
-        </div>
-
+      <div class="contenedor-titulo">
+        <h2 class="title">Editar producto</h2>
+      </div>
         <div class="contenedor-form">
-          <form
-            class="contenedor-inputs"
-            id="form"
-            action="/products/detalles/<%=product.id%>?_method=PUT"
-            method="POST"
-            enctype="multipart/form-data">
+          <form id="form" action="/products/detalles/<%=product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="errores">
               <ul></ul>
             </div>
+            <div class="contenedor-inputs">
             <div class="subtitulo">
-              <h3>Editando el Producto "<%= product.name %>"</h3>
+              <h3 class="content">Editando el Producto</h3>
+              <h3 class="product"><%= product.name %></h3>
             </div>
-
-            <div class="label-input">
-              <label for="name">Nombre del producto:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-input"
-                value="<%= product.name %>"/>
+              <div class="label-input"> 
+                <label for="name" class="form-label">Nombre del producto:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  value="<%= product.name %>"/>
+              </div>
               <% if(locals.errors && errors.name) {%>
-              <div class="text-danger"><%= errors.name.msg %></div>
+                <div class="text-danger"><%= errors.name.msg %></div>
               <% } %>
-            </div>
-
-            <div class="label-input">
-              <label for="price">Precio:</label>
-              <input
-                id="price"
-                name="price"
-                class="form-input"
-                value="<%= product.price %>"/>
+              <div class="label-input">
+                <label for="price" class="form-label">Precio:</label>
+                <input
+                  id="price"
+                  name="price"
+                  class="form-input"
+                  value="<%= product.price %>"/>
+              </div>
               <% if(locals.errors && errors.price) {%>
-              <div class="text-danger"><%= errors.price.msg %></div>
+                <div class="text-danger"><%= errors.price.msg %></div>
               <% } %>
-            </div>
-
-            <div class="label-input">
-              <label for="discount">Descuento:</label>
-              <input
-                id="discount"
-                name="discount"
-                class="form-input"
-                value="<%= product.discount %>"/>
-                <% if(locals.errors && errors.discount) {%>
-              <div class="text-danger"><%= errors.discount.msg %></div>
+              <div class="label-input">
+                <label for="discount" class="form-label">Descuento:</label>
+                <input
+                  id="discount"
+                  name="discount"
+                  class="form-input"
+                  value="<%= product.discount %>"/>
+              </div>
+              <% if(locals.errors && errors.discount) {%>
+                <div class="text-danger"><%= errors.discount.msg %></div>
               <% } %>
-            </div>
-
             <div class="label-input">
-              <label for="discount">Tamaño:</label>
+              <label for="size" class="form-label">Tamaño:</label>
+              <p>
               <select name="size" id="size">
                 <% for (let i = 0; i < sizes.length; i++) { if (sizes[i].id == product.size_id) { %>
                 <option value="<%= sizes[i].id %>" selected>
@@ -76,13 +68,15 @@
                 <option value="<%= sizes[i].id %>"><%=sizes[i].name %></option>
                 <% }} %>
               </select>
+              <br />
+            </p>
               <% if(locals.errors && errors.size) {%>
               <div class="text-danger"><%= errors.size.msg %></div>
               <% } %>
             </div>
-
             <div class="label-input">
-              <label for="name">Bodega:</label>
+              <label for="bodega" class="form-label">Bodega:</label>
+              <p>
               <select name="bodega" id="bodega">
                 <% for (let i = 0; i < bodegas.length; i++){%> 
                 <% if(bodegas[i].id == product.bodega_id){%>
@@ -95,13 +89,15 @@
                 </option>
                 <% } %> <% } %>
               </select>
+              <br />
+            </p>
               <% if(locals.errors && errors.bodega) {%>
               <div class="text-danger"><%= errors.bodega.msg %></div>
               <% } %>
             </div>
-
             <div class="label-input">
-              <label for="name">Provincia:</label>
+              <label for="province" class="form-label">Provincia:</label>
+              <p>
               <select name="province" id="province">
                 <% for (let i = 0; i < provinces.length; i++) { %> 
                 <% if(provinces[i].id == product.province_id) { %>
@@ -114,13 +110,15 @@
                 </option>
                 <% } %> <% } %>
               </select>
+              <br />
+            </p>
               <% if(locals.errors && errors.province) {%>
               <div class="text-danger"><%= errors.province.msg %></div>
               <% } %>
             </div>
-
             <div class="label-input">
-              <label for="name">Categoria:</label>
+              <label for="category" class="form-label">Categoria:</label>
+              <p>
               <select name="category" id="category">
                 <% for (let i = 0; i < categories.length; i++) { %> 
                 <% if(categories[i].id == product.category_id) { %>
@@ -133,13 +131,14 @@
                 </option>
                 <% } %> <% } %>
               </select>
+              <br />
+            </p>
               <% if(locals.errors && errors.category) {%>
               <div class="text-danger"><%= errors.category.msg %></div>
               <% } %>
             </div>
-
             <div class="label-input">
-              <p><label>Detalle de producto</label></p>
+              <label for="descripcion" class="form-label">Detalle de producto</label>
               <textarea
                 id="descripcion"
                 name="descripcion"
@@ -150,26 +149,20 @@
               <div class="text-danger"><%= errors.descripcion.msg %></div>
               <% } %>
             </div>
-
             <div class="label-input">
-              <label for="">Imagen:</label>
+              <label for="foto" class="form-label">Imagen del producto:</label>
               <input type="file" id="image_id" name="foto" class="input-foto" />
               <% if(locals.errors && errors.image) {%>
-              <div class="text-danger"><%= errors.image.msg %></div>
+              <div class="text-danger errores"><%= errors.image.msg %></div>
               <% } %>
             </div>
-
-            <div class="form-label">
-              <input type="submit" class="boton-crear" value="Guardar cambios" />
-            </div>
-
-            <div class="label-input">
-              <a class="boton-cancel" href="/products">Volver a productos</a>
-            </div>
-            <div class="label-input">
-              <a class="boton-delete" href="/products/delete/<%=product.id%>">Eliminar</a>
+            <div class="buttons">
+                <input type="submit" class="boton" value="Guardar cambios" />
+                <a class="boton" href="/products">Volver a productos</a>
+                <a class="boton" href="/products/delete/<%=product.id%>">Eliminar</a>
             </div>
           </form>
+        </div>
         </div>
       </div>
     </main>

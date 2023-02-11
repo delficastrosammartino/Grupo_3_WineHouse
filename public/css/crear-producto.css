@@ -45,9 +45,6 @@ select{
   border-radius: 4px;
 
 }
-#descripcion{
-  border-radius: 6px;
-}
 
 .label-input {
   display: flex;
@@ -68,7 +65,7 @@ select{
   border-radius: 10px;
   border:0px
 }
-.agregar-al-carrito:hover {
+.boton-crear:hover {
   background-color: rgb(129, 22, 129);
   color: white;
 }
@@ -82,10 +79,14 @@ select{
   border: solid 1px #80083F;
   border-radius: 8px;
   width: 80%;
-    margin: auto;
-
+  margin: auto;
+  
 }
 
+#descripcion{
+  border-radius: 6px;
+  padding:4px;
+}
 .description-input {
   height: 100px;
   width: 90%;

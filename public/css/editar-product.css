@@ -1,25 +1,49 @@
-body {
-  margin-top: 200px;
+main{
+  padding: 20px 20px;
 }
 
-main {
-  margin: 0 auto;
-  width: 90%;
+.contenedor-titulo {
+  margin: 10px 40px;
+}
+.title{
+  font-family: 'Roboto', sans-serif;
   display: flex;
-  justify-content: space-around;
-}
-
-.contenedor-main {
-  width: 90%;
+  justify-content: flex-start;
+  font-size: 22px;
+  font-weight: 300;
+  padding: 3px 9px;
+  color: #666;
+  flex-direction: row;
+  border-bottom: 1px solid #80083F;
 }
 
 .contenedor-form {
-  padding: 50px 0;
+  padding: 20px 0;
+  font-weight: 300;
+  margin: 0px 40px;
 }
-
 .contenedor-inputs {
   padding: 20px;
-  border: solid 1px lightgray;
+  border: solid 1px #80083F;
+  border-radius: 8px;
+  width: 80%;
+  margin: auto;
+
+}
+.subtitulo{
+  display: flex;
+  justify-content: flex-start;
+}
+.content{
+  display: flex;
+  font-weight: 300;
+  color: #666;
+}
+
+.product{
+  color: #80083F;
+  padding-left: 12px;
+  font-weight: 300;
 }
 
 .label-input {
@@ -31,17 +55,64 @@ main {
 .input-foto {
   width: 90%;
 }
-
-.description-input {
+textarea{
+  border-radius: 6px;
+  padding:4px;
+  color: #666;
   height: 100px;
-  width: 90%;
-  border: solid 1px lightgray;
 }
+
+
 
 .form-input {
   height: 35px;
   width: 90%;
   border: solid 1px lightgray;
+}
+.form-label{
+  color:#80083F;
+ 
+ }
+ input{
+  border-radius: 6px;
+  
+}
+select{
+  color: #80083F;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 4px;
+
+}
+input{
+  color: #666;
+}
+.boton {
+  color: white;
+  background-color: #80083F;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  width: 40vw;
+  max-width: 175px;
+  min-width: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border:0px;
+  margin: 10px;
+  text-decoration: none;
+}
+.boton:hover {
+  background-color: rgb(129, 22, 129);
+  color: white;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
 }
 .is-valid {
   color: #198754;
@@ -57,7 +128,4 @@ main {
   padding: 10px;
   border-style: solid;
 }
-li {
-  list-style-type: none;
-  text-align: center;
-}
+

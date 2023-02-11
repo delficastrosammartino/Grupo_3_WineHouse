@@ -22,9 +22,7 @@
             </div>
             <div class="contenedor-inputs">
               <div class="label-input">
-                <label class="form-label"
-                  >Nombre del producto:</label
-                >
+                <label class="form-label">Nombre del producto:</label>
                 <input
                   type="text"
                   id="name"
@@ -75,15 +73,17 @@
                     <option
                       value=""
                       disabled
-                      selected >
+                      selected>
                       - selecciona el tamaño -
                     </option>
 
                     <% if (locals.oldData) { %>
                       <% sizes.forEach(size => { %>
-                        <option value="<%= size.id %>" 
-                          <%= (size.id==oldData.size)?'selected':'' %>
-                          ><%=size.name %></option>
+                        <option 
+                          value="<%= size.id %>" 
+                          <%= (size.id==oldData.size)?'selected':'' %>>
+                          <%=size.name %>
+                        </option>
                     <% }) %>
                     <% } else { %>
                       <% sizes.forEach(size => { %>
@@ -205,15 +205,12 @@
               <% } %>
 
               <div class="label-input">
-                <label for="foto" class="form-label"
-                  >Imagen del producto:</label
-                >
+                <label for="foto" class="form-label">Imagen del producto:</label>
                 <input
                   type="file"
                   id="image_id"
                   name="foto"
-                  class="input-foto"
-                />
+                  class="input-foto"/>
               </div>
               <% if(locals.errors && errors.image) {%>
               <div class="text-danger errores"><%= errors.image.msg %></div>
