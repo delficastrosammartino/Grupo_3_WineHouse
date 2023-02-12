@@ -48,17 +48,21 @@
                   <p class="descuentos"><%= productPrincipal.discount%>% off</p>
                 </div>
                 <%}%>
-          </div>
-          <div class="details cantidad-agregar">
-                  <div class="agregar">
-                    <div class="details agregar-al-carrito">
-                      <form action="/products/carrito" method="POST">
-                        <input type="hidden" name="productId" value='<%= productPrincipal.id %>'>
-                        <button type="submit" class="button">Agregar al carrito</button>
+              </div>
+              <div class="details cantidad-agregar">
+                <div class="agregar">
+                  <div class="details agregar-al-carrito">
+                    <form action="/products/carrito" method="POST">
+                      <input type="hidden" name="productId" value='<%= productPrincipal.id %>'>
+                      <% if (locals.isLogged){%>
+                        <button type="submit" class="boton">Agregar al carrito</button>
+                        <%} else {%>
+                          <a href="/users/login" class="boton">Agregar al carrito</a>
+                          <%}%>
                       </form>
                     </div>
                   </div>
-
+                  
                   <div class="sumar-restar">
                     <button type="button" class="decrement">-</button>
                     <input type="text" value="1" readonly>

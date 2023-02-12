@@ -63,6 +63,7 @@ main{
   height: 15em;
   width: 13em;
   border-radius: 20px;
+  margin: 0 auto;
 }
 .product-name{
   margin-bottom: 3px;

@@ -5,6 +5,11 @@ body {
   font-family: "Assistant", sans-serif;
   font-weight: 300;
 }
+main{
+  margin-top: 120px;
+  padding: 20px 20px;
+  min-height: 80vh;
+}
 
 .saludo {
   font-size: 120px;

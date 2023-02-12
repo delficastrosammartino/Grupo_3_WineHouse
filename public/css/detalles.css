@@ -94,7 +94,7 @@ main{
 
 }
 
-.button{
+button.boton{
   color: white;
   background-color: #80083F;
   display: flex;
@@ -109,6 +109,24 @@ main{
   text-align: center;
   margin: 0;
   border: none;
+}
+
+a.boton{
+  color: white;
+  background-color: #80083F;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  width: 40vw;
+  max-width: 175px;
+  min-width: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0;
+  border: none;
+  text-decoration: none;
 }
 
 
@@ -270,25 +288,8 @@ main{
   display: flex;
 }
 
-.agregar-al-carrito {
-  color: white;
-  background-color: #80083F;
-  display: flex;
-  font-weight: bold;
-  height: 40px;
-  width: 40vw;
-  max-width: 175px;
-  min-width: 110px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  text-align: center;
-  margin: 0;
-}
-.agregar-al-carrito:hover {
-  background-color: rgb(129, 22, 129);
-  color: white;
-}
+
+
 
 
 .boton-agregar {

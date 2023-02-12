@@ -11,6 +11,9 @@
 body {
    font-family:'Assistant', sans-serif;;
 }
+main{
+    margin-top: 0px;
+}
 li {
     list-style-type: none;
 }

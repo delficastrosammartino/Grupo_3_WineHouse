@@ -37,89 +37,57 @@
     </div>
 
     <div class="box-desktop">
-      <% if (cart && cart.length > 0) { %>
-        <table>
-          <thead>
-            <tr>
-              <th class="table-header">Nombre</th>
-              <th class="table-header">Bodega</th>
-              <th class="table-header">Categoria</th>
-              <th class="table-header">Precio</th>
-              <th class="table-header">Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% cart.forEach((item, index) => { %>
+      <div class="cart-list">
+        <% if (cart && cart.length > 0) { %>
+          <table>
+            <thead>
               <tr>
-                <td class="table-cell"><%= item.name %></td>
-                <td class="table-cell"><%= item.bodega %> </td>
-                <td class="table-cell"><%= item.category %> </td>
-                <td class="table-cell"><%= item.price %></td>
-                <td>
-                  <form action="/products/carrito" method="POST">
-                    <input type="hidden" name="index" value="<%= index %>">
-                    <button type="submit" class="button">Eliminar</button>
-                  </form>
-                </td>
+                <th class="table-header">Nombre</th>
+                <th class="table-header">Bodega</th>
+                <th class="table-header">Categoria</th>
+                <th class="table-header">Precio</th>
+                <th class="table-header"></th>
+                <th class="table-header"></th>
               </tr>
-            <% }); %>
-          </tbody>
-        </table>
-      <% } else { %>
-        <p>No hay productos en el carrito</p>
-      <% } %>
-      <div class="buttons">
-        <input type="submit" class="boton" value="Confirmar compra" />
-        <a class="boton" href="/products">Seguir comprando</a>
-        <a class="boton" href="/products/carrito">Vaciar carrito</a>
-    </div>
-      <div class="box-list">
-        <div class="column">
-          <div class="box-title">Producto</div>
-          <img class="wine" src="/images/productImages/1675122724044_img.webp" alt="Imagen de El Esteco Old Vines"/>
-
+            </thead>
+            <tbody>
+              <% cart.forEach((item, index) => { %>
+                <tr>
+                  <td class="table-cell"><%= item.name %></td>
+                  <td class="table-cell"><%= item.bodega %> </td>
+                  <td class="table-cell"><%= item.category %> </td>
+                  <td class="table-cell">$ <%= item.price %></td>
+                  <td>
+                    <form action="/products/carrito" method="POST">
+                      <input type="hidden" name="productId" value="<%= item.id %>">
+                      <% console.log("------------------ item --------------------") %>
+                      <% console.log(item) %>
+                      <button type="submit" class="boton-eliminar">Agregar</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form action="/products/borrar-elemento-del-carrito" method="POST">
+                      <input type="hidden" name="index" value="<%= index %>">
+                      <button type="submit" class="boton-eliminar">Eliminar</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
         </div>
-        <div class="column-special">Serbal Pinot Noir 750cc</div>
-        <div class="column">
-          <div class="box-title">Precio unitario</div>
-          <div class="column-middle">$1.750</div>
+        <div class="buttons">
+          <form action="/products/confirmar-compra" method="POST">
+            <button type="submit" class="boton">Confirmar compra</button>
+          </form>
+          <a class="boton" href="/products">Seguir comprando</a>
+          <form action="/products/borrar-carrito" method="POST">
+            <button type="submit" class="boton">Vaciar carrito</button>
+          </form>
         </div>
-
-        <div class="column">
-          <div class="box-title">Precio cantidad</div>
-          <div class="column-middle">
-            <i class="fa-solid fa-minus"></i> 2 <i class="fa-solid fa-plus"></i>
-          </div>
-        </div>
-        
-        <div class="column">
-          <div class="box-title">Subtotal</div>
-          <div class="column-middle">$3.500</div>
-        </div>
-
-        <div class="column-special">
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <div class="box-compra">
-        <div class="title">Resumen de compra</div>
-        <div class="sub-title">
-          <i class="fa-solid fa-percent"></i>
-          <input
-            class="box-discount"
-            type="text"
-            name="descuento"
-            placeholder="Código de descuento"
-          />
-        </div>
-        <div class="list-articles"></div>
-        <div class="pay-button">Pagar</div>
-        <div class="continue-button">
-          <i class="fa-solid fa-angle-left"></i> seguir comprando
-        </div>
-      </div>
+        <% } else { %>
+          <div class="content">No hay productos en el carrito</div>
+        <% } %>
     </div>
   </main>
   <%- include("../partials/footer.ejs") %>

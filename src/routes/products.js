@@ -52,7 +52,11 @@ router.delete("/delete/:id", productsControllers.destroy);
 
 router.get("/carrito", productsControllers.carrito);
 router.post("/carrito", productsControllers.addToCart);
-router.get("/confirmar-compra", productsControllers.confirmarCompra);
+router.post("/borrar-carrito", productsControllers.borrarCarrito);
+router.post("/borrar-elemento-del-carrito", productsControllers.borrarUnElementoDelCarrito);
+router.post("/confirmar-compra", productsControllers.confirmarCompra);
+// la de abajo hay que borrarla router.get("/confirmar-compra", productsControllers.confirmarCompra);
+router.get("/confirmar-compra", productsControllers.confirmarCompraRend);
 router.get("/provincias", productsControllers.provincias);
 router.get("/categorias", productsControllers.categorias);
 router.get("/search", productsControllers.search);

@@ -543,6 +543,8 @@ const productsControllers = {
     res.render("./products/carrito", { cart: req.session.cart });
   },
   addToCart: (req, res) => {
+    console.log("--------------------------- req.params.productId-----------------")
+    console.log(req.params.productId)
     db.Product.findByPk(req.body.productId, {
       include: [
         { association: "products_categories" },
@@ -553,7 +555,9 @@ const productsControllers = {
       ],
     })
     .then(product => {
+      
       let productToCart = {
+        id: product.id,
         name: product.name,
         price: product.price,
         discount: product.discount,
@@ -579,11 +583,31 @@ const productsControllers = {
     })
   },
   confirmarCompra: (req, res) => {
-    res.render("./products/confirmar-compra")
+    req.session.cart = [];
+    res.render("./products/confirmar-compra", { cart: req.session.cart });
   },
   borrarCarrito: (req, res) => {
-
+    req.session.cart = [];
+    res.render("./products/carrito", { cart: req.session.cart });
   },
+  borrarUnElementoDelCarrito: (req, res) => {
+    // Obtengo el indice del producto a partir del input oculto
+    let indexToRemove = req.body.index;
+  
+    // Si el índice es válido y se encuentra dentro de los límites del array cart
+    if (indexToRemove >= 0 && indexToRemove < req.session.cart.length) {
+      // Elimino el producto del carrito utilizando el método splice
+      req.session.cart.splice(indexToRemove, 1);
+      // Renderizo la página de carrito con el carrito actualizado
+      res.render("./products/carrito", { cart: req.session.cart });
+    } else {
+      res.send("No se encontró el producto en el carrito");
+    }
+  },
+  // Este hay que borrarlo
+  confirmarCompraRend: (req, res) => {
+    res.render("./products/confirmar-compra");
+  }
 }
 
 
