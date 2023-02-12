@@ -3,7 +3,7 @@ const db = require("../../database/models");
 module.exports = {
   list: (req, res) => {
     db.User.findAll({
-      attributes: ["id", "name", "email"],
+      attributes: ["id", "name", "lastName", "userName", "email", "image"],
     })
       .then((users) => {
         let userDetails = [];
@@ -12,7 +12,10 @@ module.exports = {
           userDetails.push({
             id: user.id,
             name: user.name,
+            lastname: user.lastName,
+            username: user.userName,
             email: user.email,
+            image: "http://localhost:3030/users/" + user.id + "/avatar",
             detail: "http://localhost:3030/api/users/detalles/" + user.id,
           });
         });
