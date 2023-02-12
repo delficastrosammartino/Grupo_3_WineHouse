@@ -21,7 +21,7 @@ main{
     display: flex;
     padding: 20px 0;
     font-weight: 300;
-    margin: 94px 70px;
+    margin: 94px 35px;
     color: #666;
     flex-direction: row;
     justify-content: flex-start;

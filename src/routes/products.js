@@ -51,6 +51,8 @@ router.get("/delete/:id", adminPageMiddleware, productsControllers.delete);
 router.delete("/delete/:id", productsControllers.destroy);
 
 router.get("/carrito", productsControllers.carrito);
+router.post("/carrito", productsControllers.addToCart);
+router.get("/confirmar-compra", productsControllers.confirmarCompra);
 router.get("/provincias", productsControllers.provincias);
 router.get("/categorias", productsControllers.categorias);
 router.get("/search", productsControllers.search);

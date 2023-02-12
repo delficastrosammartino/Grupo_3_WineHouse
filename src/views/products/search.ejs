@@ -3,27 +3,52 @@
 <html lang="es">
   <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/search-product.css" />
+    <link rel="stylesheet" href="/css/search.css" />
   </head>
 
   <body>
     <%- include("../partials/header.ejs") %>
     <main>
-        <h1>Resultados de la búsqueda para "<%= query %>"</h1>
+      <div class="contenedor-titulo">
+        <h3 class="title">Resultados de la búsqueda para: "<%= query %>"</h1>
+      </div>
         <% if (products.length > 0) { %>
-          <ul>
-            <% products.forEach(product => { %>
-              <li>
-                <%= product.name %>
-                <%= product.bodega.name %>
-                <%= product.province.name %>
-                <%= product.size.name %>
-                <!-- ... muestra más propiedades aquí si es necesario -->
-              </li>
+          <div class="recomendations-row">
+            <% products.forEach(function(item, index) { %>
+            <div class="box-product">
+                <a href="/products/detalles/<%= item.dataValues.id %>" class="etiqueta-link">
+                    <div class="div-producto">
+                        <div class="contenedor-imagen-producto">
+                            <img src="/images/productImages/<%= item.dataValues.foto %>" class="image-product"/>
+                        </div>
+                        <div class="box-details">
+                          <div class="product-name"><%= item.dataValues.name %></div>
+                          <div class="box-price">
+                            <div class="price-discount <% if (item.dataValues.discount > 0){%>tachar-precio<%}%>">
+                              $<%= item.dataValues.price %>
+                            </div>
+                            <% if (item.dataValues.discount > 0){%>
+                              <div class="price">
+                                $<%= item.dataValues.price - ((item.dataValues.price / 100) * item.dataValues.discount) %>
+                              </div>
+                              <%}%>
+                            </div>
+                            <% if (item.dataValues.discount > 0){%>
+                              <div class="box-discount"><%= item.dataValues.discount %>% OFF</div>
+                              <%}%>
+                              <div class="box-size-wine">
+                                  <div><%= item.size.dataValues.name %></div>
+                              </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
             <% }); %>
-          </ul>
         <% } else { %>
-          <p>No se encontraron resultados para "<%= query %>".</p>
+          <div class="content">
+            <div class="pregunta">No se encontraron resultados para:</div>
+            <div class="product">"<%= query %>"</div>
+          </div>
         <% } %>
     </main>
     <%- include('../partials/footer.ejs')%>

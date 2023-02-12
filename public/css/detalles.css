@@ -88,8 +88,28 @@ main{
   padding-bottom: 45px;
   margin: 0px 30px;
 }
+.agregar{
+  display:flex;
 
 
+}
+
+.button{
+  color: white;
+  background-color: #80083F;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  width: 40vw;
+  max-width: 175px;
+  min-width: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0;
+  border: none;
+}
 
 
 

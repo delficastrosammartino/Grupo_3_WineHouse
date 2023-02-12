@@ -52,9 +52,10 @@
           <div class="details cantidad-agregar">
                   <div class="agregar">
                     <div class="details agregar-al-carrito">
-                      <a href="/products/carrito" class="boton-agregar">
-                        <p class="texto-agregar">Agregar al carrito</p>
-                      </a>
+                      <form action="/products/carrito" method="POST">
+                        <input type="hidden" name="productId" value='<%= productPrincipal.id %>'>
+                        <button type="submit" class="button">Agregar al carrito</button>
+                      </form>
                     </div>
                   </div>
 

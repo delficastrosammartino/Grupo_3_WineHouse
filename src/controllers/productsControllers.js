@@ -225,9 +225,6 @@ const productsControllers = {
     });
     res.redirect("/products");
   },
-  carrito: (req, res) => {
-    res.render("./products/carrito");
-  },
   provincias: (req, res) => {
     // este findAll esta demas!
     db.Product.findAll({
@@ -541,7 +538,52 @@ const productsControllers = {
       res.render("./products/search", { products, query });
 
     })
-  }
+  },
+  carrito: (req, res) => {
+    res.render("./products/carrito", { cart: req.session.cart });
+  },
+  addToCart: (req, res) => {
+    db.Product.findByPk(req.body.productId, {
+      include: [
+        { association: "products_categories" },
+        { association: "bodega" },
+        { association: "province" },
+        { association: "size" },
+        { association: "images" },
+      ],
+    })
+    .then(product => {
+      let productToCart = {
+        name: product.name,
+        price: product.price,
+        discount: product.discount,
+        size: product.size.name,
+        bodega: product.bodega.name,
+        province: product.province.name,
+        category: product.products_categories.name,
+        foto: product.foto
+      }
+      if (req.session.cart) {
+        req.session.cart.push(productToCart)
+      } else {
+        // Si no existe, crear la variable cart en la sesión
+        req.session.cart = [productToCart]
+      }
+      console.log("----------- req.session.cart ---------------------")
+      console.log(req.session.cart)
+      res.render("./products/carrito", { cart: req.session.cart })
+    })
+    .catch(error => {
+      console.error(error)
+      res.send("Error al agregar producto al carrito")
+    })
+  },
+  confirmarCompra: (req, res) => {
+    res.render("./products/confirmar-compra")
+  },
+  borrarCarrito: (req, res) => {
+
+  },
 }
 
 

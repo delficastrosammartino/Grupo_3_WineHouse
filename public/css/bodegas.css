@@ -27,17 +27,18 @@ body{
       flex-direction: row;
       border-bottom: 1px solid #80083F;
   }
-.title{
+  .title{
     font-family: 'Roboto', sans-serif;
-      display: flex;
-      justify-content: flex-start;
-      font-size: 16px;
-      font-weight: 300;
-      padding: 3px 9px;
-      color: #666;
-      flex-direction: row;
-      border-bottom: 1px solid #80083F;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 22px;
+    font-weight: 300;
+    padding: 3px 9px;
+    color: #666;
+    flex-direction: row;
+    border-bottom: 1px solid #80083F;
 }
+
 .contenedor-bodegas{
     display: flex;
     flex-direction: column;

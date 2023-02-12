@@ -6,10 +6,17 @@
 <body>
   <%- include("../partials/header.ejs") %>
   <main>
-    <div class="return">
-      <a href="/"><i class="fa-solid fa-angle-left"></i> Volver</a>
-    </div>
+    <div class="contenedor-titulo">
+      <div class="title">Carrito:</div>
+  </div>
     <div class="box-product">
+      <% if (typeof cart !== "undefined" && cart.length > 0) { %>
+        <% cart.forEach(function(item) { %>
+          <p>Name: <%= item.name %></p>
+          <p>Bodega: <%= item.bodega %></p>
+          <p>Price: <%= item.price %></p>
+        <% }); %>
+      <% } %>
 
       <div class="box-img-price-description">
         <img class="wine" src="/images/productImages/1675122724044_img.webp" alt="Imagen de El Esteco Old Vines"/>
@@ -30,6 +37,42 @@
     </div>
 
     <div class="box-desktop">
+      <% if (cart && cart.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th class="table-header">Nombre</th>
+              <th class="table-header">Bodega</th>
+              <th class="table-header">Categoria</th>
+              <th class="table-header">Precio</th>
+              <th class="table-header">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cart.forEach((item, index) => { %>
+              <tr>
+                <td class="table-cell"><%= item.name %></td>
+                <td class="table-cell"><%= item.bodega %> </td>
+                <td class="table-cell"><%= item.category %> </td>
+                <td class="table-cell"><%= item.price %></td>
+                <td>
+                  <form action="/products/carrito" method="POST">
+                    <input type="hidden" name="index" value="<%= index %>">
+                    <button type="submit" class="button">Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No hay productos en el carrito</p>
+      <% } %>
+      <div class="buttons">
+        <input type="submit" class="boton" value="Confirmar compra" />
+        <a class="boton" href="/products">Seguir comprando</a>
+        <a class="boton" href="/products/carrito">Vaciar carrito</a>
+    </div>
       <div class="box-list">
         <div class="column">
           <div class="box-title">Producto</div>
