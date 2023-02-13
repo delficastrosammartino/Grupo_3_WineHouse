@@ -20,11 +20,9 @@ const usersControllers = {
   // LOGICA LOGIN
   processLogin: function (req, res) {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
-    console.log("1");
     const resultValidation = validationResult(req);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
-      console.log("2");
       // renderizo la vista login, y le paso los errores.
       return res.render("./users/login", {
         // uso el .mapped para que cada elemento (nombre, apellido, email y password) sea un elemento del objeto y tenga sus propiedades dentro.
@@ -33,15 +31,12 @@ const usersControllers = {
       });
     }
 
-    console.log("3");
     db.User.findOne({
       where: {
         email: req.body.email,
       },
     })
       .then((userToLogin) => {
-        console.log("userToLogin");
-        console.log(userToLogin);
         if (userToLogin == null) {
           return res.render("users/login", {
             errors: {
@@ -60,7 +55,6 @@ const usersControllers = {
           if (passwordOk) {
             //delete userToLogin.password; PREGUNTAR PORQUE CUANDO HACES LOGOUT DESAPARECE LA CONTRASEÑA
             req.session.userLogged = userToLogin;
-            console.log(userToLogin);
             if (req.body.rememberme) {
               // el primer valor es el nombre de la cookie, el segundo el valor que se le asigna, y el tercero el tiempo que va a estar almacenada.
               res.cookie("userEmail", req.body.email, {
@@ -107,7 +101,6 @@ const usersControllers = {
   processRegister: (req, res) => {
     // resultValidation es un objeto que tiene una propiedad errors usada abajo.
     const resultValidation = validationResult(req);
-    console.log(resultValidation);
     // si hay errores entra aca.
     if (resultValidation.errors.length > 0) {
       // renderizo la vista registro, y le paso los errores.
@@ -195,25 +188,21 @@ const usersControllers = {
 
   // LOGICA EDITAR PERFIL
   updateUser: (req, res) => {
-    console.log("1");
     // Busca el usuario en la base de datos
     db.User.findOne({
       where: {
         email: req.session.userLogged.email,
       },
     }).then((user) => {
-      console.log("2");
       // Si no se encuentra el usuario, muestra un error.
       // esta parte del codigo no es necesaria por las validaciones y permisos que ya tenemos.
       if (!user) {
-        console.log("3");
         return res.render("users/editar-perfil", {
           error: { msg: "El usuario no existe" },
         });
       }
       // Compara la contraseña y la confirmación de contraseña.
       if (req.body.password !== req.body.confirmPassword) {
-        console.log("4");
         return res.render("users/editar-perfil", {
           errors: {
             password: {
@@ -228,7 +217,6 @@ const usersControllers = {
       // Compara la contraseña del usuario con la contraseña almacenada en la base de datos.
       const passwordOk = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordOk) {
-        console.log("5");
         return res.render("users/editar-perfil", {
           errors: {
             password: {
@@ -239,8 +227,6 @@ const usersControllers = {
           user: user,
         });
       }
-      console.log("6");
-      console.log(req.session.userLogged.email);
 
       let image = req.file ? req.file.filename : user.image;
       // LOGICA ACTUALIZAR USUARIO

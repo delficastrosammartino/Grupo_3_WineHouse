@@ -526,25 +526,27 @@ const productsControllers = {
         [sequelize.Op.or]: [
           { name: { [sequelize.Op.like]: `%${query}%` } },
           { discount: { [sequelize.Op.like]: `%${query}%` } },
-          { '$bodega.name$': { [sequelize.Op.like]: `%${query}%` } },
-          { '$province.name$': { [sequelize.Op.like]: `%${query}%` } },
-          { '$size.name$': { [sequelize.Op.like]: `%${query}%` } },
-          { '$products_categories.name$': { [sequelize.Op.like]: `%${query}%` } },
+          { "$bodega.name$": { [sequelize.Op.like]: `%${query}%` } },
+          { "$province.name$": { [sequelize.Op.like]: `%${query}%` } },
+          { "$size.name$": { [sequelize.Op.like]: `%${query}%` } },
+          {
+            "$products_categories.name$": { [sequelize.Op.like]: `%${query}%` },
+          },
           // ... Agrega más propiedades aquí si es necesario
         ],
       },
-    })
-    .then((products) => {
+    }).then((products) => {
       res.render("./products/search", { products, query });
-
-    })
+    });
   },
   carrito: (req, res) => {
     res.render("./products/carrito", { cart: req.session.cart });
   },
   addToCart: (req, res) => {
-    console.log("--------------------------- req.params.productId-----------------")
-    console.log(req.params.productId)
+    console.log(
+      "--------------------------- req.params.productId-----------------"
+    );
+    console.log(req.params.productId);
     db.Product.findByPk(req.body.productId, {
       include: [
         { association: "products_categories" },
@@ -554,33 +556,32 @@ const productsControllers = {
         { association: "images" },
       ],
     })
-    .then(product => {
-      
-      let productToCart = {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        discount: product.discount,
-        size: product.size.name,
-        bodega: product.bodega.name,
-        province: product.province.name,
-        category: product.products_categories.name,
-        foto: product.foto
-      }
-      if (req.session.cart) {
-        req.session.cart.push(productToCart)
-      } else {
-        // Si no existe, crear la variable cart en la sesión
-        req.session.cart = [productToCart]
-      }
-      console.log("----------- req.session.cart ---------------------")
-      console.log(req.session.cart)
-      res.render("./products/carrito", { cart: req.session.cart })
-    })
-    .catch(error => {
-      console.error(error)
-      res.send("Error al agregar producto al carrito")
-    })
+      .then((product) => {
+        let productToCart = {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          discount: product.discount,
+          size: product.size.name,
+          bodega: product.bodega.name,
+          province: product.province.name,
+          category: product.products_categories.name,
+          foto: product.foto,
+        };
+        if (req.session.cart) {
+          req.session.cart.push(productToCart);
+        } else {
+          // Si no existe, crear la variable cart en la sesión
+          req.session.cart = [productToCart];
+        }
+        console.log("----------- req.session.cart ---------------------");
+        console.log(req.session.cart);
+        res.render("./products/carrito", { cart: req.session.cart });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.send("Error al agregar producto al carrito");
+      });
   },
   confirmarCompra: (req, res) => {
     req.session.cart = [];
@@ -593,7 +594,7 @@ const productsControllers = {
   borrarUnElementoDelCarrito: (req, res) => {
     // Obtengo el indice del producto a partir del input oculto
     let indexToRemove = req.body.index;
-  
+
     // Si el índice es válido y se encuentra dentro de los límites del array cart
     if (indexToRemove >= 0 && indexToRemove < req.session.cart.length) {
       // Elimino el producto del carrito utilizando el método splice
@@ -604,12 +605,6 @@ const productsControllers = {
       res.send("No se encontró el producto en el carrito");
     }
   },
-  // Este hay que borrarlo
-  confirmarCompraRend: (req, res) => {
-    res.render("./products/confirmar-compra");
-  }
-}
-
-
+};
 
 module.exports = productsControllers;

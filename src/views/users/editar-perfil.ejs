@@ -6,110 +6,113 @@
   </head>
   <body>
     <%- include("../partials/header.ejs") %>
-  <main>
-
+    <main>
       <div class="contenedor-titulo">
         <h3 class="title">Editar Perfil</h3>
       </div>
       <div class="contenedor-form">
-      <form action="/users/perfil?_method=PUT" method="POST" enctype="multipart/form-data">
-        <div class="errores">
-          <ul></ul>
-        </div>
-        <div class="contenedor-inputs">
-          <div class="label-inputs">
-            <label for="" class="edit-label">Nombre:</label><br />
-            <input
-              class="edit-input"
-              type="text"
-              id="name"
-              name="name"
-              value="<%= user ? user.name : oldData.name %>"
-            /><br />
-          </div>
-          <div class="label-inputs">
-            <label for="" class="edit-label">Apellido:</label><br />
-            <input
-            class="edit-input"
-            type="text"
-            id="lastName"
-            name="lastName"
-            value="<%= user ? user.lastName : oldData.lastName %>"
-            /><br />
-          </div> 
-          <div class="label-inputs">
-
-            <label for="" class="edit-label">Correo electrónico:</label><br />
-            <input
-            class="edit-input"
-            type="email"
-            id="email"
-            name="email"
-            value="<%= user ? user.email : oldData.email %>"
-            disabled
-            /><br />
-          </div>
-          <div class="label-inputs">
-
-            <label for="" class="edit-label">Nombre de usuario:</label><br />
-            <input
-            class="edit-input"
-            type="text"
-            id="userName"
-            name="userName"
-            value="<%= user ? user.userName : oldData.userName %>"
-            /><br />
-          </div>
-          <div class="label-inputs">
-
-            <label for="" class="edit-label">Dirección:</label><br />
-            <input
-            class="edit-input"
-            type="text"
-            id="adress"
-            name="adress"
-            value="<%= user? user.adress : oldData.adress %>"
-            /><br />
-          </div>
-          <div class="label-inputs">
-            
-            <label for="" class="edit-label">Imagen de perfil:</label><br />
-            <input class="input-foto" type="file" id="image" name="image" /><br />
-            <br />
-          </div>
-          <div class="label-inputs">
-
-            <label for="" class="edit-label">Contraseña actual:</label><br />
-            <input
-            class="edit-input"
-            type="password"
-            id="password"
-            name="password"
-            /><br />
-          </div>
-          <div class="label-inputs">
-
-            <label for="" class="edit-label">Confirmar contraseña:</label><br />
-            <input
-            class="edit-input"
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            /><br />
-            <br />
-          </div>
+        <form
+          action="/users/perfil?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+          id="form"
+        >
+          <div class="contenedor-inputs">
+            <div class="errores">
+              <ul></ul>
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Nombre:</label><br />
+              <input
+                class="edit-input"
+                type="text"
+                id="name"
+                name="name"
+                value="<%= user ? user.name : oldData.name %>"
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Apellido:</label><br />
+              <input
+                class="edit-input"
+                type="text"
+                id="lastName"
+                name="lastName"
+                value="<%= user ? user.lastName : oldData.lastName %>"
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Correo electrónico:</label><br />
+              <input
+                class="edit-input"
+                type="email"
+                id="email"
+                name="email"
+                value="<%= user ? user.email : oldData.email %>"
+                disabled
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Nombre de usuario:</label><br />
+              <input
+                class="edit-input"
+                type="text"
+                id="userName"
+                name="userName"
+                value="<%= user ? user.userName : oldData.userName %>"
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Dirección:</label><br />
+              <input
+                class="edit-input"
+                type="text"
+                id="adress"
+                name="adress"
+                value="<%= user? user.adress : oldData.adress %>"
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Imagen de perfil:</label><br />
+              <input
+                class="input-foto"
+                type="file"
+                id="image"
+                name="image"
+              /><br />
+              <br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Contraseña actual:</label><br />
+              <input
+                class="edit-input"
+                type="password"
+                id="password"
+                name="password"
+              /><br />
+            </div>
+            <div class="label-input">
+              <label for="" class="edit-label">Confirmar contraseña:</label
+              ><br />
+              <input
+                class="edit-input"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+              /><br />
+              <br />
+            </div>
             <% if(locals.errors && errors.password) {%>
             <div class="text-danger"><%= errors.password.msg %></div>
             <% } %>
             <div class="buttons">
-            <input class="edit-button" type="submit" value="Actualizar" />
+              <input class="edit-button" type="submit" value="Actualizar" />
               <a class="back-button" href="/users/perfil">Volver</a>
             </div>
           </div>
-          </form>
-        </div>
-        <script src="/js/editar-perfil.js"></script>
-      </main>
-    </body>
-    </html>
-    
+        </form>
+      </div>
+      <script src="/js/editar-perfil.js"></script>
+    </main>
+  </body>
+</html>

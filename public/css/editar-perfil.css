@@ -1,72 +1,71 @@
-
-main{
-    margin-top: 120px;
+main {
+  margin-top: 120px;
   padding: 20px 20px;
-  }
-  
-  .contenedor-titulo {
+}
+
+.contenedor-titulo {
   margin: 10px 40px;
-  }
+}
 
 h3 {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 22px;
-    font-weight: 300;
-    padding: 3px 9px;
-    color: #666;
-    flex-direction: row;
-    border-bottom: 1px solid #80083F;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 22px;
+  font-weight: 300;
+  padding: 3px 9px;
+  color: #666;
+  flex-direction: row;
+  border-bottom: 1px solid #80083f;
 }
 .contenedor-form {
-    padding: 20px 0;
-    font-weight: 300;
-    margin: 0px 40px;
-  }
-  .contenedor-inputs{
-    padding: 20px;
-    border: solid 1px #80083F;
-    border-radius: 8px;
-    width: 80%;
-    margin: auto;
-  }
+  padding: 20px 0;
+  font-weight: 300;
+  margin: 0px 40px;
+}
+.contenedor-inputs {
+  padding: 20px;
+  border: solid 1px #80083f;
+  border-radius: 8px;
+  width: 80%;
+  margin: auto;
+}
 
 li {
-    list-style-type: none;
-  }
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
+  list-style-type: none;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
 }
 .edit-profile {
-    text-align: center;
-    margin-top: 110px;
-    padding: 20px;
+  text-align: center;
+  margin-top: 110px;
+  padding: 20px;
 }
 
 form {
-    padding: 20px;
+  padding: 20px;
 }
 .label-input {
-    height: 35px;
-    width: 90%;
-    border: solid 1px lightgray;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
 
 .edit-input {
-    height: 35px;
-    width: 90%;
-    border: solid 1px lightgray;
-    color:#666
+  height: 35px;
+  width: 90%;
+  border: solid 1px lightgray;
+  color: #666;
 }
 .edit-button {
-    color: white;
-  background-color: #80083F;
+  color: white;
+  background-color: #80083f;
   display: flex;
   font-weight: bold;
   height: 40px;
@@ -76,73 +75,72 @@ form {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border:0px;
+  border: 0px;
   margin: 10px;
 }
 .edit-button:hover {
-    background-color: rgb(129, 22, 129);
-    color: white;
-  }
-input{
-    border-radius: 6px;
+  background-color: rgb(129, 22, 129);
+  color: white;
+}
+input {
+  border-radius: 6px;
 }
 .edit-label {
-    color: #80083F;
+  color: #80083f;
 }
-.input-foto{
-    background-color: white;
-    color: #80083F
-  }
-textarea{
-    border-radius: 6px;
-    padding:4px;
+.input-foto {
+  background-color: white;
+  color: #80083f;
 }
-  .buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-
-  }
+textarea {
+  border-radius: 6px;
+  padding: 4px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .back-button {
-    color: white;
-    background-color: #80083F;
-    display: flex;
-    font-weight: bold;
-    height: 40px;
-    width: 40vw;
-    max-width: 175px;
-    min-width: 110px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border:0px;
-    margin: 10px;
-    text-decoration: none;
+  color: white;
+  background-color: #80083f;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  width: 40vw;
+  max-width: 175px;
+  min-width: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 0px;
+  margin: 10px;
+  text-decoration: none;
 }
 .back-button:hover {
-    background-color: rgb(129, 22, 129);
-    color: white;
-  }
+  background-color: rgb(129, 22, 129);
+  color: white;
+}
 
 .is-valid {
-    color: #198754;
-  }
-  
-  .is-invalid {
-    color: red;
-    list-style-type: none;
-  }
-  
-  .alert-warning{
-    border-color: red;
-    text-align: center;
-    border-radius: 10px;
-    border-width: 2px;
-    padding: 10px;
-    border-style: solid;
-  }
+  color: #198754;
+}
+
+.is-invalid {
+  color: red;
+  list-style-type: none;
+}
+
+.alert-warning {
+  border-color: red;
+  text-align: center;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 10px;
+  border-style: solid;
+}
 
 /********* Navegacion Celulares *************/
 
