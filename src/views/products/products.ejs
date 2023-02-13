@@ -9,42 +9,48 @@
     <%- include("../partials/header.ejs") %>
 
     <main>
-            <div class="contenedor-titulo">
-              <h2 class="titulo">Todos los productos:</h2>
-            </div>
-            <div class="recomendations-row">
-              <% products.forEach(product => { %>
-                <div class="box-product">
-                  <a href="/products/detalles/<%= product.id %>" class="etiqueta-link">
-                      <div class="div-producto">
-                          <div class="contenedor-imagen-producto">
-                              <img src="/images/productImages/<%= product.foto %>" class="image-product"/>
-                          </div>
-                          <div class="box-details">
-                            <div class="product-name"><%= product.name %></div>
-                            <div class="box-price">
-                              <div class="price-discount <% if (product.discount > 0){%>tachar-precio<%}%>">
-                                $<%= product.price %>
-                              </div>
-                              <% if (product.discount > 0){%>
-                                <div class="price">
-                                  $<%= product.price - ((product.price / 100) * product.discount) %>
-                                </div>
-                                <%}%>
-                              </div>
-                              <% if (product.discount > 0){%>
-                                <div class="box-discount"><%= product.discount %>% OFF</div>
-                                <%}%>
-                                <div class="box-size-wine">
-                                    <div><%= product.size.name %></div>
-                                </div>
-                          </div>
-                      </div>
-                  </a>
+      <div class="contenedor-titulo">
+        <h2 class="titulo">Todos los productos:</h2>
+      </div>
+      <div class="recomendations-row">
+        <% products.forEach(product => { %>
+        <div class="box-product">
+          <a href="/products/detalles/<%= product.id %>" class="etiqueta-link">
+            <div class="div-producto">
+              <div class="contenedor-imagen-producto">
+                <img
+                  src="/images/productImages/<%= product.foto %>"
+                  class="image-product"
+                />
               </div>
-
-              <%})%>
+              <div class="box-details">
+                <div class="product-name"><%= product.name %></div>
+                <div class="box-price">
+                  <div
+                    class="price-discount <% if (product.discount > 0){%>tachar-precio<%}%>"
+                  >
+                    $<%= product.price %>
+                  </div>
+                  <% if (product.discount > 0){%>
+                  <div class="price">
+                    $<%= Math.floor( product.price - (product.price *
+                    product.discount) / 100 ) %>
+                  </div>
+                  <%}%>
+                </div>
+                <% if (product.discount > 0){%>
+                <div class="box-discount"><%= product.discount %>% OFF</div>
+                <%}%>
+                <div class="box-size-wine">
+                  <div><%= product.size.name %></div>
+                </div>
+              </div>
             </div>
+          </a>
+        </div>
+
+        <%})%>
+      </div>
     </main>
 
     <%- include("../partials/footer.ejs") %>

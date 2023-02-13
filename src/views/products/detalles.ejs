@@ -4,7 +4,6 @@
   <head>
     <%- include("../partials/head.ejs") %>
     <link rel="stylesheet" href="/css/detalles.css" />
-    
   </head>
 
   <body>
@@ -20,116 +19,144 @@
       </div>
       <div class="box-detail-row">
         <div class="image-product-detail">
-          <img class="imagen-principal" src="/images/productImages/<%= productPrincipal.foto%>"                  />
+          <img
+            class="imagen-principal"
+            src="/images/productImages/<%= productPrincipal.foto%>"
+          />
         </div>
         <div class="contenedor-detalles">
           <div class="details nombre-producto">
-                <h2><%= productPrincipal.name%></h2>
+            <h2><%= productPrincipal.name%></h2>
           </div>
-          <div class="size-detail">
-                <%=productPrincipal.size.name%>
-          </div>
+          <div class="size-detail"><%=productPrincipal.size.name%></div>
           <div class="contenedor-precio-descuento">
-                <div class="contenedor-precios">
-                  <p class="discount-detail <% if (productPrincipal.discount > 0){%>tachar-precio<%}%>">
-                    $<%= productPrincipal.price%>
-                  </p>
+            <div class="contenedor-precios">
+              <p
+                class="discount-detail <% if (productPrincipal.discount > 0){%>tachar-precio<%}%>"
+              >
+                $<%= productPrincipal.price%>
+              </p>
 
-                  <% if (productPrincipal.discount > 0){%>
-                  <p class="details precios precio-discount">
-                    $<%= (productPrincipal.price - ((productPrincipal.price/100) *
-                    productPrincipal.discount))%>
-                  </p>
+              <% if (productPrincipal.discount > 0){%>
+              <p class="details precios precio-discount">
+                $<%= Math.floor( productPrincipal.price -
+                (productPrincipal.price * productPrincipal.discount) / 100 )%>
+              </p>
+              <%}%>
+            </div>
+
+            <% if (productPrincipal.discount > 0){%>
+            <div>
+              <p class="descuentos"><%= productPrincipal.discount%>% off</p>
+            </div>
+            <%}%>
+          </div>
+          <div class="details cantidad-agregar">
+            <div class="agregar">
+              <div class="details agregar-al-carrito">
+                <form action="/products/carrito" method="POST">
+                  <input
+                    type="hidden"
+                    name="productId"
+                    value="<%= productPrincipal.id %>"
+                  />
+                  <% if (locals.isLogged){%>
+                  <button type="submit" class="boton">
+                    Agregar al carrito
+                  </button>
+                  <%} else {%>
+                  <a href="/users/login" class="boton">Agregar al carrito</a>
                   <%}%>
-                </div>
-
-                <% if (productPrincipal.discount > 0){%>
-                <div>
-                  <p class="descuentos"><%= productPrincipal.discount%>% off</p>
-                </div>
-                <%}%>
+                </form>
               </div>
-              <div class="details cantidad-agregar">
-                <div class="agregar">
-                  <div class="details agregar-al-carrito">
-                    <form action="/products/carrito" method="POST">
-                      <input type="hidden" name="productId" value='<%= productPrincipal.id %>'>
-                      <% if (locals.isLogged){%>
-                        <button type="submit" class="boton">Agregar al carrito</button>
-                        <%} else {%>
-                          <a href="/users/login" class="boton">Agregar al carrito</a>
-                          <%}%>
-                      </form>
-                    </div>
-                  </div>
-                  
-                  <div class="sumar-restar">
-                    <button type="button" class="decrement">-</button>
-                    <input type="text" value="1" readonly>
-                    <button type="button" class="increment">+</button>
-                  </div>
+            </div>
+
+            <div class="sumar-restar">
+              <button type="button" class="decrement">-</button>
+              <input type="text" value="1" readonly />
+              <button type="button" class="increment">+</button>
+            </div>
           </div>
           <div class="formas">
-                  <div class="details formas-de-pago">
-                    <a href="#medios-pago" class="medios-pago"
-                      >Ver formas de pago</a
-                    >
-                  </div>
+            <div class="details formas-de-pago">
+              <a href="#medios-pago" class="medios-pago">Ver formas de pago</a>
+            </div>
           </div>
           <div class="contenedor-descripcion">
-                <div class="titulos-chicos">
-                  <h2>Detalles</h2>
-                </div>
-                <div class="category-detail"><%=productPrincipal.products_categories.name%></div>
-                <div class="bodega-detail"><%=productPrincipal.bodega.name%></div>
+            <div class="titulos-chicos">
+              <h2>Detalles</h2>
+            </div>
+            <div class="category-detail">
+              <%=productPrincipal.products_categories.name%>
+            </div>
+            <div class="bodega-detail"><%=productPrincipal.bodega.name%></div>
 
-                <div class="details descripcion-producto">
-                  <p><%= productPrincipal.descripcion%></p>
-                </div>
-                <% if (locals.isLogged.category_id == 1){%>
-                <a href="/products/edit/<%= productPrincipal.id%>" class="admin-button">Editar</a>
-                <a href="/products/delete/<%= productPrincipal.id%>" class="admin-button">Eliminar</a>
-                <%}%>
+            <div class="details descripcion-producto">
+              <p><%= productPrincipal.descripcion%></p>
+            </div>
+            <% if (locals.isLogged.category_id == 1){%>
+            <a
+              href="/products/edit/<%= productPrincipal.id%>"
+              class="admin-button"
+              >Editar</a
+            >
+            <a
+              href="/products/delete/<%= productPrincipal.id%>"
+              class="admin-button"
+              >Eliminar</a
+            >
+            <%}%>
           </div>
         </div>
       </div>
       <% if(productosAlternativos.length > 0) { %>
-        <h3 class="recomendaciones">Recomendaciones:</h3>
+      <h3 class="recomendaciones">Recomendaciones:</h3>
       <div class="recomendations-row">
         <% productosAlternativos.forEach(function(productoAlternativo) { %>
-          <div class="box-product">
-            <a href="/products/detalles/<%= productoAlternativo.id %>" class="etiqueta-link">
-              <div class="div-producto">
-                <div class="contenedor-imagen-producto">
-                  <img src="/images/productImages/<%= productoAlternativo.foto %>" class="image-product"/>
-                </div>
-                <div class="box-details">
-                  <div class="box-size-wine">
-                    <p><%= productoAlternativo.size.name %></p>
-                  </div>
-                  <div class="box-price">
-                    <p class="price-discount <% if (productoAlternativo.discount > 0){%>tachar-precio<%}%>">
-                      $<%= productoAlternativo.price %>
-                    </p>
-                    <% if (productoAlternativo.discount > 0){%>
-                      <p class="box-price">
-                        $<%= productoAlternativo.price - ((productoAlternativo.price / 100) * productoAlternativo.discount) %>
-                      </p>
-                      <%}%>
-                    </div>
-                    <% if (productoAlternativo.discount > 0){%>
-                      <p class="box-discount"><%= productoAlternativo.discount %>% off</p>
-                      <%}%>
-                      <p class="box-product-name"><b><%= productoAlternativo.name %></b></p>
-                    </div>
-                  </div>
-                </a>
+        <div class="box-product">
+          <a
+            href="/products/detalles/<%= productoAlternativo.id %>"
+            class="etiqueta-link"
+          >
+            <div class="div-producto">
+              <div class="contenedor-imagen-producto">
+                <img
+                  src="/images/productImages/<%= productoAlternativo.foto %>"
+                  class="image-product"
+                />
               </div>
-              
-              <% }); %>
-              <%}%>
-      </div>
+              <div class="box-details">
+                <div class="box-size-wine">
+                  <p><%= productoAlternativo.size.name %></p>
+                </div>
+                <div class="box-price">
+                  <p
+                    class="price-discount <% if (productoAlternativo.discount > 0){%>tachar-precio<%}%>"
+                  >
+                    $<%= productoAlternativo.price %>
+                  </p>
+                  <% if (productoAlternativo.discount > 0){%>
+                  <p class="box-price">
+                    $<%= productoAlternativo.price - ((productoAlternativo.price
+                    / 100) * productoAlternativo.discount) %>
+                  </p>
+                  <%}%>
+                </div>
+                <% if (productoAlternativo.discount > 0){%>
+                <p class="box-discount">
+                  <%= productoAlternativo.discount %>% off
+                </p>
+                <%}%>
+                <p class="box-product-name">
+                  <b><%= productoAlternativo.name %></b>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
 
+        <% }); %> <%}%>
+      </div>
     </main>
     <%- include("../partials/footer.ejs") %>
     <script src="/js/detalles-validation.js"></script>
