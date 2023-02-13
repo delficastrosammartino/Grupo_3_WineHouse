@@ -249,7 +249,7 @@ const usersControllers = {
         }
       ).then((user) => {
         // Redirige al usuario al perfil después de actualizar.
-        res.render("users/perfil", { user: user });
+        res.redirect("/users/perfil");
       });
     });
   },

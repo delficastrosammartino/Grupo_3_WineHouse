@@ -105,19 +105,8 @@ const productsControllers = {
       descripcion: req.body.descripcion,
       foto: req.file.filename,
     })
-      .then((product) => {
-        return db.Product.findAll({
-          include: [
-            { association: "products_categories" },
-            { association: "bodega" },
-            { association: "province" },
-            { association: "size" },
-            { association: "images" },
-          ],
-        });
-      })
-      .then((products) => {
-        res.render("./products/products", { products: products });
+      .then(() => {
+        res.redirect("/products");
       })
       .catch((error) => {
         console.error(error);
@@ -190,19 +179,8 @@ const productsControllers = {
           }
         );
       })
-      .then((product) => {
-        return db.Product.findAll({
-          include: [
-            { association: "products_categories" },
-            { association: "bodega" },
-            { association: "province" },
-            { association: "size" },
-            { association: "images" },
-          ],
-        });
-      })
-      .then((products) => {
-        res.render("./products/products", { products: products });
+      .then(() => {
+        res.redirect("/products");
       })
       .catch((error) => {
         console.error(error);
