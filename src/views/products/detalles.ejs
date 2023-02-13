@@ -137,8 +137,9 @@
                   </p>
                   <% if (productoAlternativo.discount > 0){%>
                   <p class="box-price">
-                    $<%= productoAlternativo.price - ((productoAlternativo.price
-                    / 100) * productoAlternativo.discount) %>
+                    $<%= Math.floor( productoAlternativo.price -
+                    (productoAlternativo.price * productoAlternativo.discount) /
+                    100 ) %>
                   </p>
                   <%}%>
                 </div>
