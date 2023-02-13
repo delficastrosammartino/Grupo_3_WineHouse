@@ -14,18 +14,11 @@ window.addEventListener("load", function () {
   document.getElementById("name").focus();
 
   form.addEventListener("submit", function (e) {
-    console.log("Entre al submit!!!!!!!!");
     let erroresArray = [];
 
     if (password.value.length <= 0 || confirmPassword.value.length <= 0) {
-      console.log(
-        "Entre al  if ((password.value.length <= 0) || (confirmPassword.value.length <= 0))!!!!!!!!"
-      );
-
       password.classList.add("is-invalid");
       erroresArray.push("Debe completar los campos de contraseñas");
-      console.log("erroresArray");
-      console.log(erroresArray);
     }
 
     if (password.value !== confirmPassword.value) {

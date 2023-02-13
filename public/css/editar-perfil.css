@@ -30,6 +30,10 @@ h3 {
   width: 80%;
   margin: auto;
 }
+.errores{
+  text-align: center;
+
+}
 
 li {
   list-style-type: none;
@@ -51,7 +55,7 @@ li {
 form {
   padding: 20px;
 }
-.label-input {
+.form-input {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -131,11 +135,11 @@ textarea {
 .is-invalid {
   color: red;
   list-style-type: none;
+
 }
 
 .alert-warning {
   border-color: red;
-  text-align: center;
   border-radius: 10px;
   border-width: 2px;
   padding: 10px;

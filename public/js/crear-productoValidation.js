@@ -38,112 +38,79 @@ window.addEventListener("load", function () {
 
     if (!formIsValid) {
       erroresArray.push("Debe completar todos los campos");
-      console.log("entre al if (!formIsValid)")
       // Detener el envío del formulario
       errores.classList.add("is-invalid");
       contenedorInputs.classList.add("alert-warning");
     } else {
-      errores.classList.add("is-invalid");
       
 
       if (name.value == "" || name.value.length < 5) {
         contenedorInputs.classList.add("alert-warning");
-        if (name.classList.contains("is-valid")) {
-          name.classList.remove("is-valid");
-        }
         name.classList.add("is-invalid");
         erroresArray.push("El nombre debe tener un largo minimo de 5 caracteres");
       } else {
         if (name.classList.contains("is-invalid")) {
           name.classList.remove("is-invalid");
         }
-        name.classList.add("is-valid");
       }
       console.log("price.value")
       console.log(price.value)
       if (price.value == "" ||isNaN(price.value) || price.value < 0) {
         contenedorInputs.classList.add("alert-warning");
-        if (price.classList.contains("is-valid")) {
-          price.classList.remove("is-valid");
-        }
         price.classList.add("is-invalid");
         erroresArray.push("El precio debe ser un numero mayor a 0");
       } else {
         if (price.classList.contains("is-invalid")) {
           price.classList.remove("is-invalid");
         }
-        price.classList.add("is-valid");
       }
       if (discount.value == ""|| isNaN(discount.value) || discount.value < 0 || discount.value > 100) {
         contenedorInputs.classList.add("alert-warning");
-        if (discount.classList.contains("is-valid")) {
-          discount.classList.remove("is-valid");
-        }
         discount.classList.add("is-invalid");
         erroresArray.push("El descuento debe ser un numero entre 0 y 100");
       } else {
         if (discount.classList.contains("is-invalid")) {
           discount.classList.remove("is-invalid");
         }
-        discount.classList.add("is-valid");
       }
       if (size.value == "") {
         contenedorInputs.classList.add("alert-warning");
-        if (size.classList.contains("is-valid")) {
-          size.classList.remove("is-valid");
-        }
         size.classList.add("is-invalid");
         erroresArray.push("Debe seleccionar el campo tamaño");
       } else {
         if (size.classList.contains("is-invalid")) {
           size.classList.remove("is-invalid");
         }
-        size.classList.add("is-valid");
       }
       if (bodega.value == "") {
         contenedorInputs.classList.add("alert-warning");
-        if (bodega.classList.contains("is-valid")) {
-          bodega.classList.remove("is-valid");
-        }
         bodega.classList.add("is-invalid");
         erroresArray.push("Debe seleccionar el campo bodega");
       } else {
         if (bodega.classList.contains("is-invalid")) {
           bodega.classList.remove("is-invalid");
         }
-        bodega.classList.add("is-valid");
       }
       if (province.value == "") {
         contenedorInputs.classList.add("alert-warning");
-        if (province.classList.contains("is-valid")) {
-          province.classList.remove("is-valid");
-        }
         province.classList.add("is-invalid");
         erroresArray.push("Debe seleccionar el campo provincia");
       } else {
         if (province.classList.contains("is-invalid")) {
           province.classList.remove("is-invalid");
         }
-        province.classList.add("is-valid");
       }
       if (category.value == "") {
         contenedorInputs.classList.add("alert-warning");
-        if (category.classList.contains("is-valid")) {
-          category.classList.remove("is-valid");
-        }
         category.classList.add("is-invalid");
         erroresArray.push("Debe seleccionar el campo categoría");
       } else {
         if (category.classList.contains("is-invalid")) {
           category.classList.remove("is-invalid");
         }
-        category.classList.add("is-valid");
       }
       if (image.value == "") {
         contenedorInputs.classList.add("alert-warning");
-        if (image.classList.contains("is-valid")) {
-          image.classList.remove("is-valid");
-        }
         image.classList.add("is-invalid");
         erroresArray.push("Debe seleccionar una foto");
       } else {
@@ -153,24 +120,20 @@ window.addEventListener("load", function () {
       }
       if (descripcion.value == "" || descripcion.value.length < 20) {
         contenedorInputs.classList.add("alert-warning");
-        if (descripcion.classList.contains("is-valid")) {
-          descripcion.classList.remove("is-valid");
-        }
         descripcion.classList.add("is-invalid");
         erroresArray.push("La descripcion debe tener un largo minimo de 20 caracteres");
       } else {
         if (descripcion.classList.contains("is-invalid")) {
           descripcion.classList.remove("is-invalid");
         }
-        descripcion.classList.add("is-valid");
       }
     }
     if (erroresArray.length > 0) {
       e.preventDefault();
+      errores.classList.add("is-invalid");
+
       ulErrores.innerHTML = "";
       for (let i = 0; i < erroresArray.length; i++) {
-        console.log("erroresArray");
-        console.log(erroresArray);
         ulErrores.innerHTML += "<li>" + erroresArray[i] + "</li>";
       }
       erroresArray.length = 0;
